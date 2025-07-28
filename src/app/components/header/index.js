@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function MainHeader() {
     return (
-        <div className={`${styles.header} py-2`}>
+        <div className={`${styles.header} py-5`}>
             <div className={`${styles.logo_area}`}>
                 <Image
                     src={logo}
