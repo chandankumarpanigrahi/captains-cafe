@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,9 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+        <div className="d-flex">
+          <div id="content" className="flex-grow-1">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
 }
+
+
