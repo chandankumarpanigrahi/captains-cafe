@@ -1,5 +1,61 @@
 @import "tailwindcss";
 
-.body{
-  background-color: black
+/* Variables */
+:root {
+  --primary-color: #1a60a3;
+  --primary-dark-color: #072f55;
+}
+
+/* Primary */
+.border-color-primary {
+  border-color: var(--primary-color);
+}
+
+.color-primary {
+  color: var(--primary-color);
+}
+
+.color-primary:hover {
+  color: var(--primary-dark-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+/* Primary Dark */
+.border-color-primary-dark {
+  border-color: var(--primary-dark-color);
+}
+
+.color-primary-dark {
+  color: var(--primary-dark-color);
+}
+
+.bg-primary-dark {
+  background-color: var(--primary-dark-color);
+}
+
+.inner_shadow {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.38) inset;
+}
+
+.hero_section{
+  height: 700px;
+  background-color: #112a45;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-infinite {
+  animation: slide 20s linear infinite;
+  will-change: transform; 
+  opacity: 0.1;
 }
