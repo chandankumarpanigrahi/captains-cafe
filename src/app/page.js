@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import MainHeader from "./components/header";
 import SlidingBackground from "./components/animatedBackground";
-
+import ComboBox from "./components/test";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
@@ -14,6 +14,7 @@ export default function Home() {
           <SlidingBackground/>
         </div>
       </div>
+      <ComboBox/>
     </main>
   );
 }
