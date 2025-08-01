@@ -15,9 +15,9 @@ const WhyChooseUs = () => {
             <div className="flex flex-col md:flex-row items-center h-full">
                 <div className="w-1/3 h-full">
                     <div className={`${styles.plate_design}`}>
-                        <Image src={plateImage}></Image>
-                        <Image src={plateImageShadow}></Image>
-                        <Image src={plateImageLeaves}></Image>
+                        <Image src={plateImage} alt='Plate Image'></Image>
+                        <Image src={plateImageShadow} alt='Plate Image Shadow'></Image>
+                        <Image src={plateImageLeaves} alt='Plate Image Leaves'></Image>
                     </div>
                 </div>
                 <div className="w-2/3 h-full pl-0 lg:pl-20">
