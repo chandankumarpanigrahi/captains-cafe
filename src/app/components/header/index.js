@@ -84,9 +84,9 @@ export default function MainHeader() {
     return (
         <div ref={navRef}>
             {/* Desktop Navigation */}
-            <div className={`${styles.header} border-color-primary container h-full bg-white border-3 p-2 rounded-full flex flex-row relative my-8`}>
+            <div className={`${styles.header} container`}>
                 {/* Logo */}
-                <div className={`${styles.logo_area} absolute p-2.5 left-8 lg:left-12`}>
+                <div className={`${styles.logo_area}`}>
                     <Link href="">
                         <Image
                             src={logo}
@@ -109,7 +109,7 @@ export default function MainHeader() {
                         >
                             <Link
                                 href={item.href}
-                                className={`p-2 text-lg color-primary font-medium flex items-center ${item.active ? "border-b-2 border-primary" : ""
+                                className={`p-2 text-lg color-primary font-medium flex items-center ${item.active ? "border-b-2 border-b-blue-900" : ""
                                     }`}
                             >
                                 {item.name}
@@ -176,15 +176,15 @@ export default function MainHeader() {
 
             {/* Mobile Menu (unchanged from previous example) */}
             {mobileMenuOpen && (
-                <div className="lg:hidden bg-white shadow-lg">
-                    <ul className="flex flex-col gap-1 p-4">
+                <div className={`${styles.mobile_menu} lg:hidden bg-white shadow-lg`}>
+                    <ul className="flex flex-col gap-0.5 p-2">
                         {navItems.map((item, index) => (
                             <li key={index} className="relative">
                                 {item.submenu ? (
                                     <>
                                         <button
                                             onClick={() => toggleSubmenu(index)}
-                                            className={`w-full p-3 text-lg flex justify-between items-center ${item.active ? "bg-primary-light text-white" : "text-primary"
+                                            className={`w-full p-2 text-lg flex justify-between items-center ${item.active ? "bg-primary-light text-white" : "text-primary"
                                                 } rounded-md`}
                                         >
                                             {item.name}

@@ -1,18 +1,18 @@
 .header {
-    border-style: solid;
-    border-width: 3px;
-    /* height: fit-content; */
-    /* background-color: #FFF;
+    border: solid 3px #1a60a3;
+    height: fit-content;
+    background-color: #FFF;
     border-radius: 20rem;
     display: flex;
     flex-direction: row;
     position: relative;
-    margin: 2rem 0; */
+    margin: 2rem 0;
+    padding: 0.5rem;
 }
 
 .header .logo_area {
-    /* position: absolute; */
-    /* left: 3rem; */
+    position: absolute;
+    left: 3rem;
     top: -50%;
     height: 120px;
     width: 120px;
@@ -22,6 +22,45 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
+    padding: 0.5rem;
 }
 
 .logo {}
+
+@media screen and (max-width: 1020px) {
+    .mobile_menu {
+        z-index: -1;
+        border-radius: 2rem;
+        width: 90%;
+        padding-top: 4rem;
+        position: absolute;
+        top: 4rem;
+        left: 5%;
+        right: 5%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header {
+        margin: 1.2rem 0;
+        padding: 0.25rem;
+    }
+
+    .header .logo_area {
+        width: 85px;
+        height: 85px;
+        top: -36%;
+        left: 2rem;
+    }
+
+    .mobile_menu {
+        position: absolute;
+        top: 45px;
+        width: 90%;
+        left: 5%;
+        right: 5%;
+        border-radius: 2rem;
+        padding-top: 3rem;
+        z-index: -1;
+    }
+}

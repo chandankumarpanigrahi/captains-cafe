@@ -41,6 +41,26 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+body {
+  position: relative;
+  height: 100vh;
+}
+
+body::before {
+  content: "";
+  /* Required for pseudo-elements */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../assets/images/body_bg.png);
+  background-size: 12%;
+  background-repeat: repeat;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.1;
+}
+
 /* Primary */
 .border-color-primary {
   border-color: var(--primary-color);
@@ -75,15 +95,11 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.38) inset;
 }
 
-.hero_section{
-  height: 700px;
-  background-color: #112a45;
-}
-
 @keyframes slide {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -91,7 +107,7 @@
 
 .animate-slide-infinite {
   animation: slide 20s linear infinite;
-  will-change: transform; 
+  will-change: transform;
   opacity: 0.1;
 }
 
@@ -171,6 +187,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

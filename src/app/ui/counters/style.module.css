@@ -1,0 +1,36 @@
+.all_cards {
+    top: -20px;
+    z-index: 60;
+}
+
+.card_area {
+    border-radius: 30px 0;
+    box-shadow: 0 0 27px 0px rgb(0 0 0 / 14%);
+}
+
+.card_icon {
+    border-radius: 50%;
+    width: fit-content;
+    height: fit-content;
+}
+
+.card_icon svg {
+    width: 70px;
+    height: 70px;
+}
+
+.card_area h2 {
+    color: #2F2F2F;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.card_area p {
+    color: #7A7A7A;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
