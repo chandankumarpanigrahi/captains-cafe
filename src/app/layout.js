@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.className}>
+    <html lang="en" className={inter.className}>
       <body>
         <div className="d-flex">
           <div id="content" className="flex-grow-1">

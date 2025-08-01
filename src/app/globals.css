@@ -5,7 +5,7 @@
 
 /* Variables */
 :root {
-  --primary-color: #1a60a3;
+  --primary-color: #0E467D;
   --primary-dark-color: #072f55;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -43,22 +43,36 @@
 
 body {
   position: relative;
-  height: 100vh;
+  height: 100%;
 }
 
 body::before {
   content: "";
-  /* Required for pseudo-elements */
   position: absolute;
+  background-image: url(../assets/images/body_bg.png);
   inset: 0;
   width: 100%;
   height: 100%;
-  background-image: url(../assets/images/body_bg.png);
   background-size: 12%;
   background-repeat: repeat;
   background-position: center;
   z-index: -1;
-  opacity: 0.1;
+}
+
+@media screen and (max-width: 900px) {
+  body::before {
+    background-size: 30%;
+  }
+}
+@media screen and (max-width: 700px) {
+  body::before {
+    background-size: 40%;
+  }
+}
+@media screen and (max-width: 500px) {
+  body::before {
+    background-size: 50%;
+  }
 }
 
 /* Primary */

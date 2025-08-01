@@ -9,7 +9,7 @@ import { useState, useRef, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
 
-export default function MainHeader() {
+export default function MainHeader({ activeTab = null }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
     const [nestedSubmenu, setNestedSubmenu] = useState(null);
@@ -31,7 +31,6 @@ export default function MainHeader() {
         {
             name: "Home",
             href: "#",
-            active: true
         },
         {
             name: "About",
@@ -45,6 +44,7 @@ export default function MainHeader() {
             name: "Blogs",
             href: "#"
         },
+        
         // {
         //     name: "Menu",
         //     href: "#",
@@ -81,6 +81,14 @@ export default function MainHeader() {
         { name: "Contact", href: "#" }
     ];
 
+    const toggleSubmenu = (index) => {
+        setActiveSubmenu(activeSubmenu === index ? null : index);
+    };
+
+    const toggleNestedSubmenu = (index) => {
+        setNestedSubmenu(nestedSubmenu === index ? null : index);
+    };
+
     return (
         <div ref={navRef}>
             {/* Desktop Navigation */}
@@ -109,7 +117,7 @@ export default function MainHeader() {
                         >
                             <Link
                                 href={item.href}
-                                className={`p-2 text-lg color-primary font-medium flex items-center ${item.active ? "border-b-2 border-b-blue-900" : ""
+                                className={`p-2 text-lg color-primary font-medium flex items-center ${activeTab === item.name ? "border-b-2 border-b-blue-900" : ""
                                     }`}
                             >
                                 {item.name}
@@ -174,7 +182,7 @@ export default function MainHeader() {
                 </button>
             </div>
 
-            {/* Mobile Menu (unchanged from previous example) */}
+            {/* Mobile Menu */}
             {mobileMenuOpen && (
                 <div className={`${styles.mobile_menu} lg:hidden bg-white shadow-lg`}>
                     <ul className="flex flex-col gap-0.5 p-2">
@@ -184,7 +192,7 @@ export default function MainHeader() {
                                     <>
                                         <button
                                             onClick={() => toggleSubmenu(index)}
-                                            className={`w-full p-2 text-lg flex justify-between items-center ${item.active ? "bg-primary-light text-white" : "text-primary"
+                                            className={`w-full p-2 text-lg flex justify-between items-center ${activeTab === item.name ? "bg-primary-dark text-white" : "text-primary"
                                                 } rounded-md`}
                                         >
                                             {item.name}
@@ -244,7 +252,7 @@ export default function MainHeader() {
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className={`block p-3 text-lg ${item.active ? "bg-primary-dark text-white" : "text-primary"
+                                        className={`block p-3 text-lg ${activeTab === item.name ? "bg-primary-dark text-white" : "text-primary"
                                             } rounded-md`}
                                     >
                                         {item.name}
