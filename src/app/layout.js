@@ -23,7 +23,7 @@ const lobsterTwo = Lobster_Two({
 });
 
 export const metadata = {
-  title: 'The Captain`s Cafe',
+  title: 'The Captains Cafe',
   description: 'A Complete Cafe Chain Management by The Scottish Cafe & Catering',
 };
 
