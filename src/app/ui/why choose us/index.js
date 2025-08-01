@@ -22,7 +22,7 @@ const WhyChooseUs = () => {
                 </div>
                 <div className="w-2/3 h-full pl-0 lg:pl-20">
                     <div className="flex flex-col">
-                        <h1 className='text-3xl font-bold color-primary mb-4'>The Captain's Café - Sail Into Flavors.</h1>
+                        <h1 className='text-3xl font-bold color-primary mb-4'>The Captain&apos;s Café - Sail Into Flavors.</h1>
                         <div className="flex flex-row flex-wrap">
                             <div className="w-1/2 pr-4 pt-4 pb-4">
                                 <div className="flex flex-row justify-start gap-4">
