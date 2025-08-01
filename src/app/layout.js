@@ -1,25 +1,25 @@
 import "./globals.css";
 // import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import MainHeader from "./components/header";
+import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
 
-import { Inter , Roboto , Poppins, Lobster_Two} from 'next/font/google';
-
-const inter = Inter({ 
-  subsets: ['latin'], 
-  display: 'swap', 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
 });
-const roboto = Roboto({ 
-  subsets: ['latin'], 
-  display: 'swap', 
+const roboto = Roboto({
+  subsets: ['latin'],
+  display: 'swap',
 });
-const poppins = Poppins({ 
-  subsets: ['latin'], 
-  weight: ['400', '900'], 
-  display: 'swap', 
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '900'],
+  display: 'swap',
 });
-const lobsterTwo = Lobster_Two({ 
-  subsets: ['latin'], 
-  weight: ['400', '700'], 
-  display: 'swap', 
+const lobsterTwo = Lobster_Two({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
 });
 
 export const metadata = {
@@ -32,7 +32,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className={inter.className}>
       <body>
         <div className="d-flex">
-          <div id="content" className="flex-grow-1">
+          <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
+            <div className="container fixed z-50">
+              <MainHeader activeTab="Home" />
+            </div>
             {children}
           </div>
         </div>

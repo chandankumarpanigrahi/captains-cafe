@@ -8,13 +8,14 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
+// import { usePathname } from "next/navigation";
 
 export default function MainHeader({ activeTab = null }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
     const [nestedSubmenu, setNestedSubmenu] = useState(null);
     const navRef = useRef(null);
-
+    // const pathName = usePathname()
     // Close menus when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -30,11 +31,11 @@ export default function MainHeader({ activeTab = null }) {
     const navItems = [
         {
             name: "Home",
-            href: "#",
+            href: "/",
         },
         {
             name: "About",
-            href: "#"
+            href: "/about"
         },
         {
             name: "Menu",
