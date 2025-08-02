@@ -59,9 +59,15 @@ body::before {
   z-index: -1;
 }
 
-.container{
+.container {
   padding-right: .5rem;
   padding-left: .5rem;
+}
+
+@media (min-width: 96rem) {
+  .container {
+    max-width: 86rem !important;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -69,11 +75,13 @@ body::before {
     background-size: 30%;
   }
 }
+
 @media screen and (max-width: 700px) {
   body::before {
     background-size: 40%;
   }
 }
+
 @media screen and (max-width: 500px) {
   body::before {
     background-size: 50%;
