@@ -11,7 +11,7 @@ import { MdRoomService } from "react-icons/md";
 
 const WhyChooseUs = () => {
     return (
-        <div className='container'>
+        <div className='container mb-8 md:mb-16'>
             <div className="flex flex-col lg:flex-row items-center h-full">
                 <div className="w-full lg:w-1/3 py-8 overflow-hidden lg:overflow-visible lg:p-0 h-full">
                     <div className={`${styles.plate_design}`}>
@@ -22,7 +22,7 @@ const WhyChooseUs = () => {
                 </div>
                 <div className="w-full lg:w-2/3 h-full pl-0 lg:pl-20">
                     <div className="flex flex-col">
-                        <h1 className='text-2xl md:text-3xl font-bold color-primary mb-4'>The Captain&apos;s Café - Sail Into Flavors.</h1>
+                        <h1 className='text-2xl md:text-3xl font-bold color-primary mb-4'>Why People Choose Us?</h1>
                         <div className="flex flex-row flex-wrap">
                             <div className="w-full sm:w-1/2 mb-3 sm:mb-0 sm:pr-4 sm:pt-4 sm:pb-4">
                                 <div className="flex flex-row justify-start gap-4">
