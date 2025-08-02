@@ -9,9 +9,9 @@ const Intro = () => {
             <div className="flex flex-col lg:flex-row">
                 <div className="w-full lg:w-5/7">
                     <div className="flex flex-col mb-3">
-                        <h1 className='text-3xl font-bold color-primary mb-3'>The Captain&apos;s Café - Sail Into Flavors.</h1>
-                        <p className={`${styles.text_color} text-lg mb-2 pr-0 lg:pr-5`}>Situated in the vibrant city of <strong>Bhubaneswar</strong>, Scottish Café is your destination for mouth-watering vegetarian snacks, exceptional catering services, and delightful bakery creations. We take pride in crafting every dish with care, using only the freshest ingredients.</p>
-                        <p className={`${styles.text_color} text-lg pr-0 lg:pr-5`}>Whether it&apos;s a quick snack, a special event, or a sweet indulgence, Scottish Café promises a memorable experience filled with flavor, warmth, and tradition. Join us to savor the best of vegetarian cuisine and baked delights!</p>
+                        <h1 className='text-2xl sm:text-3xl font-bold color-primary mb-3'>The Captain&apos;s Café - Sail Into Flavors.</h1>
+                        <p className={`${styles.text_color} text-md sm:text-lg mb-2 pr-0 lg:pr-5`}>Situated in the vibrant city of <strong>Bhubaneswar</strong>, Scottish Café is your destination for mouth-watering vegetarian snacks, exceptional catering services, and delightful bakery creations. We take pride in crafting every dish with care, using only the freshest ingredients.</p>
+                        <p className={`${styles.text_color} text-md sm:text-lg pr-0 lg:pr-5`}>Whether it&apos;s a quick snack, a special event, or a sweet indulgence, Scottish Café promises a memorable experience filled with flavor, warmth, and tradition. Join us to savor the best of vegetarian cuisine and baked delights!</p>
                     </div>
                     <div className="flex flex-row w-full flex-wrap">
                         <div className="w-1/2 md:w-1/4 md:mb-2 my-3">

@@ -29,7 +29,7 @@ const WhyChooseUs = () => {
                                     <PiChefHatFill className={`${styles.icon} text-yellow-900`}/>
                                     <div className="flex flex-col">
                                         <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Global Flavors</h5>
-                                        <p className={`${styles.card_text} text-md`}>Our team of master chefs brings years of experience and creativity to every dish, ensuring each bite is a masterpiece of flavor and presentation.</p>
+                                        <p className={`${styles.card_text} text-sm sm:text-md`}>Our team of master chefs brings years of experience and creativity to every dish, ensuring each bite is a masterpiece of flavor and presentation.</p>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
                                     <MdShoppingCart className={`${styles.icon} text-yellow-900`}/>
                                     <div className="flex flex-col">
                                         <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Online Order</h5>
-                                        <p className={`${styles.card_text} text-md`}>Enjoy your favorite dishes from the comfort of your home with our easy and reliable online ordering system as well as from Zomato and Swiggy</p>
+                                        <p className={`${styles.card_text} text-sm sm:text-md`}>Enjoy your favorite dishes from the comfort of your home with our easy and reliable online ordering system as well as from Zomato and Swiggy</p>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@ const WhyChooseUs = () => {
                                     <MdFastfood className={`${styles.icon} text-yellow-900`}/>
                                     <div className="flex flex-col">
                                         <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Quality Food</h5>
-                                        <p className={`${styles.card_text} text-md`}>Fresh ingredients, exceptional recipes, and a commitment to quality come together to create meals that delight your senses.</p>
+                                        <p className={`${styles.card_text} text-sm sm:text-md`}>Fresh ingredients, exceptional recipes, and a commitment to quality come together to create meals that delight your senses.</p>
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@ const WhyChooseUs = () => {
                                     <MdRoomService className={`${styles.icon} text-yellow-900`}/>
                                     <div className="flex flex-col">
                                         <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Best Service</h5>
-                                        <p className={`${styles.card_text} text-md`}>We pride ourselves on providing warm, friendly, and attentive service that makes every visit a delightful experience.</p>
+                                        <p className={`${styles.card_text} text-sm sm:text-md`}>We pride ourselves on providing warm, friendly, and attentive service that makes every visit a delightful experience.</p>
                                     </div>
                                 </div>
                             </div>

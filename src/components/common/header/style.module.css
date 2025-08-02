@@ -64,3 +64,9 @@
         z-index: -1;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .header .logo_area {
+        left: 1.2rem;
+    }
+}
