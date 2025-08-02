@@ -19,7 +19,6 @@ const SubBanner = ({ title = "Page Title", breadcrumbItems = [] }) => {
         <div className={`${styles.background_design} w-full`}>
             <div className="h-full w-full flex container mx-auto mt-10 justify-center items-center flex-col">
                 <h1 className="text-white text-4xl md:text-6xl mb-6">{title}</h1>
-
                 <Breadcrumb>
                     <BreadcrumbList>
                         <BreadcrumbItem>

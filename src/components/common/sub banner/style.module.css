@@ -4,3 +4,9 @@
     background-color: #051B31;
     background-position: center;
 }
+
+@media (max-width: 768px) {
+    .background_design {
+        height: 260px;
+    }
+}
