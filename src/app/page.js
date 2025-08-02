@@ -6,7 +6,6 @@ import SlidingBackground from "../components/common/animatedBackground";
 import Counters from "../components/design/counters";
 import Intro from "../components/design/intro";
 import WhyChooseUs from "../components/design/why choose us";
-import CarouselSize from "../components/common/test";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
@@ -20,7 +19,6 @@ export default function Home() {
       <Counters />
       <Intro />
       <WhyChooseUs/>
-      <CarouselSize/>
     </main>
   );
 }

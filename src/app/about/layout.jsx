@@ -1,11 +1,19 @@
+import SubBanner from '@/components/common/sub banner'
 import React from 'react'
 
 const layout = ({ children }) => {
     return (
-        <div>
-            <h2>Header</h2>
+        <>
+            <SubBanner
+                title="About Us"
+                breadcrumbItems={[
+                    // { label: "Company", href: "/company" },
+                    { label: "About Us" } // No href = current page
+                ]}
+            />
+
             {children}
-        </div>
+        </>
     )
 }
 

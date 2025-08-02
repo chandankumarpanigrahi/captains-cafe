@@ -8,15 +8,15 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import { FiX } from "react-icons/fi";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
-export default function MainHeader({ activeTab = null }) {
+export default function MainHeader() {
+    const pathname = usePathname();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSubmenu, setActiveSubmenu] = useState(null);
     const [nestedSubmenu, setNestedSubmenu] = useState(null);
     const navRef = useRef(null);
-    // const pathName = usePathname()
-    // Close menus when clicking outside
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (navRef.current && !navRef.current.contains(event.target)) {
@@ -32,55 +32,58 @@ export default function MainHeader({ activeTab = null }) {
         {
             name: "Home",
             href: "/",
+            matchPaths: ["/"]
         },
         {
             name: "About",
-            href: "/about"
+            href: "/about",
+            matchPaths: ["/about"]
         },
         {
             name: "Menu",
-            href: "#"
+            href: "/about/menu",
+            matchPaths: ["/about/menu"],
+            submenu: [
+                {
+                    name: "Food",
+                    href: "#",
+                    submenu: [
+                        { name: "Starters", href: "#" },
+                        { name: "Main Course", href: "#" },
+                        { name: "Desserts", href: "#" }
+                    ]
+                },
+                {
+                    name: "Drinks",
+                    href: "#",
+                    submenu: [
+                        { name: "Hot Drinks", href: "#" },
+                        { name: "Cold Drinks", href: "#" },
+                        { name: "Alcoholic", href: "#" }
+                    ]
+                }
+            ]
         },
         {
             name: "Blogs",
-            href: "#"
+            href: "/blog",
+            matchPaths: ["/blog", "/blog/detail"],
+            submenu: [
+                { name: "Our Story", href: "/blog/detail" },
+                { name: "Chefs", href: "#" },
+                { name: "Testimonials", href: "#" }
+            ]
         },
-        
-        // {
-        //     name: "Menu",
-        //     href: "#",
-        //     submenu: [
-        //         {
-        //             name: "Food",
-        //             href: "#",
-        //             submenu: [
-        //                 { name: "Starters", href: "#" },
-        //                 { name: "Main Course", href: "#" },
-        //                 { name: "Desserts", href: "#" }
-        //             ]
-        //         },
-        //         {
-        //             name: "Drinks",
-        //             href: "#",
-        //             submenu: [
-        //                 { name: "Hot Drinks", href: "#" },
-        //                 { name: "Cold Drinks", href: "#" },
-        //                 { name: "Alcoholic", href: "#" }
-        //             ]
-        //         }
-        //     ]
-        // },
-        // {
-        //     name: "About",
-        //     href: "#",
-        //     submenu: [
-        //         { name: "Our Story", href: "#" },
-        //         { name: "Chefs", href: "#" },
-        //         { name: "Testimonials", href: "#" }
-        //     ]
-        // },
-        { name: "Contact", href: "#" }
+        { 
+            name: "Contact", 
+            href: "#",
+            matchPaths: ["/contact"] 
+        }
     ];
+
+    const isActive = (item) => {
+        return item.matchPaths?.some(path => pathname === path || pathname.startsWith(path + '/'));
+    };
 
     const toggleSubmenu = (index) => {
         setActiveSubmenu(activeSubmenu === index ? null : index);
@@ -96,7 +99,7 @@ export default function MainHeader({ activeTab = null }) {
             <div className={`${styles.header} container`}>
                 {/* Logo */}
                 <div className={`${styles.logo_area}`}>
-                    <Link href="">
+                    <Link href="/">
                         <Image
                             src={logo}
                             className={styles.logo}
@@ -118,7 +121,7 @@ export default function MainHeader({ activeTab = null }) {
                         >
                             <Link
                                 href={item.href}
-                                className={`p-2 text-lg color-primary font-medium flex items-center ${activeTab === item.name ? "border-b-2 border-b-blue-900" : ""
+                                className={`p-2 text-lg color-primary font-medium flex items-center ${isActive(item) ? "border-b-2 border-b-blue-900" : ""
                                     }`}
                             >
                                 {item.name}
@@ -193,7 +196,7 @@ export default function MainHeader({ activeTab = null }) {
                                     <>
                                         <button
                                             onClick={() => toggleSubmenu(index)}
-                                            className={`w-full p-2 text-lg flex justify-between items-center ${activeTab === item.name ? "bg-primary-dark text-white" : "text-primary"
+                                            className={`w-full p-2 text-lg flex justify-between items-center ${isActive(item) ? "bg-primary-dark text-white" : "text-primary"
                                                 } rounded-md`}
                                         >
                                             {item.name}
@@ -253,7 +256,7 @@ export default function MainHeader({ activeTab = null }) {
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className={`block p-3 text-lg ${activeTab === item.name ? "bg-primary-dark text-white" : "text-primary"
+                                        className={`block p-3 text-lg ${isActive(item) ? "bg-primary-dark text-white" : "text-primary"
                                             } rounded-md`}
                                     >
                                         {item.name}

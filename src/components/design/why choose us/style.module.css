@@ -1,7 +1,7 @@
 .plate_design {
     height: 420px;
-    position: relative;
     width: 420px;
+    position: relative;
     margin: 0 auto;
 }
 
@@ -10,6 +10,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .plate_design img:nth-child(1) {
@@ -47,11 +48,25 @@
     }
 }
 
-.icon{
+.icon {
     width: 200px;
     height: fit-content;
 }
 
-.card_text{
+@media screen and (max-width: 500px) {
+    .icon {
+       max-width: 40px;
+       width: 100%;
+    }
+}
+
+.card_text {
     color: #6f8daa;
+}
+
+@media screen and (max-width: 460px) {
+    .plate_design {
+        height: 320px;
+        width: 320px;
+    }
 }
