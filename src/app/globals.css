@@ -70,6 +70,13 @@ body::before {
   }
 }
 
+@media (min-width: 400px) {
+  .container {
+    padding-right: .6rem;
+    padding-left: .6rem;
+  }
+}
+
 @media screen and (max-width: 900px) {
   body::before {
     background-size: 30%;

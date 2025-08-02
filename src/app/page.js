@@ -9,7 +9,6 @@ import WhyChooseUs from "../components/design/why choose us";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
-      
       <div className={`${styles.hero_section}  w-full flex items-center lg:justify-center`}>
         <div className={`w-full h-full`}>
           <SlidingBackground />
