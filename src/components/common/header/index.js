@@ -41,42 +41,52 @@ export default function MainHeader() {
         },
         {
             name: "Menu",
-            href: "/about/menu",
-            matchPaths: ["/about/menu"],
-            submenu: [
-                {
-                    name: "Food",
-                    href: "#",
-                    submenu: [
-                        { name: "Starters", href: "#" },
-                        { name: "Main Course", href: "#" },
-                        { name: "Desserts", href: "#" }
-                    ]
-                },
-                {
-                    name: "Drinks",
-                    href: "#",
-                    submenu: [
-                        { name: "Hot Drinks", href: "#" },
-                        { name: "Cold Drinks", href: "#" },
-                        { name: "Alcoholic", href: "#" }
-                    ]
-                }
-            ]
+            href: "/menu",
+            matchPaths: ["/menu"]
         },
         {
             name: "Blogs",
-            href: "/blog",
-            matchPaths: ["/blog", "/blog/detail"],
-            submenu: [
-                { name: "Our Story", href: "/blog/detail" },
-                { name: "Chefs", href: "#" },
-                { name: "Testimonials", href: "#" }
-            ]
+            href: "/blogs",
+            matchPaths: ["/blogs"]
         },
+        // {
+        //     name: "Menu",
+        //     href: "/about/menu",
+        //     matchPaths: ["/about/menu"],
+        //     submenu: [
+        //         {
+        //             name: "Food",
+        //             href: "#",
+        //             submenu: [
+        //                 { name: "Starters", href: "#" },
+        //                 { name: "Main Course", href: "#" },
+        //                 { name: "Desserts", href: "#" }
+        //             ]
+        //         },
+        //         {
+        //             name: "Drinks",
+        //             href: "#",
+        //             submenu: [
+        //                 { name: "Hot Drinks", href: "#" },
+        //                 { name: "Cold Drinks", href: "#" },
+        //                 { name: "Alcoholic", href: "#" }
+        //             ]
+        //         }
+        //     ]
+        // },
+        // {
+        //     name: "Blogs",
+        //     href: "/blog",
+        //     matchPaths: ["/blog", "/blog/detail"],
+        //     submenu: [
+        //         { name: "Our Story", href: "/blog/detail" },
+        //         { name: "Chefs", href: "#" },
+        //         { name: "Testimonials", href: "#" }
+        //     ]
+        // },
         { 
             name: "Contact", 
-            href: "#",
+            href: "/contact",
             matchPaths: ["/contact"] 
         }
     ];
