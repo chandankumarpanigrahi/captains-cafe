@@ -1,7 +1,7 @@
 "use client";
 import Image from 'next/image';
 import pattern from '../../../assets/images/hero.png';
-import HeroSection from '@/app/ui/hero';
+import HeroSection from '@/components/design/hero';
 
 const SlidingBackground = () => {
     return (

@@ -2,11 +2,11 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 // import MainHeader from "./components/header";
-import SlidingBackground from "./components/animatedBackground";
-import Counters from "./ui/counters";
-import Intro from "./ui/intro";
-import WhyChooseUs from "./ui/why choose us";
-import CarouselSize from "./components/test";
+import SlidingBackground from "../components/common/animatedBackground";
+import Counters from "../components/design/counters";
+import Intro from "../components/design/intro";
+import WhyChooseUs from "../components/design/why choose us";
+import CarouselSize from "../components/common/test";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">

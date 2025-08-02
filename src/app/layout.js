@@ -1,6 +1,6 @@
 import "./globals.css";
 // import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import MainHeader from "./components/header";
+import MainHeader from "../components/common/header";
 import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
 
 const inter = Inter({

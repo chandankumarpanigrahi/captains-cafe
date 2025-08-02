@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./style.module.css"
-import Button from '@/app/components/button'
+import Button from '@/components/common/button'
 
 const HeroSection = () => {
     return (
