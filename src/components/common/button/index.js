@@ -1,3 +1,5 @@
+"use client"
+import styles from "./style.module.css"
 export default function Button({
     text = null,          // Default: No text
     icon = null,          // Default: No icon
@@ -45,9 +47,8 @@ export default function Button({
 
     return (
         <button
-            className={`
-        flex items-center justify-center gap-2 w-fit
-        font-normal uppercase transition-colors
+            className={`flex items-center justify-center gap-2 w-fit font-normal uppercase transition-colors 
+        ${styles.main_btn}
         ${sizeMap[size]}
         ${bgColor}
         ${textColor}
