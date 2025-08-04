@@ -1,0 +1,164 @@
+.cta_button {
+    font-size: 18px;
+    font-weight: 500;
+    background: linear-gradient(92deg, #0D3963 5.37%, #2B5379 66.94%, #0D345A 96.59%);
+    transition: all ease-in-out 0.6s;
+    border: 2px solid transparent;
+}
+
+.cta_button:hover{
+    cursor: pointer;
+    background: linear-gradient(92deg, #09335a 5.37%, #25496b 66.94%, #082644 96.59%);
+    transition: all ease-in-out 0.6s;
+    border-color: #fff;
+}
+
+.hero_cup_design .cup_design {
+    z-index: 5;
+    top: 7rem;
+}
+
+.hero_cup_design .cup_background {
+    z-index: 4;
+    height: 800px;
+    width: 460px;
+    top: 8rem;
+    border-radius: 500px 500px 0 0;
+    background: linear-gradient(163deg, #1C4974 10.07%, #0A2742 93.21%);
+}
+
+.hero_cup_design .cup_circle {
+    z-index: 3;
+    top: 6.5rem;
+    border-radius: 50%;
+    border: 4px dashed #89BAE9;
+    width: 529px;
+    height: 529px;
+    animation: circle1 100s linear infinite;
+}
+
+.hero_cup_design .cup_dot_area {
+    z-index: 4;
+    top: 7rem;
+    width: 80%;
+    height: 100%;
+}
+
+.hero_cup_design .cup_dot_area .cup_dots {
+    display: flex;
+    height: 100%;
+    animation: moveVertical 3000ms infinite ease-in-out;
+}
+
+.hero_cup_design .cup_dot_area .cup_dot.cup_dot_1 {
+    width: 28px;
+    height: 28px;
+    background: #E1EEFC;
+    right: 2rem;
+    top: 3rem;
+}
+
+.hero_cup_design .cup_dot_area .cup_dot.cup_dot_2 {
+    width: 32px;
+    height: 32px;
+    background: #4884BE;
+    left: 7rem;
+    top: 0;
+}
+
+.hero_cup_design .cup_dot_area .cup_dot.cup_dot_3 {
+    width: 24px;
+    height: 24px;
+    background: #436F98;
+    left: 0;
+    top: 40%;
+}
+
+.hero_cup_design .cup_dot_area .cup_dot.cup_dot_4 {
+    width: 16px;
+    height: 16px;
+    background: #5EA7ED;
+    right: 0;
+    top: 60%;
+}
+
+.hero_cup_design .cup_dot_area .cup_dot.cup_dot_5 {
+    width: 20px;
+    height: 20px;
+    background: #7DB8F1;
+    left: 5%;
+    top: 70%;
+}
+
+@media screen and (max-width: 1280px) {
+    .hero_cup_design .cup_design {
+        top: 10rem;
+        transform: scale(1.2);
+    }
+
+    .hero_cup_design .cup_background {
+        width: 420px;
+    }
+
+    .hero_cup_design .cup_circle {
+        z-index: 3;
+        top: 6.5rem;
+        border-radius: 50%;
+        border: 4px dashed #89BAE9;
+        width: 490px;
+        height: 490px;
+        animation: circle1 100s linear infinite;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .hero_cup_design .cup_design {
+        top: 12rem;
+        transform: scale(1.2);
+    }
+
+    .hero_cup_design .cup_background {
+        width: 360px;
+    }
+
+    .hero_cup_design .cup_circle {
+        z-index: 3;
+        top: 6.5rem;
+        border-radius: 50%;
+        border: 4px dashed #89BAE9;
+        width: 400px;
+        height: 400px;
+        animation: circle1 100s linear infinite;
+    }
+
+    .hero_cup_design .cup_dot_area .cup_dot{
+        transform: scale(0.8);
+    }
+}
+
+@keyframes circle1 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveVertical {
+    0% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+
+    50% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}

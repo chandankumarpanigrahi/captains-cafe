@@ -60,13 +60,36 @@
     }
 }
 
-@media screen and (max-width: 460px) {
+.main_text {
+    font-size: 1.8rem;
+}
+
+@media screen and (max-width: 1024px) {
     .plate_design {
-        height: 320px;
-        width: 320px;
+        height: 260px;
+        width: 260px;
+        top: -2%;
+    }
+
+    .main_text {
+        font-size: 1.6rem;
     }
 }
 
-.main_text {
-    font-size: 1.8rem;
+@media screen and (max-width: 768px) {
+    .plate_design {
+        display: none;
+    }
+    .background_design{
+        height: 100%;
+    }
+    .main_text {
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 460px) {
+        .main_text {
+        font-size: 1.3rem;
+    }
 }

@@ -8,10 +8,10 @@ import plateImageInnerCircle from "../../../assets/images/plate_2_inner_circle.p
 
 const HomeCta = () => {
     return (
-        <div className='container'>
-            <div className={`${styles.background_design} py-6 px-10 rounded-3xl relative flex flex-col justify-center items-start`}>
-                <div className="w-full lg:w-3/5 flex flex-col gap-4">
-                    <p className={`${styles.main_text} text-white opacity-80 leading-tight pr-10`}>Experience the perfect blend of taste, quality, and care - because you deserve nothing but the best.</p>
+        <div className='container animate__animated animate__fadeInUp'>
+            <div className={`${styles.background_design} py-4 px-6 md:py-6 md:px-10 rounded-xl md:rounded-3xl relative flex flex-col justify-center items-start`}>
+                <div className="w-full md:w-3/5 flex flex-col items-center md:items-start gap-4">
+                    <p className={`${styles.main_text} text-white text-center md:text-left opacity-80 leading-tight p-0 md:pr-10`}>Experience the perfect blend of taste, quality, and care - because you deserve nothing but the best.</p>
                     <button className='w-min whitespace-nowrap border-0 bg-white rounded-full py-2 px-4 text-blue-900 font-bold'>Contact Us Now</button>
                 </div>
                 <div className={`${styles.plate_design}`}>

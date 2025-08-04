@@ -1,4 +1,5 @@
 import "./globals.css";
+import '../../node_modules/animate.css/animate.css'
 // import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import MainHeader from "../components/common/header";
 import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
