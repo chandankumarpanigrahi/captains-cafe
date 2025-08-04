@@ -3,7 +3,7 @@ import '../../node_modules/animate.css/animate.css'
 // import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import MainHeader from "../components/common/header";
 import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
-import Footer from "@/components/common/footer";
+// import Footer from "@/components/common/footer";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
               <MainHeader activeTab="Home" />
             </div>
             {children}
-            <Footer/>
+            {/* <Footer/> */}
           </div>
         </div>
       </body>
