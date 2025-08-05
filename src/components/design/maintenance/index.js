@@ -1,5 +1,6 @@
-'use client'
+// npm install framer-motion
 
+'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaTools, FaClock } from 'react-icons/fa';

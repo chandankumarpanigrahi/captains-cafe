@@ -3,7 +3,7 @@ import '../../node_modules/animate.css/animate.css'
 // import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import MainHeader from "../components/common/header";
 import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
-// import Footer from "@/components/common/footer";
+import Footer from "@/components/common/footer";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -35,11 +35,11 @@ export default function RootLayout({ children }) {
       <body>
         <div className="d-flex">
           <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
-            {/* <div className="container fixed z-50">
+            <div className="container fixed z-50">
               <MainHeader activeTab="Home" />
-            </div> */}
+            </div>
             {children}
-            {/* <Footer/> */}
+            <Footer/>
           </div>
         </div>
       </body>
