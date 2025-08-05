@@ -22,7 +22,7 @@ const MaintenancePage = () => {
                     <FaTools size={60} />
                 </motion.div>
 
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">We’re Under Maintenance</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">We are Under Maintenance</h1>
                 <p className="text-lg md:text-xl text-gray-300 mb-6">
                     Our website is getting a quick tune-up to serve you better. We'll be back shortly!
                 </p>
