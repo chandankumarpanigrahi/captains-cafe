@@ -7,10 +7,11 @@ import Counters from "../components/design/counters";
 import Intro from "../components/design/intro";
 import WhyChooseUs from "../components/design/why choose us";
 import HomeCta from "@/components/design/home cta";
+import MaintenancePage from "@/components/design/maintenance";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
-      <div className={`${styles.hero_section} w-full flex items-center lg:justify-center`}>
+      {/* <div className={`${styles.hero_section} w-full flex items-center lg:justify-center`}>
         <div className={`${styles.inner_hero_contents} w-full h-full`}>
           <SlidingBackground />
         </div>
@@ -19,7 +20,8 @@ export default function Home() {
       <Counters />
       <Intro />
       <WhyChooseUs/>
-      <HomeCta/>
+      <HomeCta/> */}
+      <MaintenancePage/>
     </main>
   );
 }

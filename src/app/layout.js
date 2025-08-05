@@ -35,9 +35,9 @@ export default function RootLayout({ children }) {
       <body>
         <div className="d-flex">
           <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
-            <div className="container fixed z-50">
+            {/* <div className="container fixed z-50">
               <MainHeader activeTab="Home" />
-            </div>
+            </div> */}
             {children}
             {/* <Footer/> */}
           </div>

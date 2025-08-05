@@ -7,7 +7,7 @@ import cupDesign from "../../../assets/images/cup_design.png"
 const HeroSection = () => {
     return (
         <div className="container h-full flex flex-col md:flex-row items-center z-10 relative">
-            <div className="w-full h-max md:w-1/2 my-auto">
+            <div className="w-full h-max md:w-1/2 my-auto animate__animated animate__slideInLeft">
                 <div className="flex flex-col">
                     <h6 className="text-gray-300 font-bold text-2xl mb-4">MORE FLAVOR FOR LESS</h6>
                     <h1 className="mb-4">Taste The Differance</h1>
@@ -15,7 +15,7 @@ const HeroSection = () => {
                     <button className={`${styles.cta_button} w-min whitespace-nowrap border-0 text-white rounded-full py-1 px-4`}>Order Online</button>
                 </div>
             </div>
-            <div className="w-full h-full hidden md:w-1/2 md:block">
+            <div className="w-full h-full hidden md:w-1/2 md:block animate__animated animate__slideInRight">
                 <div className={`${styles.hero_cup_design} relative flex justify-center h-full pt-20`}>
                     <Image className={`${styles.cup_design} absolute`} src={cupDesign} alt='Captains Cafe Brand Cup'/>
                     <div className={`${styles.cup_background} absolute`}></div>
