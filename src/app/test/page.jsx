@@ -206,7 +206,7 @@ const Test = () => {
                 </form>
             </Dialog>
 
-            {/* <Form className='flex flex-row flex-wrap mt-10' name="contact" netlify>
+            <Form className='flex flex-row flex-wrap mt-10' name="contact" netlify>
                 <div className="flex w-1/4 flex-col mb-3 px-2">
                     <Label>Name</Label>
                     <Input type="text" placeholder="Enter Full Name" name="name" className='bg-white' />
@@ -224,43 +224,7 @@ const Test = () => {
                     <Input type="text" placeholder="Mobile Number" className='bg-white' />
                 </div>
                 <button type="submit">Submit</button>
-            </Form> */}
-            <form
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                className="flex flex-col gap-4 max-w-md mx-auto"
-            >
-                {/* Hidden input to help Netlify recognize the form */}
-                <input type="hidden" name="form-name" value="contact" />
-                {/* Honeypot field for spam prevention */}
-                <p className="hidden">
-                    <label>
-                        Dont fill this out if youre human:
-                        <input name="bot-field" />
-                    </label>
-                </p>
-
-                <label>
-                    Name:
-                    <input type="text" name="name" required className="w-full border px-2 py-1" />
-                </label>
-
-                <label>
-                    Email:
-                    <input type="email" name="email" required className="w-full border px-2 py-1" />
-                </label>
-
-                <label>
-                    Message:
-                    <textarea name="message" required className="w-full border px-2 py-1" />
-                </label>
-
-                <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">
-                    Send
-                </button>
-            </form>
+            </Form>
         </div>
     )
 }
