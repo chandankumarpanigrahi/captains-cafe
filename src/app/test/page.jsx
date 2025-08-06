@@ -1,6 +1,10 @@
 import React from 'react'
 import styles from "./style.module.css"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import Form from 'next/form'
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 import {
     Accordion,
     AccordionContent,
@@ -67,6 +71,10 @@ const breakfast = [
         days: "30 Days"
     }
 ];
+
+const menu = [
+
+]
 
 const Test = () => {
     return (
@@ -198,6 +206,25 @@ const Test = () => {
                 </form>
             </Dialog>
 
+            <Form className='flex flex-row flex-wrap mt-10' name="contact" netlify>
+                <div className="flex w-1/4 flex-col mb-3 px-2">
+                    <Label>Name</Label>
+                    <Input type="text" placeholder="Enter Full Name" name="name" className='bg-white' />
+                </div>
+                <div className="flex w-1/4 flex-col mb-3 px-2">
+                    <Label>Email</Label>
+                    <Input type="email" placeholder="Enter Your Email ID" name="email" className='bg-white' />
+                </div>
+                <div className="flex w-1/4 flex-col mb-3 px-2">
+                    <Label>Address</Label>
+                    <textarea type="text" placeholder="Full Addreess" name="address" className='bg-white' />
+                </div>
+                <div className="flex w-1/4 flex-col mb-3 px-2">
+                    <Label>Mobile</Label>
+                    <Input type="text" placeholder="Mobile Number" className='bg-white' />
+                </div>
+                <button type="submit">Submit</button>
+            </Form>
         </div>
     )
 }

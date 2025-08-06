@@ -8,6 +8,7 @@
   --primary-color: #0E467D;
   --primary-dark-color: #072f55;
   --radius: 0.625rem;
+  --footer-text: #E58D52;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -143,6 +144,10 @@ body::before {
   animation: slide 20s linear infinite;
   will-change: transform;
   opacity: 0.1;
+}
+
+.footer-text-color{
+  color: var(--footer-text);
 }
 
 @theme inline {

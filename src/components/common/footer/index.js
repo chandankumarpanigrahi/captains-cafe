@@ -5,10 +5,25 @@ import logoLight from "../../../assets/images/logo_light.png"
 import lightHouse from "../../../assets/images/footer_lighthouse.png"
 import miniBoat from "../../../assets/images/footer_boat.png"
 import { FaFacebookF } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
-import { SiPeerlist } from "react-icons/si";
+import { IoLogoInstagram } from "react-icons/io5";
+import { MdCall } from "react-icons/md";
+import { HiLocationMarker } from "react-icons/hi";
+import { IoGlobeOutline } from "react-icons/io5";
+import Link from 'next/link'
+
+const socialMedia = [
+    {
+        icon: <IoLogoInstagram />,
+        link: "https://www.instagram.com/thecaptainscafe.india",
+        title: "Instagram"
+    },
+    {
+        icon: <FaFacebookF />,
+        link: "https://www.facebook.com/thecaptainscafe.india/",
+        title: "Facebook"
+    }
+]
+
 
 const Footer = () => {
     return (
@@ -18,37 +33,68 @@ const Footer = () => {
                 <div className={`${styles.footer_body} flex flex-col lg:flex-row`}>
 
                     {/* Left Side */}
-                    <div className={`${styles.footer_about} w-full lg:w-1/3 flex pr-0 md:pr-10 lg:pr-5 mb-8 lg:mb-0`}>
-                        <div className="flex w-1/3">
-                            <Image src={logoLight} width="100%" height={80} alt='Footer Logo' className='object-cover'/>
-                        </div>
+                    <div className={`${styles.footer_about} w-full lg:w-1/3 flex pr-0 pt-0 lg:pt-6 md:pr-10 lg:pr-5 mb-8 lg:mb-0`}>
+                        <Link href="/" className="flex items-start w-1/3 pe-6">
+                            <Image src={logoLight} width="100%" alt='Footer Logo' className='object-contain' />
+                        </Link>
                         <div className="flex w-2/3 flex-col">
-                            <h3 className='text-xl text-yellow-600 font-semibold'>The Captain&apos;s Cafe</h3>
+                            <h3 className='text-2xl footer-text-color font-semibold'>The Captain&apos;s Cafe</h3>
                             <h6 className='text-white font-light mb-5'>Sail Into Flavors</h6>
                             <p className='text-white text-sm'>Savor the best food, crafted with care and passion, for the moments that matter most. Scottish Cafe, where every bite is unforgettable.</p>
-                            <div className={`${styles.footer_social_media} flex flex-row gap-1`}>
-                                <a href="#" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"><SiPeerlist /></a>
+                            <div className={`${styles.footer_social_media} flex flex-row gap-2 mt-3`}>
+                                {socialMedia.map((item, index) => (
+                                    <a key={index} href={item.link} target="_blank" rel="noopener noreferrer" aria-label={item.title} title={item.title} className='p-2 text-white bg-amber-900 rounded-full hover:bg-amber-700'>{item.icon}</a>
+                                ))}
                             </div>
                         </div>
                     </div>
 
                     {/* Right Side */}
-                    <div className={`${styles.footer_links} rounded-tl-4xl rounded-br-4xl w-full lg:w-2/3 flex flex-row flex-wrap p-4`}>
-                        <div className="w-full md:w-1/4">Hello</div>
-                        <div className="w-full md:w-1/4">Hello</div>
-                        <div className="w-full md:w-1/4">Hello</div>
-                        <div className="w-full md:w-1/4">Hello</div>
+                    <div className={`${styles.footer_links} rounded-tl-4xl rounded-br-4xl w-full lg:w-2/3 flex flex-row flex-wrap px-10 py-6`}>
+                        <div className="w-full md:w-2/9">
+                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Company</h5>
+                                <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                    <li className=''><Link href="/about">About</Link></li>
+                                    <li className=''><Link href="#">Offers</Link></li>
+                                    <li className=''><Link href="#">Gallery</Link></li>
+                                    <li className=''><Link href="#">Career</Link></li>
+                                    <li className=''><Link href="#">Contact Us</Link></li>
+                                </ul>
+                        </div>
+                        <div className="w-full md:w-2/9">
+                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Help</h5>
+                                <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                    <li className=''><Link href="#">Menu</Link></li>
+                                    <li className=''><Link href="#">Support</Link></li>
+                                    <li className=''><Link href="#">T&C</Link></li>
+                                    <li className=''><Link href="#">Privacy Policy</Link></li>
+                                    <li className=''><Link href="#">FAQs</Link></li>
+                                </ul>
+                        </div>
+                        <div className="w-full md:w-2/9">
+                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
+                                <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                    <li className=''><Link href="#">Blogs</Link></li>
+                                    <li className=''><Link href="#">Testimonials</Link></li>
+                                    <li className=''><Link href="#">Documentation</Link></li>
+                                </ul>
+                        </div>
+                        <div className="w-full md:w-3/9">
+                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>
+                                <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                    <li className='flex gap-2 items-center'><MdCall className='text-blue-300'/><a href="#">+91 81447 74349</a></li>
+                                    <li className='flex gap-2 items-center'><HiLocationMarker className='text-blue-300'/><a href="#">IRC Village, Bhubaneswar</a></li>
+                                    <li className='pl-6'><a href="#">Saheed Nagar, Bhubaneswar</a></li>
+                                    <li className=' flex gap-2 items-center'><IoGlobeOutline className='text-blue-300'/><a href="#">thecaptainscafe.com</a></li>
+                                </ul>
+                        </div>
                     </div>
 
                 </div>
             </div>
 
-            <Image className={styles.light_house_bg} src={lightHouse} alt='background Light House'/>
-            <Image className={styles.mini_boat} height={80} src={miniBoat} alt='background Mini Boat'/>
+            <Image className={styles.light_house_bg} src={lightHouse} alt='background Light House' />
+            <Image className={styles.mini_boat} height={80} src={miniBoat} alt='background Mini Boat' />
         </div>
     )
 }
