@@ -225,27 +225,41 @@ const Test = () => {
                 </div>
                 <button type="submit">Submit</button>
             </Form> */}
-            <form name="contact" method="POST" netlify>
-                <p>
-                    <label>Your Name: <input className='border-2 rounded-sm' type="text" name="name" /></label>
-                </p>
-                <p>
-                    <label>Your Email: <input className='border-2 rounded-sm' type="email" name="email" /></label>
-                </p>
-                <p>
-                    <label>Your Role: 
-                        <select className='border-2 rounded-sm' name="role[]">
-                        <option value="leader">Leader</option>
-                        <option value="follower">Follower</option>
-                    </select>
+            <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                className="flex flex-col gap-4 max-w-md mx-auto"
+            >
+                {/* Hidden input to help Netlify recognize the form */}
+                <input type="hidden" name="form-name" value="contact" />
+                {/* Honeypot field for spam prevention */}
+                <p className="hidden">
+                    <label>
+                        Don’t fill this out if you’re human:
+                        <input name="bot-field" />
                     </label>
                 </p>
-                <p>
-                    <label>Message: </label><textarea  className='border-2 rounded-sm' name="message"></textarea>
-                </p>
-                <p>
-                    <button type="submit">Send</button>
-                </p>
+
+                <label>
+                    Name:
+                    <input type="text" name="name" required className="w-full border px-2 py-1" />
+                </label>
+
+                <label>
+                    Email:
+                    <input type="email" name="email" required className="w-full border px-2 py-1" />
+                </label>
+
+                <label>
+                    Message:
+                    <textarea name="message" required className="w-full border px-2 py-1" />
+                </label>
+
+                <button type="submit" className="bg-blue-600 text-white py-2 px-4 rounded">
+                    Send
+                </button>
             </form>
         </div>
     )
