@@ -22,6 +22,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import ContactForm from '@/components/common/form'
 
 const lunch = [
     {
@@ -205,26 +206,8 @@ const Test = () => {
                     </DialogContent>
                 </form>
             </Dialog>
-
-            <Form className='flex flex-row flex-wrap mt-10' name="contact" netlify>
-                <div className="flex w-1/4 flex-col mb-3 px-2">
-                    <Label>Name</Label>
-                    <Input type="text" placeholder="Enter Full Name" name="name" className='bg-white' />
-                </div>
-                <div className="flex w-1/4 flex-col mb-3 px-2">
-                    <Label>Email</Label>
-                    <Input type="email" placeholder="Enter Your Email ID" name="email" className='bg-white' />
-                </div>
-                <div className="flex w-1/4 flex-col mb-3 px-2">
-                    <Label>Address</Label>
-                    <textarea type="text" placeholder="Full Addreess" name="address" className='bg-white' />
-                </div>
-                <div className="flex w-1/4 flex-col mb-3 px-2">
-                    <Label>Mobile</Label>
-                    <Input type="text" placeholder="Mobile Number" className='bg-white' />
-                </div>
-                <button type="submit">Submit</button>
-            </Form>
+            <div className="mb-10"></div>
+            <ContactForm/>
         </div>
     )
 }

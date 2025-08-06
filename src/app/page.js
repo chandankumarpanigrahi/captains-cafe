@@ -21,7 +21,7 @@ export default function Home() {
       <Intro />
       <WhyChooseUs/>
       <HomeCta/> */}
-      {/* <MaintenancePage/> */}
+      <MaintenancePage/>
     </main>
   );
 }
