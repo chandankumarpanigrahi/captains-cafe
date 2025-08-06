@@ -237,7 +237,7 @@ const Test = () => {
                 {/* Honeypot field for spam prevention */}
                 <p className="hidden">
                     <label>
-                        Don’t fill this out if you’re human:
+                        Dont fill this out if youre human:
                         <input name="bot-field" />
                     </label>
                 </p>
