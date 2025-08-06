@@ -206,7 +206,7 @@ const Test = () => {
                 </form>
             </Dialog>
 
-            <Form className='flex flex-row flex-wrap mt-10' name="contact" netlify>
+            {/* <Form className='flex flex-row flex-wrap mt-10' name="contact" netlify>
                 <div className="flex w-1/4 flex-col mb-3 px-2">
                     <Label>Name</Label>
                     <Input type="text" placeholder="Enter Full Name" name="name" className='bg-white' />
@@ -224,7 +224,29 @@ const Test = () => {
                     <Input type="text" placeholder="Mobile Number" className='bg-white' />
                 </div>
                 <button type="submit">Submit</button>
-            </Form>
+            </Form> */}
+            <form name="contact" method="POST" netlify>
+                <p>
+                    <label>Your Name: <input className='border-2 rounded-sm' type="text" name="name" /></label>
+                </p>
+                <p>
+                    <label>Your Email: <input className='border-2 rounded-sm' type="email" name="email" /></label>
+                </p>
+                <p>
+                    <label>Your Role: 
+                        <select className='border-2 rounded-sm' name="role[]">
+                        <option value="leader">Leader</option>
+                        <option value="follower">Follower</option>
+                    </select>
+                    </label>
+                </p>
+                <p>
+                    <label>Message: </label><textarea  className='border-2 rounded-sm' name="message"></textarea>
+                </p>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
+            </form>
         </div>
     )
 }
