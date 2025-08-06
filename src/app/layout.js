@@ -1,23 +1,27 @@
 import "./globals.css";
-import '../../node_modules/animate.css/animate.css'
-// import bootstrap from "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import 'animate.css/animate.css';
+
 import MainHeader from "../components/common/header";
-import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
 import Footer from "@/components/common/footer";
+
+import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
 });
+
 const roboto = Roboto({
   subsets: ['latin'],
   display: 'swap',
 });
+
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '900'],
   display: 'swap',
 });
+
 const lobsterTwo = Lobster_Two({
   subsets: ['latin'],
   weight: ['400', '700'],
@@ -46,5 +50,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-
