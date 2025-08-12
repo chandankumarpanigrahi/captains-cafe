@@ -24,9 +24,13 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import ContactForm from '@/components/common/form'
 
 const lunch = [
+    {
+        name: "Special Menu",
+        price: "₹ 3299",
+        days: "30 Days"
+    },
     {
         name: "Special Menu",
         price: "₹ 3299",
@@ -63,6 +67,11 @@ const dinner = [
 ];
 
 const breakfast = [
+    {
+        name: "Healthy Breakfast",
+        price: "₹ 999",
+        days: "30 Days"
+    },
     {
         name: "Healthy Breakfast",
         price: "₹ 999",
