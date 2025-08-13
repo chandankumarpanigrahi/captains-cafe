@@ -8,7 +8,7 @@ import plateImageInnerCircle from "../../../assets/images/plate_2_inner_circle.p
 
 const HomeCta = () => {
     return (
-        <div className='container animate__animated animate__fadeInUp'>
+        <div className='container animate__animated animate__fadeInUp mb-6 md:mb-18'>
             <div className={`${styles.background_design} py-4 px-6 md:py-6 md:px-10 rounded-xl md:rounded-3xl relative flex flex-col justify-center items-start`}>
                 <div className="w-full md:w-3/5 flex flex-col items-center md:items-start gap-4">
                     <p className={`${styles.main_text} text-white text-center md:text-left opacity-80 leading-tight p-0 md:pr-10`}>Experience the perfect blend of taste, quality, and care - because you deserve nothing but the best.</p>

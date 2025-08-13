@@ -1,0 +1,138 @@
+.left_side_feature {
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.bg_design {
+    height: 520px;
+    width: 420px;
+    background-color: #184775;
+    position: relative;
+    border-radius: 200px 20px 20px 20px;
+    overflow: hidden;
+}
+
+.bg_texture {
+    background-image: url(../../../assets/images/featured_bg.png);
+    height: 100%;
+    width: 100%;
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    background-size: 120%;
+    background-position: center;
+}
+
+.featured_content {
+    height: 540px;
+    width: 420px;
+    background: linear-gradient(147deg, #103355 17.76%, #031a30 67.78%);
+    border-radius: 200px 200px 20px 20px;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+}
+
+.fork_image {
+    width: 85%;
+    object-fit: contain;
+}
+
+.featured_icon {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qoutation {
+    position: relative;
+    color: #406990;
+}
+
+.qoutation::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    background-image: url(../../../assets/images/qoute.png);
+    height: 18px;
+    width: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.qoutation::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background-image: url(../../../assets/images/qoute.png);
+    height: 18px;
+    width: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: rotate(180deg)
+}
+
+.featured_button {
+    background: linear-gradient(92deg, #195996 5.37%, #1A3F63 66.94%, #0B3F71 96.59%);
+}
+
+@media (max-width: 768px) {
+    .delight_text {
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 520px) {
+    .bg_design {
+        height: 520px;
+        width: 360px;
+    }
+
+    .featured_content {
+        height: 540px;
+        width: 360px;
+    }
+
+    .fork_image {
+        width: 85%;
+    }
+
+    .featured_icon {
+        width: 30px;
+    }
+}
+
+@media (max-width: 420px) {
+    .bg_design {
+        height: 460px;
+        width: 280px;
+        border-radius: 140px 20px 20px 20px;
+    }
+
+    .featured_content {
+        height: 470px;
+        width: 280px;
+    }
+
+    .fork_image {
+        display: none;
+    }
+
+    .featured_icon {
+        width: 30px;
+    }
+
+    .delight_text {
+        padding: 0 6px;
+    }
+}

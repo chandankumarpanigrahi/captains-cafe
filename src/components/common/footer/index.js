@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import styles from "./style.module.css"
 import Image from 'next/image'
@@ -10,7 +11,7 @@ import { MdCall } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
 import { IoGlobeOutline } from "react-icons/io5";
 import Link from 'next/link'
-
+import ScrollToTop from "react-scroll-to-top";
 const socialMedia = [
     {
         icon: <IoLogoInstagram />,
@@ -28,7 +29,7 @@ const socialMedia = [
 const Footer = () => {
     return (
         <div className={`${styles.footer} mt-20 w-full relative flex justify-center`}>
-            <div className="container pt-36 pb-22">
+            <div className="container relative pt-36 sm:pb-22 pb-10">
                 {/* Full Body */}
                 <div className={`${styles.footer_body} flex flex-col lg:flex-row`}>
 
@@ -51,41 +52,41 @@ const Footer = () => {
 
                     {/* Right Side */}
                     <div className={`${styles.footer_links} rounded-tl-4xl rounded-br-4xl w-full lg:w-2/3 flex flex-row flex-wrap px-10 py-6`}>
-                        <div className="w-full md:w-2/9">
+                        <div className="w-full md:w-2/9 mb-8 md:mb-0">
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Company</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className=''><Link href="/about">About</Link></li>
-                                    <li className=''><Link href="#">Offers</Link></li>
-                                    <li className=''><Link href="#">Gallery</Link></li>
-                                    <li className=''><Link href="#">Career</Link></li>
-                                    <li className=''><Link href="#">Contact Us</Link></li>
+                                    <li className='text-md '><Link href="/about">About</Link></li>
+                                    <li className='text-md '><Link href="#">Offers</Link></li>
+                                    <li className='text-md '><Link href="#">Gallery</Link></li>
+                                    <li className='text-md '><Link href="#">Career</Link></li>
+                                    <li className='text-md '><Link href="#">Contact Us</Link></li>
                                 </ul>
                         </div>
-                        <div className="w-full md:w-2/9">
+                        <div className="w-full md:w-2/9 mb-8 md:mb-0">
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Help</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className=''><Link href="#">Menu</Link></li>
-                                    <li className=''><Link href="#">Support</Link></li>
-                                    <li className=''><Link href="#">T&C</Link></li>
-                                    <li className=''><Link href="#">Privacy Policy</Link></li>
-                                    <li className=''><Link href="#">FAQs</Link></li>
+                                    <li className='text-md '><Link href="#">Menu</Link></li>
+                                    <li className='text-md '><Link href="#">Support</Link></li>
+                                    <li className='text-md '><Link href="#">T&C</Link></li>
+                                    <li className='text-md '><Link href="#">Privacy Policy</Link></li>
+                                    <li className='text-md '><Link href="#">FAQs</Link></li>
                                 </ul>
                         </div>
-                        <div className="w-full md:w-2/9">
+                        <div className="w-full md:w-2/9 mb-8 md:mb-0">
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className=''><Link href="#">Blogs</Link></li>
-                                    <li className=''><Link href="#">Testimonials</Link></li>
-                                    <li className=''><Link href="#">Documentation</Link></li>
+                                    <li className='text-md '><Link href="#">Blogs</Link></li>
+                                    <li className='text-md '><Link href="#">Testimonials</Link></li>
+                                    <li className='text-md '><Link href="#">Documentation</Link></li>
                                 </ul>
                         </div>
-                        <div className="w-full md:w-3/9">
+                        <div className="w-full md:w-3/9 mb-5 md:mb-0">
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className='flex gap-2 items-center'><MdCall className='text-blue-300'/><a href="#">+91 81447 74349</a></li>
-                                    <li className='flex gap-2 items-center'><HiLocationMarker className='text-blue-300'/><a href="#">IRC Village, Bhubaneswar</a></li>
-                                    <li className='pl-6'><a href="#">Saheed Nagar, Bhubaneswar</a></li>
-                                    <li className=' flex gap-2 items-center'><IoGlobeOutline className='text-blue-300'/><a href="#">thecaptainscafe.com</a></li>
+                                    <li className='text-md flex gap-2 items-center'><MdCall className='text-blue-300'/><a href="#">+91 81447 74349</a></li>
+                                    <li className='text-md flex gap-2 items-center'><HiLocationMarker className='text-blue-300'/><a href="#">IRC Village, Bhubaneswar</a></li>
+                                    <li className='text-md pl-6'><a href="#">Saheed Nagar, Bhubaneswar</a></li>
+                                    <li className='text-md flex gap-2 items-center'><IoGlobeOutline className='text-blue-300'/><a href="#">thecaptainscafe.com</a></li>
                                 </ul>
                         </div>
                     </div>
@@ -95,6 +96,7 @@ const Footer = () => {
 
             <Image className={styles.light_house_bg} src={lightHouse} alt='background Light House' />
             <Image className={styles.mini_boat} height={80} src={miniBoat} alt='background Mini Boat' />
+            <ScrollToTop smooth />
         </div>
     )
 }

@@ -146,7 +146,7 @@ body::before {
   opacity: 0.1;
 }
 
-.footer-text-color{
+.footer-text-color {
   color: var(--footer-text);
 }
 
@@ -230,4 +230,15 @@ body::before {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.scroll-to-top {
+  z-index: 500 !important;
+  background-color: #0C3C6A !important;
+  padding: 5px !important;
+  box-shadow: none !important;
+}
+
+.scroll-to-top > svg{
+  fill: #fff !important;
 }

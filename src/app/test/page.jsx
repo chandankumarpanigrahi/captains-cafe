@@ -24,6 +24,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import ContactForm from '@/components/common/form'
 
 const lunch = [
     {
@@ -84,53 +85,7 @@ const breakfast = [
     }
 ];
 
-const menu = [
-
-]
-
 const Test = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        orderType: "",
-        message: ""
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    const submitData = async (e) => {
-    e.preventDefault();
-
-    try {
-        const response = await fetch('/api/v1', {  // Remove localhost:3001 if frontend and API are same origin
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(formData),
-            credentials: 'same-origin'  // or 'include' if cross-origin
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('Success:', data);
-        // Handle success (e.g., show success message, reset form)
-    } catch (error) {
-        console.error('Error:', error);
-        // Handle error (e.g., show error message to user)
-    }
-};
-
     return (
         <div className='container'>
             <Tabs defaultValue="lunch" className="w-full mb-5">
@@ -260,53 +215,7 @@ const Test = () => {
                 </form>
             </Dialog>
             <div className="mb-10"></div>
-            {/* <ContactForm/> */}
-            {/* <form action="">
-                <div className="flex mb-3">
-                    <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        id='name'
-                        name='name'
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex mb-3">
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="text"
-                        id='email'
-                        name='email'
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="flex mb-3">
-                    <label htmlFor="orderType">Your Order</label>
-                    <select
-                        name="orderType"
-                        id="orderType"
-                        value={formData.orderType}
-                        onChange={handleChange}
-                    >
-                        <option value="">Select an option</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                    </select>
-                </div>
-                <div className="flex mb-3">
-                    <label htmlFor="message">Your Message</label>
-                    <textarea
-                        id='message'
-                        name='message'
-                        value={formData.message}
-                        onChange={handleChange}
-                    />
-                    <button onClick={submitData}>Submit</button>
-                </div>
-            </form> */}
+            <ContactForm/>
         </div>
     )
 }
