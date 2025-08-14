@@ -49,11 +49,11 @@ const PopularMenu = () => {
                         </div>
                     </div> */}
                     {menuItems.map((item) => (
-                        <div className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-3 lg:mb-0">
+                        <div key={item.name} className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-3 lg:mb-0">
                             <div className={`${styles.card} w-full flex flex-col justify-center items-center pt-3`}>
                                 <div className={`${styles.card_image} mb-4`}>
-                                    <Image src={item.imageOutline} className={`${styles.image_outline}`} />
-                                    <Image src={item.image} className={`${styles.image}`} />
+                                    <Image src={item.imageOutline} className={`${styles.image_outline}`} alt={`${item.name} outline`}/>
+                                    <Image src={item.image} className={`${styles.image}`} alt={item.name}/>
                                 </div>
                                 <h6 className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>{item.name}</h6>
                             </div>
