@@ -7,6 +7,7 @@
 :root {
   --primary-color: #0E467D;
   --primary-dark-color: #072f55;
+  --secondary-color: #4E79A2;
   --radius: 0.625rem;
   --footer-text: #E58D52;
   --background: oklch(1 0 0);
@@ -103,6 +104,10 @@ body::before {
 
 .color-primary {
   color: var(--primary-color);
+}
+
+.color-secondary {
+  color: var(--secondary-color);
 }
 
 .color-primary:hover {
@@ -239,6 +244,6 @@ body::before {
   box-shadow: none !important;
 }
 
-.scroll-to-top > svg{
+.scroll-to-top>svg {
   fill: #fff !important;
 }

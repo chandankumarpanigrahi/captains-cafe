@@ -10,6 +10,7 @@ import HomeCta from "@/components/design/home cta";
 import MaintenancePage from "@/components/design/maintenance";
 import Featured from "@/components/design/featured";
 import PopularMenu from "@/components/design/popular menu";
+import TrendyMenu from "@/components/design/trendy dish";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
@@ -25,6 +26,7 @@ export default function Home() {
       <HomeCta/>
       <Featured/>
       <PopularMenu/>
+      <TrendyMenu/>
       {/* <MaintenancePage/> */}
     </main>
   );
