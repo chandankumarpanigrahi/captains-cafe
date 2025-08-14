@@ -1,0 +1,81 @@
+.background_design {
+    position: relative;
+    background-color: #fff;
+}
+
+.background_design::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 66px;
+    background-image: url(../../../assets/images/menu_before.png);
+    background-size: cover;
+    /* background-repeat: repeat-x; */
+    background-position: center;
+    bottom: 100%;
+}
+
+.background_design::after {
+    content: '';
+    width: 100%;
+    height: 98px;
+    position: absolute;
+    background-image: url(../../../assets/images/menu_after.png);
+    background-size: cover;
+    /* background-repeat: repeat-x; */
+    background-position: center;
+    top: 100%;
+}
+
+.card{
+    cursor: pointer;
+    height: 240px;
+    border: 2px solid #522609;
+    background-color: #F6F4F3;
+    border-radius: 12px;
+}
+
+.card_image{
+    position: relative;
+    height: 140px;
+    width: 140px;
+}
+
+.image, .image_outline{
+    position: absolute;
+    inset: 0;
+    height: 140px;
+    width: 140px;
+    object-fit: cover;
+}
+
+.image{
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
+}
+
+.image_outline{
+    opacity: 1;
+    transition: all ease-in-out 0.5s;
+}
+
+.card:hover .image{
+    opacity: 1;
+    transition: all ease-in-out 0.5s;
+}
+
+.card:hover .image_outline{
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
+}
+
+.card_text{
+    color: #522609;
+    transition: all ease-in-out 0.5s;
+}
+
+.card:hover .card_text{
+    color: #421e06;
+    transform: translateY(-4px);
+    transition: all ease-in-out 0.5s;
+}

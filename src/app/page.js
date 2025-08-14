@@ -9,6 +9,7 @@ import WhyChooseUs from "../components/design/why choose us";
 import HomeCta from "@/components/design/home cta";
 import MaintenancePage from "@/components/design/maintenance";
 import Featured from "@/components/design/featured";
+import PopularMenu from "@/components/design/popular menu";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
@@ -23,6 +24,7 @@ export default function Home() {
       <WhyChooseUs/>
       <HomeCta/>
       <Featured/>
+      <PopularMenu/>
       {/* <MaintenancePage/> */}
     </main>
   );

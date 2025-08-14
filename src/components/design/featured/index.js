@@ -9,7 +9,7 @@ import Button from '@/components/common/button';
 
 const Featured = () => {
     return (
-        <div className='container animate__animated animate__fadeInUp'>
+        <div className='container animate__animated animate__fadeInUp mb-8'>
             <div className="flex flex-col lg:flex-row items-center">
                 <div className={`${styles.left_side_feature} lg:w-1/2 pl-8 pt-8 mb-8 lg:mb-0 w-auto`}>
                     <div className={`${styles.background}`}>
