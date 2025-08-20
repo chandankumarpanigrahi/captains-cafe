@@ -69,7 +69,7 @@ const TrendyMenu = () => {
                 <h1 className='text-center color-primary text-4xl font-bold mb-2 md:mb-6'>Our Trendy Dishes</h1>
                 <Carousel opts={{ align: "start", }} className="w-full h-full">
                     <CarouselContent>
-                        {/* <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                         {/* <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                             <div className={`${styles.card_design} p-4`}>
                                 <Image src={snacks} alt='Image' className='rounded-full p-2 mb-3' />
                                 <div className="flex flex-col gap-2.5 mb-3 items-center">
@@ -78,8 +78,8 @@ const TrendyMenu = () => {
                                 </div>
                             </div>
                         </CarouselItem> */}
-                        {trendyItems.map((item) => (
-                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                        {trendyItems.map((item, index) => (
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                                 <div className={`${styles.card_design} p-2 md:p-4 flex flex-col items-center`}>
                                     <div className={`${styles.image_area}`}>
                                         <Image src={item.image} alt='Image' className={`${styles.image_area} rounded-full p-2 mb-3`}/>
