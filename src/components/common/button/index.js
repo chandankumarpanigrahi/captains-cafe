@@ -47,7 +47,7 @@ export default function Button({
 
     return (
         <button
-            className={`flex items-center justify-center gap-2 w-fit font-normal uppercase transition-colors 
+            className={`flex items-center justify-center gap-2 w-fit uppercase transition-colors 
         ${styles.main_btn}
         ${sizeMap[size]}
         ${bgColor}

@@ -65,7 +65,7 @@ const TrendyMenu = () => {
     ]
     return (
         <>
-            <div className='container mx-auto animate__animated animate__fadeInUp mb-6 mt-18 md:mt-12 md:mb-18'>
+            <div className='container mx-auto animate__animated animate__fadeInUp mb-6 mt-18 md:mt-12 md:mb-26'>
                 <h1 className='text-center color-primary text-4xl font-bold mb-2 md:mb-6'>Our Trendy Dishes</h1>
                 <Carousel opts={{ align: "start", }} className="w-full h-full">
                     <CarouselContent>
