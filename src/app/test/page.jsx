@@ -1,15 +1,6 @@
 "use client"
 import React from 'react'
-import styles from "./style.module.css"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Form from 'next/form'
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useState } from 'react'
-
-// const Map = dynamic(() => import('../components/Map'), {
-//   ssr: false,
-// });
 
 import {
     Accordion,
@@ -221,8 +212,6 @@ const Test = () => {
             </Dialog>
             <div className="mb-10"></div>
             <ContactForm/>
-
-            {/* <Maps/> */}
         </div>
     )
 }
