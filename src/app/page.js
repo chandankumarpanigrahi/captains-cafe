@@ -14,7 +14,7 @@ import TrendyMenu from "@/components/design/trendy dish";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
-      <div className={`${styles.hero_section} w-full flex items-center lg:justify-center`}>
+      {/* <div className={`${styles.hero_section} w-full flex items-center lg:justify-center`}>
         <div className={`${styles.inner_hero_contents} w-full h-full`}>
           <SlidingBackground />
         </div>
@@ -26,8 +26,8 @@ export default function Home() {
       <HomeCta/>
       <Featured/>
       <PopularMenu/>
-      <TrendyMenu/>
-      {/* <MaintenancePage/> */}
+      <TrendyMenu/> */}
+      <MaintenancePage/>
     </main>
   );
 }
