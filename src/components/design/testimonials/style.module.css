@@ -1,0 +1,64 @@
+.left_arrow,
+.right_arrow {
+    position: absolute;
+    top: 105%;
+}
+
+.left_arrow {
+    left: 47%;
+}
+
+.right_arrow {
+    right: 47%;
+}
+
+@media (max-width: 1280px) {
+    .left_arrow {
+        left: 45%;
+    }
+
+    .right_arrow {
+        right: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .left_arrow {
+        left: 43%;
+    }
+
+    .right_arrow {
+        right: 43%;
+    }
+}
+
+@media (max-width: 550px) {
+    .left_arrow {
+        left: 41%;
+    }
+
+    .right_arrow {
+        right: 41%;
+    }
+}
+
+@media (max-width: 400px) {
+    .left_arrow {
+        left: 39%;
+    }
+
+    .right_arrow {
+        right: 39%;
+    }
+}
+
+.left_quote {
+    transform: scaleX(-1);
+    color: #91A9C0;
+}
+
+.right_quote {
+    transform: scaleX(-1);
+    transform: scaleY(-1);
+    color: #91A9C0;
+}

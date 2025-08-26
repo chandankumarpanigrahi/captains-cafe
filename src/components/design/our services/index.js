@@ -9,7 +9,7 @@ import anchor from "../../../assets/images/anchor.png"
 
 const Services = () => {
     return (
-        <div className='container animate__animated animate__fadeInUp mb-32'>
+        <div className='container animate__animated animate__fadeInUp mb-8 md:mb-22'>
             <div className="flex flex-col lg:flex-row items-center">
                 <div className={`${styles.delight_text} flex flex-col pl-0 pr-0 md:pl-16 md:pr-12`}>
                     <h1 className='color-primary text-4xl font-bold mb-10 text-center'>Our Services</h1>
