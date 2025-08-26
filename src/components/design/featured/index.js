@@ -22,7 +22,7 @@ const Featured = () => {
                             <Image src={fork} alt='Fork Image' className={`${styles.fork_image}`} />
                         </div>
                         <div className="w-full sm:w-1/2 flex flex-col justify-end h-full pb-12">
-                            <h3 className='text-amber-50 text-2xl md:text-3xl font-semibold mb-10'>Crafted <br/>with Passion</h3>
+                            <h3 className='text-amber-50 text-center md:text-left text-2xl md:text-3xl font-semibold mb-10'>Crafted <br/>with Passion</h3>
                             <div className="flex flex-col">
                                 <div className="flex flex-row mb-4 pb-4">
                                     <div className={`${styles.featured_icon}`}>

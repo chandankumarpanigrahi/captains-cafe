@@ -6,7 +6,7 @@
     border: 2px solid transparent;
 }
 
-.cta_button:hover{
+.cta_button:hover {
     cursor: pointer;
     background: linear-gradient(92deg, #09335a 5.37%, #25496b 66.94%, #082644 96.59%);
     transition: all ease-in-out 0.6s;
@@ -131,7 +131,7 @@
         animation: circle1 100s linear infinite;
     }
 
-    .hero_cup_design .cup_dot_area .cup_dot{
+    .hero_cup_design .cup_dot_area .cup_dot {
         transform: scale(0.8);
     }
 }
@@ -161,4 +161,12 @@
         -webkit-transform: translateY(0px);
         transform: translateY(0px);
     }
+}
+
+.banner_main_text {
+    background: linear-gradient(121deg, #C0E0FF -13.17%, #4384C2 78.71%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height: 155px;
 }
