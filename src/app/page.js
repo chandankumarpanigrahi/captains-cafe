@@ -13,6 +13,7 @@ import PopularMenu from "@/components/design/popular menu";
 import TrendyMenu from "@/components/design/trendy dish";
 import Services from "@/components/design/our services";
 import Testimonials from "@/components/design/testimonials";
+import Blogs from "@/components/design/our blogs";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
@@ -31,6 +32,7 @@ export default function Home() {
       <TrendyMenu/>
       <Services/>
       <Testimonials/>
+      <Blogs/>
       {/* <MaintenancePage/> */}
     </main>
   );
