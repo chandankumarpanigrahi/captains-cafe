@@ -1,0 +1,9 @@
+.bottom_bg {
+    background-image: url(../../../assets/images/bottom_bg.png);
+    height: 90px;
+    width: 100%;
+    background-repeat:  repeat no-repeat;;
+    background-size: contain;
+    opacity: 0.3;
+    background-position: center center;
+}
