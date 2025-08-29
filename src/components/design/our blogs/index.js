@@ -14,7 +14,7 @@ const Blogs = () => {
                     <div className="flex flex-col lg:flex-row w-full h-fit">
                         <div className="w-full lg:w-1/2 h-full mb-4 lg:mb-0 p-0 lg:pr-2">
                             <div className="rounded-md bg-white h-full drop-shadow-md overflow-hidden flex flex-col md:flex-row lg:flex-col">
-                                <Image src={CafeImage} altr="blog 1 Image" className='object-cover h-40 md:h-auto lg:h-60 w-full md:w-2/5 lg:w-full' />
+                                <Image src={CafeImage} alt="blog 1 Image" className='object-cover h-40 md:h-auto lg:h-60 w-full md:w-2/5 lg:w-full' />
                                 <div className="flex flex-col px-6 py-4">
                                     <p className='text-sm font-semibold text-[#316AA1] mb-2'>16 May 2025</p>
                                     <div className="flex flex-row mb-2">
