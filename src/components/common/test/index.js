@@ -426,7 +426,7 @@ export default function AdvancedForm() {
                         </div> */}
 
                         {/* Terms and Conditions */}
-                        <div className="md:col-span-2 mt-6">
+                        <div className="md:col-span-2">
                             <label className="flex items-start">
                                 <div className="flex items-center h-5">
                                     <input
