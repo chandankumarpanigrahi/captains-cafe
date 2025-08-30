@@ -1,21 +1,64 @@
 "use client";
 import { useState } from "react";
 
-export default function TestForm() {
+export default function AdvancedForm() {
     const [formData, setFormData] = useState({
-        name: "",
+        fullName: "",
+        username: "",
         email: "",
-        message: "",
+        password: "",
+        phone: "",
+        age: "",
+        dob: "",
+        time: "",
+        color: "#000000",
+        website: "",
+        bio: "",
+        gender: "",
+        country: "",
+        skills: [],
+        newsletter: false,
+        terms: false,
+        satisfaction: 5,
+        resume: null,
+        profilePic: null,
     });
-    const [status, setStatus] = useState("");
 
+    // handle input change
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, type, value, checked, files } = e.target;
+
+        if (type === "checkbox" && name === "skills") {
+            setFormData((prev) => {
+                if (checked) {
+                    return { ...prev, skills: [...prev.skills, value] };
+                } else {
+                    return { ...prev, skills: prev.skills.filter((s) => s !== value) };
+                }
+            });
+        } else if (type === "checkbox") {
+            setFormData({ ...formData, [name]: checked });
+        } else if (type === "file") {
+            setFormData({ ...formData, [name]: files[0] });
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
     };
 
+    // submit form to SheetDB
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setStatus("Submitting...");
+
+        const sheetData = {
+            data: [
+                {
+                    ...formData,
+                    skills: formData.skills.join(", "),
+                    resume: formData.resume ? formData.resume.name : "",
+                    profilePic: formData.profilePic ? formData.profilePic.name : "",
+                },
+            ],
+        };
 
         try {
             const res = await fetch("https://sheetdb.io/api/v1/zj8ybabodwpc1", {
@@ -31,72 +74,386 @@ export default function TestForm() {
             });
 
             if (res.ok) {
-                setStatus("🎉 Thanks! Your message has been sent successfully.");
-                setFormData({ name: "", email: "", message: "" }); // reset form
-
-                // Hide success message after 3 seconds
-                setTimeout(() => {
-                    setStatus("");
-                }, 3000);
+                alert("✅ Form submitted successfully!");
+                setFormData({
+                    fullName: "",
+                    username: "",
+                    email: "",
+                    password: "",
+                    phone: "",
+                    age: "",
+                    dob: "",
+                    time: "",
+                    color: "#000000",
+                    website: "",
+                    bio: "",
+                    gender: "",
+                    country: "",
+                    skills: [],
+                    newsletter: false,
+                    terms: false,
+                    satisfaction: 5,
+                    resume: null,
+                    profilePic: null,
+                });
             } else {
-                const errorData = await res.json();
-                setStatus("❌ Error: " + (errorData?.error || res.statusText));
+                alert("❌ Error submitting form");
             }
         } catch (error) {
-            setStatus("❌ Something went wrong. Please try again.");
+            console.error(error);
+            alert("⚠️ Something went wrong");
         }
     };
 
     return (
-        <div className="p-4 max-w-md mx-auto border rounded-lg shadow bg-white">
-            <h2 className="text-xl font-bold mb-4">Submit Form</h2>
-            <form onSubmit={handleSubmit} className="space-y-3">
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full border px-3 py-2 rounded"
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full border px-3 py-2 rounded"
-                />
-                <textarea
-                    name="message"
-                    placeholder="Enter Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    className="w-full border px-3 py-2 rounded"
-                />
-                <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-                >
-                    Submit
-                </button>
-            </form>
+        <div className="max-w-4xl mx-auto min-h-screen">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mt-8 mb-8">
+                <form onSubmit={handleSubmit} className="p-8 space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Personal Information Section */}
+                        <div className="md:col-span-2">
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">Personal Information</h3>
+                        </div>
 
-            {status && (
-                <p
-                    className={`mt-3 text-sm ${status.startsWith("🎉")
-                            ? "text-green-600 font-medium"
-                            : status.startsWith("❌")
-                                ? "text-red-600 font-medium"
-                                : "text-gray-600"
-                        }`}
-                >
-                    {status}
-                </p>
-            )}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                            <input
+                                type="text"
+                                name="fullName"
+                                required
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.fullName}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Username *</label>
+                            <input
+                                type="text"
+                                name="username"
+                                required
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.username}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                            <input
+                                type="email"
+                                name="email"
+                                required
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.email}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Password *</label>
+                            <input
+                                type="password"
+                                name="password"
+                                required
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.password}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                            <input
+                                type="tel"
+                                name="phone"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.phone}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Age</label>
+                            <input
+                                type="number"
+                                name="age"
+                                min="1"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.age}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                            <input
+                                type="date"
+                                name="dob"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.dob}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                            <input
+                                type="time"
+                                name="time"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.time}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Favorite Color</label>
+                            <div className="flex items-center">
+                                <input
+                                    type="color"
+                                    name="color"
+                                    className="w-10 h-10 rounded border border-gray-300 cursor-pointer"
+                                    value={formData.color}
+                                    onChange={handleChange}
+                                />
+                                <span className="ml-3 text-gray-600">{formData.color}</span>
+                            </div>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Website</label>
+                            <input
+                                type="url"
+                                name="website"
+                                placeholder="https://example.com"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.website}
+                                onChange={handleChange}
+                            />
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                            <textarea
+                                name="bio"
+                                rows="3"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.bio}
+                                onChange={handleChange}
+                            ></textarea>
+                        </div>
+
+                        {/* Additional Details Section */}
+                        <div className="md:col-span-2 mt-6">
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">Additional Details</h3>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Gender</label>
+                            <div className="space-y-2">
+                                <label className="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="Male"
+                                        checked={formData.gender === "Male"}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <span className="ml-2 text-gray-700">Male</span>
+                                </label>
+                                <label className="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="Female"
+                                        checked={formData.gender === "Female"}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <span className="ml-2 text-gray-700">Female</span>
+                                </label>
+                                <label className="flex items-center">
+                                    <input
+                                        type="radio"
+                                        name="gender"
+                                        value="Other"
+                                        checked={formData.gender === "Other"}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <span className="ml-2 text-gray-700">Other</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                            <select
+                                name="country"
+                                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                value={formData.country}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select Country</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="Netherlands">Netherlands</option>
+                            </select>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Skills</label>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                <label className="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <input
+                                        type="checkbox"
+                                        name="skills"
+                                        value="HTML"
+                                        checked={formData.skills.includes("HTML")}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <span className="ml-2 text-gray-700">HTML</span>
+                                </label>
+                                <label className="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <input
+                                        type="checkbox"
+                                        name="skills"
+                                        value="CSS"
+                                        checked={formData.skills.includes("CSS")}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <span className="ml-2 text-gray-700">CSS</span>
+                                </label>
+                                <label className="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <input
+                                        type="checkbox"
+                                        name="skills"
+                                        value="JS"
+                                        checked={formData.skills.includes("JS")}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-blue-600 focus:ring-blue-500"
+                                    />
+                                    <span className="ml-2 text-gray-700">JavaScript</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-2">Satisfaction Level</label>
+                            <div className="space-y-2">
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="10"
+                                    name="satisfaction"
+                                    value={formData.satisfaction}
+                                    onChange={handleChange}
+                                    className="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer"
+                                />
+                                <div className="flex justify-between text-sm text-gray-500">
+                                    <span>1 (Low)</span>
+                                    <span className="font-medium text-blue-600">{formData.satisfaction}</span>
+                                    <span>10 (High)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="flex items-center">
+                                <div className="relative flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        name="newsletter"
+                                        checked={formData.newsletter}
+                                        onChange={handleChange}
+                                        className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    />
+                                </div>
+                                <span className="ml-2 text-gray-700">Subscribe to Newsletter</span>
+                            </label>
+                        </div>
+
+                        {/* File Uploads Section */}
+                        {/* <div className="md:col-span-2 mt-6">
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">File Uploads</h3>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Resume</label>
+                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
+                                <div className="space-y-1 text-center">
+                                    <div className="flex text-sm text-gray-600">
+                                        <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                            <span>Upload a file</span>
+                                            <input
+                                                type="file"
+                                                name="resume"
+                                                onChange={handleChange}
+                                                className="sr-only"
+                                            />
+                                        </label>
+                                        <p className="pl-1">or drag and drop</p>
+                                    </div>
+                                    <p className="text-xs text-gray-500">{formData.resume ? formData.resume.name : "PDF, DOC up to 10MB"}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Profile Picture</label>
+                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
+                                <div className="space-y-1 text-center">
+                                    <div className="flex text-sm text-gray-600">
+                                        <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
+                                            <span>Upload a file</span>
+                                            <input
+                                                type="file"
+                                                name="profilePic"
+                                                onChange={handleChange}
+                                                className="sr-only"
+                                            />
+                                        </label>
+                                        <p className="pl-1">or drag and drop</p>
+                                    </div>
+                                    <p className="text-xs text-gray-500">{formData.profilePic ? formData.profilePic.name : "PNG, JPG up to 10MB"}</p>
+                                </div>
+                            </div>
+                        </div> */}
+
+                        {/* Terms and Conditions */}
+                        <div className="md:col-span-2 mt-6">
+                            <label className="flex items-start">
+                                <div className="flex items-center h-5">
+                                    <input
+                                        type="checkbox"
+                                        name="terms"
+                                        required
+                                        checked={formData.terms}
+                                        onChange={handleChange}
+                                        className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                    />
+                                </div>
+                                <span className="ml-2 text-sm text-gray-700">I accept the <a href="#" className="text-blue-600 hover:text-blue-500">Terms and Conditions</a></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <div className="pt-4">
+                        <button
+                            type="submit"
+                            className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3.5 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow-md hover:shadow-lg"
+                        >
+                            Submit Form
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

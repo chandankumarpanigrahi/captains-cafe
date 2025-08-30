@@ -19,6 +19,7 @@
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tabs": "^1.1.12",
+    "@supabase/supabase-js": "^2.56.1",
     "@tailwindcss/postcss": "^4.1.11",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.3.7",
