@@ -20,6 +20,7 @@
         DialogTrigger,
     } from "@/components/ui/dialog"
     import ContactForm from '@/components/common/form'
+import FormSheetDB from '@/components/common/test'
 
     const lunch = [
         {
@@ -211,6 +212,7 @@
                 </Dialog>
                 <div className="mb-10"></div>
                 <ContactForm/>
+                <FormSheetDB/>
             </div>
         )
     }

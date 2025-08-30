@@ -1,65 +1,85 @@
-import * as React from "react"
-import image1 from '../../../assets/images/logo.png'
-import { Card, CardContent } from "@/components/ui/card"
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel"
-import Image from "next/image"
+"use client";
+import { useState } from "react";
 
-function CarouselSize() {
-    const data = [
-        {
-            name : "Deepu",
-            class : "MCA",
-            image : image1,
-        },
-        {
-            name : "Naman",
-            class : "MCA",
-            image : image1
-        },
-        {
-            name : "Raju",
-            class : "MCA",
-            image : image1
-        },
-        {
-            name : "Somu",
-            class : "MCA",
-            image : image1
-        },
-    ]
+export default function TestForm() {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "", // ✅ include message in state
+    });
+    const [status, setStatus] = useState("");
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus("Submitting...");
+
+        try {
+            const res = await fetch("https://sheetdb.io/api/v1/zj8ybabodwpc1", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                        "Bearer 3wjadcyn70bj4utfvm0hp3sku98g2b2pa3yq4n7m",
+                },
+                body: JSON.stringify({
+                    data: [formData],
+                }),
+            });
+
+            if (res.ok) {
+                setStatus("✅ Data submitted successfully!");
+                setFormData({ name: "", email: "", message: "" }); // ✅ reset all fields
+            } else {
+                const errorData = await res.json();
+                setStatus("❌ Error: " + (errorData?.error || res.statusText));
+            }
+        } catch (error) {
+            setStatus("❌ Something went wrong. Please try again.");
+        }
+    };
+
     return (
-        <Carousel
-            opts={{
-                align: "start",
-            }}
-            className="w-full max-w-sm"
-        >
-            <CarouselContent>
-                {data.map((para, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                        <div className="p-1">
-                            <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    {/* <span className="text-3xl font-semibold">{index + 1}</span> */}
-                                    <div>{para.name}</div>
-                                    <div>{para.class}</div>
-                                    <Image src={para.image} alt="" height={300} width={300}/>
-                                </CardContent>
-                            </Card>
-                        </div>
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-        </Carousel>
-    )
+        <div className="p-4 max-w-md mx-auto border rounded-lg shadow bg-white">
+            <h2 className="text-xl font-bold mb-4">Submit Form</h2>
+            <form onSubmit={handleSubmit} className="space-y-3">
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+                <textarea
+                    name="message" // ✅ important
+                    placeholder="Enter Message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+                <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                    Submit
+                </button>
+            </form>
+            {status && <p className="mt-3 text-sm">{status}</p>}
+        </div>
+    );
 }
-
-export default CarouselSize
