@@ -5,7 +5,7 @@ export default function TestForm() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        message: "", // ✅ include message in state
+        message: "",
     });
     const [status, setStatus] = useState("");
 
@@ -31,8 +31,13 @@ export default function TestForm() {
             });
 
             if (res.ok) {
-                setStatus("✅ Data submitted successfully!");
-                setFormData({ name: "", email: "", message: "" }); // ✅ reset all fields
+                setStatus("🎉 Thanks! Your message has been sent successfully.");
+                setFormData({ name: "", email: "", message: "" }); // reset form
+
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    setStatus("");
+                }, 3000);
             } else {
                 const errorData = await res.json();
                 setStatus("❌ Error: " + (errorData?.error || res.statusText));
@@ -65,7 +70,7 @@ export default function TestForm() {
                     className="w-full border px-3 py-2 rounded"
                 />
                 <textarea
-                    name="message" // ✅ important
+                    name="message"
                     placeholder="Enter Message"
                     value={formData.message}
                     onChange={handleChange}
@@ -79,7 +84,19 @@ export default function TestForm() {
                     Submit
                 </button>
             </form>
-            {status && <p className="mt-3 text-sm">{status}</p>}
+
+            {status && (
+                <p
+                    className={`mt-3 text-sm ${status.startsWith("🎉")
+                            ? "text-green-600 font-medium"
+                            : status.startsWith("❌")
+                                ? "text-red-600 font-medium"
+                                : "text-gray-600"
+                        }`}
+                >
+                    {status}
+                </p>
+            )}
         </div>
     );
 }
