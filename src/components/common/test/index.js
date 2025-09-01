@@ -24,6 +24,9 @@ export default function AdvancedForm() {
         profilePic: null,
     });
 
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+
     // handle input change
     const handleChange = (e) => {
         const { name, type, value, checked, files } = e.target;
@@ -45,62 +48,63 @@ export default function AdvancedForm() {
         }
     };
 
+    // reset form
+    const resetForm = () => {
+        setFormData({
+            fullName: "",
+            username: "",
+            email: "",
+            password: "",
+            phone: "",
+            age: "",
+            dob: "",
+            time: "",
+            color: "#000000",
+            website: "",
+            bio: "",
+            gender: "",
+            country: "",
+            skills: [],
+            newsletter: false,
+            terms: false,
+            satisfaction: 5,
+            resume: null,
+            profilePic: null,
+        });
+    };
+
     // submit form to SheetDB
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const sheetData = {
-            data: [
-                {
-                    ...formData,
-                    skills: formData.skills.join(", "),
-                    resume: formData.resume ? formData.resume.name : "",
-                    profilePic: formData.profilePic ? formData.profilePic.name : "",
-                },
-            ],
-        };
+        setLoading(true);
+        setSuccess(false);
 
         try {
             const res = await fetch("https://sheetdb.io/api/v1/zj8ybabodwpc1", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization:
-                        "Bearer 3wjadcyn70bj4utfvm0hp3sku98g2b2pa3yq4n7m",
+                    Authorization: "Bearer 3wjadcyn70bj4utfvm0hp3sku98g2b2pa3yq4n7m",
                 },
-                body: JSON.stringify({
-                    data: [formData],
-                }),
+                body: JSON.stringify({ data: [formData] }),
             });
 
             if (res.ok) {
-                alert("✅ Form submitted successfully!");
-                setFormData({
-                    fullName: "",
-                    username: "",
-                    email: "",
-                    password: "",
-                    phone: "",
-                    age: "",
-                    dob: "",
-                    time: "",
-                    color: "#000000",
-                    website: "",
-                    bio: "",
-                    gender: "",
-                    country: "",
-                    skills: [],
-                    newsletter: false,
-                    terms: false,
-                    satisfaction: 5,
-                    resume: null,
-                    profilePic: null,
-                });
+                setSuccess(true);
+                setLoading(false);
+
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    resetForm();
+                    setSuccess(false);
+                }, 3000);
             } else {
+                setLoading(false);
                 alert("❌ Error submitting form");
             }
         } catch (error) {
             console.error(error);
+            setLoading(false);
             alert("⚠️ Something went wrong");
         }
     };
@@ -109,6 +113,7 @@ export default function AdvancedForm() {
         <div className="max-w-4xl mx-auto min-h-screen">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden mt-8 mb-8">
                 <form onSubmit={handleSubmit} className="p-8 space-y-8">
+                    {/* --- FORM FIELDS --- */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Personal Information Section */}
                         <div className="md:col-span-2">
@@ -362,70 +367,6 @@ export default function AdvancedForm() {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="md:col-span-2">
-                            <label className="flex items-center">
-                                <div className="relative flex items-center">
-                                    <input
-                                        type="checkbox"
-                                        name="newsletter"
-                                        checked={formData.newsletter}
-                                        onChange={handleChange}
-                                        className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                    />
-                                </div>
-                                <span className="ml-2 text-gray-700">Subscribe to Newsletter</span>
-                            </label>
-                        </div>
-
-                        {/* File Uploads Section */}
-                        {/* <div className="md:col-span-2 mt-6">
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b border-gray-200">File Uploads</h3>
-                        </div>
-
-                        <div className="md:col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Resume</label>
-                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
-                                <div className="space-y-1 text-center">
-                                    <div className="flex text-sm text-gray-600">
-                                        <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
-                                            <span>Upload a file</span>
-                                            <input
-                                                type="file"
-                                                name="resume"
-                                                onChange={handleChange}
-                                                className="sr-only"
-                                            />
-                                        </label>
-                                        <p className="pl-1">or drag and drop</p>
-                                    </div>
-                                    <p className="text-xs text-gray-500">{formData.resume ? formData.resume.name : "PDF, DOC up to 10MB"}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="md:col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Profile Picture</label>
-                            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
-                                <div className="space-y-1 text-center">
-                                    <div className="flex text-sm text-gray-600">
-                                        <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
-                                            <span>Upload a file</span>
-                                            <input
-                                                type="file"
-                                                name="profilePic"
-                                                onChange={handleChange}
-                                                className="sr-only"
-                                            />
-                                        </label>
-                                        <p className="pl-1">or drag and drop</p>
-                                    </div>
-                                    <p className="text-xs text-gray-500">{formData.profilePic ? formData.profilePic.name : "PNG, JPG up to 10MB"}</p>
-                                </div>
-                            </div>
-                        </div> */}
-
-                        {/* Terms and Conditions */}
                         <div className="md:col-span-2">
                             <label className="flex items-start">
                                 <div className="flex items-center h-5">
@@ -438,19 +379,34 @@ export default function AdvancedForm() {
                                         className="h-5 w-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                                     />
                                 </div>
-                                <span className="ml-2 text-sm text-gray-700">I accept the <a href="#" className="text-blue-600 hover:text-blue-500">Terms and Conditions</a></span>
+                                <span className="ml-2 text-sm text-gray-700">
+                                    I accept the{" "}
+                                    <a href="#" className="text-blue-600 hover:text-blue-500">
+                                        Terms and Conditions
+                                    </a>
+                                </span>
                             </label>
                         </div>
                     </div>
 
-                    {/* Submit Button */}
+                    {/* Loader / Success / Submit */}
                     <div className="pt-4">
-                        <button
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3.5 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow-md hover:shadow-lg"
-                        >
-                            Submit Form
-                        </button>
+                        {loading ? (
+                            <div className="w-full flex justify-center">
+                                <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-blue-600"></div>
+                            </div>
+                        ) : success ? (
+                            <div className="w-full text-center bg-green-100 text-green-700 py-3.5 px-4 rounded-lg font-medium shadow-md">
+                                ✅ Form submitted successfully!
+                            </div>
+                        ) : (
+                            <button
+                                type="submit"
+                                className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-3.5 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition shadow-md hover:shadow-lg"
+                            >
+                                Submit Form
+                            </button>
+                        )}
                     </div>
                 </form>
             </div>
