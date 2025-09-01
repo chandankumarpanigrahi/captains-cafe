@@ -389,7 +389,6 @@ export default function AdvancedForm() {
                         </div>
                     </div>
 
-                    {/* Loader / Success / Submit */}
                     <div className="pt-4">
                         {loading ? (
                             <div className="w-full flex justify-center">
