@@ -86,9 +86,17 @@ const breakfast = [
 
 const Test = () => {
     const router = useRouter();
-    const redirect = (path) =>{
+    const redirect = (path) => {
         router.push(path)
     }
+
+    const menus = [
+        { id: "menu1", label: "Menu 1", name: "Regular Menu" },
+        { id: "menu2", label: "Menu 2", name: "Special Menu" },
+        { id: "menu3", label: "Menu 3", name: "Captain's Special" },
+        { id: "menu4", label: "Menu 4", name: "President's Special" },
+    ];
+
 
     return (
         <div className='container'>
@@ -146,16 +154,31 @@ const Test = () => {
 
             <button onClick={() => redirect("/about")} className='transition-all duration-400 ease-in-out bg-blue-900 border-2 border-blue-950 text-white cursor-pointer px-6 py-2 rounded-full my-6 hover:bg-amber-900 hover:border-amber-950 ring-8'>Button Routing to <span className='font-semibold'>About</span></button>
 
+
+
+
+
             <hr />
 
+            {/* Dyamic Data Passing */}
             <div className="flex flex-row gap-2 my-8">
-                <Link href="/test/menu1" className='border-2 border-blue-200 hover:border-blue-400 bg-blue-100 px-3 py-1.5 text-blue-800 rounded-full'>Menu 1</Link>
-                <Link href="/test/menu2" className='border-2 border-blue-200 hover:border-blue-400 bg-blue-100 px-3 py-1.5 text-blue-800 rounded-full'>Menu 2</Link>
-                <Link href="/test/menu3" className='border-2 border-blue-200 hover:border-blue-400 bg-blue-100 px-3 py-1.5 text-blue-800 rounded-full'>Menu 3</Link>
-                <Link href="/test/menu4" className='border-2 border-blue-200 hover:border-blue-400 bg-blue-100 px-3 py-1.5 text-blue-800 rounded-full'>Menu 4</Link>
+                {menus.map((menu) => (
+                    <Link
+                        key={menu.id}
+                        href={{
+                            pathname: `/test/${menu.id}`, query: { link: menu.label },
+                        }}
+                        className="border-2 border-blue-200 hover:border-blue-400 bg-blue-100 px-3 py-1.5 text-blue-800 rounded-full">
+                        {menu.label}
+                    </Link>
+                ))}
             </div>
 
             <hr />
+
+
+
+
             <Accordion
                 type="single"
                 collapsible

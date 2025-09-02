@@ -1,11 +1,11 @@
 "use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 
 export default function MenuPage() {
-    const params = useParams();
-    console.log("params (client):", params);
+    const params = useParams(); // from [menu] folder → e.g. "menu1"
+    const searchParams = useSearchParams(); // query string
+    const menuName = searchParams.get("name"); // "Regular Menu"
 
     return (
         <div className="h-screen container mx-auto">
@@ -15,7 +15,9 @@ export default function MenuPage() {
                     Back
                 </Link>
             </div>
-            <p className="mt-4">You selected {params.menu}</p>
+            <p className="mt-4">
+                You selected: <span className="font-semibold">{menuName}</span>
+            </p>
         </div>
     );
 }
