@@ -2,10 +2,11 @@ import React from 'react'
 import styles from "./style.module.css"
 import Image from 'next/image'
 import Image1 from '../../../assets/images/intro_cup.png'
+import CountUp from '@/components/ui/CountUp/page'
 
 const Intro = () => {
     return (
-        <div className={`${styles.intro_section} container mb-8`}>
+        <div className={`${styles.intro_section} container mb-8 animate__animated animate__slideInUp`}>
             <div className="flex flex-col lg:flex-row">
                 <div className="w-full lg:w-5/7">
                     <div className="flex flex-col mb-3">
@@ -15,19 +16,44 @@ const Intro = () => {
                     </div>
                     <div className="flex flex-row w-full flex-wrap">
                         <div className="w-1/2 md:w-1/4 md:mb-2 my-3">
-                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'>2000+</h2>
+                            
+                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'><CountUp
+                                from={0}
+                                to={2080}
+                                separator=","
+                                direction="up"
+                                duration={2}
+                            />+</h2>
                             <h2 className='font-medium text-md text-yellow-800 text-center md:text-left'>Daily Customers</h2>
                         </div>
                         <div className="w-1/2 md:w-1/4 md:mb-2 my-3">
-                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'>7+</h2>
+                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'><CountUp
+                                from={0}
+                                to={7}
+                                separator=","
+                                direction="up"
+                                duration={2}
+                            />+</h2>
                             <h2 className='font-medium text-md text-yellow-800 text-center md:text-left'>Outlets</h2>
                         </div>
                         <div className="w-1/2 md:w-1/4 md:mb-2 my-3">
-                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'>125+</h2>
+                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'><CountUp
+                                from={0}
+                                to={128}
+                                separator=","
+                                direction="up"
+                                duration={2}
+                            />+</h2>
                             <h2 className='font-medium text-md text-yellow-800 text-center md:text-left'>Global Dishes</h2>
                         </div>
                         <div className="w-1/2 md:w-1/4 md:mb-2 my-3">
-                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'>100%</h2>
+                            <h2 className='font-bold text-3xl text-yellow-950 text-center md:text-left'><CountUp
+                                from={0}
+                                to={100}
+                                separator=","
+                                direction="up"
+                                duration={2}
+                            />%</h2>
                             <h2 className='font-medium text-md text-yellow-800 text-center md:text-left'>Satisfaction</h2>
                         </div>
                     </div>

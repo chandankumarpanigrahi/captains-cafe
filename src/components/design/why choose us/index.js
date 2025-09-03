@@ -11,7 +11,7 @@ import { MdRoomService } from "react-icons/md";
 
 const WhyChooseUs = () => {
     return (
-        <div className='container mb-8 md:mb-16'>
+        <div className='container mb-8 md:mb-16 animate__animated animate__slideInUp'>
             <div className="flex flex-col lg:flex-row items-center h-full">
                 <div className="w-full lg:w-1/3 py-8 overflow-hidden lg:overflow-visible lg:p-0 h-full">
                     <div className={`${styles.plate_design}`}>

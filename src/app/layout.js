@@ -5,6 +5,8 @@ import MainHeader from "../components/common/header";
 import Footer from "@/components/common/footer";
 
 import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
+import PostFooter from "@/components/common/post footer";
+import SubBanner from "@/components/common/sub banner";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,11 +41,12 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true}>
         <div className="d-flex">
           <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
-            {/* <div className="container fixed z-100">
+            <div className="container fixed z-100">
               <MainHeader activeTab="Home" />
-            </div> */}
+            </div>
             {children}
-            {/* <Footer/> */}
+            <Footer/>
+            <PostFooter/>
           </div>
         </div>
       </body>

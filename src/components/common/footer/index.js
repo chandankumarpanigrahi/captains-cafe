@@ -56,10 +56,10 @@ const Footer = () => {
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Company</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
                                     <li className='text-md '><Link href="/about">About</Link></li>
-                                    <li className='text-md '><Link href="#">Offers</Link></li>
-                                    <li className='text-md '><Link href="#">Gallery</Link></li>
-                                    <li className='text-md '><Link href="#">Career</Link></li>
-                                    <li className='text-md '><Link href="#">Contact Us</Link></li>
+                                    <li className='text-md '><Link href="/offers">Offers</Link></li>
+                                    <li className='text-md '><Link href="/gallery">Gallery</Link></li>
+                                    <li className='text-md '><Link href="/career">Career</Link></li>
+                                    <li className='text-md '><Link href="/contact">Contact Us</Link></li>
                                 </ul>
                         </div>
                         <div className="w-full md:w-2/9 mb-8 md:mb-0">

@@ -1,0 +1,82 @@
+.footer {
+    background-color: #052747;
+}
+
+.footer::before {
+    content: '';
+    background-image: url(../../../assets/images/footer_rope.png);
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: -20px;
+    z-index: 50;
+    background-size: contain;
+}
+
+.footer_body {
+    position: relative;
+    z-index: 20;
+}
+
+.footer_links {
+    background-color: #041c33dc;
+}
+
+.light_house_bg {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    object-position: bottom right;
+    bottom: 0;
+    right: 6rem;
+}
+
+.mini_boat {
+    object-fit: contain;
+    position: absolute;
+    object-position: right;
+    bottom: 0;
+    left: 10rem;
+    animation: sail 50s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+@media (max-width:600px) {
+    .mini_boat {
+        animation: sail 20s ease-in-out infinite;
+    }
+
+    .light_house_bg {
+        display: none;
+    }
+}
+
+@keyframes sail {
+    0% {
+        left: 0;
+        transform: translateY(0) translateY(-2px) rotate(0deg);
+    }
+
+    5% {
+        transform: scaleX(-1) translateY(-6px) rotate(3deg);
+    }
+
+    50% {
+        left: calc(100% - 120px);
+        transform: scaleX(-1) translateY(-6px) rotate(3deg);
+    }
+
+    51% {
+        transform: scaleX(1) translateY(-6px) rotate(-3deg);
+    }
+
+    95% {
+        transform: scaleX(1) translateY(-6px) rotate(-3deg);
+    }
+
+    100% {
+        left: 0;
+        transform: translateY(0) translateY(-2px) rotate(0deg);
+    }
+}

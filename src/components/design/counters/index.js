@@ -6,7 +6,7 @@ import { MdCall } from "react-icons/md";
 
 const Counters = () => {
     return (
-        <div className="container mb-3 px-2 sm:px-0 lg:mb-">
+        <div className="container mb-3 px-2 sm:px-0 lg:mb-6 animate__animated animate__slideInUp">
             <div className={`${styles.all_cards}  gap-6 relative flex flex-col lg:flex-row w-full`}>
                 <div className={`${styles.card_area} bg-white flex flex-col px-12 py-5 justify-center items-center w-full lg:w-fit`}>
                     <div className={`${styles.card_icon} mb-3`}>
