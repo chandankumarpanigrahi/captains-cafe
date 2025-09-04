@@ -2,9 +2,29 @@
 import SubBanner from '@/components/common/sub banner'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function NotFound() {
     const router = useRouter();
+    const [errorCode, setErrorCode] = useState('');
+
+    useEffect(() => {
+        // Generate random error code on component mount
+        const generateRandomCode = () => {
+            const chars = '0123456789ABCDEF';
+            let code = '';
+            for (let i = 0; i < 6; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            code += '-';
+            for (let i = 0; i < 6; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        };
+        
+        setErrorCode(generateRandomCode());
+    }, []);
 
     return (
         <div className='w-full'>
@@ -38,8 +58,8 @@ export default function NotFound() {
                     </Link>
                 </div>
 
-                <div className="text-amber-600 text-sm">
-                    Error Code: <span className="font-mono bg-amber-100 px-2 py-1 rounded">103D68-5D3820</span>
+                <div className="text-amber-600 text-sm mt-4">
+                    Error Code: <span className="font-mono bg-amber-100 px-2 py-1 rounded">{errorCode || 'Loading...'}</span>
                 </div>
             </div>
         </div>
