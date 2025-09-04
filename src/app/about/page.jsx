@@ -119,17 +119,17 @@ const About = () => {
                 </div>
                 <div className="w-full hidden">
                     <Carousel opts={{ align: "start", }} className="w-full h-full">
-                    <CarouselContent>
-                         <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                            <div className={`${styles.card_design} p-4`}>
-                                <Image src={PassionImage} alt='Image' className='rounded-full p-2 mb-3' />
-                                <div className="flex flex-col gap-2.5 mb-3 items-center">
-                                    <h4 className='text-center color-primary text-3xl font-semibold'>Khopra Patties</h4>
-                                    <p className='text-center color-secondary text-2xl w-6/10 font-normal'>Crispy golden patties with a sweet coconut filling.</p>
+                        <CarouselContent>
+                            <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                                <div className={`${styles.card_design} p-4`}>
+                                    <Image src={PassionImage} alt='Image' className='rounded-full p-2 mb-3' />
+                                    <div className="flex flex-col gap-2.5 mb-3 items-center">
+                                        <h4 className='text-center color-primary text-3xl font-semibold'>Khopra Patties</h4>
+                                        <p className='text-center color-secondary text-2xl w-6/10 font-normal'>Crispy golden patties with a sweet coconut filling.</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </CarouselItem>
-                        {/* {trendyItems.map((item, index) => (
+                            </CarouselItem>
+                            {/* {trendyItems.map((item, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                                 <div className={`${styles.card_design} p-2 md:p-4 flex flex-col items-center`}>
                                     <div className={`${styles.image_area}`}>
@@ -142,10 +142,10 @@ const About = () => {
                                 </div>
                             </CarouselItem>
                         ))} */}
-                    </CarouselContent>
-                    <CarouselPrevious className={`${styles.left_arrow} border-0 bg-transparent`} />
-                    <CarouselNext className={`${styles.right_arrow} border-0 bg-transparent`}  />
-                </Carousel>
+                        </CarouselContent>
+                        <CarouselPrevious className={`${styles.left_arrow} border-0 bg-transparent`} />
+                        <CarouselNext className={`${styles.right_arrow} border-0 bg-transparent`} />
+                    </Carousel>
                 </div>
             </div>
 
