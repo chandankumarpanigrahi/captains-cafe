@@ -24,7 +24,7 @@ export default function Home() {
         </div>
         <div className={styles.hero_bg_bottom}></div>
       </div>
-      <Counters />
+      {/* <Counters />
       <Intro />
       <WhyChooseUs/>
       <HomeCta/>
@@ -34,8 +34,8 @@ export default function Home() {
       <Services/>
       <Testimonials/>
       <Blogs/>
-      <BottomBG/>
-      {/* <MaintenancePage/> */}
+      <BottomBG/> */}
+      <MaintenancePage/>
     </main>
   );
 }

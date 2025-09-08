@@ -110,8 +110,8 @@ export default function AdvancedForm() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto min-h-screen">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mt-8 mb-8">
+        <div className="w-full">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
                 <form onSubmit={handleSubmit} className="p-8 space-y-8">
                     {/* --- FORM FIELDS --- */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

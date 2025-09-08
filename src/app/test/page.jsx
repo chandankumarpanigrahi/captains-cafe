@@ -24,6 +24,8 @@ import FormSheetDB from '@/components/common/test'
 
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import FileUpload from '@/components/ui/FileUplooad'
+import TreeStructure from '@/components/ui/TreeStructure'
 
 const lunch = [
     {
@@ -255,25 +257,17 @@ const Test = () => {
             </Dialog>
             <div className="mb-10"></div>
             <ContactForm />
-            <FormSheetDB />
-            {/* <div data-hs-layout-splitter='{
-  "horizontalSplitterTemplate": "<div><span className=\"absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 block w-4 h-6 flex justify-center items-center bg-white border border-gray-200 text-gray-400 rounded-md cursor-col-resize hover:bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-600 dark:hover:bg-neutral-900\"><svg className=\"shrink-0 size-3.5\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\"><circle cx=\"9\" cy=\"12\" r=\"1\"/><circle cx=\"9\" cy=\"5\" r=\"1\"/><circle cx=\"9\" cy=\"19\" r=\"1\"/><circle cx=\"15\" cy=\"12\" r=\"1\"/><circle cx=\"15\" cy=\"5\" r=\"1\"/><circle cx=\"15\" cy=\"19\" r=\"1\"/></svg></span></div>",
-  "horizontalSplitterClasses": "relative flex border-s border-gray-200 dark:border-neutral-700"
-}'>
-                <div className="flex border border-gray-200 rounded-lg h-50 dark:border-neutral-700" data-hs-layout-splitter-horizontal-group="">
-                    <div className="overflow-hidden h-full" data-hs-layout-splitter-item="48.2" style={{ flex: "48.2 1 0px" }}>
-                        <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-neutral-200">Left</div>
-                    </div>
-                    <div className="overflow-hidden h-full" data-hs-layout-splitter-item="30.0" style={{ flex: "30 1 0px" }}>
-                        <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-neutral-200">Center</div>
-                    </div>
-                    <div className="overflow-hidden h-full" data-hs-layout-splitter-item="21.8" style={{ flex: "21.8 1 0px;" }}>
-                        <div className="flex items-center justify-center h-full p-3 text-gray-800 dark:text-neutral-200">Right</div>
-                    </div>
+            <div className="mb-20"></div>
+            <div className="flex flex-col lg:flex-row flex-wrap w-full">
+                <div className="w-1/2 p-0 lg:pr-5">
+                    <FormSheetDB />
                 </div>
-            </div> */}
+                <div className="w-1/2 p-0 lg:pl-5">
+                    <FileUpload />
+                    <TreeStructure/>
+                </div>
+            </div>
 
-            
         </div>
     )
 }
