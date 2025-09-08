@@ -154,7 +154,7 @@ const Test = () => {
             </Tabs>
             <hr />
 
-            <button onClick={() => redirect("/about")} className='transition-all duration-400 ease-in-out bg-blue-900 border-2 border-blue-950 text-white cursor-pointer px-6 py-2 rounded-full my-6 hover:bg-amber-900 hover:border-amber-950 ring-8'>Button Routing to <span className='font-semibold'>About</span></button>
+            <button onClick={() => redirect("/")} className='transition-all duration-400 ease-in-out bg-blue-900 border-2 border-blue-950 text-white cursor-pointer px-6 py-2 rounded-full my-6 hover:bg-amber-900 hover:border-amber-950 ring-8'>Button Routing to <span className='font-semibold'>About</span></button>
 
 
 
