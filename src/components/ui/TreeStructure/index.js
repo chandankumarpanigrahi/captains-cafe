@@ -15,10 +15,12 @@ const items = {
         name: "Engineering",
         children: ["frontend", "backend", "platform-team"],
     },
-    frontend: { name: "Frontend", children: ["design-system", "web-platform"] },
-    "design-system": {
-        name: "Design System",
-        children: ["components", "tokens", "guidelines"],
+    frontend: { 
+        name: "Frontend", 
+        children: ["design-system", "web-platform"] },
+        "design-system": {
+            name: "Design System",
+            children: ["components", "tokens", "guidelines"],
     },
     components: { name: "Components" },
     tokens: { name: "Tokens" },
@@ -38,11 +40,9 @@ const items = {
 
 const indent = 20
 
-export default function TreeStructure() {
+export default function Component() {
     const tree = useTree({
-        initialState: {
-            expandedItems: ["engineering", "frontend", "design-system"],
-        },
+
         indent,
         rootItemId: "company",
         getItemName: (item) => item.getItemData().name,
@@ -56,27 +56,22 @@ export default function TreeStructure() {
 
     return (
         <div className="flex h-full flex-col gap-2 *:first:grow">
-            <div>
-                <Tree
-                    className="relative before:absolute before:inset-0 before:-ms-1 before:bg-[repeating-linear-gradient(to_right,transparent_0,transparent_calc(var(--tree-indent)-1px),var(--border)_calc(var(--tree-indent)-1px),var(--border)_calc(var(--tree-indent)))]"
-                    indent={indent}
-                    tree={tree}
-                >
-                    {tree.getItems().map((item) => {
-                        return (
-                            <TreeItem key={item.getId()} item={item}>
-                                <TreeItemLabel className="before:bg-white relative before:absolute before:inset-x-0 before:-inset-y-0.5 before:-z-10" />                            </TreeItem>
-                        )
-                    })}
-                </Tree>
-            </div>
+            <Tree indent={indent} tree={tree}>
+                {tree.getItems().map((item) => {
+                    return (
+                        <TreeItem key={item.getId()} item={item}>
+                            <TreeItemLabel />
+                        </TreeItem>
+                    )
+                })}
+            </Tree>
 
             <p
                 aria-live="polite"
                 role="region"
                 className="text-muted-foreground mt-2 text-xs"
             >
-                Basic tree with vertical lines ∙{" "}
+                Basic tree with no extra features ∙{" "}
                 <a
                     href="https://headless-tree.lukasbach.com"
                     className="hover:text-foreground underline"
