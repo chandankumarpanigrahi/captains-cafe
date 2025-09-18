@@ -18,7 +18,7 @@ import BottomBG from "@/components/design/bottom background";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center">
-      {/* <div className={`${styles.hero_section} w-full flex items-center lg:justify-center`}>
+      <div className={`${styles.hero_section} w-full flex items-center lg:justify-center`}>
         <div className={`${styles.inner_hero_contents} w-full h-full`}>
           <SlidingBackground />
         </div>
@@ -34,7 +34,7 @@ export default function Home() {
       <Services/>
       <Testimonials/>
       <Blogs/>
-      <BottomBG/> */}
+      <BottomBG/>
       <MaintenancePage/>
     </main>
   );
