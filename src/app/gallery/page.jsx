@@ -5,7 +5,7 @@ const Gallery = () => {
    
     return (
         <div>
-            
+            <p>Its Gallery Design</p>
         </div>
     )
 }
