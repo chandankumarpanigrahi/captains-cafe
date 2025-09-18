@@ -35,7 +35,7 @@ export default function Home() {
       <Testimonials/>
       <Blogs/>
       <BottomBG/>
-      <MaintenancePage/>
+      {/* <MaintenancePage/> */}
     </main>
   );
 }
