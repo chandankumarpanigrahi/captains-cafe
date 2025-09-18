@@ -203,7 +203,7 @@ const Test = () => {
                         <button className='text-white text-xl bg-blue-800 hover:bg-blue-950 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 1)}>+</button>
                         <button className='text-white text-xl bg-blue-800 hover:bg-blue-950 px-4 py-1 rounded-full cursor-pointer' onClick={() => setCount(0)}>Reset</button>
                     </div>
-                    <div className="flex flex-col gap-2 items-center justify-center bg-white border-2 border-blue-800 py-1 px-6 rounded-full">
+                    <div className="flex flex-col gap-2 items-center justify-center mt-4">
                         <div className="flex gap-1">
                             <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 10)}>-</button><span onClick={() => setCount(10)} className='px-2 text-blue-900 font-medium'>10</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 10)}>+</button></button>
                             <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 50)}>-</button><span onClick={() => setCount(50)} className='px-2 text-blue-900 font-medium'>50</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 50)}>+</button></button>
