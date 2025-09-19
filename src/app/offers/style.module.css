@@ -1,3 +1,21 @@
-.card_top_area{
-    
+.overlay_design {
+    background-color: #00000062;
+    transform: translateY(100%);
+    transition: all ease-in-out 0.5s;
+    gap: 0;
+}
+
+.card_top_area:hover .overlay_design {
+    gap: 3rem;
+    transform: translateY(0%);
+    transition: all ease-in-out 0.5s;
+}
+
+.card_top_area {
+    transition: all ease-in-out 0.5s;
+}
+
+.card_top_area:hover {
+    transform: translateY(-1rem);
+    transition: all ease-in-out 0.5s;
 }
