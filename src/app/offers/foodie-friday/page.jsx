@@ -148,7 +148,7 @@ const FoodieFriday = () => {
                                         </AccordionContent>
                                     </AccordionItem>
 
-                                    <AccordionItem value="item-2">
+                                    <AccordionItem value="item-3">
                                         <AccordionTrigger className="text-md items-center text-gray-800">Is there a limit on how many discounted items I can order?</AccordionTrigger>
                                         <AccordionContent className="flex flex-col gap-4 text-sm text-gray-500">
                                             <p>
@@ -163,7 +163,7 @@ const FoodieFriday = () => {
                                         </AccordionContent>
                                     </AccordionItem>
 
-                                    <AccordionItem value="item-2">
+                                    <AccordionItem value="item-4">
                                         <AccordionTrigger className="text-md items-center text-gray-800">Are gluten-free or vegan bakery options included in the discount?</AccordionTrigger>
                                         <AccordionContent className="flex flex-col gap-4 text-sm text-gray-500">
                                             <p>
