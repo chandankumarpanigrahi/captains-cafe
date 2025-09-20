@@ -75,7 +75,7 @@ const Footer = () => {
                         <div className="w-full md:w-2/9 mb-8 md:mb-0">
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className='text-md '><Link href="#">Blogs</Link></li>
+                                    <li className='text-md '><Link href="/blogs">Blogs</Link></li>
                                     <li className='text-md '><Link href="#">Testimonials</Link></li>
                                     <li className='text-md '><Link href="#">Documentation</Link></li>
                                 </ul>
