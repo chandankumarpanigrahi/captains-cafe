@@ -1,8 +1,9 @@
+"use client"
 import React from 'react'
 import SubBanner from '@/components/common/sub banner'
 import styles from "../style.module.css"
 import { Card } from '@/components/ui/card';
-
+import { Code } from '@/components/ui/code';
 import {
     Accordion,
     AccordionContent,
@@ -14,7 +15,23 @@ import {
 import { RiCake3Line } from "react-icons/ri";
 import { AiTwotonePushpin } from "react-icons/ai";
 
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+
 const FoodieFriday = () => {
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
+    const [currentPath, setCurrentPath] = useState('');
+
+    useEffect(() => {
+        // Get the full path including query parameters
+        const fullPath = searchParams.toString()
+            ? `${pathname}?${searchParams.toString()}`
+            : pathname;
+
+        setCurrentPath(fullPath);
+    }, [pathname, searchParams]);
+
     return (
         <>
             <SubBanner
@@ -164,9 +181,9 @@ const FoodieFriday = () => {
                                 </Accordion>
                             </Card>
 
-                            <Card className="px-4 py-2">
-                                <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20}/></p>
-                                
+                            <Card className="px-4 py-2 gap-0">
+                                <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                <Code showCopyButton variant="outline" className="w-full">{currentPath || 'Loading...'}</Code>
                             </Card>
                         </div>
                     </div>
