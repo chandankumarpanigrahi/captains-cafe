@@ -3,7 +3,6 @@ import React from 'react'
 import SubBanner from '@/components/common/sub banner'
 import styles from "../style.module.css"
 import { Card } from '@/components/ui/card';
-import { Code } from '@/components/ui/code';
 import {
     Accordion,
     AccordionContent,
@@ -17,6 +16,7 @@ import { AiTwotonePushpin } from "react-icons/ai";
 
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import PathCopy from '@/components/design/path copy';
 
 const FoodieFriday = () => {
     const pathname = usePathname();
@@ -183,7 +183,7 @@ const FoodieFriday = () => {
 
                             <Card className="px-4 py-2 gap-0">
                                 <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
-                                <Code showCopyButton variant="outline" className="w-full">{currentPath || 'Loading...'}</Code>
+                                <PathCopy />
                             </Card>
                         </div>
                     </div>
