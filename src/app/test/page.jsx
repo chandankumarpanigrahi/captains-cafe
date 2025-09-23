@@ -26,6 +26,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import FileUpload from '@/components/ui/FileUplooad'
 import TreeStructure from '@/components/ui/TreeStructure'
+import EmblaCarousel from '@/components/design/fade image'
 
 
 const lunch = [
@@ -329,12 +330,12 @@ const Test = () => {
                 </div>
                 <div className="w-1/2 p-0 lg:pl-5">
                     <FileUpload />
-                    <TreeStructure />
-
                     {/* Gallery Image */}
                     <div>
-                        
+                        <EmblaCarousel/>
                     </div>
+                    <TreeStructure />
+
                 </div>
             </div>
 

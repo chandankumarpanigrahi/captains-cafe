@@ -2,6 +2,7 @@ import React from 'react'
 import { LiaFacebook } from "react-icons/lia";
 import { LiaInstagram } from "react-icons/lia";
 import styles from "./style.module.css"
+import EmblaCarouselMultiple from '@/components/design/fade image';
 
 const ContactUs = () => {
     return (
@@ -15,24 +16,13 @@ const ContactUs = () => {
 
             <div className='flex flex-col-reverse lg:flex-row items-center'>
 
-                <div className='w-3/5'>
-                    <div>
-                        <div>
-
-                        </div>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div>
-
-                    </div>
-                    <div>
-
+                <div className='w-full lg:w-3/5 p-0 lg:px-12'>
+                    <div className="w-full">
+                        <EmblaCarouselMultiple />
                     </div>
                 </div>
 
-                <div className='w-2/5'>
+                <div className='w-full lg:w-2/5 mb-12 lg:mb-0'>
                     <section className='mb-12'>
                         <h3 className='text-3xl text-blue-900 font-semibold mb-3'>Visit Us</h3>
                         <ol className='list-decimal pl-5 flex flex-col gap-2 text-gray-700 text-lg'>
@@ -60,7 +50,7 @@ const ContactUs = () => {
                     </section>
                     <section className='flex flex-row gap-2'>
                         <a href='#' target='_blank' className={`${styles.fb_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaFacebook size={60} /></a>
-                        <a href='https://www.instagram.com/thecaptainscafe.india' target='_blank' className={`${styles.insta_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaInstagram size={60} className={styles.icon}/></a>
+                        <a href='https://www.instagram.com/thecaptainscafe.india' target='_blank' className={`${styles.insta_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaInstagram size={60} className={styles.icon} /></a>
                     </section>
                 </div>
 

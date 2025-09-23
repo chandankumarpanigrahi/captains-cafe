@@ -1,19 +1,33 @@
-.slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 400px;
+.embla {
     overflow: hidden;
-    border-radius: 10px;
 }
 
-.slide {
-    position: absolute;
+.embla__viewport {
+    overflow: hidden;
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    border-radius: 2rem;
+    border: 8px solid #fff;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-.slide.active {
+.embla__container {
+    display: flex;
+}
+
+.embla__slide {
+    position: relative;
+    flex: 0 0 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.embla__slide.is-selected {
     opacity: 1;
+    z-index: 1;
+}
+
+.embla__slide__img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
