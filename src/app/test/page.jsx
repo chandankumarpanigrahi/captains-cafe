@@ -27,6 +27,7 @@ import Link from 'next/link'
 import FileUpload from '@/components/ui/FileUplooad'
 import TreeStructure from '@/components/ui/TreeStructure'
 
+
 const lunch = [
     {
         name: "Special Menu",
@@ -101,7 +102,15 @@ const Test = () => {
 
     // useState and useEffect
     const [count, setCount] = useState(0);
+
     const [name, setName] = useState("");
+
+    const [inputName, setInputName] = useState("");
+    const [manualName, setManualName] = useState("");
+    const updateDetails = () => {
+        setManualName(inputName);
+    }
+
     useEffect(() => {
         console.log("The count changed! It is now: ", count);
     }, [count]);
@@ -187,15 +196,31 @@ const Test = () => {
 
             <div>
                 <div className="flex flex-col gap-5 py-10 items-center">
-                    <div className="p-4 text-center">
-                        <input
-                            type="text"
-                            placeholder="Type your name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            className="border p-2 bg-white"
-                        />
-                        <p className="mt-4">Hello {name || "friend"}, Set your counts</p>
+                    <div className="flex gap-10">
+                        <div className="p-4 text-center">
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    placeholder="Type your name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    className="border p-2 bg-white rounded-3xl"
+                                />
+                            </div>
+                            <p className="mt-4">Hello {name || "friend"}, Set your counts</p>
+                        </div>
+                        <div className="p-4 text-center">
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    placeholder="Type your name"
+                                    onChange={(e) => setInputName(e.target.value)}
+                                    className="border p-2 bg-white rounded-3xl"
+                                />
+                                <button className='text-md py-1 px-4 text-white bg-blue-800 rounded-full cursor-pointer' onClick={() => updateDetails()}>CHECK</button>
+                            </div>
+                            <p className="mt-4">Hello {manualName || "friend"}, Set your counts</p>
+                        </div>
                     </div>
                     <div className='flex ms-4 gap-2 items-center'>
                         <button className='text-white text-xl bg-blue-800 hover:bg-blue-950 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 1)}>-</button>
@@ -205,14 +230,14 @@ const Test = () => {
                     </div>
                     <div className="flex flex-col gap-2 items-center justify-center mt-4">
                         <div className="flex gap-1">
-                            <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 10)}>-</button><span onClick={() => setCount(10)} className='px-2 text-blue-900 font-medium'>10</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 10)}>+</button></button>
-                            <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 50)}>-</button><span onClick={() => setCount(50)} className='px-2 text-blue-900 font-medium'>50</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 50)}>+</button></button>
-                            <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 100)}>-</button><span onClick={() => setCount(100)} className='px-2 text-blue-900 font-medium'>100</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 100)}>+</button></button>
+                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 10)}>-</button><span onClick={() => setCount(10)} className='px-2 text-blue-900 font-medium'>10</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 10)}>+</button></div>
+                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 50)}>-</button><span onClick={() => setCount(50)} className='px-2 text-blue-900 font-medium'>50</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 50)}>+</button></div>
+                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 100)}>-</button><span onClick={() => setCount(100)} className='px-2 text-blue-900 font-medium'>100</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 100)}>+</button></div>
                         </div>
                         <div className="flex gap-1">
-                            <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 250)}>-</button><span onClick={() => setCount(250)} className='px-2 text-blue-900 font-medium'>250</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 250)}>+</button></button>
-                            <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 500)}>-</button><span onClick={() => setCount(500)} className='px-2 text-blue-900 font-medium'>500</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 500)}>+</button></button>
-                            <button className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 1000)}>-</button><span onClick={() => setCount(1000)} className='px-2 text-blue-900 font-medium'>1000</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 1000)}>+</button></button>
+                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 250)}>-</button><span onClick={() => setCount(250)} className='px-2 text-blue-900 font-medium'>250</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 250)}>+</button></div>
+                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 500)}>-</button><span onClick={() => setCount(500)} className='px-2 text-blue-900 font-medium'>500</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 500)}>+</button></div>
+                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 1000)}>-</button><span onClick={() => setCount(1000)} className='px-2 text-blue-900 font-medium'>1000</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 1000)}>+</button></div>
                         </div>
                     </div>
                 </div>
@@ -296,6 +321,8 @@ const Test = () => {
             <div className="mb-10"></div>
             <ContactForm />
             <div className="mb-20"></div>
+
+
             <div className="flex flex-col lg:flex-row flex-wrap w-full">
                 <div className="w-1/2 p-0 lg:pr-5">
                     <FormSheetDB />
@@ -303,6 +330,11 @@ const Test = () => {
                 <div className="w-1/2 p-0 lg:pl-5">
                     <FileUpload />
                     <TreeStructure />
+
+                    {/* Gallery Image */}
+                    <div>
+                        
+                    </div>
                 </div>
             </div>
 
