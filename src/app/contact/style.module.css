@@ -1,7 +1,28 @@
-.fb_icon{
-
+.fb_icon, .insta_icon {
+    transition: background-color ease-in-out 0.5s;
+    background-color: #522609;
+    position: relative;
+    overflow: hidden;
 }
 
-.insta_icon{
-    
+.fb_icon:hover {
+    background-color: #324d91;
+}
+
+.insta_icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #5155D3, #9f2fca, #ff059c, #ff106e, #fca43a);
+    opacity: 0;
+    transition: opacity ease-in-out 0.5s;
+}
+
+.insta_icon:hover::before {
+    opacity: 1;
+}
+
+.insta_icon .icon {
+    position: relative;
+    z-index: 2;
 }

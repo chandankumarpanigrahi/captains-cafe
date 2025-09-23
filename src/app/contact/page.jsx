@@ -59,8 +59,8 @@ const ContactUs = () => {
                         </ol>
                     </section>
                     <section className='flex flex-row gap-2'>
-                        <a href='#' className={`${styles.fb_icon}  p-1 text-white cursor-pointer bg-amber-900 rounded-full`}><LiaFacebook size={60} /></a>
-                        <a href='#' className={`${styles.insta_icon} p-1 text-white cursor-pointer bg-amber-900 rounded-full`}><LiaInstagram size={60} /></a>
+                        <a href='#' target='_blank' className={`${styles.fb_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaFacebook size={60} /></a>
+                        <a href='https://www.instagram.com/thecaptainscafe.india' target='_blank' className={`${styles.insta_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaInstagram size={60} className={styles.icon}/></a>
                     </section>
                 </div>
 
