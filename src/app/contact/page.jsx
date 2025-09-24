@@ -57,9 +57,9 @@ const ContactUs = () => {
 
                 </div>
             </div>
-            <div className="w-full flex bg-[#220F02] py-12">
-                <div className='container py-10 mx-auto relative'>
-                    <div className="flex flex-col lg:flex-row">
+            <div className="w-full flex bg-[#220F02] py-12 relative">
+                <div className='container  mx-auto relative'>
+                    <div className="flex py-10 flex-col lg:flex-row">
                         <div className="w-full lg:w-1/2 flex flex-col gap-10 text-white">
                             <h1 className='text-5xl p-4 leading-normal text-center lg:text-left'>Have any Query! <br />Let&apos;s discuss </h1>
                             <p className='p-4'>Thank you for getting in touch! <br /> Kindly Fill the form, have a great day!</p>
@@ -91,9 +91,9 @@ const ContactUs = () => {
                                 <select
                                     className="w-full bg-transparent border-b border-amber-50 py-2 focus:outline-none"
                                 >
-                                    <option value="">Country</option>
-                                    <option value="India">India</option>
-                                    <option value="USA">USA</option>
+                                    <option className='text-gray-700' value="">Country</option>
+                                    <option className='text-gray-700' value="India">India</option>
+                                    <option className='text-gray-700' value="USA">USA</option>
                                 </select>
                             </div>
 
@@ -108,9 +108,9 @@ const ContactUs = () => {
                                 <select
                                     className="w-full bg-transparent border-b border-amber-50 py-2 focus:outline-none"
                                 >
-                                    <option value="">Interested in</option>
-                                    <option value="service1">Service 1</option>
-                                    <option value="service2">Service 2</option>
+                                    <option className='text-gray-700' value="">Interested in</option>
+                                    <option className='text-gray-700' value="service1">Service 1</option>
+                                    <option className='text-gray-700' value="service2">Service 2</option>
                                 </select>
                             </div>
 
@@ -130,6 +130,7 @@ const ContactUs = () => {
                         </div>
 
                     </div>
+                    <div className={`${styles.contact_bg_text} absolute`}>Contact Us</div>
                 </div>
             </div>
         </>
