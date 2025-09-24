@@ -77,7 +77,7 @@ const Footer = () => {
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
                                     <li className='text-md '><Link href="/blogs">Blogs</Link></li>
                                     <li className='text-md '><Link href="#">Testimonials</Link></li>
-                                    <li className='text-md '><Link href="#">Documentation</Link></li>
+                                    <li className='text-md '><Link href="/docs">Documentation</Link></li>
                                 </ul>
                         </div>
                         <div className="w-full md:w-3/9 mb-5 md:mb-0">

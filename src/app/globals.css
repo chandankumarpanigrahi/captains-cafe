@@ -247,3 +247,7 @@ body::before {
 .scroll-to-top>svg {
   fill: #fff !important;
 }
+
+.f-html {
+  padding: 0 !important;
+}
