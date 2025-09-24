@@ -11,6 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@fancyapps/ui": "^6.0.32",
     "@formspree/react": "^3.0.0",
     "@headless-tree/core": "^1.4.0",
     "@headless-tree/react": "^1.4.0",
