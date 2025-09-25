@@ -41,7 +41,7 @@ export default function NotFound() {
                 <h2 className="text-3xl font-semibold text-amber-800 mb-6">Oops! <span className='text-amber-700'>Page Not Found</span></h2>
                 <p className="text-[#103D68] text-center max-w-md mb-10 text-lg">
                     It seems this page has disappeared like the last cookie.
-                    But don&epos;t worry, we&epos;ve got plenty of other treats for you!
+                    But don&apos;t worry, we&apos;ve got plenty of other treats for you!
                 </p>
 
                 <div className="flex flex-wrap gap-3 justify-center mb-8">
