@@ -143,7 +143,7 @@ const Career = () => {
                             </h1>
                             <div className='w-full lg:w-9/12 flex flex-col gap-y-3'>
                                 {category.vacancies.map((value, index) => (
-                                    <div key={index} className='flex flex-col md:flex-row p-3 border-1 justify-between rounded-sm border-amber-900 bg-white'>
+                                    <div key={index} className='group flex flex-col md:flex-row p-3 border-1 justify-between rounded-sm border-amber-900 bg-white'>
                                         <div className="flex flex-col">
                                             <h2 className='text-xl text-amber-900 font-semibold mb-2'>{value.post}</h2>
                                             <ul className='list-disc pl-5 text-sm text-gray-500'>
@@ -164,7 +164,7 @@ const Career = () => {
                                             </div>
                                             <div className="flex flex-row justify-end w-full lg:w-[200px]">
                                                 <Link href={value.link || "#"}>
-                                                    <BsArrowRight size={26} className='text-gray-500 hover:text-amber-900 transition-all duration-300 hover:-rotate-45' />
+                                                    <BsArrowRight size={26} className='text-gray-500 group-hover:-rotate-45 group-hover:text-amber-900 transition-all duration-300' />
                                                 </Link>
                                             </div>
                                         </div>
