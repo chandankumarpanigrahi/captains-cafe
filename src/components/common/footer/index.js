@@ -76,7 +76,7 @@ const Footer = () => {
                                 <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
                                 <ul className='flex flex-col gap-1.5 text-white font-light '>
                                     <li className='text-md '><Link href="/blogs">Blogs</Link></li>
-                                    <li className='text-md '><Link href="#">Testimonials</Link></li>
+                                    <li className='text-md '><Link href="/testimonials">Testimonials</Link></li>
                                     <li className='text-md '><Link href="/docs">Documentation</Link></li>
                                 </ul>
                         </div>

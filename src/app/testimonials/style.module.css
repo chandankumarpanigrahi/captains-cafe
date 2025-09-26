@@ -1,0 +1,10 @@
+.left_quote {
+    transform: scaleX(-1);
+    color: #91A9C0;
+}
+
+.right_quote {
+    transform: scaleX(-1);
+    transform: scaleY(-1);
+    color: #91A9C0;
+}
