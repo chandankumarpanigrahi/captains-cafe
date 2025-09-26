@@ -20,7 +20,7 @@ const Career = () => {
                     experience: "3+ Years",
                     deadline: "28-05-2025",
                     description: ["Oversee daily cafe operations", "Manage staff scheduling and training"],
-                    link: "/careers/cafe-manager"
+                    link: "/career/cafe-manager"
                 },
                 {
                     post: "Assistant Manager",
@@ -163,7 +163,7 @@ const Career = () => {
                                                 <div className='text-sm text-blue-900 font-semibold'>{value.deadline}</div>
                                             </div>
                                             <div className="flex flex-row justify-end w-full lg:w-[200px]">
-                                                <Link href={value.link || "#"}>
+                                                <Link href={value.link || ""}>
                                                     <BsArrowRight size={26} className='text-gray-500 group-hover:-rotate-45 group-hover:text-amber-900 transition-all duration-300' />
                                                 </Link>
                                             </div>
