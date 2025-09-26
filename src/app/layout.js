@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning={true}>
         <div className="d-flex">
           <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
-            <div className="container fixed z-100">
+            <div className="container fixed z-49">
               <MainHeader activeTab="Home" />
             </div>
             {children}

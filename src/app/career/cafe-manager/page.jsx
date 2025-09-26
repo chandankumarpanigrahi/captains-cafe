@@ -19,10 +19,25 @@ import {
 } from "react-icons/io5";
 import { AiTwotonePushpin } from "react-icons/ai";
 
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useForm, ValidationError } from '@formspree/react';
+
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PathCopy from '@/components/design/path copy';
-import Image from 'next/image';
 
 const CafeManager = () => {
     const pathname = usePathname();
@@ -141,7 +156,6 @@ const CafeManager = () => {
                             <Card className="px-6 pt-4 pb-6 gap-0">
                                 <p className='text-blue-900 font-semibold flex flex-row justify-between mb-5'>Job Summary</p>
                                 <div className="flex flex-col gap-6">
-
                                     <div className="flex flex-row items-center">
                                         <GoLocation size={32} color="#713711" />
                                         <div className="flex flex-col pl-5">
@@ -209,6 +223,94 @@ const CafeManager = () => {
                                         </div>
                                     </div>
 
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button className="bg-blue-900 hover:bg-blue-950">Apply Now</Button>
+                                        </DialogTrigger>
+
+                                        {/* Modal Content */}
+                                        <DialogContent className="sm:max-w-[550px]">
+
+                                            {/* Modal Header */}
+                                            <DialogHeader>
+                                                <DialogTitle className="text-gray-600">Apply for <span className="text-blue-900">Cafe Manager</span>, The Captain&apos;s Cafe</DialogTitle>
+                                                <DialogDescription>
+                                                    Please fill your details below and apply.
+                                                </DialogDescription>
+                                            </DialogHeader>
+
+                                            {/* Modal Body */}
+                                            <form>
+                                                <label htmlFor="name">
+                                                    Your Name
+                                                </label>
+                                                <Input
+                                                    id="name"
+                                                    type="name"
+                                                    name="name"
+                                                    placeholder="Enter Your Full Name"
+                                                    className="mb-4 mt-1"
+                                                    />
+                                                <ValidationError
+                                                    prefix="Name"
+                                                    field="name"
+                                                    />
+
+                                                <label htmlFor="phone">
+                                                    Mobile Number
+                                                </label>
+                                                <Input
+                                                    id="phone"
+                                                    type="number"
+                                                    name="phone"
+                                                    placeholder="Enter Your Phone Number"
+                                                    className="mb-4 mt-1"
+                                                    />
+                                                <ValidationError
+                                                    prefix="Phone Number"
+                                                    field="phone"
+                                                    />
+
+                                                <label htmlFor="email">
+                                                    Email Address
+                                                </label>
+                                                <Input
+                                                    id="email"
+                                                    type="email"
+                                                    name="email"
+                                                    placeholder="Enter Your Email Address"
+                                                    className="mb-4 mt-1"
+                                                    />
+                                                <ValidationError
+                                                    prefix="Email"
+                                                    field="email"
+                                                    />
+
+                                                <label htmlFor="message">
+                                                    Describe About Your Experience
+                                                </label>
+                                                <Textarea
+                                                    id="message"
+                                                    name="message"
+                                                    placeholder="Describe here"
+                                                    className="mb-4 mt-1"
+                                                />
+                                                <ValidationError
+                                                    prefix="Description"
+                                                    field="message"
+                                                />
+                                            </form>
+
+                                            {/* Modal Footer */}
+                                            <DialogFooter>
+                                                <DialogClose asChild>
+                                                    <Button variant="outline">Cancel</Button>
+                                                </DialogClose>
+                                                <Button type="submit">Submit</Button>
+                                            </DialogFooter>
+
+                                        </DialogContent>
+                                    </Dialog>
 
                                 </div>
                             </Card>
