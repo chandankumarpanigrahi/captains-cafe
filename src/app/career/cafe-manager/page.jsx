@@ -51,7 +51,7 @@ const CafeManager = () => {
 
                 <div className="flex flex-col lg:flex-row">
                     <div className="w-full lg:w-8/12 mb-6">
-                        <h1 className='text-2xl font-semibold text-amber-900 mb-3 uppercase'>Cafe Manager</h1>
+                        <h1 className='text-2xl font-semibold text-amber-900 mb-3 uppercase text-center md:text-left'>Cafe Manager</h1>
                         <section className='my-5'>
                             <h6 className='text-[#0E467D] text-lg font-semibold mb-1'>Who We&apos;re Looking For:</h6>
                             <ul className='list-disc pl-8 text-[#374F67] mb-1'>
@@ -134,8 +134,6 @@ const CafeManager = () => {
                         </section>
 
                     </div>
-
-
 
 
                     <div className="w-full lg:w-4/12 p-0 lg:pl-12">
