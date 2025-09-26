@@ -38,6 +38,7 @@ import { useForm, ValidationError } from '@formspree/react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PathCopy from '@/components/design/path copy';
+import Dropzone from '@/components/ui/Dropzone';
 
 const CafeManager = () => {
     const pathname = usePathname();
@@ -52,7 +53,10 @@ const CafeManager = () => {
 
         setCurrentPath(fullPath);
     }, [pathname, searchParams]);
-
+    const handleFiles = (files) => {
+        console.log("Dropped files:", files);
+        // upload logic here
+    };
     return (
         <>
             <SubBanner
@@ -250,11 +254,11 @@ const CafeManager = () => {
                                                     name="name"
                                                     placeholder="Enter Your Full Name"
                                                     className="mb-4 mt-1"
-                                                    />
+                                                />
                                                 <ValidationError
                                                     prefix="Name"
                                                     field="name"
-                                                    />
+                                                />
 
                                                 <label htmlFor="phone">
                                                     Mobile Number
@@ -265,11 +269,11 @@ const CafeManager = () => {
                                                     name="phone"
                                                     placeholder="Enter Your Phone Number"
                                                     className="mb-4 mt-1"
-                                                    />
+                                                />
                                                 <ValidationError
                                                     prefix="Phone Number"
                                                     field="phone"
-                                                    />
+                                                />
 
                                                 <label htmlFor="email">
                                                     Email Address
@@ -280,11 +284,11 @@ const CafeManager = () => {
                                                     name="email"
                                                     placeholder="Enter Your Email Address"
                                                     className="mb-4 mt-1"
-                                                    />
+                                                />
                                                 <ValidationError
                                                     prefix="Email"
                                                     field="email"
-                                                    />
+                                                />
 
                                                 <label htmlFor="message">
                                                     Describe About Your Experience
@@ -298,6 +302,17 @@ const CafeManager = () => {
                                                 <ValidationError
                                                     prefix="Description"
                                                     field="message"
+                                                />
+
+                                                <label htmlFor="file">
+                                                    Upload Your Resume
+                                                </label>
+                                                <div className="mb-4 mt-1">
+                                                    <Dropzone onFiles={handleFiles} />
+                                                </div>
+                                                <ValidationError
+                                                    prefix="File"
+                                                    field="file"
                                                 />
                                             </form>
 
