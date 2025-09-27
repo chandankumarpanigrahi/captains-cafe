@@ -4,12 +4,13 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { FiCopy, FiCheck } from 'react-icons/fi';
 import styles from './style.module.css'
 
-
 const ShareCard = ({ title = "Check this out!", className = "" }) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const [currentPath, setCurrentPath] = useState('');
     const [isCopied, setIsCopied] = useState(false);
+    const [fullUrl, setFullUrl] = useState('');
+    const [shareLinks, setShareLinks] = useState({});
 
     useEffect(() => {
         // Get the full path including query parameters
@@ -17,22 +18,27 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
             ? `${pathname}?${searchParams.toString()}`
             : pathname;
         setCurrentPath(fullPath);
-    }, [pathname, searchParams]);
 
-    const fullUrl = `${window.location.origin}${currentPath}`;
-    const encodedUrl = encodeURIComponent(fullUrl);
-    const encodedTitle = encodeURIComponent(title);
+        // Set full URL and share links only on client side
+        const currentFullUrl = `${window.location.origin}${fullPath}`;
+        setFullUrl(currentFullUrl);
 
-    const shareLinks = {
-        whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
-        telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
-        twitterX: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
-        email: `mailto:?subject=${encodedTitle}&body=Check this out: ${fullUrl}`,
-        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
-        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
-    };
+        const encodedUrl = encodeURIComponent(currentFullUrl);
+        const encodedTitle = encodeURIComponent(title);
+
+        setShareLinks({
+            whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
+            telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
+            twitterX: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+            email: `mailto:?subject=${encodedTitle}&body=Check this out: ${currentFullUrl}`,
+            linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+            facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+        });
+    }, [pathname, searchParams, title]);
 
     const handleShare = (platform) => {
+        if (!shareLinks[platform]) return;
+
         const width = 600;
         const height = 400;
         const left = (window.innerWidth - width) / 2;
@@ -46,6 +52,8 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
     };
 
     const copyToClipboard = async () => {
+        if (!fullUrl) return;
+
         try {
             await navigator.clipboard.writeText(fullUrl);
             setIsCopied(true);
@@ -54,6 +62,27 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
             console.error('Failed to copy: ', err);
         }
     };
+
+    // Early return if not on client side yet
+    if (!fullUrl) {
+        return (
+            <div>
+                <div className="flex flex-row flex-wrap w-full justify-center">
+                    {/* Loading state for buttons */}
+                    {[...Array(6)].map((_, i) => (
+                        <div key={i} className="flex flex-col items-center justify-center p-5">
+                            <div className="w-10 h-10 bg-gray-300 rounded-full animate-pulse mb-2"></div>
+                            <div className="h-4 w-16 bg-gray-300 rounded animate-pulse"></div>
+                        </div>
+                    ))}
+                </div>
+                {/* Loading state for URL box */}
+                <div className={`${styles.copy_box} flex w-full p-3 bg-white rounded-lg border font-mono text-amber-800 text-sm`}>
+                    <div className="h-4 bg-gray-300 rounded animate-pulse w-full"></div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -90,7 +119,7 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
                     className="flex flex-col items-center justify-center p-5 rounded-lg transition-colors duration-200 group"
                 >
                     <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="bi bi-twitter-x" viewBox="0 0 16 16" id="Twitter-X--Streamline-Bootstrap" height="16" width="16">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" className="bi bi-twitter-x" viewBox="0 0 16 16" id="Twitter-X--Streamline-Bootstrap" height="16" width="16">
                             <path d="M12.6 0.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867 -5.07 -4.425 5.07H0.316l5.733 -6.57L0 0.75h5.063l3.495 4.633L12.601 0.75Zm-0.86 13.028h1.36L4.323 2.145H2.865z"></path>
                         </svg>
                     </div>
@@ -147,7 +176,7 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
 
             {/* URL Display */}
             <div className={`${styles.copy_box} flex w-full p-3 bg-white rounded-lg border font-mono text-amber-800 text-sm overflow-x-auto`}>
-                <p className='whitespace-nowrap overflow-hidden w-full'>{fullUrl || 'Loading...'}</p>
+                <p className='whitespace-nowrap overflow-hidden w-full'>{fullUrl}</p>
                 <button
                     onClick={copyToClipboard}
                     className="pl-3 text-amber-800 font-bold rounded-lg transition-colors duration-200 flex items-center justify-center"
