@@ -41,3 +41,17 @@
     left: -3rem;
     top: -1rem;
 }
+
+@media screen and (max-width: 600px) {
+    .contact_bg_text {
+        font-size: 6rem;
+        line-height: 6rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contact_bg_text {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+}
