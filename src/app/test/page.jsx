@@ -27,6 +27,7 @@ import Link from 'next/link'
 import FileUpload from '@/components/ui/FileUplooad'
 import TreeStructure from '@/components/ui/TreeStructure'
 import EmblaCarousel from '@/components/design/fade image'
+import CalMe from '@/components/ui/calMe'
 
 
 const lunch = [
@@ -328,8 +329,9 @@ const Test = () => {
                 <div className="w-1/2 p-0 lg:pr-5">
                     <FormSheetDB />
                 </div>
-                <div className="w-1/2 p-0 lg:pl-5">
+                <div className="w-1/2 p-0 lg:pl-5 h-full">
                     <FileUpload />
+                    <CalMe/>
                     {/* Gallery Image */}
                     <div>
                         <EmblaCarousel/>
