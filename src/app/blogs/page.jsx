@@ -81,7 +81,7 @@ const Offers = () => {
                     {blogs.map((blog) => (
                         <Card
                             key={blog.id}
-                            className={`${styles.card_top_area} w-2/9 p-0 overflow-hidden gap-0 rounded-xl cursor-pointer`}
+                            className={`${styles.card_top_area} w-full md:w-4/9 lg:w-2/9 p-0 overflow-hidden gap-0 rounded-xl cursor-pointer`}
                             onClick={() => redirect(blog.urlPath)}
                         >
                             <div className="relative w-full h-[200px]">
