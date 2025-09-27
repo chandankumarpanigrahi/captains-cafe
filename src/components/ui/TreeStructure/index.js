@@ -65,22 +65,6 @@ export default function Component() {
                     )
                 })}
             </Tree>
-
-            <p
-                aria-live="polite"
-                role="region"
-                className="text-muted-foreground mt-2 text-xs"
-            >
-                Basic tree with no extra features ∙{" "}
-                <a
-                    href="https://headless-tree.lukasbach.com"
-                    className="hover:text-foreground underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    API
-                </a>
-            </p>
         </div>
     )
 }
