@@ -56,7 +56,7 @@ const Documentations = () => {
                     {docs.map((doc, index) => (
                         <Card
                             key={index}
-                            className={`${styles.card} flex flex-col items-center p-4 gap-0 rounded-md relative overflow-hidden w-[260px]`}
+                            className={`${styles.card} flex flex-col items-center p-4 gap-0 group rounded-md relative overflow-hidden w-[260px]`}
                         >
                             <Image
                                 src={doc.img}
@@ -65,18 +65,20 @@ const Documentations = () => {
                                 alt={doc.title}
                                 className={`${styles.logo}`}
                             />
-                            <h3 className={`${styles.name} text-[#12406D] text-xl font-semibold mb-1`}>
-                                {doc.title}
-                            </h3>
-                            <small className={`${styles.dept} text-gray-400 mb-3`}>
-                                {doc.dept}
-                            </small>
+                            <div className='flex flex-col justify-center -translate-y-2 md:translate-none'>
+                                <h3 className={`${styles.name} text-[#12406D] text-xl font-semibold mb-1 text-center`}>
+                                    {doc.title}
+                                </h3>
+                                <small className={`${styles.dept} text-gray-400 mb-3 text-center`}>
+                                    {doc.dept}
+                                </small>
+                            </div>
                             {/* View PDF link */}
                             <a
                                 href={doc.pdf}
                                 data-fancybox="pdf"
                                 data-type="iframe" // ensures PDF loads as iframe
-                                className="text-blue-700 uppercase text-sm mt-auto"
+                                className="absolute bottom-2 md:-bottom-4 group-hover:bottom-3 text-blue-700 uppercase text-sm mt-auto"
                             >
                                 View
                             </a>
