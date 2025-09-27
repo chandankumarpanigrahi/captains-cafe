@@ -326,10 +326,10 @@ const Test = () => {
 
 
             <div className="flex flex-col lg:flex-row flex-wrap w-full">
-                <div className="w-1/2 p-0 lg:pr-5">
+                <div className="w-2/5 p-0 lg:pr-5">
                     <FormSheetDB />
                 </div>
-                <div className="w-1/2 p-0 lg:pl-5 h-full">
+                <div className="w-3/5 p-0 lg:pl-5 h-full">
                     <FileUpload />
                     <CalMe/>
                     {/* Gallery Image */}

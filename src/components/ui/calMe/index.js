@@ -11,9 +11,9 @@ export default function MyApp() {
     }, [])
     return <Cal namespace="30min"
         calLink="testingformeaswell/30min"
-        style={{ width: "100%", height: "100%", overflow: "scroll" }}
+        style={{ width: "100%", height: "100%" }}
         config={{ "layout": "month_view", "theme": "light" }}
-        className="shadow-2xl rounded-2xl overflow-hidden my-6 bg-white"
+        className="shadow-2xl rounded-2xl overflow-hidden my-6 bg-white p-3"
 
     />;
 };
