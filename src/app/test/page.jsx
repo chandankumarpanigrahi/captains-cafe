@@ -185,7 +185,7 @@ const Test = ({ params }) => {
             <hr />
 
             {/* Dyamic Data Passing */}
-            <div className="flex flex-row gap-2 my-8">
+            <div className="flex flex-row flex-wrap gap-2 my-8">
                 {menus.map((menu) => (
                     <Link
                         key={menu.id}
