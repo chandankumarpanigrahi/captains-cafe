@@ -26,7 +26,7 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
     const shareLinks = {
         whatsapp: `https://api.whatsapp.com/send?text=${encodedTitle}%20${encodedUrl}`,
         telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedTitle}`,
-        twitter: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
+        twitterX: `https://x.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`,
         email: `mailto:?subject=${encodedTitle}&body=Check this out: ${fullUrl}`,
         linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
         facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
@@ -86,15 +86,15 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
 
                 {/* Twitter */}
                 <button
-                    onClick={() => handleShare('twitter')}
+                    onClick={() => handleShare('twitterX')}
                     className="flex flex-col items-center justify-center p-5 rounded-lg transition-colors duration-200 group"
                 >
-                    <div className="w-10 h-10 bg-sky-500 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-                        <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                    <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" class="bi bi-twitter-x" viewBox="0 0 16 16" id="Twitter-X--Streamline-Bootstrap" height="16" width="16">
+                            <path d="M12.6 0.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867 -5.07 -4.425 5.07H0.316l5.733 -6.57L0 0.75h5.063l3.495 4.633L12.601 0.75Zm-0.86 13.028h1.36L4.323 2.145H2.865z" stroke-width="1"></path>
                         </svg>
                     </div>
-                    <span className="text-xs text-gray-600">Twitter</span>
+                    <span className="text-xs text-gray-600">X</span>
                 </button>
 
                 {/* Email */}
