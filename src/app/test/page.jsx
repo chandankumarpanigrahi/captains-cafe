@@ -134,7 +134,7 @@ const Test = ({ params }) => {
                 <TabsContent value="lunch">
                     <ul className="flex w-full flex-wrap">
                         {lunch.map((item, index) => (
-                            <li key={index} className="p-2 w-1/3 h-full">
+                            <li key={index} className="p-2 w-full lg:w-1/3 h-full">
                                 <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white hover:bg-amber-50 hover:text-amber-900">
                                     <div><strong>Meal:</strong> {item.name}</div>
                                     <div><strong>Duration:</strong> {item.days}</div>
@@ -148,7 +148,7 @@ const Test = ({ params }) => {
                 <TabsContent value="dinner">
                     <ul className="space-y-4 flex w-full">
                         {dinner.map((item, index) => (
-                            <li key={index} className="p-2 w-1/3 h-full">
+                            <li key={index} className="p-2 w-full lg:w-1/3 h-full">
                                 <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white hover:bg-amber-50 hover:text-amber-900">
                                     <div><strong>Meal:</strong> {item.name}</div>
                                     <div><strong>Duration:</strong> {item.days}</div>
@@ -163,7 +163,7 @@ const Test = ({ params }) => {
                 <TabsContent value="breakfast">
                     <ul className="space-y-4 flex w-full">
                         {breakfast.map((item, index) => (
-                            <li key={index} className="p-2 w-1/3 h-full">
+                            <li key={index} className="p-2 w-full lg:w-1/3 h-full">
                                 <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white hover:bg-amber-50 hover:text-amber-900">
                                     <div><strong>Meal:</strong> {item.name}</div>
                                     <div><strong>Duration:</strong> {item.days}</div>
@@ -202,7 +202,7 @@ const Test = ({ params }) => {
 
             <div>
                 <div className="flex flex-col gap-5 py-10 items-center">
-                    <div className="flex gap-10">
+                    <div className="flex flex-col lg:flex-row gap-10">
                         <div className="p-4 text-center">
                             <div className="flex gap-2">
                                 <input
@@ -234,16 +234,16 @@ const Test = ({ params }) => {
                         <button className='text-white text-xl bg-blue-800 hover:bg-blue-950 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 1)}>+</button>
                         <button className='text-white text-xl bg-blue-800 hover:bg-blue-950 px-4 py-1 rounded-full cursor-pointer' onClick={() => setCount(0)}>Reset</button>
                     </div>
-                    <div className="flex flex-col gap-2 items-center justify-center mt-4">
-                        <div className="flex gap-1">
-                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 10)}>-</button><span onClick={() => setCount(10)} className='px-2 text-blue-900 font-medium'>10</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 10)}>+</button></div>
-                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 50)}>-</button><span onClick={() => setCount(50)} className='px-2 text-blue-900 font-medium'>50</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 50)}>+</button></div>
-                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 100)}>-</button><span onClick={() => setCount(100)} className='px-2 text-blue-900 font-medium'>100</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 100)}>+</button></div>
+                    <div className="flex flex-col gap-6 lg:gap-2 items-center justify-center mt-4">
+                        <div className="flex gap-1 flex-col lg:flex-row items-center">
+                            <div className='flex flex-row w-fit text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 10)}>-</button><span onClick={() => setCount(10)} className='px-2 text-blue-900 font-medium'>10</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 10)}>+</button></div>
+                            <div className='flex flex-row w-fit text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 50)}>-</button><span onClick={() => setCount(50)} className='px-2 text-blue-900 font-medium'>50</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 50)}>+</button></div>
+                            <div className='flex flex-row w-fit text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 100)}>-</button><span onClick={() => setCount(100)} className='px-2 text-blue-900 font-medium'>100</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 100)}>+</button></div>
                         </div>
-                        <div className="flex gap-1">
-                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 250)}>-</button><span onClick={() => setCount(250)} className='px-2 text-blue-900 font-medium'>250</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 250)}>+</button></div>
-                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 500)}>-</button><span onClick={() => setCount(500)} className='px-2 text-blue-900 font-medium'>500</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 500)}>+</button></div>
-                            <div className='text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 1000)}>-</button><span onClick={() => setCount(1000)} className='px-2 text-blue-900 font-medium'>1000</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 1000)}>+</button></div>
+                        <div className="flex gap-1 flex-col lg:flex-row  items-center">
+                            <div className='flex flex-row w-fit text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 250)}>-</button><span onClick={() => setCount(250)} className='px-2 text-blue-900 font-medium'>250</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 250)}>+</button></div>
+                            <div className='flex flex-row w-fit text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 500)}>-</button><span onClick={() => setCount(500)} className='px-2 text-blue-900 font-medium'>500</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 500)}>+</button></div>
+                            <div className='flex flex-row w-fit text-xl border-2 border-blue-800 rounded-full cursor-pointer'><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count - 1000)}>-</button><span onClick={() => setCount(1000)} className='px-2 text-blue-900 font-medium'>1000</span><button className='text-white text-xl bg-blue-800 size-8 rounded-full cursor-pointer' onClick={() => setCount(count + 1000)}>+</button></div>
                         </div>
                     </div>
                 </div>
@@ -336,10 +336,10 @@ const Test = ({ params }) => {
             <div className="mb-20"></div>
 
             <div className="flex flex-col lg:flex-row flex-wrap w-full">
-                <div className="w-2/5 p-0 lg:pr-5">
+                <div className="w-full lg:w-2/5 p-0 lg:pr-5">
                     <FormSheetDB />
                 </div>
-                <div className="w-3/5 p-0 lg:pl-5 h-full">
+                <div className="w-full lg:w-3/5 p-0 lg:pl-5 h-full">
                     <FileUpload />
                     <CalMe />
                     {/* Gallery Image */}
