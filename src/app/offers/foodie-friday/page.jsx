@@ -17,8 +17,9 @@ import { AiTwotonePushpin } from "react-icons/ai";
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import PathCopy from '@/components/design/path copy';
+import ShareCard from '@/components/ui/shareCard';
 
-const FoodieFriday = () => {
+const FoodieFriday = ({ params }) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const [currentPath, setCurrentPath] = useState('');
@@ -31,6 +32,9 @@ const FoodieFriday = () => {
 
         setCurrentPath(fullPath);
     }, [pathname, searchParams]);
+
+    // For ShareCard
+    // const { slug } = params;
 
     return (
         <>
@@ -183,7 +187,10 @@ const FoodieFriday = () => {
 
                             <Card className="px-4 py-2 gap-0">
                                 <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
-                                <PathCopy />
+                                <ShareCard
+                                    title="Amazing Blog Post You Should Read!"
+                                />
+                                {/* <PathCopy /> */}
                             </Card>
                         </div>
                     </div>

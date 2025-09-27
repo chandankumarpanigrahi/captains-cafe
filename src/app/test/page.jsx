@@ -28,6 +28,7 @@ import FileUpload from '@/components/ui/FileUplooad'
 import TreeStructure from '@/components/ui/TreeStructure'
 import EmblaCarousel from '@/components/design/fade image'
 import CalMe from '@/components/ui/calMe'
+import ShareCard from '@/components/ui/shareCard'
 
 
 const lunch = [
@@ -89,11 +90,14 @@ const breakfast = [
     }
 ];
 
-const Test = () => {
+const Test = ({ params }) => {
     const router = useRouter();
     const redirect = (path) => {
         router.push(path)
     }
+
+    // For ShareCard
+    const { slug } = params;
 
     const menus = [
         { id: "menu1", label: "Menu 1", name: "Regular Menu" },
@@ -324,6 +328,12 @@ const Test = () => {
             <ContactForm />
             <div className="mb-20"></div>
 
+            {/* Share Card */}
+            <ShareCard
+                title="Amazing Blog Post You Should Read!"
+                className="mt-8"
+            />
+            <div className="mb-20"></div>
 
             <div className="flex flex-col lg:flex-row flex-wrap w-full">
                 <div className="w-2/5 p-0 lg:pr-5">
@@ -331,10 +341,10 @@ const Test = () => {
                 </div>
                 <div className="w-3/5 p-0 lg:pl-5 h-full">
                     <FileUpload />
-                    <CalMe/>
+                    <CalMe />
                     {/* Gallery Image */}
                     <div>
-                        <EmblaCarousel/>
+                        <EmblaCarousel />
                     </div>
                     <TreeStructure />
 
