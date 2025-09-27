@@ -7,6 +7,8 @@ import Footer from "@/components/common/footer";
 import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
 import PostFooter from "@/components/common/post footer";
 import SubBanner from "@/components/common/sub banner";
+import { ThemeProvider } from "next-themes";
+import ThemeToggle from "@/components/design/theme toggle";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,16 +41,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
       <body suppressHydrationWarning={true}>
-        <div className="d-flex">
-          <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
-            <div className="container fixed z-49">
-              <MainHeader activeTab="Home" />
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <div className="d-flex">
+            <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
+              <div className="container fixed z-49">
+                <MainHeader activeTab="Home" />
+              </div>
+              {children}
+              <Footer />
+              <PostFooter />
             </div>
-            {children}
-            <Footer/>
-            <PostFooter/>
           </div>
-        </div>
+          <div className="fixed right-3 bottom-4 dark:bg-white light:bg-gray-900 shadow-xl rounded-full">
+            <ThemeToggle/>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
