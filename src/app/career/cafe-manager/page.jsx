@@ -233,96 +233,97 @@ const CafeManager = () => {
                                         </DialogTrigger>
 
                                         {/* Modal Content */}
-                                        <DialogContent className="sm:max-w-[550px]">
+                                        <DialogContent className="sm:max-w-[550px] h-fit">
+                                            <div className='max-h-[500px] md:max-h-none pr-3 overflow-scroll'>
+                                                {/* Modal Header */}
+                                                <DialogHeader>
+                                                    <DialogTitle className="text-gray-600">Apply for <span className="text-blue-900">Cafe Manager</span>, The Captain&apos;s Cafe</DialogTitle>
+                                                    <DialogDescription>
+                                                        Please fill your details below and apply.
+                                                    </DialogDescription>
+                                                </DialogHeader>
 
-                                            {/* Modal Header */}
-                                            <DialogHeader>
-                                                <DialogTitle className="text-gray-600">Apply for <span className="text-blue-900">Cafe Manager</span>, The Captain&apos;s Cafe</DialogTitle>
-                                                <DialogDescription>
-                                                    Please fill your details below and apply.
-                                                </DialogDescription>
-                                            </DialogHeader>
+                                                {/* Modal Body */}
+                                                <form>
+                                                    <label htmlFor="name">
+                                                        Your Name
+                                                    </label>
+                                                    <Input
+                                                        id="name"
+                                                        type="name"
+                                                        name="name"
+                                                        placeholder="Enter Your Full Name"
+                                                        className="mb-4 mt-1"
+                                                    />
+                                                    <ValidationError
+                                                        prefix="Name"
+                                                        field="name"
+                                                    />
 
-                                            {/* Modal Body */}
-                                            <form>
-                                                <label htmlFor="name">
-                                                    Your Name
-                                                </label>
-                                                <Input
-                                                    id="name"
-                                                    type="name"
-                                                    name="name"
-                                                    placeholder="Enter Your Full Name"
-                                                    className="mb-4 mt-1"
-                                                />
-                                                <ValidationError
-                                                    prefix="Name"
-                                                    field="name"
-                                                />
+                                                    <label htmlFor="phone">
+                                                        Mobile Number
+                                                    </label>
+                                                    <Input
+                                                        id="phone"
+                                                        type="number"
+                                                        name="phone"
+                                                        placeholder="Enter Your Phone Number"
+                                                        className="mb-4 mt-1"
+                                                    />
+                                                    <ValidationError
+                                                        prefix="Phone Number"
+                                                        field="phone"
+                                                    />
 
-                                                <label htmlFor="phone">
-                                                    Mobile Number
-                                                </label>
-                                                <Input
-                                                    id="phone"
-                                                    type="number"
-                                                    name="phone"
-                                                    placeholder="Enter Your Phone Number"
-                                                    className="mb-4 mt-1"
-                                                />
-                                                <ValidationError
-                                                    prefix="Phone Number"
-                                                    field="phone"
-                                                />
+                                                    <label htmlFor="email">
+                                                        Email Address
+                                                    </label>
+                                                    <Input
+                                                        id="email"
+                                                        type="email"
+                                                        name="email"
+                                                        placeholder="Enter Your Email Address"
+                                                        className="mb-4 mt-1"
+                                                    />
+                                                    <ValidationError
+                                                        prefix="Email"
+                                                        field="email"
+                                                    />
 
-                                                <label htmlFor="email">
-                                                    Email Address
-                                                </label>
-                                                <Input
-                                                    id="email"
-                                                    type="email"
-                                                    name="email"
-                                                    placeholder="Enter Your Email Address"
-                                                    className="mb-4 mt-1"
-                                                />
-                                                <ValidationError
-                                                    prefix="Email"
-                                                    field="email"
-                                                />
+                                                    <label htmlFor="message">
+                                                        Describe About Your Experience
+                                                    </label>
+                                                    <Textarea
+                                                        id="message"
+                                                        name="message"
+                                                        placeholder="Describe here"
+                                                        className="mb-4 mt-1"
+                                                    />
+                                                    <ValidationError
+                                                        prefix="Description"
+                                                        field="message"
+                                                    />
 
-                                                <label htmlFor="message">
-                                                    Describe About Your Experience
-                                                </label>
-                                                <Textarea
-                                                    id="message"
-                                                    name="message"
-                                                    placeholder="Describe here"
-                                                    className="mb-4 mt-1"
-                                                />
-                                                <ValidationError
-                                                    prefix="Description"
-                                                    field="message"
-                                                />
+                                                    <label htmlFor="file">
+                                                        Upload Your Resume
+                                                    </label>
+                                                    <div className="mb-4 mt-1">
+                                                        <Dropzone onFiles={handleFiles} />
+                                                    </div>
+                                                    <ValidationError
+                                                        prefix="File"
+                                                        field="file"
+                                                    />
+                                                </form>
 
-                                                <label htmlFor="file">
-                                                    Upload Your Resume
-                                                </label>
-                                                <div className="mb-4 mt-1">
-                                                    <Dropzone onFiles={handleFiles} />
-                                                </div>
-                                                <ValidationError
-                                                    prefix="File"
-                                                    field="file"
-                                                />
-                                            </form>
-
-                                            {/* Modal Footer */}
-                                            <DialogFooter>
-                                                <DialogClose asChild>
-                                                    <Button variant="outline">Cancel</Button>
-                                                </DialogClose>
-                                                <Button type="submit">Submit</Button>
-                                            </DialogFooter>
+                                                {/* Modal Footer */}
+                                                <DialogFooter>
+                                                    <DialogClose asChild>
+                                                        <Button variant="outline">Cancel</Button>
+                                                    </DialogClose>
+                                                    <Button type="submit">Submit</Button>
+                                                </DialogFooter>
+                                            </div>
 
                                         </DialogContent>
                                     </Dialog>
