@@ -22,19 +22,24 @@ export default function Home() {
         <div className={`${styles.inner_hero_contents} w-full h-full`}>
           <SlidingBackground />
         </div>
-        <div className={styles.hero_bg_bottom}></div>
+        
+        {/* Light mode */}
+        <div className={`${styles.hero_bg_bottom} block dark:hidden`}></div>
+        {/* Dark mode */}
+        <div className={`${styles.hero_bg_bottom_dark} hidden dark:block`}></div>
+
       </div>
       <Counters />
       <Intro />
-      <WhyChooseUs/>
-      <HomeCta/>
-      <Featured/>
-      <PopularMenu/>
-      <TrendyMenu/>
-      <Services/>
-      <Testimonials/>
-      <Blogs/>
-      <BottomBG/>
+      <WhyChooseUs />
+      <HomeCta />
+      <Featured />
+      <PopularMenu />
+      <TrendyMenu />
+      <Services />
+      <Testimonials />
+      <Blogs />
+      <BottomBG />
       {/* <MaintenancePage/> */}
     </main>
   );

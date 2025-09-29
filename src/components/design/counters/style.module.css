@@ -1,20 +1,3 @@
-.all_cards {
-    top: -20px;
-    z-index: 48;
-}
-
-.all_cards .card_area:nth-child(1) {
-    background-color: #f5f7ff;
-}
-
-.all_cards .card_area:nth-child(2) {
-    background-color: #fff8f2;
-}
-
-.all_cards .card_area:nth-child(3) {
-    background-color: #f5f7ff;
-}
-
 .card_area {
     border-radius: 30px 0;
     box-shadow: 0 0 27px 0px rgb(0 0 0 / 14%);
@@ -32,14 +15,12 @@
 }
 
 .card_area h2 {
-    color: #2F2F2F;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
 }
 
 .card_area p {
-    color: #7A7A7A;
     font-family: Inter;
     font-size: 17px;
     font-style: normal;

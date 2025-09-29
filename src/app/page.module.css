@@ -21,6 +21,17 @@
     background-position: top center;
 }
 
+.hero_bg_bottom_dark {
+    position: absolute;
+    background-image: url(../assets/images/hero_btm_dark.png);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 5;
+    background-position: top center;
+}
+
 @media screen and (max-width: 1024px) {
     .hero_section {
         height: 600px;
