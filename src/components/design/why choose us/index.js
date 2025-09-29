@@ -22,41 +22,41 @@ const WhyChooseUs = () => {
                 </div>
                 <div className="w-full lg:w-2/3 h-full pl-0 lg:pl-20">
                     <div className="flex flex-col">
-                        <h1 className='text-2xl md:text-3xl font-bold color-primary mb-4'>Why People Choose Us?</h1>
+                        <h1 className='text-2xl md:text-3xl font-bold text-blue-900 dark:text-blue-100 mb-4'>Why People Choose Us?</h1>
                         <div className="flex flex-row flex-wrap">
                             <div className="w-full sm:w-1/2 mb-3 sm:mb-0 sm:pr-4 sm:pt-4 sm:pb-4">
                                 <div className="flex flex-row justify-start gap-4">
-                                    <PiChefHatFill className={`${styles.icon} text-yellow-900`}/>
+                                    <PiChefHatFill className={`${styles.icon} text-yellow-900 dark:text-orange-300`}/>
                                     <div className="flex flex-col">
-                                        <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Global Flavors</h5>
-                                        <p className={`${styles.card_text} text-sm sm:text-md`}>Our team of master chefs brings years of experience and creativity to every dish, ensuring each bite is a masterpiece of flavor and presentation.</p>
+                                        <h5 className='text-xl sm:text-2xl font-semibold text-blue-900 dark:text-blue-200 mb-2'>Global Flavors</h5>
+                                        <p className={`text-[#6f8daa] dark:text-gray-300 text-sm sm:text-md`}>Our team of master chefs brings years of experience and creativity to every dish, ensuring each bite is a masterpiece of flavor and presentation.</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2 mb-3 sm:mb-0 sm:pl-4 sm:pt-4 sm:pb-4">
                                 <div className="flex flex-row justify-start gap-4">
-                                    <MdShoppingCart className={`${styles.icon} text-yellow-900`}/>
+                                    <MdShoppingCart className={`${styles.icon} text-yellow-900 dark:text-orange-300`}/>
                                     <div className="flex flex-col">
-                                        <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Online Order</h5>
-                                        <p className={`${styles.card_text} text-sm sm:text-md`}>Enjoy your favorite dishes from the comfort of your home with our easy and reliable online ordering system as well as from Zomato and Swiggy</p>
+                                        <h5 className='text-xl sm:text-2xl font-semibold text-blue-900 dark:text-blue-200 mb-2'>Online Order</h5>
+                                        <p className={`text-[#6f8daa] dark:text-gray-300 text-sm sm:text-md`}>Enjoy your favorite dishes from the comfort of your home with our easy and reliable online ordering system as well as from Zomato and Swiggy</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2 mb-3 sm:mb-0 sm:pr-4 sm:pt-4 sm:pb-4">
                                 <div className="flex flex-row justify-start gap-4">
-                                    <MdFastfood className={`${styles.icon} text-yellow-900`}/>
+                                    <MdFastfood className={`${styles.icon} text-yellow-900 dark:text-orange-300`}/>
                                     <div className="flex flex-col">
-                                        <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Quality Food</h5>
-                                        <p className={`${styles.card_text} text-sm sm:text-md`}>Fresh ingredients, exceptional recipes, and a commitment to quality come together to create meals that delight your senses.</p>
+                                        <h5 className='text-xl sm:text-2xl font-semibold text-blue-900 dark:text-blue-200 mb-2'>Quality Food</h5>
+                                        <p className={`text-[#6f8daa] dark:text-gray-300 text-sm sm:text-md`}>Fresh ingredients, exceptional recipes, and a commitment to quality come together to create meals that delight your senses.</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2 mb-3 sm:mb-0 sm:pl-4 sm:pt-4 sm:pb-4">
                                 <div className="flex flex-row justify-start gap-4">
-                                    <MdRoomService className={`${styles.icon} text-yellow-900`}/>
+                                    <MdRoomService className={`${styles.icon} text-yellow-900 dark:text-orange-300`}/>
                                     <div className="flex flex-col">
-                                        <h5 className='text-xl sm:text-2xl font-semibold color-primary mb-2'>Best Service</h5>
-                                        <p className={`${styles.card_text} text-sm sm:text-md`}>We pride ourselves on providing warm, friendly, and attentive service that makes every visit a delightful experience.</p>
+                                        <h5 className='text-xl sm:text-2xl font-semibold text-blue-900 dark:text-blue-200 mb-2'>Best Service</h5>
+                                        <p className={`text-[#6f8daa] dark:text-gray-300 text-sm sm:text-md`}>We pride ourselves on providing warm, friendly, and attentive service that makes every visit a delightful experience.</p>
                                     </div>
                                 </div>
                             </div>

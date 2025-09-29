@@ -60,10 +60,6 @@
     }
 }
 
-.card_text {
-    color: #6f8daa;
-}
-
 @media screen and (max-width: 460px) {
     .plate_design {
         height: 320px;
