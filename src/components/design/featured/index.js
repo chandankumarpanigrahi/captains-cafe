@@ -50,7 +50,7 @@ const Featured = () => {
                 </div>
 
                 <div className={`${styles.delight_text} flex flex-col pl-0 pr-0 md:pl-16 md:pr-12`}>
-                    <h1 className='color-primary text-4xl font-bold mb-4'>Delight in Every Bite</h1>
+                    <h1 className='text-blue-900 dark:text-white text-4xl font-bold mb-4'>Delight in Every Bite</h1>
                     <p className={`${styles.qoutation} pr-8 pl-12 mb-6 text-xl w-full sm:w-9/10`}>Savor the difference with every dish we serve.</p>
                     <div className='flex flex-col gap-2 mb-4'>
                         <p className='text-slate-600 text-lg'>Indulge in our chef-curated dishes made from handpicked, high-quality ingredients. Whether you&apos;re craving something spicy, sweet, or savory - we&apos;ve got something to satisfy every craving.</p>
