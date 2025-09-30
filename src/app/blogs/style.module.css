@@ -5,28 +5,3 @@
     padding: 1px 9px;
     border-radius: 1rem;
 }
-
-
-.blog_hr_line {
-    position: relative;
-}
-
-.blog_hr_line::before {
-    position: absolute;
-    left: 0;
-    top: 40%;
-    width: calc(50% - 16px);
-    height: 1px;
-    content: '';
-    background-color: #4488c9;
-}
-
-.blog_hr_line::after {
-    position: absolute;
-    right: 0;
-    top: 40%;
-    width: calc(50% - 16px);
-    height: 1px;
-    content: '';
-    background-color: #4488c9;
-}

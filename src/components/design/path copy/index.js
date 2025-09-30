@@ -34,12 +34,12 @@ export default function PathCopy() {
     return (
         <div>
             <div className="flex items-stretch gap-2">
-                <div className={`${styles.copy_box} flex w-full p-3 bg-white rounded-lg border font-mono text-amber-800 text-sm overflow-x-auto`}>
+                <div className={`${styles.copy_box} flex w-full p-3 bg-white dark:bg-amber-950 rounded-lg border font-mono text-amber-800 dark:text-white text-sm overflow-x-auto`}>
                     <p className='whitespace-nowrap overflow-hidden w-full'>{completeURL || 'Loading...'}</p>
                 <button
                     onClick={copyToClipboard}
                     disabled={!completeURL}
-                    className="pl-3 text-amber-800 font-bold rounded-lg transition-colors duration-200 flex items-center justify-center"
+                    className="pl-3 text-amber-800 dark:text-white font-bold rounded-lg transition-colors duration-200 flex items-center justify-center"
                     aria-label="Copy URL to clipboard"
                 >
                     {copied ? (
@@ -52,7 +52,7 @@ export default function PathCopy() {
             </div>
 
             {copied && (
-                <div className="mt-3 text-sm text-green-600 flex items-center gap-1 animate-fadeIn">
+                <div className="mt-3 text-sm text-green-600 dark:text-green-400 flex items-center gap-1 animate-fadeIn">
                     <FiCheck className="h-4 w-4" />
                     URL copied to clipboard!
                 </div>

@@ -53,8 +53,8 @@ const Offers = () => {
 
                 {/* Heading and Description */}
                 <div className="flex flex-col px-0 md:px-20 lg:px-80 w-full mb-16">
-                    <h1 className='color-primary text-3xl md:text-4xl font-bold mb-3 text-center'>All Our Blogs</h1>
-                    <p className='text-[#374F67] text-md md:text-lg text-center'>Here&apos;s all our blogs</p>
+                    <h1 className='text-[#0E467D] dark:text-white text-3xl md:text-4xl font-bold mb-3 text-center'>All Our Blogs</h1>
+                    <p className='text-[#374F67] dark:text-gray-300 text-md md:text-lg text-center'>Here&apos;s all our blogs</p>
                 </div>
 
                 {/* Cards */}
@@ -91,17 +91,17 @@ const Offers = () => {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                            <div className="relative z-3 bg-white flex flex-col pt-3 pb-4 px-4">
-                                <small className="text-left w-full text-[#316AA1] text-[12px] font-semibold mb-1">
+                            <div className="relative z-3 bg-white dark:bg-blue-950 flex flex-col pt-3 pb-4 px-4">
+                                <small className="text-left w-full text-[#316AA1] dark:text-blue-200 text-[12px] font-semibold mb-1">
                                     {blog.date}
                                 </small>
-                                <div className="flex w-full flex-start">
-                                    <h4 className="text-[#0B3F71] font-semibold text-left text-xl">
+                                <div className="flex w-full flex-start mb-3">
+                                    <h4 className="text-[#0B3F71] dark:text-white font-semibold text-left text-xl">
                                         {blog.title}
                                     </h4>
                                     <GoArrowUpRight size={24} className="pt-1" />
                                 </div>
-                                <p className="text-gray-500 text-sm overflow-ellipsis line-clamp-3 mb-3">
+                                <p className="text-gray-500 dark:text-gray-300 text-sm overflow-ellipsis line-clamp-3 mb-3">
                                     {blog.desc}
                                 </p>
                                 <div className={`${styles.tags} flex w-full flex-row flex-wrap gap-1`}>

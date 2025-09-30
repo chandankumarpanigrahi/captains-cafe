@@ -47,8 +47,8 @@ const Documentations = () => {
 
                 {/* Heading and Description */}
                 <div className="flex flex-col px-0 md:px-20 lg:px-80 w-full mb-16">
-                    <h1 className='color-primary text-3xl md:text-4xl font-bold mb-3 text-center'>All Our Blogs</h1>
-                    <p className='text-[#374F67] text-md md:text-lg text-center'>Here&apos;s all our blogs</p>
+                    <h1 className='text-[#0E467D] dark:text-white text-3xl md:text-4xl font-bold mb-3 text-center'>Required Documentation</h1>
+                    <p className='text-[#374F67] dark:text-gray-300 text-md md:text-lg text-center'>Find all necessary certifications and licenses right here!</p>
                 </div>
 
                 {/* Cards */}
@@ -66,7 +66,7 @@ const Documentations = () => {
                                 className={`${styles.logo}`}
                             />
                             <div className='flex flex-col justify-center -translate-y-2 md:translate-none'>
-                                <h3 className={`${styles.name} text-[#12406D] text-xl font-semibold mb-1 text-center`}>
+                                <h3 className={`${styles.name} text-[#12406D] dark:text-white text-xl font-semibold mb-1 text-center`}>
                                     {doc.title}
                                 </h3>
                                 <small className={`${styles.dept} text-gray-400 mb-3 text-center`}>
@@ -78,7 +78,7 @@ const Documentations = () => {
                                 href={doc.pdf}
                                 data-fancybox="pdf"
                                 data-type="iframe" // ensures PDF loads as iframe
-                                className="absolute bottom-2 md:-bottom-4 group-hover:bottom-3 text-blue-700 uppercase text-sm mt-auto"
+                                className="absolute bottom-2 md:-bottom-4 group-hover:bottom-3 text-blue-700 dark:text-orange-200 uppercase text-sm mt-auto"
                             >
                                 View
                             </a>
