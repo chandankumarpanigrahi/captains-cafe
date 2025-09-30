@@ -15,7 +15,7 @@ const Counters = () => {
                     <h2 className='text-xl mb-0 whitespace-nowrap text-[#2F2F2F] dark:text-white'>09:00 am - 10:00 pm</h2>
                     <p className='text-[#7A7A7A] dark:text-gray-300'>Open Hours</p>
                 </div>
-                <div className={`${styles.card_area} bg-[#fff8f2] dark:bg-blue-950 flex flex-col px-12 py-5 justify-center items-center w-full`}>
+                <div className={`${styles.card_area} bg-[#fff8f2] dark:bg-amber-950 flex flex-col px-12 py-5 justify-center items-center w-full`}>
                     <div className={`${styles.card_icon} mb-3`}>
                         <FaMapLocationDot className='text-yellow-950 dark:text-orange-200' />
                     </div>

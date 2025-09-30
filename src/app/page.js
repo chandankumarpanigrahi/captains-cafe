@@ -7,7 +7,6 @@ import Counters from "../components/design/counters";
 import Intro from "../components/design/intro";
 import WhyChooseUs from "../components/design/why choose us";
 import HomeCta from "@/components/design/home cta";
-import MaintenancePage from "@/components/design/maintenance";
 import Featured from "@/components/design/featured";
 import PopularMenu from "@/components/design/popular menu";
 import TrendyMenu from "@/components/design/trendy dish";
@@ -40,7 +39,6 @@ export default function Home() {
       <Testimonials />
       <Blogs />
       <BottomBG />
-      {/* <MaintenancePage/> */}
     </main>
   );
 }

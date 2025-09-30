@@ -52,11 +52,6 @@
     align-items: center;
 }
 
-.qoutation {
-    position: relative;
-    color: #406990;
-}
-
 .qoutation::before {
     position: absolute;
     left: 0;

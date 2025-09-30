@@ -12,7 +12,7 @@ const Services = () => {
         <div className='container animate__animated animate__fadeInUp mb-8 md:mb-22'>
             <div className="flex flex-col lg:flex-row items-center">
                 <div className={`${styles.delight_text} flex flex-col pl-0 pr-0 md:pl-16 md:pr-12`}>
-                    <h1 className='color-primary text-4xl font-bold mb-10 text-center'>Our Services</h1>
+                    <h1 className='text-[#0e467d] dark:text-white text-4xl font-bold mb-10 text-center'>Our Services</h1>
                     <div className='flex flex-col lg:flex-row flex-wrap mb-4'>
                         <div className="w-full lg:w-1/3 mb-8 p-0 lg:pr-4">
                             <div className={`flex flex-col rounded-tl-xl rounded-br-xl border-2 border-color-primary`}>
