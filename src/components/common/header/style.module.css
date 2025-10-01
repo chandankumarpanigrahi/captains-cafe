@@ -1,7 +1,6 @@
 .header {
     border: solid 3px #1a60a3;
     height: fit-content;
-    background-color: #FFF;
     border-radius: 20rem;
     display: flex;
     flex-direction: row;

@@ -106,7 +106,7 @@ export default function MainHeader() {
     return (
         <div ref={navRef}>
             {/* Desktop Navigation */}
-            <div className={`${styles.header} container`}>
+            <div className={`${styles.header} container bg-white dark:bg-gray-800`}>
                 {/* Logo */}
                 <div className={`${styles.logo_area}`}>
                     <Link href="/">
@@ -131,7 +131,7 @@ export default function MainHeader() {
                         >
                             <Link
                                 href={item.href}
-                                className={`p-2 text-lg color-primary font-medium flex items-center ${isActive(item) ? "border-b-2 border-b-blue-900" : ""
+                                className={`p-2 text-lg text-[#0E467D] dark:text-white font-medium flex items-center ${isActive(item) ? "border-b-2 border-b-blue-900 dark:border-b-blue-200" : ""
                                     }`}
                             >
                                 {item.name}
