@@ -15,12 +15,12 @@ const TermsAndConditions = () => {
 
                 {/* Heading and Description */}
                 <div className="flex flex-col px-0 md:px-20 lg:px-80 w-full mb-16">
-                    <h1 className='color-primary text-3xl md:text-4xl font-bold mb-3 text-center'>Have Questions? We&apos;re Here to Help!</h1>
-                    <p className='text-[#374F67] text-md md:text-lg text-center'>At Captain&apos;s Cafe, we strive to provide a seamless and enjoyable experience for all our guests. These Terms & Conditions outline the rules and guidelines for using our services, including reservations, dining, and online interactions. By accessing our services, you agree to comply with these terms. Please read them carefully.</p>
+                    <h1 className='text-[#0E467D] dark:text-white text-3xl md:text-4xl font-bold mb-3 text-center'>Have Questions? We&apos;re Here to Help!</h1>
+                    <p className='text-[#374F67] dark:text-gray-300 text-md md:text-lg text-center'>At Captain&apos;s Cafe, we strive to provide a seamless and enjoyable experience for all our guests. These Terms & Conditions outline the rules and guidelines for using our services, including reservations, dining, and online interactions. By accessing our services, you agree to comply with these terms. Please read them carefully.</p>
                 </div>
 
-                <h1 className='text-2xl font-semibold text-amber-900 mb-3'>Terms & Conditions</h1>
-                <div className="w-full text-md flex gap-y-4 flex-col text-sky-800">
+                <h1 className='text-2xl font-semibold text-amber-900 dark:text-orange-300 mb-3'>Terms & Conditions</h1>
+                <div className="w-full text-md flex gap-y-4 flex-col text-sky-800 dark:text-gray-300">
                     <ol className="list-decimal text-sm lg:text-md list-inside space-y-4">
                         <li className="flex flex-col">
                             <h2 className="font-semibold">1. Introduction</h2>

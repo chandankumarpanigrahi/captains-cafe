@@ -67,16 +67,16 @@ const Career = () => {
 
                 {/* Heading and Description */}
                 <div className="flex flex-col px-0 md:px-20 lg:px-60 w-full mb-16">
-                    <h1 className='color-primary text-3xl md:text-4xl font-bold mb-3 text-center'>Voices of Delight</h1>
-                    <p className='text-[#374F67] text-md md:text-lg text-center'>Hear what our patrons have to say about their unforgettable experiences at Captain's Cafe. From the first sip of coffee to the last bite of dessert, our guests share their stories of joy and satisfaction.</p>
+                    <h1 className='text-[#0E467D] dark:text-white text-3xl md:text-4xl font-bold mb-3 text-center'>Voices of Delight</h1>
+                    <p className='text-[#374F67] dark:text-gray-300 text-md md:text-lg text-center'>Hear what our patrons have to say about their unforgettable experiences at Captain's Cafe. From the first sip of coffee to the last bite of dessert, our guests share their stories of joy and satisfaction.</p>
                 </div>
 
                 {/* Featured Section */}
-                <h3 className='text-blue-900 text-xl text-center font-semibold mb-6 lg:md-10'>Featured Rave Reviews</h3>
+                <h3 className='text-[#0E467D] dark:text-white text-xl text-center font-semibold mb-6 lg:md-10'>Featured Rave Reviews</h3>
                 <div className="flex flex-col lg:flex-row justify-between mb-18">
                     <div className="relative w-full p-12 md:px-28 md:py-10  lg:w-5/8 flex flex-col mb-6 lg:mb-0">
-                        <h1 className='text-2xl text-center md:text-left font-semibold text-amber-900 mb-3 lg:mb-4'>A Perfect Blend of Taste and Ambiance!</h1>
-                        <p className='text-gray-700 p-0 lg:pr-12  text-center md:text-left'>Captain&apos;s Cafe is a gem in Bhubaneswar! The food is delicious, the coffee is exceptional, and the cozy ambiance makes it a perfect spot to relax. The staff is friendly and attentive, adding to the wonderful experience. Highly recommended for food lovers and coffee enthusiasts!</p>
+                        <h1 className='text-2xl text-center md:text-left font-semibold text-amber-900 dark:text-orange-100 mb-3 lg:mb-4'>A Perfect Blend of Taste and Ambiance!</h1>
+                        <p className='text-gray-700 dark:text-gray-300 p-0 lg:pr-12  text-center md:text-left'>Captain&apos;s Cafe is a gem in Bhubaneswar! The food is delicious, the coffee is exceptional, and the cozy ambiance makes it a perfect spot to relax. The staff is friendly and attentive, adding to the wonderful experience. Highly recommended for food lovers and coffee enthusiasts!</p>
                         <PiQuotesFill size={65} className={`${styles.left_quote} absolute left-0 md:left-12 text-3xl md:text-7xl top-0`} />
                         <PiQuotesFill size={65} className={`${styles.right_quote} absolute right-0 md:right-12  text-3xl md:text-7xl bottom-0`} />
                     </div>
@@ -94,24 +94,24 @@ const Career = () => {
                 </div>
 
                 {/* Featured Section */}
-                <h3 className='text-blue-900 text-xl text-center font-semibold mb-6 lg:md-10'>Featured Rave Reviews</h3>
+                <h3 className='text-[#0E467D] dark:text-white text-xl text-center font-semibold mb-6 lg:md-10'>Featured Rave Reviews</h3>
                 <div className="flex flex-col md:flex-row flex-wrap gap-y-8 justify-between">
                     {/* <Card className="w-full md:w-4/9 lg:w-2/9 p-5 rounded-md flex flex-col items-center gap-0">
-                        <p className='text-md text-center text-blue-900 font-medium mb-5'>The ambiance is so relaxing, and the coffee is simply divine! A must-visit spot in Bhubaneswar.</p>
+                        <p className='text-md text-center text-[#0E467D] dark:text-white font-medium mb-5'>The ambiance is so relaxing, and the coffee is simply divine! A must-visit spot in Bhubaneswar.</p>
                         <div className="flex flex-col mt-auto items-center">
                             <Image src={user1} alt='User Icon' className='rounded-full mb-1' width={60} height={60} />
-                            <h5 className='text-md text-center text-gray-700 font-medium'>Rahul Das</h5>
-                            <h5 className='text-[12px] text-center text-gray-500'>Marketing Head, TechNest Solutions</h5>
+                            <h5 className='text-md text-center text-gray-700 dark:text-blue-300 font-medium'>Rahul Das</h5>
+                            <h5 className='text-[12px] text-center text-gray-500 dark:text-gray-300'>Marketing Head, TechNest Solutions</h5>
                         </div>
                     </Card> */}
 
                     {textTestimonials.map((value, index) => (
                         <Card key={index} className={`drop-shadow-xl hover:drop-shadow-xl/25 w-full md:w-4/9 lg:w-2/9 p-5 rounded-md flex flex-col items-center gap-0 transition-all duration-500 ease-in-out cursor-default group`}>
-                            <p className='text-md text-center text-blue-900 font-medium mb-5'>{value.testimonial}</p>
+                            <p className='text-md text-center text-[#0E467D] dark:text-white font-medium mb-5'>{value.testimonial}</p>
                             <div className="flex flex-col mt-auto items-center group-hover:-translate-y-0.5 transition-all duration-500 ease-in-out ">
                                 <Image src={value.avatar} alt='User Icon' className='rounded-full mb-1' width={60} height={60} />
-                                <h5 className='text-md text-center text-gray-700 font-medium'>{value.name}</h5>
-                                <h5 className='text-[12px] text-center text-gray-500'>{value.company}</h5>
+                                <h5 className='text-md text-center text-gray-700 dark:text-blue-300 font-medium'>{value.name}</h5>
+                                <h5 className='text-[12px] text-center text-gray-500 dark:text-gray-300'>{value.company}</h5>
                             </div>
                         </Card>
                     ))}

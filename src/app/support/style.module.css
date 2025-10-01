@@ -1,0 +1,57 @@
+.fb_icon,
+.insta_icon {
+    transition: background-color ease-in-out 0.5s;
+    background-color: #522609;
+    position: relative;
+    overflow: hidden;
+}
+
+.fb_icon:hover {
+    background-color: #324d91;
+}
+
+.insta_icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #5155D3, #9f2fca, #ff059c, #ff106e, #fca43a);
+    opacity: 0;
+    transition: opacity ease-in-out 0.5s;
+}
+
+.insta_icon:hover::before {
+    opacity: 1;
+}
+
+.insta_icon .icon {
+    position: relative;
+    z-index: 2;
+}
+
+.contact_bg_text {
+    font-size: 10rem;
+    line-height: 10rem;
+    opacity: 0.1;
+    color: #220f02;
+    text-shadow:
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    left: -3rem;
+    top: -1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .contact_bg_text {
+        font-size: 6rem;
+        line-height: 6rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contact_bg_text {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+}

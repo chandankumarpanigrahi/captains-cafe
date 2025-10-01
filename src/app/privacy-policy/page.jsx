@@ -15,12 +15,12 @@ const PrivacyPolicy = () => {
 
                 {/* Heading and Description */}
                 <div className="flex flex-col px-0 md:px-20 lg:px-80 w-full mb-16">
-                    <h1 className='color-primary text-3xl md:text-4xl font-bold mb-3 text-center'>Have Concerns? We&apos;re Here to Help!</h1>
-                    <p className='text-[#374F67] text-md md:text-lg text-center'>At Captain&apos;s Cafe, your privacy is our priority. Our privacy policy outlines how we collect, use, and protect your personal information. We are committed to transparency and ensuring that your data is handled with care. Explore our policy to understand your rights and how we safeguard your information.</p>
+                    <h1 className='text-[#0E467D] dark:text-white text-3xl md:text-4xl font-bold mb-3 text-center'>Have Concerns? We&apos;re Here to Help!</h1>
+                    <p className='text-[#374F67] dark:text-gray-300 text-md md:text-lg text-center'>At Captain&apos;s Cafe, your privacy is our priority. Our privacy policy outlines how we collect, use, and protect your personal information. We are committed to transparency and ensuring that your data is handled with care. Explore our policy to understand your rights and how we safeguard your information.</p>
                 </div>
 
-                <h1 className='text-2xl font-semibold text-amber-900 mb-3'>Privacy Policy</h1>
-                <div className="w-full text-md flex gap-y-4 flex-col text-sky-800">
+                <h1 className='text-2xl font-semibold text-amber-900 dark:text-orange-300 mb-3'>Privacy Policy</h1>
+                <div className="w-full text-md flex gap-y-4 flex-col text-sky-800 dark:text-gray-300">
                     <ol className="list-decimal text-sm lg:text-md list-inside space-y-4">
                         <li className="flex flex-col">
                             <h2 className="font-semibold">1. Introduction</h2>
