@@ -119,6 +119,11 @@ const ContactUs = () => {
                     </div>
                 </div>
 
+
+
+
+                {/* Menu Frame */}
+                <a href="https://dinein.petpooja.com/qr/31vzyfmgbu/1" target='_blank'>Link</a>
             </div>
 
         </>
