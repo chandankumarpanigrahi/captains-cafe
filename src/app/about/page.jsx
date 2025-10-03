@@ -220,7 +220,7 @@ const About = () => {
                         <CarouselNext className={`${styles.right_arrow} border-0 bg-transparent`} /> */}
                     </Carousel>
                 </div>
-            <Link className="mt-5 text-center flex justify-center text-amber-900 dark:text-gray-200 w-full" href="# ">See all reviews by our customers<MdArrowOutward className='ps-2' size={26}/></Link>
+                <Link className="mt-5 text-center flex justify-center text-amber-900 dark:text-gray-200 w-full" href="# ">See all reviews by our customers<MdArrowOutward className='ps-2' size={26} /></Link>
             </div>
         </div>
     )
