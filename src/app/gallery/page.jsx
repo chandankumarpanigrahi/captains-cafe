@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "./style.module.css";
 import { Fancybox } from "@fancyapps/ui";
-import "@fancyapps/ui/dist/fancybox/    .css";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import Image from "next/image";
 
 const GalleryPage = () => {
