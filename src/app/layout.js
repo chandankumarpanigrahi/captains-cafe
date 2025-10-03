@@ -37,7 +37,7 @@ export const metadata = {
   description: 'A Complete Cafe Chain Management by The Scottish Cafe & Catering',
 };
 
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 export default function RootLayout({ children }) {
   return (

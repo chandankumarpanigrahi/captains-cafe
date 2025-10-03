@@ -3,7 +3,10 @@
 'use client'
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaTools, FaClock } from 'react-icons/fa';
+import { FaClock } from 'react-icons/fa';
+
+import logoLight from "../../../assets/images/logo_light.png"
+import Image from 'next/image';
 
 const MaintenancePage = () => {
     return (
@@ -16,11 +19,11 @@ const MaintenancePage = () => {
             >
                 <motion.div
                     className="flex justify-center text-yellow-400 mb-6"
-                    initial={{ rotate: 0 }}
-                    animate={{ rotate: 360 }}
+                    initial={{ rotateY: 0 }}
+                    animate={{ rotateY: 360 }}
                     transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
                 >
-                    <FaTools size={60} />
+                    <Image src={logoLight} alt='logo' width={120} />
                 </motion.div>
 
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">We&apos;re Under Maintenance</h1>
