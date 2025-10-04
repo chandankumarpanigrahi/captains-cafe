@@ -3,6 +3,7 @@
 import React from 'react'
 import CountUp from '@/components/ui/CountUp/page'
 import Image from 'next/image'
+import styles from "./style.module.css"
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 
@@ -11,6 +12,12 @@ import cupImage from "../../assets/images/pages/menu/cup.png"
 import noodleFork from "../../assets/images/pages/menu/noodleFork.png"
 import trending1 from "../../assets/images/pages/menu/trending1.png"
 import trending2 from "../../assets/images/pages/menu/trending2.png"
+import cafe from "../../assets/images/pages/menu/cafe.jpg"
+import plate from "../../assets/images/pages/menu/plate.png"
+import leaf from "../../assets/images/pages/menu/leaf.png"
+import middleAbstracts from "../../assets/images/pages/menu/middleAbstracts.png"
+import testeText from "../../assets/images/pages/menu/testeText.png"
+import noodleMenu from "../../assets/images/pages/menu/noodleMenu.png"
 
 // icons
 import { MdArrowOutward } from "react-icons/md";
@@ -22,10 +29,10 @@ const ContactUs = () => {
         <>
             <div className='container py-10'>
                 {/* Top Part */}
-                <div className="flex flex-col lg:flex-row">
+                <div className="flex flex-col lg:flex-row relative pb-16">
 
                     {/* Left */}
-                    <div className="w-full lg:w-2/7 pr-0 lg:pr-3">
+                    <div className="w-full lg:w-2/7 mb-8 lg:mb-0 pr-0 lg:pr-3">
                         <div className="flex flex-col gap-4 w-full">
                             <div className='m-0 lg:mt-8'>
                                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale mb-2">
@@ -64,8 +71,24 @@ const ContactUs = () => {
                     </div>
 
                     {/* Middle */}
-                    <div className="w-full lg:w-3/7">
-                        <div className="w-full h-10 bg-red-100"></div>
+                    <div className="w-full lg:w-3/7 mb-4">
+                        <div className="w-full flex justify-center items-center mt-16 relative">
+                            <Image src={cafe} alt='Cafe Image' className='w-[280px] lg:w-[360px] h-[400px] lg:h-[500px] object-cover rounded-full p-4 lg:p-8 border-4 border-[#0B3F71] lg:border-b-transparent' />
+                            <div className='bg-[#12406D] size-48 absolute -top-18 rounded-full p-4 cursor-default group'>
+                                <div className='w-full h-full bg-[#102E4B] rounded-full border-2 border-white flex justify-center items-center relative'>
+                                    <p className='text-white text-left text-3xl scale-85 w-2/3 group-hover:scale-90 transition-all duration-100 ease-in-out'>Sail Into Flavors</p>
+                                    <MdArrowOutward size={44} className='text-white absolute right-5 top-10 opacity-20 group-hover:scale-110 transition-all duration-100 ease-in-out' />
+                                </div>
+                            </div>
+                            <div className='size-56 absolute bottom-10 lg:bottom-14 scale-100 lg:scale-125'>
+                                <div className="w-full h-full relative">
+                                    <Image src={plate} alt='Plate Image' className={`${styles.plate} absolute inset-0 z-3`} />
+                                    <Image src={leaf} alt='Plate Image' className={`${styles.leaf} absolute inset-0 z-2 scale-115`} />
+                                    <div className='w-full h-full border-3 border-white rounded-full scale-90'></div>
+                                </div>
+                            </div>
+                            <Image src={testeText} alt='Taste the difference Text' className='absolute -bottom-12 hidden lg:block scale-50' />
+                        </div>
                     </div>
 
                     {/* Right */}
@@ -117,13 +140,15 @@ const ContactUs = () => {
                         </div>
                         <hr />
                     </div>
+                    <Image src={middleAbstracts} alt='Spice Abstracts' className='absolute -bottom-20 scale-90 hidden lg:block' />
+                </div>
+                <div className="flex justify-center w-full">
+                    <Image src={noodleMenu} alt="Menu Text" width={220} />
                 </div>
 
 
 
 
-                {/* Menu Frame */}
-                <a href="https://dinein.petpooja.com/qr/31vzyfmgbu/1" target='_blank'>Link</a>
             </div>
 
         </>

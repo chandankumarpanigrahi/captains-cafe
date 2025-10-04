@@ -1,0 +1,27 @@
+.plate{
+    animation: circle2 100s linear infinite;
+}
+
+.leaf{
+    animation: circle1 30s linear infinite;
+}
+
+@keyframes circle1 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circle2 {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
