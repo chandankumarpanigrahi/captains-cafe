@@ -74,9 +74,9 @@ const ContactUs = () => {
                     <div className="w-full lg:w-3/7 mb-4">
                         <div className="w-full flex justify-center items-center mt-16 relative">
                             <Image src={cafe} alt='Cafe Image' className='w-[280px] lg:w-[360px] h-[400px] lg:h-[500px] object-cover rounded-full p-4 lg:p-8 border-4 border-[#0B3F71] lg:border-b-transparent' />
-                            <div className='bg-[#12406D] size-48 absolute -top-18 rounded-full p-4 cursor-default group'>
+                            <div className='bg-[#12406D] size-48 absolute -top-16 rounded-full p-4 cursor-default group'>
                                 <div className='w-full h-full bg-[#102E4B] rounded-full border-2 border-white flex justify-center items-center relative'>
-                                    <p className='text-white text-left text-3xl scale-85 w-2/3 group-hover:scale-90 transition-all duration-100 ease-in-out'>Sail Into Flavors</p>
+                                    <p className='text-white text-left text-3xl scale-85 w-2/3 group-hover:scale-90 transition-all duration-400 ease-in-out'>Sail Into Flavors</p>
                                     <MdArrowOutward size={44} className='text-white absolute right-5 top-10 opacity-20 group-hover:scale-110 transition-all duration-100 ease-in-out' />
                                 </div>
                             </div>
