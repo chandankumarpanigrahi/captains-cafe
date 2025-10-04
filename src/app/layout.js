@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
                 <Footer />
                 <PostFooter />
               </div>
-              <div className="fixed z-200 left-3 bottom-4 dark:bg-white border-1 border-gray-600 light:bg-gray-900 shadow-xl rounded-full">
+              <div className="fixed z-200 left-3 bottom-4 bg-white dark:bg-gray-900 border-1 border-gray-600 light:bg-gray-900 shadow-xl rounded-full">
                 <ThemeToggle />
               </div>
             </div>

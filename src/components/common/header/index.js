@@ -266,7 +266,7 @@ export default function MainHeader() {
                                 ) : (
                                     <Link
                                         href={item.href}
-                                        className={`block p-3 text-lg ${isActive(item) ? "bg-primary-dark text-white" : "text-primary"
+                                        className={`block p-3 text-lg ${isActive(item) ? "bg-primary-dark text-white" : "text-primary dark:text-blue-900"
                                             } rounded-md`}
                                     >
                                         {item.name}

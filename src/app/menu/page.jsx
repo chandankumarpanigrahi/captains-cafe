@@ -33,7 +33,7 @@ const ContactUs = () => {
 
                     {/* Left */}
                     <div className="w-full lg:w-2/7 mb-8 lg:mb-0 pr-0 lg:pr-3">
-                        <div className="flex flex-col gap-4 w-full">
+                        <div className="flex flex-col gap-4 w-full items-center">
                             <div className='m-0 lg:mt-8'>
                                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale mb-2">
                                     <Avatar className="border-2 border-white">
