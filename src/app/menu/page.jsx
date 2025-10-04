@@ -49,22 +49,22 @@ const ContactUs = () => {
                                         +5k
                                     </Avatar>
                                 </div>
-                                <p className='text-gray-600 text-lg mb-1'>More Than
+                                <p className='text-gray-600 dark:text-gray-400 text-lg mb-1'>More Than
                                     <CountUp
                                         from={0}
                                         to={5000}
                                         separator=","
                                         direction="up"
                                         duration={2}
-                                        className='text-3xl ml-2 text-blue-900 font-semibold'
+                                        className='text-3xl ml-2 text-blue-900 font-semibold dark:text-white'
                                     />
                                 </p>
-                                <p className='text-center text-sm font-semibold text-blue-950'>Positive and Impressive Reviews</p>
+                                <p className='text-center text-sm font-semibold text-blue-950 dark:text-white dark:font-normal'>Positive and Impressive Reviews</p>
                             </div>
                             <hr />
                             <div className='relative h-full w-full'>
                                 <Image src={cupImage} alt='cup Image' className='w-[120px]  absolute bottom-0 left-0' />
-                                <p className='text-right text-[15px] text-blue-900 w-3/5 float-end'>Indulge your senses with our diverse menu, offering a unique blend of classic favorites and innovative creations. Discover the perfect cup of coffee or the ideal dish to complement your day at The Captain&apos;s Cafe.</p>
+                                <p className='text-right text-[15px] text-blue-900 dark:text-blue-300 w-3/5 float-end'>Indulge your senses with our diverse menu, offering a unique blend of classic favorites and innovative creations. Discover the perfect cup of coffee or the ideal dish to complement your day at The Captain&apos;s Cafe.</p>
                             </div>
                             <hr />
                         </div>
@@ -112,9 +112,9 @@ const ContactUs = () => {
                             <div className="flex flex-row">
                                 <Image src={trending1} alt='Trending Item 1' width={80} />
                                 <div className="flex-flex-col pl-3 w-full">
-                                    <small className='text-gray-600'>Bestseller Dish</small>
+                                    <small className='text-gray-600 dark:text-gray-400'>Bestseller Dish</small>
                                     <div className="flex items-center gap-2 w-full">
-                                        <h1 className='text-xl font-semibold text-blue-900'>Khopra Patties</h1>
+                                        <h1 className='text-xl font-semibold text-blue-900 dark:text-blue-300'>Khopra Patties</h1>
                                         <div className="border-2 border-green-600 text-green-600 size-4 flex justify-center items-center"><FaCircle size={10} /></div>
                                     </div>
                                     <h6 className='text-amber-600 font-semibold'>₹ 129.00</h6>
@@ -123,9 +123,9 @@ const ContactUs = () => {
                             <div className="flex flex-row">
                                 <Image src={trending2} alt='Trending Item 1' width={80} />
                                 <div className="flex-flex-col pl-3 w-full">
-                                    <small className='text-gray-600'>Bestseller Dish</small>
+                                    <small className='text-gray-600 dark:text-gray-400'>Bestseller Dish</small>
                                     <div className="flex items-center gap-2 w-full">
-                                        <h1 className='text-xl font-semibold text-blue-900'>Cheese Noodle</h1>
+                                        <h1 className='text-xl font-semibold text-blue-900 dark:text-blue-300'>Cheese Noodle</h1>
                                         <div className="border-2 border-red-600 text-red-600 size-4 flex justify-center items-center"><IoTriangle size={10} /></div>
                                     </div>
                                     <h6 className='text-amber-600 font-semibold'>₹ 199.00</h6>
@@ -135,8 +135,8 @@ const ContactUs = () => {
 
                         <hr />
                         <div className="flex justify-center gap-2 my-3 ">
-                            <p className="uppercase text-blue-900 font-medium">VIEW FULL MENU</p>
-                            <MdArrowOutward size={23} className='text-blue-900' />
+                            <p className="uppercase text-blue-900 dark:text-blue-300 font-medium">VIEW FULL MENU</p>
+                            <MdArrowOutward size={23} className='text-blue-900 dark:text-blue-300' />
                         </div>
                         <hr />
                     </div>
