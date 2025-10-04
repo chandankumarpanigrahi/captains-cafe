@@ -9,7 +9,6 @@ import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/design/theme toggle";
 import MaintenancePage from "@/components/design/maintenance";
 
-
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
@@ -41,8 +40,8 @@ const MAINTENANCE_MODE = false;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body suppressHydrationWarning={true}>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {MAINTENANCE_MODE ? (
             <MaintenancePage />

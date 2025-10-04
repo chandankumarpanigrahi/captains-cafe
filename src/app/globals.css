@@ -242,6 +242,7 @@ body::before {
   background-color: #0C3C6A !important;
   padding: 5px !important;
   box-shadow: none !important;
+  bottom: 90px !important;
 }
 
 .scroll-to-top>svg {
