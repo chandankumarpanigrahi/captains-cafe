@@ -10,6 +10,7 @@ export default function Button({
     bgColor = "bg-primary-dark",
     textColor = "text-white",
     className = "",
+    link = "#",
     ...props
 }) {
     // Radius classes
@@ -46,7 +47,7 @@ export default function Button({
         : sideRadiusMap[radiusSide];
 
     return (
-        <button
+        <a href={link}
             className={`flex items-center justify-center gap-2 w-fit uppercase transition-colors 
         ${styles.main_btn}
         ${sizeMap[size]}
@@ -60,6 +61,6 @@ export default function Button({
             {iconPosition === "left" && icon}
             {text}
             {iconPosition === "right" && icon}
-        </button>
+        </a>
     );
 }

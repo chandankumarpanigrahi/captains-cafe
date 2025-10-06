@@ -183,7 +183,7 @@ export default function MainHeader() {
 
                 {/* Desktop Buttons */}
                 <ul className="ml-auto flex flex-row gap-2 max-lg:hidden">
-                    <MainButton text="Order Now" className="inner_shadow" />
+                    <MainButton text="Order Now" className="inner_shadow" link="/menu" />
                     <MainButton icon={<FaRegUser />} className="inner_shadow" />
                 </ul>
 
@@ -279,6 +279,7 @@ export default function MainHeader() {
                                 text="Order Now"
                                 className="inner_shadow w-full justify-center"
                                 size="lg"
+                                link="/menu"
                             />
                             <MainButton
                                 icon={<FaRegUser />}
