@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 
 export default function TawkToChat() {
     useEffect(() => {
-        // Check if already loaded
         if (document.getElementById('tawk-to-script')) return;
 
         const scriptContent = `

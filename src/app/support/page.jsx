@@ -6,7 +6,9 @@ import EmblaCarouselMultiple from '@/components/design/fade image';
 
 // Icons
 import { IoMdCall } from "react-icons/io";
-import TawkToChat from '@/components/design/TawkToChat';
+import { FiBox } from "react-icons/fi";
+import { IoGlobeOutline } from "react-icons/io5";
+import { TbCoffee } from "react-icons/tb";
 
 const ContactUs = () => {
     return (
@@ -21,31 +23,30 @@ const ContactUs = () => {
 
                 {/* Support Numbers */}
                 <div className="flex flex-col lg:flex-row gap-y-5 mb-20 w-full justify-evenly">
-                    <div className="w-full lg:w-1/4 flex flex-col bg-green-50 dark:bg-green-950 border-2 border-green-600 rounded-lg overflow-hidden">
-                        <div className='py-6 pr-2 pl-24 text-2xl lg:text-3xl text-green-600 dark:text-green-100 font-light'><strong className='font-bold'>Order</strong> Related Support</div>
-                        <div className="bg-green-600 p-2 text-green-40 flex flex-row justify-center items-center gap-3 text-white">
+                    <div className="w-full lg:w-3/10 flex flex-col bg-green-50 dark:bg-green-950 border-2 border-green-600 rounded-lg overflow-hidden relative">
+                        <FiBox size={100} className='absolute text-green-600 top-2 left-8 opacity-15 z-1'/>
+                        <div className='py-6 pr-2 pl-24 text-2xl lg:text-3xl text-green-600 dark:text-green-100 font-light relative z-2'><strong className='font-bold'>Order</strong> Related Support</div>
+                        <div className="bg-green-600 p-2 text-green-40 flex flex-row justify-center items-center gap-3 text-white mt-auto">
                             <IoMdCall size={32} className='opacity-70' />
-                            <p className='text-2xl lg:text-3xl font-bold'>1800 159 159</p>
+                            <p className='text-2xl font-bold'>1800 159 159</p>
                         </div>
                     </div>
-                    <div className="w-full lg:w-1/4 flex flex-col bg-blue-50 dark:bg-blue-950 border-2 border-blue-900 rounded-lg overflow-hidden">
-                        <div className='py-6 pr-2 pl-24 text-2xl lg:text-3xl text-blue-900 dark:text-blue-100 font-light'><strong className='font-bold'>Website</strong> Related Support</div>
-                        <div className="bg-blue-900 p-2 text-blue-40 flex flex-row justify-center items-center gap-3 text-white">
+                    <div className="w-full lg:w-3/10 flex flex-col bg-blue-50 dark:bg-blue-950 border-2 border-blue-900 rounded-lg overflow-hidden relative">
+                        <IoGlobeOutline size={100} className='absolute text-blue-600 top-2 left-8 opacity-15 z-1'/>
+                        <div className='py-6 pr-2 pl-24 text-2xl lg:text-3xl text-blue-900 dark:text-blue-100 font-light relative z-2'><strong className='font-bold'>Website</strong> Related Support</div>
+                        <div className="bg-blue-900 p-2 text-blue-40 flex flex-row justify-center items-center gap-3 text-white mt-auto">
                             <IoMdCall size={32} className='opacity-70' />
-                            <p className='text-2xl lg:text-3xl font-bold'>+91 89596 89623</p>
+                            <p className='text-2xl font-bold'>+91 89596 89623</p>
                         </div>
                     </div>
-                    <div className="w-full lg:w-1/4 flex flex-col bg-orange-50 dark:bg-orange-950 border-2 border-orange-900 rounded-lg overflow-hidden">
-                        <div className='py-6 pr-2 pl-24 text-2xl lg:text-3xl text-orange-900 dark:text-orange-100 font-light'><strong className='font-bold'>Cafe</strong> Related Support</div>
-                        <div className="bg-orange-900 p-2 text-orange-40 flex flex-row justify-center items-center gap-3 text-white">
+                    <div className="w-full lg:w-3/10 flex flex-col bg-orange-50 dark:bg-orange-950 border-2 border-orange-900 rounded-lg overflow-hidden relative">
+                        <TbCoffee size={100} className='absolute text-amber-600 top-2 left-8 opacity-15 z-1'/>
+                        <div className='py-6 pr-2 pl-24 text-2xl lg:text-3xl text-orange-900 dark:text-orange-100 font-light relative z-2'><strong className='font-bold'>Cafe</strong> Related Support</div>
+                        <div className="bg-orange-900 p-2 text-orange-40 flex flex-row justify-center items-center gap-3 text-white mt-auto">
                             <IoMdCall size={32} className='opacity-70' />
-                            <p className='text-2xl lg:text-3xl font-bold'>1800 066 011</p>
+                            <p className='text-2xl font-bold'>1800 066 011</p>
                         </div>
                     </div>
-                </div>
-
-                <div className='w-full'>
-                    <TawkToChat/>
                 </div>
 
                 <div className='flex flex-col-reverse lg:flex-row items-center'>
