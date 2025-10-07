@@ -51,15 +51,4 @@
     .card_area h2 {
         font-weight: 600;
     }
-
-    .all_cards .card_area:nth-child(1) h2,
-    .all_cards .card_area:nth-child(3) h2 {
-        /* color: #1c398e, */
-        color: #bbcdff
-    }
-
-    .all_cards .card_area:nth-child(2) h2 {
-        /* color: #432004, */
-        color: #ffdec4
-    }
 }

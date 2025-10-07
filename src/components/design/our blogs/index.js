@@ -88,7 +88,7 @@ const Blogs = () => {
 
                     {/* Maps Area */}
                     <h1 className='text-[#0e467d] dark:text-white text-4xl font-bold mb-8 text-center'>Visit to Our Cafe</h1>
-                    <div className='rounded-2xl border-2 border-[#254F78] overflow-hidden'>
+                    <div className='rounded-2xl border-2 border-[#254F78] overflow-hidden relative'>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2646.1430926936305!2d85.80470970127055!3d20.29151302873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909f0f5fdbe79%3A0xd33e65388725eb77!2sThe%20Captain%27s%20Cafe!5e0!3m2!1sen!2sin!4v1756447234334!5m2!1sen!2sin"
                             width="100%"
@@ -98,6 +98,7 @@ const Blogs = () => {
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
                         />
+                        {/* <iframe src="https://www.google.com/maps/d/embed?mid=1UDBNRY_6iOpWO05pVD2-QdIDZdK0EJg&ehbc=2E312F" width="100%" height="480" style={{ border: 0 }}></iframe> */}
                     </div>
                 </div>
             </div>
