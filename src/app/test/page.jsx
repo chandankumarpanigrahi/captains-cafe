@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useActionState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState, useEffect } from 'react'
 import {
@@ -29,6 +29,15 @@ import TreeStructure from '@/components/ui/TreeStructure'
 import EmblaCarousel from '@/components/design/fade image'
 import CalMe from '@/components/ui/calMe'
 import ShareCard from '@/components/ui/shareCard'
+
+// Select
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 
 
 const lunch = [
@@ -91,37 +100,38 @@ const breakfast = [
 ];
 
 const Test = ({ params }) => {
+    const [selected, setSelected] = useState("crpf");
     const router = useRouter();
     const redirect = (path) => {
         router.push(path)
     }
-
+    
     // For ShareCard
     const { slug } = params;
-
+    
     const menus = [
         { id: "menu1", label: "Menu 1", name: "Regular Menu" },
         { id: "menu2", label: "Menu 2", name: "Special Menu" },
         { id: "menu3", label: "Menu 3", name: "Captain's Special" },
         { id: "menu4", label: "Menu 4", name: "President's Special" },
     ];
-
+    
     // useState and useEffect
     const [count, setCount] = useState(0);
-
+    
     const [name, setName] = useState("");
-
+    
     const [inputName, setInputName] = useState("");
     const [manualName, setManualName] = useState("");
     const updateDetails = () => {
         setManualName(inputName);
     }
-
+    
     useEffect(() => {
         console.log("The count changed! It is now: ", count);
     }, [count]);
-
-
+    
+    
     return (
         <div className='container mt-40'>
             <Tabs defaultValue="lunch" className="w-full mb-5">
@@ -333,6 +343,27 @@ const Test = ({ params }) => {
                 title="Amazing Blog Post You Should Read!"
                 className="mt-8"
             />
+            <div className="mb-20"></div>
+
+            {/* Select */}
+            <div className="flex justify-center mb-4">
+                <Select onValueChange={(value) => setSelected(value)}>
+                    <SelectTrigger className="w-[260px] bg-white">
+                        <SelectValue placeholder="Select" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="crpf">Captain's Cafe, CRPF, Bhubaneswar</SelectItem>
+                        <SelectItem value="saheed">Captain's Cafe, Saheed Nagar, Bhubaneswar</SelectItem>
+                        <SelectItem value="cutm">Centurion University, Bhubaneswar</SelectItem>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div>
+                <div className={`${ selected === "crpf" ? "block" : "hidden"} w-full h-40 bg-red-300 rounded`}></div> 
+                <div className={`${ selected === "saheed" ? "block" : "hidden"} w-full h-40 bg-blue-300 rounded`}></div> 
+                <div className={`${ selected === "cutm" ? "block" : "hidden"} w-full h-40 bg-green-300 rounded`}></div> 
+            </div>
+            
             <div className="mb-20"></div>
 
             <div className="flex flex-col lg:flex-row flex-wrap w-full">
