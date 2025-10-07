@@ -4,8 +4,15 @@ import React from 'react'
 import CountUp from '@/components/ui/CountUp/page'
 import Image from 'next/image'
 import styles from "./style.module.css"
-
+import { useState } from 'react'
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 
 // Images
 import cupImage from "../../assets/images/pages/menu/cup.png"
@@ -25,6 +32,10 @@ import { FaCircle } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 
 const ContactUs = () => {
+
+    // Tab Design
+    const [tabview, setTabview] = useState("cafe")
+
     return (
         <>
             <div className='container py-10'>
@@ -61,7 +72,7 @@ const ContactUs = () => {
                                 </p>
                                 <p className='text-center text-sm font-semibold text-blue-950 dark:text-white dark:font-normal'>Positive and Impressive Reviews</p>
                             </div>
-                            <hr className='w-full'/>
+                            <hr className='w-full' />
                             <div className='relative h-full w-full'>
                                 <Image src={cupImage} alt='cup Image' className='w-[120px]  absolute bottom-0 left-0' />
                                 <p className='text-right text-[15px] text-blue-900 dark:text-blue-300 w-3/5 float-end'>Indulge your senses with our diverse menu, offering a unique blend of classic favorites and innovative creations. Discover the perfect cup of coffee or the ideal dish to complement your day at The Captain&apos;s Cafe.</p>
@@ -150,8 +161,40 @@ const ContactUs = () => {
                     <Image src={noodleMenu} alt="Menu Text" width={220} />
                 </div>
 
+                {/* Tabs Main Start */}
+                <div className='flex justify-center mb-6'>
+                    <div className="rounded-full flex flex-row p-1 bg-white shadow-[inset_0_2px_4px_3px_rgba(0,0,0,0.19)]">
+                        <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-full w-fit cursor-pointer text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("cafe")}>Cafe Menu</div>
+                        <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-full w-fit cursor-pointer text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("catering")}>Catering Menu</div>
+                    </div>
+                </div>
+
+                <div>
+                    {/* Cafe Tab Start */}
+                    <div className={`${tabview === "cafe" ? "block" : "hidden"} w-full h-50 bg-red-900`}>
+                        <div className="flex justify-center">
+                            <Select>
+                                <SelectTrigger className="w-[180px] bg-white">
+                                    <SelectValue placeholder="Select" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="crpf">Light</SelectItem>
+                                    <SelectItem value="saheed">Dark</SelectItem>
+                                    <SelectItem value="cutm">System</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
+                    {/* Cafe Tab End */}
 
 
+                    {/* Catering Tab Start */}
+                    <div className={`${tabview === "catering" ? "block" : "hidden"} w-full h-50 bg-blue-900`}>
+
+                    </div>
+                    {/* Catering Tab End */}
+                </div>
+                {/* Tabs Main End */}
 
             </div>
 

@@ -100,7 +100,7 @@ const breakfast = [
 ];
 
 const Test = ({ params }) => {
-    const [selected, setSelected] = useState("crpf");
+    const [selected, setSelected] = useState("red   ");
     const router = useRouter();
     const redirect = (path) => {
         router.push(path)
@@ -352,16 +352,16 @@ const Test = ({ params }) => {
                         <SelectValue placeholder="Select" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="crpf">Captain's Cafe, CRPF, Bhubaneswar</SelectItem>
-                        <SelectItem value="saheed">Captain's Cafe, Saheed Nagar, Bhubaneswar</SelectItem>
-                        <SelectItem value="cutm">Centurion University, Bhubaneswar</SelectItem>
+                        <SelectItem value="red">Red</SelectItem>
+                        <SelectItem value="blue">Blue</SelectItem>
+                        <SelectItem value="green">Green</SelectItem>
                     </SelectContent>
                 </Select>
             </div>
             <div>
-                <div className={`${ selected === "crpf" ? "block" : "hidden"} w-full h-40 bg-red-300 rounded`}></div> 
-                <div className={`${ selected === "saheed" ? "block" : "hidden"} w-full h-40 bg-blue-300 rounded`}></div> 
-                <div className={`${ selected === "cutm" ? "block" : "hidden"} w-full h-40 bg-green-300 rounded`}></div> 
+                <div className={`${ selected === "red" ? "block" : "hidden"} w-full h-40 bg-red-300 rounded`}></div> 
+                <div className={`${ selected === "blue" ? "block" : "hidden"} w-full h-40 bg-blue-300 rounded`}></div> 
+                <div className={`${ selected === "green" ? "block" : "hidden"} w-full h-40 bg-green-300 rounded`}></div> 
             </div>
             
             <div className="mb-20"></div>
