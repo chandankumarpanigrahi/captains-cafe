@@ -13,6 +13,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import { QRCode } from "@/components/kibo-ui/qr-code";
+import PathCopy from '@/components/design/path copy';
+import ShareCard from '@/components/ui/shareCard';
 
 // Images
 import cupImage from "../../assets/images/pages/menu/cup.png"
@@ -30,6 +33,7 @@ import noodleMenu from "../../assets/images/pages/menu/noodleMenu.png"
 import { MdArrowOutward } from "react-icons/md";
 import { FaCircle } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
+import { AiTwotonePushpin } from "react-icons/ai";
 
 // JSON Files
 import menu from "../../data/menu.json"
@@ -40,7 +44,8 @@ const ContactUs = () => {
     // Tab Design
     const [tabview, setTabview] = useState("cafe")
     const [selection, setSelection] = useState("saheed")
-    const [viewmenu, setViewmenu] = useState("lunch")
+    const [viewmenu, setViewmenu] = useState("food")
+    const [viewCateringMenu, setViewCateringMenu] = useState("lunch")
 
     return (
         <>
@@ -169,9 +174,9 @@ const ContactUs = () => {
 
                 {/* Tabs Main Start */}
                 <div className='flex justify-center mb-6'>
-                    <div className="rounded-full flex flex-row p-1 bg-white shadow-[inset_0_2px_4px_3px_rgba(0,0,0,0.19)]">
-                        <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-full w-fit cursor-pointer text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("cafe")}>Cafe Menu</div>
-                        <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-full w-fit cursor-pointer text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("catering")}>Catering Menu</div>
+                    <div className="rounded-xl md:rounded-full flex flex-col md:flex-row p-1 bg-white shadow-[inset_0_2px_4px_3px_rgba(0,0,0,0.19)]">
+                        <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("cafe")}>Cafe Menu</div>
+                        <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("catering")}>Catering Menu</div>
                     </div>
                 </div>
 
@@ -197,16 +202,16 @@ const ContactUs = () => {
                         {/* ============== SAHEED NAGAR CAFE MENU START ================== */}
                         <div className={`${selection === "saheed" ? "block" : "hidden"} w-full h-fit`}>
                             <div className="flex flex-wrap flex-col lg:flex-row h-fit">
-                                <div className="w-full lg:w-2/3 h-full">
-                                    <ul className='px-4 flex flex-row overflow-x-auto mb-4'>
-                                        <li className={`${viewmenu === "lunch" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-1/3 text-center uppercase font-semibold cursor-pointer p-3`} onClick={() => setViewmenu("lunch")}>Lunch Menu</li>
-                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-1/3 text-center uppercase font-semibold cursor-pointer p-3`} onClick={() => setViewmenu("bakery")}>Bakery Menu</li>
-                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-1/3 text-center uppercase font-semibold cursor-pointer p-3`} onClick={() => setViewmenu("beverage")}>Beverage Menu</li>
+                                <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
+                                    <ul className='px-4 flex flex-row flex-nowrap overflow-x-auto w-full mb-4'>
+                                        <li className={`${viewmenu === "food" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("food")}>Food Menu</li>
+                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("bakery")}>Bakery Menu</li>
+                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("beverage")}>Beverage Menu</li>
                                     </ul>
 
-                                    {/* Lunch */}
-                                    <div className={`${viewmenu === "lunch" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
-                                        {menu.saheedNagar.lunch.map((value, index) => (
+                                    {/* Food */}
+                                    <div className={`${viewmenu === "food" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                        {menu.saheedNagar.food.map((value, index) => (
                                             <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
                                                 <Image
                                                     src={value.image}
@@ -245,12 +250,24 @@ const ContactUs = () => {
                                     </div>
 
                                 </div>
-                                <div className="w-full lg:w-1/3 h-50 pl-0 lg:pl-4">
-                                        <div className="flex flex-col w-full">
-                                            <Card className="p-3 rounded-md">
-                                                <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
-                                            </Card>
-                                        </div>
+                                <div className="w-full lg:w-1/4 h-full">
+                                    <div className="flex flex-col w-full gap-4">
+                                        <Card className="p-3 rounded-md gap-0">
+                                            <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
+                                            <QRCode data={menu.saheedNagar.qrLink[0].link} className="p-5" />
+                                        </Card>
+                                        <Card className="p-3 rounded-md gap-0">
+                                            <p className='text-blue-900 font-semibold text-center mb-2'>or Order from,</p>
+
+                                        </Card>
+                                        <Card className="p-3 rounded-md gap-0">
+                                            <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                            <ShareCard
+                                                title="Amazing Blog Post You Should Read!"
+                                            />
+                                            {/* <PathCopy /> */}
+                                        </Card>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -275,8 +292,72 @@ const ContactUs = () => {
 
 
                     {/* Catering Tab Start */}
-                    <div className={`${tabview === "catering" ? "block" : "hidden"} w-full h-50 bg-blue-900`}>
+                    <div className={`${tabview === "catering" ? "block" : "hidden"} w-full`}>
+                        <div className="flex flex-wrap flex-col lg:flex-row h-fit">
+                                <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
+                                    <ul className='px-4 flex flex-row flex-nowrap overflow-x-auto w-full mb-4'>
+                                    <li className={`${viewCateringMenu === "lunch" ?  "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("lunch")}>Lunch Menu</li>
+                                    <li className={`${viewCateringMenu === "presindent" ?  "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("presindent")}>Presindent&apos;s Special</li>
+                                    <li className={`${viewCateringMenu === "captain" ?  "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("captain")}>Captain&apos;s Special</li>
+                                </ul>
 
+                                {/* Lunch Menu*/}
+                                <div className={`${viewCateringMenu === "lunch" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                    {menu.catering.lunch.map((value, index) => (
+                                        <div key={index} className='relative aspect-[2/3] w-full mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                            <Image
+                                                src={value.image}
+                                                alt='Cafe'
+                                                fill
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+
+
+                                {/* Presindent Special */}
+                                <div className={`${viewCateringMenu === "presindent" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                    {menu.catering.president.map((value, index) => (
+                                        <div key={index} className='relative aspect-[2/3] w-full mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                            <Image
+                                                src={value.image}
+                                                alt='Cafe'
+                                                fill
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Captain Special */}
+                                <div className={`${viewCateringMenu === "captain" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                    {menu.catering.captain.map((value, index) => (
+                                        <div key={index} className='relative aspect-[2/3] w-full mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                            <Image
+                                                src={value.image}
+                                                alt='Cafe'
+                                                fill
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+
+                            </div>
+                            <div className="w-full lg:w-1/4 h-full">
+                                <div className="flex flex-col w-full gap-4">
+                                    <Card className="p-3 rounded-md gap-0">
+                                        <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
+                                        <QRCode data={menu.catering.qrLink[0].link} className="p-5" />
+                                    </Card>
+                                    <Card className="p-3 rounded-md gap-0">
+                                        <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                        <ShareCard
+                                            title="Amazing Blog Post You Should Read!"
+                                        />
+                                        {/* <PathCopy /> */}
+                                    </Card>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     {/* Catering Tab End */}
                 </div>

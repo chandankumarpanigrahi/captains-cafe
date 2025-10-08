@@ -1,6 +1,6 @@
 {
     "saheedNagar": {
-        "lunch": [
+        "food": [
             {"image": "/images/menu/saheedNagarMenu/menu02.jpg"},
             {"image": "/images/menu/saheedNagarMenu/menu03.jpg"},
             {"image": "/images/menu/saheedNagarMenu/menu04.jpg"},
@@ -31,9 +31,26 @@
             {"image": "/images/menu/saheedNagarMenu/menu27.jpg"},
             {"image": "/images/menu/saheedNagarMenu/menu28.jpg"},
             {"image": "/images/menu/saheedNagarMenu/menu29.jpg"}
+        ],
+        "qrLink": [
+            {"link": "https://dinein.petpooja.com/qr/31vzyfmgbu/1"}
         ]
     },
-    "users": [
+    "catering": {
+        "lunch": [
+            {"image": "/images/menu/catering/lunch.jpg"}
+        ],
+        "president": [
+            {"image": "/images/menu/catering/president.jpg"}
+        ],
+        "captain": [
+            {"image": "/images/menu/catering/captain.jpg"}
+        ],
+        "qrLink": [
+            {"link": "https://dinein.petpooja.com/qr/31vzyfmgbu/1"}
+        ]
+    },
+    "user": [
         {
             "id": 1,
             "name": "John Doe",
