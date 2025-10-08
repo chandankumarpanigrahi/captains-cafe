@@ -50,11 +50,30 @@
             {"link": "https://dinein.petpooja.com/qr/31vzyfmgbu/1"}
         ]
     },
-    "user": [
+    "foodPartnerLogo": [
         {
-            "id": 1,
-            "name": "John Doe",
-            "avatar": "/avatars/john.jpg"
+            "image": "/images/logos/zomato.png",
+            "link": "#"
+        },
+        {
+            "image": "/images/logos/swiggy.png",
+            "link": "#"
+        },
+        {
+            "image": "/images/logos/uberEats.png",
+            "link": "#"
+        },
+        {
+            "image": "/images/logos/zepto.png",
+            "link": "#"
+        },
+        {
+            "image": "/images/logos/bistro.png",
+            "link": "#"
+        },
+        {
+            "image": "/images/logos/eazydiner.png",
+            "link": "#"
         }
     ]
 }
