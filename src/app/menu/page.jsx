@@ -31,10 +31,16 @@ import { MdArrowOutward } from "react-icons/md";
 import { FaCircle } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 
+// JSON Files
+import menu from "../../data/menu.json"
+import { Card } from '@/components/ui/card'
+
 const ContactUs = () => {
 
     // Tab Design
     const [tabview, setTabview] = useState("cafe")
+    const [selection, setSelection] = useState("saheed")
+    const [viewmenu, setViewmenu] = useState("lunch")
 
     return (
         <>
@@ -170,19 +176,99 @@ const ContactUs = () => {
                 </div>
 
                 <div>
+
                     {/* Cafe Tab Start */}
-                    <div className={`${tabview === "cafe" ? "block" : "hidden"} w-full h-50 bg-red-900`}>
-                        <div className="flex justify-center">
-                            <Select>
-                                <SelectTrigger className="w-[180px] bg-white">
+                    <div className={`${tabview === "cafe" ? "block" : "hidden"} w-full`}>
+                        <div className="flex justify-center mb-4">
+                            <Select onValueChange={(value) => setSelection(value)}>
+                                <SelectTrigger className="w-[280px] bg-white dark:bg-blue-900">
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="crpf">Light</SelectItem>
-                                    <SelectItem value="saheed">Dark</SelectItem>
-                                    <SelectItem value="cutm">System</SelectItem>
+                                    <SelectItem value="saheed">Saheed Nagar, Bhubaneswar</SelectItem>
+                                    <SelectItem value="crpf">CRPF, Bhubaneswar</SelectItem>
+                                    <SelectItem value="cutm">Centurion Campus, Bhubaneswar</SelectItem>
                                 </SelectContent>
                             </Select>
+                        </div>
+
+                        {/* View Area */}
+
+                        {/* ============== SAHEED NAGAR CAFE MENU START ================== */}
+                        <div className={`${selection === "saheed" ? "block" : "hidden"} w-full h-fit`}>
+                            <div className="flex flex-wrap flex-col lg:flex-row h-fit">
+                                <div className="w-full lg:w-2/3 h-full">
+                                    <ul className='px-4 flex flex-row overflow-x-auto mb-4'>
+                                        <li className={`${viewmenu === "lunch" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-1/3 text-center uppercase font-semibold cursor-pointer p-3`} onClick={() => setViewmenu("lunch")}>Lunch Menu</li>
+                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-1/3 text-center uppercase font-semibold cursor-pointer p-3`} onClick={() => setViewmenu("bakery")}>Bakery Menu</li>
+                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-1/3 text-center uppercase font-semibold cursor-pointer p-3`} onClick={() => setViewmenu("beverage")}>Beverage Menu</li>
+                                    </ul>
+
+                                    {/* Lunch */}
+                                    <div className={`${viewmenu === "lunch" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                        {menu.saheedNagar.lunch.map((value, index) => (
+                                            <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                                <Image
+                                                    src={value.image}
+                                                    alt='Cafe'
+                                                    fill
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+
+
+                                    {/* Bakery */}
+                                    <div className={`${viewmenu === "bakery" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                        {menu.saheedNagar.bakery.map((value, index) => (
+                                            <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                                <Image
+                                                    src={value.image}
+                                                    alt='Cafe'
+                                                    fill
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Beverage */}
+                                    <div className={`${viewmenu === "beverage" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                        {menu.saheedNagar.beverage.map((value, index) => (
+                                            <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                                <Image
+                                                    src={value.image}
+                                                    alt='Cafe'
+                                                    fill
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                </div>
+                                <div className="w-full lg:w-1/3 h-50 pl-0 lg:pl-4">
+                                        <div className="flex flex-col w-full">
+                                            <Card className="p-3 rounded-md">
+                                                <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
+                                            </Card>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* ============== SAHEED NAGAR CAFE MENU END ================== */}
+
+
+
+
+                        <div className={`${selection === "crpf" ? "block" : "hidden"} bg-red-100 w-full h-50`}>
+                            <div className="flex justify-center items-center w-full h-full">
+                                Coming Soon
+                            </div>
+                        </div>
+
+                        <div className={`${selection === "cutm" ? "block" : "hidden"} bg-green-100 w-full h-50`}>
+                            <div className="flex justify-center items-center w-full h-full">
+                                Coming Soon
+                            </div>
                         </div>
                     </div>
                     {/* Cafe Tab End */}
