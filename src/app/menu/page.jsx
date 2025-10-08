@@ -257,7 +257,7 @@ const ContactUs = () => {
                                     </div>
 
                                 </div>
-                                <div className="w-full lg:w-1/4 h-full">
+                                <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                     <div className="flex flex-col w-full gap-4">
                                         <Card className="p-8 rounded-md gap-0">
                                             <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
@@ -362,7 +362,7 @@ const ContactUs = () => {
                                 </div>
 
                             </div>
-                            <div className="w-full lg:w-1/4 h-full">
+                            <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                 <div className="flex flex-col w-full gap-4">
                                     <Card className="p-3 rounded-md gap-0">
                                         <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
