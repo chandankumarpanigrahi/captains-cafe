@@ -6,6 +6,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import Button from '@/components/common/button';
+import NewsletterForm from '@/components/common/newsLetter';
 
 const Blogs = () => {
     return (
@@ -76,14 +77,15 @@ const Blogs = () => {
                     </div>
 
                     <div className="flex flex-col w-full md:w-1/2 lg:w-4/10 items-center mx-auto mb-20">
-                        <h2 className='text-[#0B3F71] dark:text-gray-100 text-center text-xl mb-4'>Subscribe to learn about new Posts, the latest in Blogs, solutions, and updates.</h2>
+                        {/* <h2 className='text-[#0B3F71] dark:text-gray-100 text-center text-xl mb-4'>Subscribe to learn about new Posts, the latest in Blogs, solutions, and updates.</h2>
                         <div className="flex flex-col gap-2 w-8/10">
                             <div className="flex flex-col md:flex-row gap-2 items-center w-3/5 md:w-full mx-auto">
                                 <Input type="email" placeholder="Enter your email" className="bg-white" />
                                 <Button text="Subscribe" radius="md" size='sm'></Button>
                             </div>
                             <p className='text-[12px] text-gray-500 dark:text-gray-300 text-center md:text-left font-light'>We care about your data in our <Link href="#" className='underline text-blue-600 dark:text-blue-500 decoration-blue-400 decoration-1 underline-offset-1'>privacy policy</Link></p>
-                        </div>
+                        </div> */}
+                        <NewsletterForm />
                     </div>
 
                     {/* Maps Area */}
