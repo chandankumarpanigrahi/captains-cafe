@@ -5,6 +5,7 @@ import CountUp from '@/components/ui/CountUp/page'
 import Image from 'next/image'
 import styles from "./style.module.css"
 import { useState } from 'react'
+import { useEffect } from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import {
     Select,
@@ -16,6 +17,9 @@ import {
 import { QRCode } from "@/components/kibo-ui/qr-code";
 import PathCopy from '@/components/design/path copy';
 import ShareCard from '@/components/ui/shareCard';
+// Fancybox for Gallery View
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Images
 import cupImage from "../../assets/images/pages/menu/cup.png"
@@ -47,6 +51,14 @@ const ContactUs = () => {
     const [selection, setSelection] = useState("saheed")
     const [viewmenu, setViewmenu] = useState("food")
     const [viewCateringMenu, setViewCateringMenu] = useState("lunch")
+
+    // Fancybox for Gallery View
+    useEffect(() => {
+        Fancybox.bind("[data-fancybox='gallery']", {});
+        return () => {
+            Fancybox.destroy();
+        };
+    }, []);
 
     return (
         <>
@@ -220,11 +232,17 @@ const ContactUs = () => {
                                     <div className={`${viewmenu === "food" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
                                         {menu.saheedNagar.food.map((value, index) => (
                                             <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
-                                                <Image
-                                                    src={value.image}
-                                                    alt='Cafe'
-                                                    fill
-                                                />
+                                                <a
+                                                    key={index}
+                                                    href={value.image}
+                                                    data-fancybox="gallery"
+                                                >
+                                                    <Image
+                                                        src={value.image}
+                                                        alt="Cafe"
+                                                        fill
+                                                    />
+                                                </a>
                                             </div>
                                         ))}
                                     </div>
@@ -234,11 +252,17 @@ const ContactUs = () => {
                                     <div className={`${viewmenu === "bakery" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
                                         {menu.saheedNagar.bakery.map((value, index) => (
                                             <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
-                                                <Image
-                                                    src={value.image}
-                                                    alt='Cafe'
-                                                    fill
-                                                />
+                                                <a
+                                                    key={index}
+                                                    href={value.image}
+                                                    data-fancybox="gallery"
+                                                >
+                                                    <Image
+                                                        src={value.image}
+                                                        alt="Cafe"
+                                                        fill
+                                                    />
+                                                </a>
                                             </div>
                                         ))}
                                     </div>
@@ -247,11 +271,17 @@ const ContactUs = () => {
                                     <div className={`${viewmenu === "beverage" ? "block" : "hidden"} flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
                                         {menu.saheedNagar.beverage.map((value, index) => (
                                             <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
-                                                <Image
-                                                    src={value.image}
-                                                    alt='Cafe'
-                                                    fill
-                                                />
+                                                <a
+                                                    key={index}
+                                                    href={value.image}
+                                                    data-fancybox="gallery"
+                                                >
+                                                    <Image
+                                                        src={value.image}
+                                                        alt="Cafe"
+                                                        fill
+                                                    />
+                                                </a>
                                             </div>
                                         ))}
                                     </div>
@@ -268,8 +298,8 @@ const ContactUs = () => {
                                             <p className='text-blue-900 font-semibold text-center mb-2'>or Order from,</p>
                                             <div className="flex flex-row gap-2 justify-center flex-wrap mb-2">
                                                 {menu.foodPartnerLogo.map((value, index) => (
-                                                    <a href={value.link} className='grayscale-40 hover:grayscale-0 hover:scale-105 transition ease-in-out duration-200'>
-                                                        <Image key={index}
+                                                    <a  key={index} href={value.link} className='grayscale-40 hover:grayscale-0 hover:scale-105 transition ease-in-out duration-200'>
+                                                        <Image
                                                             src={value.image}
                                                             alt='Cafe'
                                                             width={80}
