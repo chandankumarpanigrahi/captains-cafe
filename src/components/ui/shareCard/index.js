@@ -175,11 +175,11 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
             </div>
 
             {/* URL Display */}
-            <div className={`${styles.copy_box} flex w-full p-3 bg-white rounded-lg border font-mono text-amber-800 text-sm overflow-x-auto`}>
+            <div className={`${styles.copy_box} flex w-full p-3 bg-white dark:bg-amber-950 rounded-lg border font-mono text-amber-800 dark:text-white text-sm overflow-x-auto`}>
                 <p className='whitespace-nowrap overflow-hidden w-full'>{fullUrl}</p>
                 <button
                     onClick={copyToClipboard}
-                    className="pl-3 text-amber-800 font-bold rounded-lg transition-colors duration-200 flex items-center justify-center"
+                    className="pl-3 text-amber-800 dark:text-white font-bold rounded-lg transition-colors duration-200 flex items-center justify-center"
                 >
                     {isCopied ? (
                         <FiCheck className="h-5 w-5" />

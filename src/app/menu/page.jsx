@@ -205,7 +205,7 @@ const ContactUs = () => {
                     <div className={`${tabview === "cafe" ? "block" : "hidden"} w-full`}>
                         <div className="flex justify-center mb-4">
                             <Select onValueChange={(value) => setSelection(value)}>
-                                <SelectTrigger className="w-[280px] bg-white dark:bg-blue-900">
+                                <SelectTrigger className="w-[280px] bg-white dark:bg-blue-950 dark:text-white">
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -223,9 +223,9 @@ const ContactUs = () => {
                             <div className="flex flex-wrap flex-col lg:flex-row h-fit">
                                 <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
                                     <ul className='px-4 flex flex-row flex-nowrap overflow-x-auto w-full mb-4'>
-                                        <li className={`${viewmenu === "food" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("food")}>Food Menu</li>
-                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("bakery")}>Bakery Menu</li>
-                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("beverage")}>Beverage Menu</li>
+                                        <li className={`${viewmenu === "food" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("food")}>Food Menu</li>
+                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("bakery")}>Bakery Menu</li>
+                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("beverage")}>Beverage Menu</li>
                                     </ul>
 
                                     {/* Food */}
@@ -290,12 +290,12 @@ const ContactUs = () => {
                                 <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                     <div className="flex flex-col w-full gap-4">
                                         <Card className="p-8 rounded-md gap-0">
-                                            <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
+                                            <h1 className='uppercase text-center text-lg text-blue-900 dark:text-white font-semibold mb-3'>Quick Order</h1>
                                             <QRCode data={menu.saheedNagar.qrLink[0].link} className="mb-5" />
                                             <a className='flex items-center justify-center gap-2 w-full uppercase transition-colors px-4 py-2 text-base bg-primary-dark text-white rounded' href={menu.saheedNagar.qrLink[0].link} target='_blank'>Order Now</a>
                                         </Card>
                                         <Card className="p-3 rounded-md gap-0">
-                                            <p className='text-blue-900 font-semibold text-center mb-2'>or Order from,</p>
+                                            <p className='text-blue-900 dark:text-white font-semibold text-center mb-2'>or Order from,</p>
                                             <div className="flex flex-row gap-2 justify-center flex-wrap mb-2">
                                                 {menu.foodPartnerLogo.map((value, index) => (
                                                     <a  key={index} href={value.link} className='grayscale-40 hover:grayscale-0 hover:scale-105 transition ease-in-out duration-200'>
@@ -311,7 +311,7 @@ const ContactUs = () => {
                                             </div>
                                         </Card>
                                         <Card className="p-3 rounded-md gap-0">
-                                            <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                            <p className='text-blue-900 dark:text-white font-semibold dark:font-normal flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
                                             <ShareCard
                                                 title="Amazing Blog Post You Should Read!"
                                             />
@@ -346,9 +346,9 @@ const ContactUs = () => {
                         <div className="flex flex-wrap flex-col lg:flex-row h-fit">
                             <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
                                 <ul className='px-4 flex flex-row flex-nowrap overflow-x-auto w-full mb-4'>
-                                    <li className={`${viewCateringMenu === "lunch" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("lunch")}>Lunch Menu</li>
-                                    <li className={`${viewCateringMenu === "presindent" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("presindent")}>Presindent&apos;s Special</li>
-                                    <li className={`${viewCateringMenu === "captain" ? "text-blue-900 border-b-2 border-[#12406D]" : "text-gray-400"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("captain")}>Captain&apos;s Special</li>
+                                    <li className={`${viewCateringMenu === "lunch" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("lunch")}>Lunch Menu</li>
+                                    <li className={`${viewCateringMenu === "presindent" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("presindent")}>Presindent&apos;s Special</li>
+                                    <li className={`${viewCateringMenu === "captain" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("captain")}>Captain&apos;s Special</li>
                                 </ul>
 
                                 {/* Lunch Menu*/}
@@ -395,11 +395,11 @@ const ContactUs = () => {
                             <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                 <div className="flex flex-col w-full gap-4">
                                     <Card className="p-3 rounded-md gap-0">
-                                        <h1 className='uppercase text-center text-lg text-blue-900 font-semibold mb-3'>Quick Order</h1>
+                                        <h1 className='uppercase text-center text-lg text-blue-900 dark:text-white font-semibold mb-3'>Quick Order</h1>
                                         <QRCode data={menu.catering.qrLink[0].link} className="p-5" />
                                     </Card>
                                     <Card className="p-3 rounded-md gap-0">
-                                        <p className='text-blue-900 font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                        <p className='text-blue-900 dark:text-white font-semibold flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
                                         <ShareCard
                                             title="Amazing Blog Post You Should Read!"
                                         />
