@@ -27,6 +27,13 @@ export default function MainHeader() {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
+    
+    // Close mobile menu when route changes
+    useEffect(() => {
+        setMobileMenuOpen(false);
+        setActiveSubmenu(null);
+        setNestedSubmenu(null);
+    }, [pathname]); // This is the key fix
 
     const navItems = [
         {
@@ -84,10 +91,10 @@ export default function MainHeader() {
         //         { name: "Testimonials", href: "#" }
         //     ]
         // },
-        { 
-            name: "Contact", 
+        {
+            name: "Contact",
             href: "/contact",
-            matchPaths: ["/contact"] 
+            matchPaths: ["/contact"]
         }
     ];
 
