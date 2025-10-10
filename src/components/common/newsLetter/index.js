@@ -99,7 +99,7 @@ export default function NewsletterForm() {
                                 Successfully Subscribed!
                             </p>
                             <p className="text-green-700 text-xs mt-1">
-                                Welcome to our newsletter! You're all set. 🎉
+                                Welcome to our newsletter! You&apos;re all set. 🎉
                             </p>
                         </div>
                     </div>
