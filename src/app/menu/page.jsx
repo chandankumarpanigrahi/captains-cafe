@@ -298,7 +298,7 @@ const ContactUs = () => {
                                             <p className='text-blue-900 dark:text-white font-semibold text-center mb-2'>or Order from,</p>
                                             <div className="flex flex-row gap-2 justify-center flex-wrap mb-2">
                                                 {menu.foodPartnerLogo.map((value, index) => (
-                                                    <a  key={index} href={value.link} className='grayscale-40 hover:grayscale-0 hover:scale-105 transition ease-in-out duration-200'>
+                                                    <a key={index} href={value.link} className='grayscale-40 hover:grayscale-0 hover:scale-105 transition ease-in-out duration-200'>
                                                         <Image
                                                             src={value.image}
                                                             alt='Cafe'
@@ -390,7 +390,7 @@ const ContactUs = () => {
                                         </div>
                                     ))}
                                 </div>
-
+                                <p className='mt-8 bg-blue-50 dark:bg-card border-1 border-blue-900 p-4 text-[#374F67] dark:text-blue-100 rounded-md text-center text-md mb-8'>The Catering Menu featured here is curated by <strong>The Scottish&apos;s Catering</strong>, a distinguished brand known for its culinary excellence. While <strong>The Captain&apos;s Cafe</strong> presents its own unique offerings, the catering services are exclusively provided under the expertise of <strong>The Scottish&apos;s Catering</strong>.</p>
                             </div>
                             <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                 <div className="flex flex-col w-full gap-4">

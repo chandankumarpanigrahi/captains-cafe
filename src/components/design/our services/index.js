@@ -25,7 +25,7 @@ const Services = () => {
                                     </div>
                                     <Image src={anchor} alt='Anchor Image' className={`${styles.anchor} absolute`}/>
                                     <div className="absolute -bottom-5 w-full flex justify-center items-center z-20">
-                                        <Button text="Explore Our Bakery" radiusSide="tr" textColor="color-primary" bgColor="bg-sky-100" className={`${styles.featured_button} rounded-tl-xl rounded-br-xl font-semibold border-2 border-color-primary`} />
+                                        <Button text="Explore Our Bakery" radiusSide="tr" textColor="color-primary" bgColor="bg-sky-100"  link='/bakery-service' className={`${styles.featured_button} rounded-tl-xl rounded-br-xl font-semibold border-2 border-color-primary`}/>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@ const Services = () => {
                                     </div>
                                     <Image src={anchor} alt='Anchor Image' className={`${styles.anchor} absolute`}/>
                                     <div className="absolute -bottom-5 w-full flex justify-center items-center z-20">
-                                        <Button text="Discover Services" radiusSide="tr" textColor="text-orange-950" bgColor="bg-orange-50" className={`${styles.featured_button} rounded-tl-xl rounded-br-xl font-semibold border-2 border-orange-950`} />
+                                        <Button text="Discover Services" radiusSide="tr" textColor="text-orange-950" bgColor="bg-orange-50"  link='/catering-service' className={`${styles.featured_button} rounded-tl-xl rounded-br-xl font-semibold border-2 border-orange-950`} />
                                     </div>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ const Services = () => {
                                     </div>
                                     <Image src={anchor} alt='Anchor Image' className={`${styles.anchor} absolute`}/>
                                     <div className="absolute -bottom-5 w-full flex justify-center items-center z-20">
-                                        <Button text="Explore Our Cafe" radiusSide="tr" textColor="color-primary" bgColor="bg-sky-100" className={`${styles.featured_button} rounded-tl-xl rounded-br-xl font-semibold border-2 border-color-primary`} />
+                                        <Button text="Explore Our Cafe" radiusSide="tr" textColor="color-primary" bgColor="bg-sky-100"  link='/cafe-chain' className={`${styles.featured_button} rounded-tl-xl rounded-br-xl font-semibold border-2 border-color-primary`} />
                                     </div>
                                 </div>
                             </div>
