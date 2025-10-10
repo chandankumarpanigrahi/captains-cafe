@@ -27,7 +27,6 @@
     "@radix-ui/react-tabs": "^1.1.12",
     "@tailwindcss/postcss": "^4.1.11",
     "animate.css": "^4.1.1",
-    "bootstrap": "^5.3.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "culori": "^4.0.2",
