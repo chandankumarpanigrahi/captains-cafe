@@ -3,6 +3,7 @@ import { LiaFacebook } from "react-icons/lia";
 import { LiaInstagram } from "react-icons/lia";
 import styles from "./style.module.css"
 import EmblaCarouselMultiple from '@/components/design/fade image';
+import MapsView from '@/components/common/mapsView';
 
 const ContactUs = () => {
     return (
@@ -133,6 +134,7 @@ const ContactUs = () => {
                     <div className={`${styles.contact_bg_text} absolute`}>Contact Us</div>
                 </div>
             </div>
+            <MapsView />
         </>
     )
 }
