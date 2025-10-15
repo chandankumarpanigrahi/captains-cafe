@@ -60,7 +60,7 @@ const ContactUs = () => {
             </div>
             <div className="w-full flex bg-[#220F02] py-12 relative">
                 <div className='container  mx-auto relative'>
-                    <div className="flex py-10 flex-col lg:flex-row">
+                    <div className="flex py-10 flex-col lg:flex-row relative z-2">
                         <div className="w-full lg:w-1/2 flex flex-col gap-10 text-white">
                             <h1 className='text-5xl p-4 leading-normal text-center lg:text-left'>Have any Query! <br />Let&apos;s discuss </h1>
                             <p className='p-4'>Thank you for getting in touch! <br /> Kindly Fill the form, have a great day!</p>

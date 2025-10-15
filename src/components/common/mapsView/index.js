@@ -160,7 +160,7 @@ const MapsView = () => {
     };
 
     return (
-        <div className='container pt-4 md:pt-10 px-2 md:px-4'>
+        <div className='container pt-4 md:pt-10 px-2 lg:px-0'>
             {/* Mobile Toggle Buttons */}
             {isMobile && (
                 <div className="flex mb-4 bg-white rounded-lg shadow-sm border p-1">
@@ -212,16 +212,16 @@ const MapsView = () => {
                 </div>
 
                 {/* Address List Section */}
-                <div className={`${isMobile ? (showList ? 'flex-1 w-full' : 'hidden') : 'w-full md:w-1/3'} overflow-hidden flex flex-col border-l border-gray-200 bg-white`}>
+                <div className={`${isMobile ? (showList ? 'flex-1 w-full' : 'hidden') : 'w-full md:w-1/3'} overflow-hidden flex flex-col border-l border-gray-200 bg-white dark:bg-gray-950`}>
                     {/* Header */}
-                    <div className="py-3 px-3 md:py-4 md:px-2 border-b border-gray-200">
+                    <div className="py-3 px-3 md:py-4 md:px-2 border-b border-gray-200 dark:border-gray-800">
                         <div className="relative">
                             <input
                                 type="text"
                                 placeholder="Search here"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full px-3 py-2 md:py-2 pl-10 pr-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50 text-sm md:text-base"
+                                className="w-full px-3 py-2 md:py-2 pl-10 pr-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amber-800 dark:focus:ring-orange-500 focus:border-transparent bg-gray-50 dark:bg-gray-900 text-sm md:text-base"
                             />
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg className="h-4 w-4 md:h-5 md:w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -241,21 +241,21 @@ const MapsView = () => {
                                 <p className="text-sm md:text-base">No locations found matching your search.</p>
                             </div>
                         ) : (
-                            <div className="divide-y divide-gray-200">
+                            <div className="divide-y divide-gray-200 dark:divide-gray-800">
                                 {filteredLocations.map((location) => (
                                     <div
                                         key={location.id}
                                         className={`py-3 px-3 md:py-3 md:px-4 cursor-pointer transition-all duration-200 ${selectedLocation?.id === location.id
                                             ? 'bg-blue-50 border-l-4 border-blue-900'
-                                            : 'hover:bg-gray-50'
+                                            : 'hover:bg-gray-50 dark:hover:bg-gray-900'
                                             }`}
                                         onClick={() => handleLocationClick(location)}
                                     >
                                         <div className="flex items-start gap-2">
-                                            <GiAnchor size={16} className={`mt-1 rotate-z-45 ${selectedLocation?.id === location.id ? 'text-blue-900' : 'text-amber-800'}`} />
+                                            <GiAnchor size={16} className={`mt-1 rotate-z-45 ${selectedLocation?.id === location.id ? 'text-blue-900' : 'text-amber-800 dark:text-orange-100'}`} />
                                             <div className="flex-1 space-y-1 min-w-0">
                                                 <div className="flex items-center gap-2">
-                                                    <h3 className={`font-semibold text-sm md:text-md truncate ${selectedLocation?.id === location.id ? 'text-blue-800' : 'text-amber-800'
+                                                    <h3 className={`font-semibold text-sm md:text-md truncate ${selectedLocation?.id === location.id ? 'text-blue-800' : 'text-amber-800 dark:text-orange-100'
                                                         }`}>
                                                         {location.name}
                                                     </h3>
@@ -290,8 +290,8 @@ const MapsView = () => {
                     </div>
 
                     {/* Footer */}
-                    <div className="p-2 md:p-2 bg-gray-50 border-t border-gray-200">
-                        <div className="flex justify-between items-center text-xs text-gray-500">
+                    <div className="p-2 md:p-2 bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+                        <div className="flex justify-between items-center text-xs text-gray-500 dark:text-gray-300">
                             <span className="text-xs md:text-sm">
                                 {filteredLocations.length} of {locations.length} locations
                             </span>
