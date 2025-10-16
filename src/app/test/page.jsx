@@ -2,6 +2,7 @@
 import React, { useActionState } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useState, useEffect } from 'react'
+import { toast } from "react-hot-toast";
 import {
     Accordion,
     AccordionContent,
@@ -38,7 +39,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
 
 const lunch = [
     {
@@ -105,33 +105,68 @@ const Test = ({ params }) => {
     const redirect = (path) => {
         router.push(path)
     }
-    
+
     // For ShareCard
     const { slug } = params;
-    
+
     const menus = [
         { id: "menu1", label: "Menu 1", name: "Regular Menu" },
         { id: "menu2", label: "Menu 2", name: "Special Menu" },
         { id: "menu3", label: "Menu 3", name: "Captain's Special" },
         { id: "menu4", label: "Menu 4", name: "President's Special" },
     ];
-    
+
     // useState and useEffect
     const [count, setCount] = useState(0);
-    
+
     const [name, setName] = useState("");
-    
+
     const [inputName, setInputName] = useState("");
     const [manualName, setManualName] = useState("");
     const updateDetails = () => {
         setManualName(inputName);
     }
-    
+    const successToaster = () => {
+        toast.success("Yeh !!!, It's Success");
+    };
+
+    const errorToaster = () => {
+        toast.error("Oops !! Error Occoured");
+    };
+
+    const loadingToaster = () => {
+        toast.loading("Loading...");
+    };
+
+    const openToaster = () => {
+        // 1️⃣ Show loading toast and store its ID
+        const toastId = toast.loading("Updating profile...", {
+            style: {
+                borderRadius: "10px",
+                background: "#333",
+                color: "#fff",
+            },
+        });
+
+        // 2️⃣ After 2 seconds (simulate API or process), update it to success
+        setTimeout(() => {
+            toast.success("Profile updated successfully!", {
+                id: toastId, // this replaces the loading toast
+                duration: 3000,
+                style: {
+                    borderRadius: "10px",
+                    background: "#333",
+                    color: "#fff",
+                },
+            });
+        }, 2000); // you can adjust time based on real action
+    };
+
     useEffect(() => {
         console.log("The count changed! It is now: ", count);
     }, [count]);
-    
-    
+
+
     return (
         <div className='container mt-40'>
             <Tabs defaultValue="lunch" className="w-full mb-5">
@@ -186,11 +221,16 @@ const Test = ({ params }) => {
             </Tabs>
             <hr />
 
-            <button onClick={() => redirect("/")} className='transition-all duration-400 ease-in-out bg-blue-900 border-2 border-blue-950 text-white cursor-pointer px-6 py-2 rounded-full my-6 hover:bg-amber-900 hover:border-amber-950 ring-8'>Button Routing to <span className='font-semibold'>About</span></button>
+            <button onClick={() => redirect("/")} className='transition-all duration-400 ease-in-out bg-blue-900 border-2 border-blue-950 text-white cursor-pointer px-6 py-2 rounded-full my-6 hover:bg-amber-900 hover:border-amber-950'>Button Routing to <span className='font-semibold'>About</span></button>
 
+            <hr />
 
-
-
+            <div className="flex flex-col lg:flex-row gap-2">
+                <button onClick={successToaster} className='transition-all duration-400 ease-in-out bg-white border-2 border-blue-950 text-blue-900 cursor-pointer px-6 py-2 rounded-lg my-6 hover:bg-green-800 hover:border-green-900 hover:text-white'><span className='font-semibold'>Success</span></button>
+                <button onClick={errorToaster} className='transition-all duration-400 ease-in-out bg-white border-2 border-blue-950 text-blue-900 cursor-pointer px-6 py-2 rounded-lg my-6 hover:bg-red-600 hover:border-red-700 hover:text-white'><span className='font-semibold'>Error</span></button>
+                <button onClick={loadingToaster} className='transition-all duration-400 ease-in-out bg-white border-2 border-blue-950 text-blue-900 cursor-pointer px-6 py-2 rounded-lg my-6 hover:bg-gray-800 hover:border-gray-900 hover:text-white'><span className='font-semibold'>Loading</span></button>
+                <button onClick={openToaster} className='transition-all duration-400 ease-in-out bg-white border-2 border-blue-950 text-blue-900 cursor-pointer px-6 py-2 rounded-lg my-6 hover:bg-emerald-600 hover:border-emerald-700 hover:text-white'><span className='font-semibold'>Success Aftar Loading</span></button>
+            </div>
 
             <hr />
 
@@ -359,11 +399,11 @@ const Test = ({ params }) => {
                 </Select>
             </div>
             <div>
-                <div className={`${ selected === "red" ? "block" : "hidden"} w-full h-40 bg-red-300 rounded`}></div> 
-                <div className={`${ selected === "blue" ? "block" : "hidden"} w-full h-40 bg-blue-300 rounded`}></div> 
-                <div className={`${ selected === "green" ? "block" : "hidden"} w-full h-40 bg-green-300 rounded`}></div> 
+                <div className={`${selected === "red" ? "block" : "hidden"} w-full h-40 bg-red-300 rounded`}></div>
+                <div className={`${selected === "blue" ? "block" : "hidden"} w-full h-40 bg-blue-300 rounded`}></div>
+                <div className={`${selected === "green" ? "block" : "hidden"} w-full h-40 bg-green-300 rounded`}></div>
             </div>
-            
+
             <div className="mb-20"></div>
 
             <div className="flex flex-col lg:flex-row flex-wrap w-full">

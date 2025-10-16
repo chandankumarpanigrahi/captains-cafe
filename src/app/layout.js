@@ -8,6 +8,7 @@ import PostFooter from "@/components/common/post footer";
 import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/design/theme toggle";
 import MaintenancePage from "@/components/design/maintenance";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,6 +61,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           )}
+          <Toaster position="top-right" reverseOrder={false} />
         </ThemeProvider>
       </body>
     </html>
