@@ -20,7 +20,7 @@ const Services = () => {
                                 <div className={`${styles.inner_card} relative rounded-br-lg bg-blue-950`}>
                                     <div className={`${styles.details_dark} flex flex-col items-center px-4 py-6 rounded-br-lg`}>
                                         <h1 className="uppercase text-sky-50 text-center text-3xl font-semibold mb-3">BAKERY</h1>
-                                        <h6 className='text-sky-50 text-center font-light text-xl mb-4 w-6/7'>Freshly Baked Delights</h6>
+                                        <p className='text-sky-50 text-center font-light text-xl mb-4 w-6/7'>Freshly Baked Delights</p>
                                         <p className='text-center text-sky-50 opacity-80 text-md tracking-wide font-extralight w-full md:w-8/10 mb-6'>Experience the essence of Scotland in every bite. Our bakery offers a variety of handcrafted breads, pastries, and traditional Scottish treats baked daily to perfection. From buttery shortbread to scones served with clotted cream, we bring warmth to your table.</p>
                                     </div>
                                     <Image src={anchor} alt='Anchor Image' className={`${styles.anchor} absolute`}/>
@@ -36,7 +36,7 @@ const Services = () => {
                                 <div className={`${styles.inner_card} relative rounded-br-lg bg-orange-100`}>
                                     <div className={`${styles.details_light} flex flex-col items-center px-4 py-6 rounded-br-lg`}>
                                         <h1 className="uppercase text-orange-950 text-center text-3xl font-semibold mb-3">Catering Kitchen</h1>
-                                        <h6 className='text-orange-950 text-center font-light text-xl mb-4 w-6/7'>Bespoke Catering for Every Occasion</h6>
+                                        <p className='text-orange-950 text-center font-light text-xl mb-4 w-6/7'>Bespoke Catering for Every Occasion</p>
                                         <p className='text-center text-orange-950 opacity-80 text-md tracking-wide font-normal w-full md:w-8/10 mb-6'>Hosting a gathering or planning an event? Let our catering kitchen make it memorable. We specialize in creating tailored menus featuring Scottish classics and modern flavors, using only the finest, locally sourced ingredients.</p>
                                     </div>
                                     <Image src={anchor} alt='Anchor Image' className={`${styles.anchor} absolute`}/>
@@ -52,7 +52,7 @@ const Services = () => {
                                 <div className={`${styles.inner_card} relative rounded-br-lg bg-blue-950`}>
                                     <div className={`${styles.details_dark} flex flex-col items-center px-4 py-6 rounded-br-lg`}>
                                         <h1 className="uppercase text-sky-50 text-center text-3xl font-semibold mb-3">Cafe Chains</h1>
-                                        <h6 className='text-sky-50 text-center font-light text-xl mb-4 w-6/7'>Your Cozy Corner, Everywhere</h6>
+                                        <p className='text-sky-50 text-center font-light text-xl mb-4 w-6/7'>Your Cozy Corner, Everywhere</p>
                                         <p className='text-center text-sky-50 opacity-80 text-md tracking-wide font-extralight w-full md:w-8/10 mb-6'>From the heart of Scotland to your neighborhood, our cafe chains bring you a comforting experience. Savor signature coffees, teas, and Scottish bites in a warm, inviting atmosphere at any of our locations.</p>
                                     </div>
                                     <Image src={anchor} alt='Anchor Image' className={`${styles.anchor} absolute`}/>

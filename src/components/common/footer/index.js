@@ -39,8 +39,8 @@ const Footer = () => {
                             <Image src={logoLight} width="100%" alt='Footer Logo' className='object-contain' />
                         </Link>
                         <div className="flex w-2/3 flex-col">
-                            <h3 className='text-2xl footer-text-color font-semibold'>The Captain&apos;s Cafe</h3>
-                            <h6 className='text-white font-light mb-5'>Sail Into Flavors</h6>
+                            <h6 className='text-2xl footer-text-color font-semibold'>The Captain&apos;s Cafe</h6>
+                            <div className='text-white font-light mb-5'>Sail Into Flavors</div>
                             <p className='text-white text-sm'>Savor the best food, crafted with care and passion, for the moments that matter most. Scottish Cafe, where every bite is unforgettable.</p>
                             <div className={`${styles.footer_social_media} flex flex-row gap-2 mt-3`}>
                                 {socialMedia.map((item, index) => (

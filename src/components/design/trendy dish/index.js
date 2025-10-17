@@ -71,7 +71,7 @@ const TrendyMenu = () => {
                             <div className={`${styles.card_design} p-4`}>
                                 <Image src={snacks} alt='Image' className='rounded-full p-2 mb-3' />
                                 <div className="flex flex-col gap-2.5 mb-3 items-center">
-                                    <h4 className='text-center text-[#0e467d] text-3xl font-semibold'>Khopra Patties</h4>
+                                    <div className='text-center text-[#0e467d] text-3xl font-semibold'>Khopra Patties</div>
                                     <p className='text-center color-secondary text-2xl w-6/10 font-normal'>Crispy golden patties with a sweet coconut filling.</p>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@ const TrendyMenu = () => {
                                         <Image src={item.image} alt='Image' className={`${styles.image_area} rounded-full p-2 mb-3`}/>
                                     </div>
                                     <div className="flex flex-col gap-2.5 mb-3 items-center">
-                                        <h4 className='text-center text-[#0e467d] dark:text-white text-2xl xl:text-3xl font-semibold'>{item.name}</h4>
+                                        <div className='text-center text-[#0e467d] dark:text-white text-2xl xl:text-3xl font-semibold'>{item.name}</div>
                                         <p className='text-center text-[#4E79A2] dark:text-orange-100 text-lg lg:text-xl w-8/10 font-normal'>{item.description}</p>
                                     </div>
                                 </div>

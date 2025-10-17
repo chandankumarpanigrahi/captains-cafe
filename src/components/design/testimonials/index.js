@@ -46,7 +46,7 @@ const Testimonials = () => {
                                     <div className={`${styles.card_design} p-2 md:p-4 flex flex-col items-center`}>
                                         <div className="flex flex-col gap-2.5 mb-3 items-center max-w-none lg:max-w-3xl">
                                             <p className='text-center text-[#4E79A2] dark:text-blue-300 text-md md:text-xl w-8/10 font-normal'>{item.description}</p>
-                                            <h4 className='text-center text-[#0e467d] dark:text-blue-200 text-md md:text-xl font-semibold'> - {item.name}</h4>
+                                            <div className='text-center text-[#0e467d] dark:text-blue-200 text-md md:text-xl font-semibold'> - {item.name}</div>
                                         </div>
                                     </div>
                                 </CarouselItem>

@@ -22,7 +22,7 @@ const Blogs = () => {
                                     <p className='text-sm font-semibold text-[#316AA1] dark:text-blue-200 mb-2'>16 May 2025</p>
                                     <div className="flex flex-row mb-2">
                                         <h1 className='text-xl font-semibold text-[#0B3F71] dark:text-white'>Celebrating Harry Potters Week</h1>
-                                        <Link href="#" className='ms-auto group-hover:scale-150 transition-transform'>
+                                        <Link href="#" aria-label="Blog 1" className='ms-auto group-hover:scale-150 transition-transform'>
                                             <FiArrowUpRight className='text-[#0B3F71] dark:text-gray-100 text-2xl' />
                                         </Link>
                                     </div>
@@ -42,7 +42,7 @@ const Blogs = () => {
                                     <p className='text-sm font-semibold text-[#316AA1] dark:text-blue-200 mb-2'>19 Jun 2024</p>
                                     <div className="flex flex-row mb-2">
                                         <h1 className='text-xl font-semibold text-[#0B3F71] dark:text-white md:line-clamp-1'>Migrating to Linear 101</h1>
-                                        <Link href="#" className='ms-auto group-hover:scale-150 transition-transform'>
+                                        <Link href="#" aria-label="Blog 2" className='ms-auto group-hover:scale-150 transition-transform'>
                                             <FiArrowUpRight className='text-[#0B3F71] dark:text-gray-100 text-2xl' />
                                         </Link>
                                     </div>
@@ -59,7 +59,7 @@ const Blogs = () => {
                                     <p className='text-sm font-semibold text-[#316AA1] dark:text-blue-200 mb-2'>18 May 2024</p>
                                     <div className="flex flex-row mb-2">
                                         <h1 className='text-xl font-semibold text-[#0B3F71] dark:text-white md:line-clamp-1'>Building your API Stack</h1>
-                                        <Link href="#" className='ms-auto group-hover:scale-150 transition-transform'>
+                                        <Link href="#" aria-label="Blog 3" className='ms-auto group-hover:scale-150 transition-transform'>
                                             <FiArrowUpRight className='text-[#0B3F71] dark:text-gray-100 text-2xl' />
                                         </Link>
                                     </div>
@@ -73,7 +73,7 @@ const Blogs = () => {
                         </div>
                     </div>
                     <div className="flex flex-row justify-center items-center mb-10">
-                        <Link href="#" className='text-[#0B3F71] dark:text-white'>View All</Link>
+                        <Link href="#" aria-label="All Blogs" className='text-[#0B3F71] dark:text-white'>View All</Link>
                     </div>
 
                     <div className="flex flex-col w-full md:w-1/2 lg:w-4/10 items-center mx-auto mb-20">
@@ -83,7 +83,7 @@ const Blogs = () => {
                                 <Input type="email" placeholder="Enter your email" className="bg-white" />
                                 <Button text="Subscribe" radius="md" size='sm'></Button>
                             </div>
-                            <p className='text-[12px] text-gray-500 dark:text-gray-300 text-center md:text-left font-light'>We care about your data in our <Link href="#" className='underline text-blue-600 dark:text-blue-500 decoration-blue-400 decoration-1 underline-offset-1'>privacy policy</Link></p>
+                            <p className='text-[12px] text-gray-500 dark:text-gray-300 text-center md:text-left font-light'>We care about your data in our <Link href="#" aria-label="Blog 1" className='underline text-blue-600 dark:text-blue-500 decoration-blue-400 decoration-1 underline-offset-1'>privacy policy</Link></p>
                         </div> */}
                         <NewsletterForm />
                     </div>

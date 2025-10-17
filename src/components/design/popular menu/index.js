@@ -45,7 +45,7 @@ const PopularMenu = () => {
                                 <Image src={snacksOutline} className={`${styles.image_outline}`} />
                                 <Image src={snacks} className={`${styles.image}`} />
                             </div>
-                            <h6 className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>Snacks</h6>
+                            <p className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>Snacks</p>
                         </div>
                     </div> */}
                     {menuItems.map((item) => (
@@ -55,7 +55,7 @@ const PopularMenu = () => {
                                     <Image src={item.imageOutline} className={`${styles.image_outline}`} alt={`${item.name} outline`}/>
                                     <Image src={item.image} className={`${styles.image}`} alt={item.name}/>
                                 </div>
-                                <h6 className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>{item.name}</h6>
+                                <p className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>{item.name}</p>
                             </div>
                         </div>
                     ))}

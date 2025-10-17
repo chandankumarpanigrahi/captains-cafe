@@ -28,21 +28,21 @@ const Featured = () => {
                                     <div className={`${styles.featured_icon}`}>
                                         <PiChefHatDuotone className='text-4xl text-white'/>
                                     </div>
-                                    <h6 className='text-amber-50 font-normal text-lg md:text-xl w-8/10 pl-3'>Freshly Prepared with Care</h6>
+                                    <p className='text-amber-50 font-normal text-lg md:text-xl w-8/10 pl-3'>Freshly Prepared with Care</p>
                                 </div>
                                 
                                 <div className="flex flex-row mb-4 pb-4">
                                     <div className={`${styles.featured_icon}`}>
                                         <PiTeaBagDuotone className='text-4xl text-white' />
                                     </div>
-                                    <h6 className='text-amber-50 font-normal text-lg md:text-xl w-8/10 pl-3'>Responsibly Sourced Ingredients</h6>
+                                    <p className='text-amber-50 font-normal text-lg md:text-xl w-8/10 pl-3'>Responsibly Sourced Ingredients</p>
                                 </div>
 
                                 <div className="flex flex-row">
                                     <div className={`${styles.featured_icon}`}>
                                         <CiCoffeeCup className='text-4xl text-white' />
                                     </div>
-                                    <h6 className='text-amber-50 font-normal text-lg md:text-xl w-8/10 pl-3'>Flavorful Experience</h6>
+                                    <p className='text-amber-50 font-normal text-lg md:text-xl w-8/10 pl-3'>Flavorful Experience</p>
                                 </div>
                             </div>
                         </div>
