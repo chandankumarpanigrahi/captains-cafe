@@ -1,6 +1,7 @@
 "use client";
 import React from 'react'
 import SubBanner from '@/components/common/sub banner'
+import { usePathname } from 'next/navigation';
 
 import {
     Table,
@@ -12,6 +13,9 @@ import {
 } from "@/components/ui/table";
 
 const Design = () => {
+    // const currentPath = {usePathname};
+    console.log(usePathname);
+
     return (
         <>
             <SubBanner
@@ -22,7 +26,7 @@ const Design = () => {
                 ]}
             />
             <div className='container py-10'>
-                <Table className="bg-white text-center border">
+                <Table className="bg-white dark:bg-gray-800 text-center border">
                     <TableHeader>
                         <TableRow>
                             <TableHead className="w-30 text-center">Invoice</TableHead>
@@ -38,30 +42,35 @@ const Design = () => {
                             <TableCell>7587654</TableCell>
                             <TableCell>Online</TableCell>
                             <TableCell className="text-right">85478</TableCell>
+                            <TableCell className="text-right">BUTTON</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell className="font-medium">DFHD5436523</TableCell>
                             <TableCell>7587654</TableCell>
                             <TableCell>Online</TableCell>
                             <TableCell className="text-right">85478</TableCell>
+                            <TableCell className="text-right">BUTTON</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell className="font-medium">DFHD5436523</TableCell>
                             <TableCell>7587654</TableCell>
                             <TableCell>Online</TableCell>
                             <TableCell className="text-right">85478</TableCell>
+                            <TableCell className="text-right">BUTTON</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell className="font-medium">DFHD5436523</TableCell>
                             <TableCell>7587654</TableCell>
                             <TableCell>Online</TableCell>
                             <TableCell className="text-right">85478</TableCell>
+                            <TableCell className="text-right">BUTTON</TableCell>
                         </TableRow>
                         <TableRow>
                             <TableCell className="font-medium">DFHD5436523</TableCell>
                             <TableCell>7587654</TableCell>
                             <TableCell>Online</TableCell>
                             <TableCell className="text-right">85478</TableCell>
+                            <TableCell className="text-right">BUTTON</TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>
