@@ -28,14 +28,14 @@ const ContactUs = () => {
                         <section className='mb-12'>
                             <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Visit Us</h3>
                             <ol className='list-decimal pl-5 flex flex-col gap-2 text-gray-700 dark:text-blue-200 text-lg'>
-                                <li><a href="#" target='_blank'>Ekamra Kanan Road, near Chilika Fresh, Rental Colony, IRC Village, Nayapalli, Bhubaneswar, Odisha 751011</a></li>
-                                <li><a href="#" target='_blank'>Beside Government Veterinary Hospital, Maharishi College Rd, Saheed Nagar, Bhubaneswar, Odisha 751007</a></li>
+                                <li><a href="#" target='_blank' aria-label="CRPF Cafe">Ekamra Kanan Road, near Chilika Fresh, Rental Colony, IRC Village, Nayapalli, Bhubaneswar, Odisha 751011</a></li>
+                                <li><a href="#" target='_blank' aria-label="Saheed Nagar Cafe">Beside Government Veterinary Hospital, Maharishi College Rd, Saheed Nagar, Bhubaneswar, Odisha 751007</a></li>
                             </ol>
                         </section>
                         <section className='mb-12'>
                             <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Call Us</h3>
                             <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-lg'>
-                                <li><a href="tel:+918144774349" target='_blank'>+91 81447 74349</a></li>
+                                <li><a href="tel:+918144774349" target='_blank' aria-label="Calling Number">+91 81447 74349</a></li>
                             </ol>
                         </section>
                         <section className='mb-12'>
@@ -51,8 +51,8 @@ const ContactUs = () => {
                             </ol>
                         </section>
                         <section className='flex flex-row gap-2'>
-                            <a href='#' target='_blank' className={`${styles.fb_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaFacebook size={60} /></a>
-                            <a href='https://www.instagram.com/thecaptainscafe.india' target='_blank' className={`${styles.insta_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaInstagram size={60} className={styles.icon} /></a>
+                            <a href='#' target='_blank' aria-label="Facebok" className={`${styles.fb_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaFacebook size={60} /></a>
+                            <a href='https://www.instagram.com/thecaptainscafe.india' target='_blank' aria-label="Instagram" className={`${styles.insta_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaInstagram size={60} className={styles.icon} /></a>
                         </section>
                     </div>
 

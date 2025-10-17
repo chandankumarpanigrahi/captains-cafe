@@ -99,6 +99,7 @@ const Blogs = () => {
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
+                            title="Google Map showing Bhubaneswar, Odisha"
                         />
                         {/* <iframe src="https://www.google.com/maps/d/embed?mid=1UDBNRY_6iOpWO05pVD2-QdIDZdK0EJg&ehbc=2E312F" width="100%" height="480" style={{ border: 0 }}></iframe> */}
                     </div>

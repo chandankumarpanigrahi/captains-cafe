@@ -197,6 +197,7 @@ export default function MainHeader() {
                 {/* Mobile Menu Button */}
                 <button
                     className="lg:hidden ml-auto p-2 text-primary"
+                    aria-label="Open navigation menu"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
                     {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
