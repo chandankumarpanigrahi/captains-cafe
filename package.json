@@ -37,6 +37,7 @@
     "embla-carousel-fade": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.23.18",
+    "googleapis": "^155.0.0",
     "leaflet": "^1.9.4",
     "lightgallery": "^2.9.0-beta.1",
     "lucide-react": "^0.535.0",

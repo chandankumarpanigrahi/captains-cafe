@@ -9,6 +9,7 @@ import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/design/theme toggle";
 import MaintenancePage from "@/components/design/maintenance";
 import { Toaster } from "react-hot-toast";
+import { applyPassiveEventListeners } from "../lib/eventListeners.js"
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,6 +41,9 @@ export const metadata = {
 const MAINTENANCE_MODE = false;
 
 export default function RootLayout({ children }) {
+  useEffect(() => {
+    applyPassiveEventListeners();
+  }, []);
   return (
     <html lang="en" className={inter.className} suppressHydrationWarning>
       <body suppressHydrationWarning>
