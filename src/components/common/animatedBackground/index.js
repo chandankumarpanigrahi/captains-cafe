@@ -14,6 +14,7 @@ const SlidingBackground = () => {
                         fill
                         className="object-cover select-none"
                         unoptimized
+                        priority
                     />
                 </div>
                 <div className="w-full h-full relative">
