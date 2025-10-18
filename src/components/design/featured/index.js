@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "./style.module.css"
 import Image from 'next/image'
 import fork from "../../../assets/images/featured_fork.png"
+import featured_bg from "../../../assets/images/featured_bg.png"
 import { PiChefHatDuotone } from "react-icons/pi";
 import { PiTeaBagDuotone } from "react-icons/pi";
 import { CiCoffeeCup } from "react-icons/ci";
@@ -11,10 +12,11 @@ const Featured = () => {
     return (
         <div className='container animate__animated animate__fadeInUp mb-8'>
             <div className="flex flex-col lg:flex-row items-center">
-                <div className={`${styles.left_side_feature} lg:w-1/2 pl-8 pt-8 mb-8 lg:mb-0 w-auto`}>
-                    <div className={`${styles.background}`}>
+                <div className="relative lg:w-1/2 pl-8 pt-8 mb-8 lg:mb-0 w-auto">
+                    <div className="absolute left-0 top-0">
                         <div className={`${styles.bg_design}`}>
-                            <div className={`${styles.bg_texture}`}></div>
+                            {/* <div className={`${styles.bg_texture}`}></div> */}
+                            <Image src={featured_bg} alt='featured bg' className='w-full h-full' fill/>
                         </div>
                     </div>
                     <div className={`${styles.featured_content} flex px-4`}>
