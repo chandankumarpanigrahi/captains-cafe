@@ -1,13 +1,23 @@
-if (typeof window !== 'undefined') {
-    const originalAddEventListener = EventTarget.prototype.addEventListener;
-    EventTarget.prototype.addEventListener = function (type, listener, options) {
-        if (['touchstart', 'touchmove', 'wheel'].includes(type)) {
-            if (typeof options === 'boolean') {
-                options = { capture: options, passive: true };
-            } else {
-                options = { ...options, passive: true };
-            }
-        }
-        return originalAddEventListener.call(this, type, listener, options);
+// utils/passiveEvents.js
+export const addPassiveEventListener = (element, eventName, handler) => {
+    const supportsPassive = () => {
+        let supports = false;
+        try {
+            const opts = Object.defineProperty({}, 'passive', {
+                get: () => {
+                    supports = true;
+                    return true;
+                }
+            });
+            window.addEventListener('test', null, opts);
+            window.removeEventListener('test', null, opts);
+        } catch (e) { }
+        return supports;
     };
-}
+
+    element.addEventListener(
+        eventName,
+        handler,
+        supportsPassive() ? { passive: true } : false
+    );
+};
