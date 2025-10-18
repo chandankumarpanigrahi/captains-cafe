@@ -1,3 +1,4 @@
+import "../lib/passive-listener-patch"
 import "./globals.css";
 import 'animate.css/animate.css';
 
