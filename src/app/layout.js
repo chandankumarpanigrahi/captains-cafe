@@ -10,6 +10,7 @@ import ThemeToggle from "@/components/design/theme toggle";
 import MaintenancePage from "@/components/design/maintenance";
 import { Toaster } from "react-hot-toast";
 import { applyPassiveEventListeners } from "../lib/eventListeners.js"
+import { useEffect } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
