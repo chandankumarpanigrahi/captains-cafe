@@ -35,27 +35,18 @@ const PopularMenu = () => {
         }
     ]
     return (
-        <div className={`${styles.background_design} w-full animate__animated animate__fadeInUp mt-12 mb-6 md:mb-18`}>
+        <div className={`${styles.background_design} relative bg-white w-full animate__animated animate__fadeInUp mt-18 mb-6 md:mb-18`}>
             <div className='container mx-auto animate__animated animate__fadeInUp'>
                 <h1 className='text-center color-primary text-4xl font-bold mb-8 md:mb-6'>Our Popular Menu Category</h1>
-                <div className={`${styles.card_design} flex flex-row flex-wrap w-full`}>
-                    {/* <div className="w-1/4">
-                        <div className={`${styles.card} w-full flex flex-col justify-center items-center pt-3`}>
-                            <div className={`${styles.card_image} mb-4`}>
-                                <Image src={snacksOutline} className={`${styles.image_outline}`} />
-                                <Image src={snacks} className={`${styles.image}`} />
-                            </div>
-                            <p className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>Snacks</p>
-                        </div>
-                    </div> */}
+                <div className="flex flex-row flex-wrap w-full">
                     {menuItems.map((item) => (
-                        <div key={item.name} className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-3 lg:mb-0">
-                            <div className={`${styles.card} w-full flex flex-col justify-center items-center pt-3`}>
-                                <div className={`${styles.card_image} mb-4`}>
-                                    <Image src={item.imageOutline} className={`${styles.image_outline}`} alt={`${item.name} outline`}/>
-                                    <Image src={item.image} className={`${styles.image}`} alt={item.name}/>
+                        <div key={item.name} className="w-full sm:w-1/2 lg:w-1/4 px-2 mb-3 lg:mb-0 group">
+                            <div className="cursor-pointer border-2 border-orange-900 h-[240px] bg-[#F6F4F3] rounded-lg w-full flex flex-col justify-center items-center pt-3">
+                                <div className="size-[140px] relative mb-4">
+                                    <Image src={item.imageOutline} className="absolute object-cover inset-0 w-full h-full" alt={`${item.name} outline`}/>
+                                    <Image src={item.image} className="group-hover:opacity-100 opacity-0 absolute object-cover inset-0 w-full h-full transition-all ease-in-out duration-500" alt={item.name}/>
                                 </div>
-                                <p className={`${styles.card_text} uppercase text-center font-semibold text-2xl`}>{item.name}</p>
+                                <p className="group-hover:-translate-y-1 text-amber-900 uppercase text-center font-semibold text-2xl transition-all ease-in-out duration-500">{item.name}</p>
                             </div>
                         </div>
                     ))}
