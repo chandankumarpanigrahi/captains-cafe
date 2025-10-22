@@ -21,7 +21,7 @@ const SubBanner = ({
     return (
         <div className={`${styles.background_design} w-full`}>
             <div className="h-full w-full flex container mx-auto pt-18 justify-center items-center flex-col">
-                <h1 className={`text-white text-4xl md:text-6xl mb-6`}>
+                <h1 className={`text-white text-4xl md:text-6xl mb-6 font-quicksand font-semibold`}>
                     {title}
                 </h1>
 

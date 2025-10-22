@@ -41,6 +41,15 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  
+
+  --font-inter: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-quicksand: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+.font-quicksand {
+  font-family: var(--font-quicksand) !important;
 }
 
 body {
@@ -237,6 +246,7 @@ body::before {
   }
 }
 
+/* Custom */
 .scroll-to-top {
   z-index: 500 !important;
   background-color: #0C3C6A !important;

@@ -3,7 +3,7 @@ import 'animate.css/animate.css';
 
 import MainHeader from "../components/common/header";
 import Footer from "@/components/common/footer";
-import { Inter } from 'next/font/google';
+import { Inter , Quicksand } from 'next/font/google';
 import PostFooter from "@/components/common/post footer";
 import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/design/theme toggle";
@@ -14,6 +14,12 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter', // Add variable
+});
+
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-quicksand",
 });
 
 export const metadata = {
