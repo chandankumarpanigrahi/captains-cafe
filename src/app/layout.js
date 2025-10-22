@@ -3,7 +3,7 @@ import 'animate.css/animate.css';
 
 import MainHeader from "../components/common/header";
 import Footer from "@/components/common/footer";
-import { Inter, Roboto, Poppins, Lobster_Two } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import PostFooter from "@/components/common/post footer";
 import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/design/theme toggle";
@@ -13,23 +13,7 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-});
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '900'],
-  display: 'swap',
-});
-
-const lobsterTwo = Lobster_Two({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap',
+  variable: '--font-inter', // Add variable
 });
 
 export const metadata = {
@@ -41,8 +25,8 @@ const MAINTENANCE_MODE = false;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {MAINTENANCE_MODE ? (
             <MaintenancePage />

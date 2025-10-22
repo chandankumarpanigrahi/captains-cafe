@@ -191,7 +191,7 @@ export default function MainHeader() {
                 {/* Desktop Buttons */}
                 <ul className="ml-auto flex flex-row gap-2 max-lg:hidden">
                     <MainButton text="Order Now" className="inner_shadow" link="/menu" />
-                    <MainButton icon={<FaRegUser />} className="inner_shadow" />
+                    <MainButton icon={<FaRegUser />} className="inner_shadow" link="/user" />
                 </ul>
 
                 {/* Mobile Menu Button */}
@@ -293,6 +293,7 @@ export default function MainHeader() {
                                 icon={<FaRegUser />}
                                 className="inner_shadow"
                                 size="lg"
+                                link="/user"
                             />
                         </li>
                     </ul>
