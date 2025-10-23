@@ -38,6 +38,7 @@ import Button from '@/components/common/button'
 import { Input } from '@/components/ui/input'
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
+import Link from 'next/link';
 
 const User = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -72,20 +73,11 @@ const User = () => {
 
     // Toast
     const passwordChangeSuccess = () => { toast.success("Successfully Changed Password"); };
-    // const loginSuccess = () => {toast.success("Login Successful");
-    const loginSuccess = () => { toast.error("Login Failed"); };
+    const loginSuccess = () => {
+        // toast.error("Login Failed");
+        toast.success("Login Successful");
+    };
     const registration = () => { toast.error("Registration Failed"); };
-
-    const router = useRouter();
-    const redirect = (path) => {
-        router.push(path)
-    }
-
-    const handleRegistration = () => {
-        registration();
-        redirect("/");
-    }
-
     return (
         <>
             <SubBanner
@@ -190,7 +182,7 @@ const User = () => {
                                     </div>
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">
-                                    <Button text="Log in" className='w-full' onClick={() => handleRegistration()} />
+                                    <Link className='flex items-center justify-center gap-2 uppercase transition-colors px-4 py-2 text-base bg-primary-dark text-white rounded-full w-full ' onClick={() => loginSuccess()} href="/user/dashboard">Log in</Link>
                                     <div className="text-sm text-blue-950 mt-3 cursor-default">Don&apos;t have account? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("newReg")}>Create Account</button></div>
                                 </section>
                             </div>
