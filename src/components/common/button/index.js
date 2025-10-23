@@ -48,7 +48,7 @@ export default function Button({
 
     return (
         <a href={link}
-            className={`flex items-center justify-center gap-2 w-fit uppercase transition-colors 
+            className={`flex items-center justify-center gap-2 uppercase transition-colors 
         ${styles.main_btn}
         ${sizeMap[size]}
         ${bgColor}

@@ -59,7 +59,7 @@ const Featured = () => {
                         <p className='text-slate-600 dark:text-blue-100 text-lg'>At our café, every dish is a celebration of vegetarian goodness. From comforting classics to exciting new flavors, we serve food that&apos;s nourishing, wholesome, and delicious.</p>
                         <p className='text-slate-600 dark:text-blue-100 text-lg'>We believe in clean, green eating - using only the freshest ingredients sourced locally. Step in for a guilt-free indulgence that delights your palate and uplifts your spirit.</p>
                     </div>
-                    <Button text="Explore the Flavors" radiusSide="tr" className={`${styles.featured_button} rounded-tl-3xl rounded-br-3xl`}/>
+                    <Button text="Explore the Flavors" radiusSide="tr" className={`${styles.featured_button} rounded-tl-3xl rounded-br-3xl w-fit`}/>
                 </div>
             </div>
         </div>

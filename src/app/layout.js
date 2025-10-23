@@ -3,7 +3,7 @@ import 'animate.css/animate.css';
 
 import MainHeader from "../components/common/header";
 import Footer from "@/components/common/footer";
-import { Inter , Quicksand } from 'next/font/google';
+import { Inter, Quicksand } from 'next/font/google';
 import PostFooter from "@/components/common/post footer";
 import { ThemeProvider } from "next-themes";
 import ThemeToggle from "@/components/design/theme toggle";
@@ -51,7 +51,10 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           )}
-          <Toaster position="top-right" reverseOrder={false} />
+          <Toaster position="top-right" reverseOrder={false}
+            toastOptions={{
+              duration: 3000,
+            }} />
         </ThemeProvider>
       </body>
     </html>
