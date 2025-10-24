@@ -1,16 +1,18 @@
 "use client";
 import React from 'react'
 import { usePathname } from "next/navigation";
+import LoginLayout from './LoginLayout';
+import DashboardLayout from './DashboardLayout';
 
-
-const layout = ({ children }) => {
+const Layout = ({ children }) => {
     const pathname = usePathname();
-    
-    return (
-        <>
-            {children}
-        </>
-    )
+    const isLoginPage = pathname === "/user";
+
+    if (isLoginPage) {
+        return <LoginLayout>{children}</LoginLayout>;
+    }
+
+    return <DashboardLayout>{children}</DashboardLayout>;
 }
 
-export default layout
+export default Layout;

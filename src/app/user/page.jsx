@@ -74,8 +74,10 @@ const User = () => {
     // Toast
     const passwordChangeSuccess = () => { toast.success("Successfully Changed Password"); };
     const loginSuccess = () => {
-        // toast.error("Login Failed");
         toast.success("Login Successful");
+    };
+    const loginFailed = () => {
+        toast.error("Login Failed");
     };
     const registration = () => { toast.error("Registration Failed"); };
     return (
@@ -84,7 +86,7 @@ const User = () => {
                 title="User Login"
                 showBreadcrumb={false}
             />
-            <div className='container pt-10'>
+            <div className='container mx-auto pt-10'>
                 <div className="flex flex-row items-center px-10 xl:px-40">
                     <div className="hidden lg:block w-1/2 h-[460px] bg-gray-300 relative border-blue-900 border-l-3 border-y-3 rounded-tl-xl rounded-bl-xl overflow-hidden">
 
@@ -155,7 +157,7 @@ const User = () => {
                                     <p className='mt-4 text-[13px] text-gray-600'>You will receive an SMS verification that may apply message and data rates.</p>
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">
-                                    <Button text="Log in" className='w-full' onClick={loginSuccess} />
+                                    <Button text="Log in" className='w-full' onClick={loginFailed} />
                                     <button className="cursor-pointer text-sm text-blue-950 font-semibold mt-3" onClick={() => setChangeState("emailLogin")}>Use email, instead</button>
                                 </section>
                             </div>
