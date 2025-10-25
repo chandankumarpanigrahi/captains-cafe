@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation'
 import {
     FiHome,
     FiUser,
@@ -55,6 +57,50 @@ const UserSidebar = () => {
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
+    const router = useRouter();
+    const redirect = () => {
+        router.push("/user")
+    }
+
+    const handleLogout = () => {
+        Swal.fire({
+            title: 'Logout?',
+            text: 'Are you sure you want to logout?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, Logout!',
+            cancelButtonText: 'Cancel',
+            confirmButtonColor: '#ef4444',
+            cancelButtonColor: '#6b7280',
+            customClass: {
+                popup: 'rounded-xl border border-gray-200',
+                confirmButton: 'bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium',
+                cancelButton: 'bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg font-medium mr-3'
+            },
+            buttonsStyling: false,
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Show success message
+                Swal.fire({
+                    title: 'Logged Out!',
+                    text: 'You have been successfully logged out.',
+                    icon: 'success',
+                    confirmButtonText: 'Close',
+                    confirmButtonColor: '#10b981',
+                    customClass: {
+                        popup: 'rounded-xl border border-gray-200',
+                        confirmButton: 'bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium'
+                    },
+                    buttonsStyling: false,
+                    timer: 3000,
+                    timerProgressBar: true
+                }).then(() => {
+                    redirect();
+                });
+            }
+        });
+    };
 
     return (
         <>
@@ -77,7 +123,7 @@ const UserSidebar = () => {
             )}
 
             {/* Sidebar */}
-            <div className={`relative -top-10 lg:top-0 z-2 transition-all duration-300 ${isOpen ? 'translate-x-0' : '-translate-x-[120%] lg:translate-x-0'} w-64 lg:w-full `}>
+            <div className={`relative -top-10 lg:top-0 z-2 transition-all duration-300 ${isOpen ? 'translate-x-0 bg-white lg:bg-transparent rounded-xl p-1 shadow-2xl lg:shadow-none' : '-translate-x-[120%] lg:translate-x-0'} w-64 lg:w-full `}>
                 <div className="flex flex-col h-full p-1 lg:p-0 lg:bg-none">
                     {/* Navigation Menu */}
                     <nav className="flex-1">
@@ -98,7 +144,7 @@ const UserSidebar = () => {
                                                 }
                                             `}
                                             onClick={() => isMobile && setIsOpen(false)}
-                                            >
+                                        >
                                             <Icon size={20} />
                                             <span className="font-medium">{item.label}</span>
                                         </a>
@@ -110,11 +156,11 @@ const UserSidebar = () => {
 
                     {/* Logout Button */}
                     <div className="pt-4">
-                        <Link href="/user"
-                            className="flex items-center space-x-3 w-full px-4 py-3 text-red-600 shadow-md bg-red-50 hover:bg-red-700 hover:text-red-50 rounded-lg transition-all duration-200" >
+                        <button
+                            className="flex items-center space-x-3 w-full px-4 py-3 text-red-600 shadow-md bg-red-50 hover:bg-red-700 hover:text-red-50 rounded-lg transition-all duration-200" onClick={handleLogout}>
                             <FiLogOut size={20} />
                             <span className="font-medium">LOGOUT</span>
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>
