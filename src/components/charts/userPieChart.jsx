@@ -17,9 +17,9 @@ const HalfDonutWithTooltip = () => {
             const dataItem = payload[0];
             const percentage = ((dataItem.payload.value / total) * 100).toFixed(1);
             return (
-                <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
-                    <p className="font-medium text-gray-800">{dataItem.name}</p>
-                    <p className="text-sm text-gray-600">
+                <div className="bg-white p-1 border border-gray-200 rounded-sm shadow-lg">
+                    <p className="font-medium text-[10px] text-gray-800">{dataItem.name}</p>
+                    <p className="text-[10px] text-gray-600">
                         {dataItem.value} meals ({percentage}%)
                     </p>
                 </div>

@@ -9,8 +9,9 @@ export default function DashboardLayout({ children }) {
 
     const getPageTitle = () => {
         if (pathname.includes('/dashboard')) return "Dashboard";
-        if (pathname.includes('/profile')) return "Profile Settings";
+        if (pathname.includes('/profile')) return "User Profile";
         if (pathname.includes('/orders')) return "My Orders";
+        if (pathname.includes('/payments')) return "Payment History";
         return "User Dashboard";
     };
 

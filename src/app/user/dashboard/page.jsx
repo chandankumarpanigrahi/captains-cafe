@@ -15,6 +15,48 @@ import { IoArrowUpOutline } from "react-icons/io5";
 import { ImHistory } from "react-icons/im";
 import { BiFoodMenu } from "react-icons/bi";
 import HalfDonutWithTooltip from '@/components/charts/userPieChart';
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { TbProgress } from "react-icons/tb";
+import { RxCross2 } from "react-icons/rx";
+
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import Link from 'next/link';
+import ViewMore from '@/components/design/view more';
+
+const completed = <div className='flex flex-row items-center gap-0.5 text-[12px] py-0.5 pr-3 pl-2 rounded-xl text-green-700 bg-green-100 w-fit font-semibold'> <IoCheckmarkSharp size={14}/> Completed </div>
+const pending = <div className='flex flex-row items-center gap-0.5 text-[12px] py-0.5 pr-3 pl-2 rounded-xl text-amber-700 bg-amber-100 w-fit font-semibold'> <TbProgress size={14}/> Pending </div>
+const cancelled = <div className='flex flex-row items-center gap-0.5 text-[12px] py-0.5 pr-3 pl-2 rounded-xl text-red-700 bg-red-100 w-fit font-semibold'> <RxCross2 size={14}/> Cancelled </div>
+
+const recentOrders = [
+  {
+    slno: "1",
+    orderId: "4120",
+    date: "Oct 15, 2025",
+    status: completed,
+    details: "Premium Plan - Annual Subscription",
+  },
+  {
+    slno: "2",
+    orderId: "4121",
+    date: "Oct 18, 2025",
+    status: pending,
+    details: "Pro Plan - Monthly Renewal",
+  },
+  {
+    slno: "3",
+    orderId: "4122",
+    date: "Oct 20, 2025",
+    status: cancelled,
+    details: "Basic Plan - Trial Upgrade",
+  },
+];
 
 const Dashboard = () => {
   const [currentDiv, setCurrentDiv] = useState(0);
@@ -182,7 +224,7 @@ const Dashboard = () => {
                 return (
                   <div key={stepNumber} className="flex items-center flex-row md:flex-col w-full h-10">
                     <div className={`flex h-full justify-center items-center w-5 md:w-full mb-0 md:mb-1 relative ${stepNumber > 1 ? `before:z-1 before:absolute before:content-[''] before:h-full before:w-0.5 md:before:h-0.5 md:before:w-full before:right-[45%] md:before:right-[50%] before:-top-5 md:before:top-1.25 ${isActive ? "before:bg-blue-500" : "before:bg-gray-300"
-                        }` : ''
+                      }` : ''
                       }`}>
                       <div className={`size-3 rounded-full relative z-2 ${isActive ? "bg-blue-800" : "bg-gray-300"
                         }`}></div>
@@ -198,8 +240,36 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-full lg:w-[260px] px-6 py-4 rounded-md bg-cyan-50 dark:bg-neutral-800 shadow-[inset_-4px_-4px_4px_-1px_rgba(0,0,0,0.15)] border border-gray-100 flex flex-row items-center overflow-hidden">
-          <HalfDonutWithTooltip/>
+          <HalfDonutWithTooltip />
         </div>
+      </div>
+      <div className="w-full px-6 py-4 rounded-md bg-white dark:bg-neutral-800 shadow-[inset_-4px_-4px_4px_-1px_rgba(0,0,0,0.15)] border border-gray-100">
+        <div className="flex flex-row w-full justify-between mb-2">
+          <h3 className='text-lg font-semibold text-blue-900 dark:text-blue-200'>Recent Orders</h3>
+          <ViewMore link='/user/orders' />
+        </div>
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-100">
+              <TableHead className="w-[100px]">Sl. No.</TableHead>
+              <TableHead>Order ID</TableHead>
+              <TableHead>Date</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Details</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {recentOrders.map((order) => (
+              <TableRow key={order.orderId}>
+                <TableCell>{order.slno}</TableCell>
+                <TableCell className="font-medium">#{order.orderId}</TableCell>
+                <TableCell>{order.date}</TableCell>
+                <TableCell>{order.status}</TableCell>
+                <TableCell>{order.details}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
 
     </div>
