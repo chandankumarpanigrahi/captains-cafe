@@ -126,7 +126,7 @@ const User = () => {
                             <div className={`${changeState === "mobileLogin" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Welcome Back</h1>
-                                    <p className='mb-5 text-gray-700'>Log in to your account</p>
+                                    <p className='mb-5 text-gray-700 dark:text-gray-300'>Log in to your account</p>
                                     <InputGroup className="bg-white rounded-lg overflow-hidden shadow-sm relative">
                                         {/* Country Code Select */}
                                         <div className="relative flex items-center border-r border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800">
@@ -154,11 +154,11 @@ const User = () => {
                                             className="focus:ring-0 focus:border-none border-0 bg-white dark:bg-neutral-900 text-gray-900 dark:text-white pl-3"
                                         />
                                     </InputGroup>
-                                    <p className='mt-4 text-[13px] text-gray-600'>You will receive an SMS verification that may apply message and data rates.</p>
+                                    <p className='mt-4 text-[13px] text-gray-600 dark:text-gray-400'>You will receive an SMS verification that may apply message and data rates.</p>
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">
                                     <Button text="Log in" className='w-full' onClick={loginFailed} />
-                                    <button className="cursor-pointer text-sm text-blue-950 font-semibold mt-3" onClick={() => setChangeState("emailLogin")}>Use email, instead</button>
+                                    <button className="cursor-pointer text-sm text-blue-950 dark:text-gray-300 font-semibold mt-3" onClick={() => setChangeState("emailLogin")}>Use email, instead</button>
                                 </section>
                             </div>
 
@@ -168,7 +168,7 @@ const User = () => {
                             <div className={`${changeState === "emailLogin" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Welcome Back</h1>
-                                    <p className='mb-5 text-gray-700'>Log in to your account</p>
+                                    <p className='mb-5 text-gray-700 dark:text-gray-300'>Log in to your account</p>
                                     <Input type="email" placeholder="Email Address" className="bg-white mb-3" />
                                     <InputGroup className={`bg-white`}>
                                         <InputGroupInput placeholder="Password" type={showPassword ? "text" : "password"} />
@@ -179,13 +179,13 @@ const User = () => {
                                         </InputGroupAddon>
                                     </InputGroup>
                                     <div className="flex flex-row justify-between mt-2 px-1">
-                                        <button className='text-[13px] text-blue-950 font-semibold cursor-pointer' onClick={() => setChangeState("mobileLogin")}>Use mobile number</button>
-                                        <button className='text-[13px] text-blue-950 font-semibold cursor-pointer' onClick={() => setChangeState("resetPassword")}>Forget Password?</button>
+                                        <button className='text-[13px] text-blue-950 dark:text-gray-300 font-semibold cursor-pointer' onClick={() => setChangeState("mobileLogin")}>Use mobile number</button>
+                                        <button className='text-[13px] text-blue-950 dark:text-gray-300 font-semibold cursor-pointer' onClick={() => setChangeState("resetPassword")}>Forget Password?</button>
                                     </div>
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">
                                     <Link className='flex items-center justify-center gap-2 uppercase transition-colors px-4 py-2 text-base bg-primary-dark text-white rounded-full w-full ' onClick={() => loginSuccess()} href="/user/dashboard">Log in</Link>
-                                    <div className="text-sm text-blue-950 mt-3 cursor-default">Don&apos;t have account? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("newReg")}>Create Account</button></div>
+                                    <div className="text-sm text-blue-950 dark:text-gray-300 mt-3 cursor-default">Don&apos;t have account? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("newReg")}>Create Account</button></div>
                                 </section>
                             </div>
 
@@ -194,7 +194,7 @@ const User = () => {
                             <div className={`${changeState === "newReg" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Registration</h1>
-                                    <p className='mb-5 text-gray-700'>Create your own account</p>
+                                    <p className='mb-5 text-gray-700 dark:text-gray-400'>Create your own account</p>
                                     <Input type="text" placeholder="Full Name" className="bg-white mb-4" />
                                     <Input type="email" placeholder="Email Address" className="bg-white mb-4" />
                                     <Input type="number" placeholder="Mobile Number" className="bg-white mb-4" />
@@ -209,7 +209,7 @@ const User = () => {
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">
                                     <Button text="Register" className='w-full' onClick={() => registration()} />
-                                    <div className="text-sm text-blue-950 mt-3 cursor-default">Already have account? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("mobileLogin")}>Login</button></div>
+                                    <div className="text-sm text-blue-950 mt-3 cursor-default dark:text-gray-300">Already have account? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("mobileLogin")}>Login</button></div>
                                 </section>
                             </div>
 
@@ -218,21 +218,21 @@ const User = () => {
                             <div className={`${changeState === "resetPassword" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Reset Password</h1>
-                                    <p className='mb-5 text-gray-700'>Recover your lost password</p>
+                                    <p className='mb-5 text-gray-700 dark:text-gray-300'>Recover your lost password</p>
                                     <Input type="text" placeholder="Full Name" className="bg-white mb-4" />
                                     <Input type="email" placeholder="Email Address" className="bg-white mb-4" />
                                     <div className="flex flex-col md:flex-row justify-between">
                                         <InputOTP maxLength={6}>
                                             <InputOTPGroup className="disabled:cursor-not-allowed">
-                                                <InputOTPSlot index={0} className="bg-white" />
-                                                <InputOTPSlot index={1} className="bg-white" />
-                                                <InputOTPSlot index={2} className="bg-white" />
+                                                <InputOTPSlot index={0} className="bg-white dark:bg-white/5" />
+                                                <InputOTPSlot index={1} className="bg-white dark:bg-white/5" />
+                                                <InputOTPSlot index={2} className="bg-white dark:bg-white/5" />
                                             </InputOTPGroup>
                                             <InputOTPSeparator className="hidden md:block"/>
                                             <InputOTPGroup>
-                                                <InputOTPSlot index={3} className="bg-white" />
-                                                <InputOTPSlot index={4} className="bg-white" />
-                                                <InputOTPSlot index={5} className="bg-white" />
+                                                <InputOTPSlot index={3} className="bg-white dark:bg-white/5" />
+                                                <InputOTPSlot index={4} className="bg-white dark:bg-white/5" />
+                                                <InputOTPSlot index={5} className="bg-white dark:bg-white/5" />
                                             </InputOTPGroup>
                                         </InputOTP>
                                         <Button text="SEND OTP" className='ml-auto w-fit mt-3 md:mt-0' size='sm' radius='md' />
@@ -240,7 +240,7 @@ const User = () => {
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">
                                     <Button text="Reset Password" className='w-full' onClick={passwordChangeSuccess} />
-                                    <div className="text-sm text-blue-950 mt-3 cursor-default">Know your passwod? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("mobileLogin")}>Back to Login</button></div>
+                                    <div className="text-sm text-blue-950 dark:text-gray-300 mt-3 cursor-default">Know your passwod? <button className='font-semibold cursor-pointer' onClick={() => setChangeState("mobileLogin")}>Back to Login</button></div>
                                 </section>
                             </div>
 
