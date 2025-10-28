@@ -10,10 +10,37 @@ import {
 } from "@/components/ui/sheet"
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import styles from "./style.module.css"
+
+// Images
+import avatar from "../../../assets/images/avatars/user_6.png"
+
+// Icons
+import { MdCall } from "react-icons/md";
+import { IoIosMail } from "react-icons/io";
+import Image from 'next/image'
 
 const Profile = () => {
   return (
     <div className='flex flex-col space-y-3'>
+      <div className={`${styles.userRow} w-full flex flex-row items-center gap-3 md:my-8 px-2 md:pl-50 md:pr-12 py-2 md:py-5 rounded-full relative bg-[#12406D] shadow-[inset_-4px_-4px_4px_-1px_rgba(0,0,0,0.15)]`}>
+        <div className={`${styles.userAvatar} md:absolute z-2 left-0 md:-top-8 size-20 md:size-42 flex items-center justify-center`}>
+          <Image src={avatar} alt='Avatar' className={`${styles.userAvatarImage} rounded-full w-fit`} />
+        </div>
+        <div className='w-full'>
+          <h1 className={`${styles.userName} w-full text-xl md:text-3xl text-white font-semibold mb-2 break-words`}>Mr. Subham Choudhury</h1>
+          <div className={`${styles.userContacts} flex flex-col space-y-1 space-x-6 md:flex-row`}>
+            <div className="w-fit flex gap-1 text-sm md:text-md items-center text-white/90">
+              <MdCall className='opacity-80' size="18" />
+              <span className='break-all'>+91 89599 78588</span>
+            </div>
+            <div className="w-fit flex gap-1 text-sm md:text-md items-center text-white/90">
+              <IoIosMail className='opacity-80' size="20" />
+              <span className='break-all'>subham787898@gmail.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="w-full px-6 py-4 rounded-md bg-white dark:bg-neutral-800 shadow-[inset_-4px_-4px_4px_-1px_rgba(0,0,0,0.15)] border border-gray-100">
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-2xl font-semibold text-blue-900">Personal Information</h2>
@@ -44,11 +71,11 @@ const Profile = () => {
                     </div>
                     <div className="mb-3">
                       <Label className="text-gray-800">Upload Your Profile Picture</Label>
-                      <Input/>
+                      <Input />
                     </div>
                     <div className="mb-3 flex flex-row">
-                      <Button text="Cancel" radius='md' className='mr-3'/>
-                      <Button text="Update" radius='md' className='w-full'/>
+                      <Button text="Cancel" radius='md' className='mr-3' />
+                      <Button text="Update" radius='md' className='w-full' />
                     </div>
                   </form>
                 </SheetDescription>
@@ -58,26 +85,26 @@ const Profile = () => {
         </div>
         <hr className='my-2 border-gray-200' />
         <div className="flex flex-wrap justify-between gap-3 text-gray-600 text-[15px] mt-4">
-          <div className="w-full lg:w-[49%] flex gap-3">
-            <div className="w-[30%] font-semibold">Name</div>
-            <div>:</div>
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
+            <div className="w-full md:w-[30%] font-semibold">Name</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>Subham Choudhury</div>
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
+          <div className="w-full lg:w-[49%] hidden md:flex flex-col md:flex-row md:gap-3">
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
-            <div className="w-[30%] font-semibold">Mobile Number</div>
-            <div>:</div>
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
+            <div className="w-full md:w-[30%] font-semibold">Mobile Number</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>+91 89599 78588</div>
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
-            <div className="w-[30%] font-semibold">Alternate Number</div>
-            <div>:</div>
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
+            <div className="w-full md:w-[30%] font-semibold">Alternate Number</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>+91 78554 98665</div>
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
-            <div className="w-[30%] font-semibold">Email Address</div>
-            <div>:</div>
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
+            <div className="w-full md:w-[30%] font-semibold">Email Address</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>subham787898@gmail.com</div>
           </div>
         </div>
@@ -90,24 +117,24 @@ const Profile = () => {
         </div>
         <hr className='my-2 border-gray-200' />
         <div className="flex flex-wrap justify-between gap-3 text-gray-600 text-[15px] mt-4">
-          <div className="w-full lg:w-[49%] flex gap-3">
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
             <div className="w-[30%] font-semibold">Last Login</div>
-            <div>:</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>12th Oct 2025 / 12:06PM</div>
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
             <div className="w-[30%] font-semibold">Active Since</div>
-            <div>:</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>21st Jan 2024</div>
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
             <div className="w-[30%] font-semibold">User Type</div>
-            <div>:</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>Individual</div>
           </div>
-          <div className="w-full lg:w-[49%] flex gap-3">
+          <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
             <div className="w-[30%] font-semibold">Subscriptions</div>
-            <div>:</div>
+            <div className='hidden md:inline-block'>:</div>
             <div>NA</div>
           </div>
         </div>

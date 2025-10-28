@@ -1,0 +1,28 @@
+@media screen and (max-width: 450px) {
+    .userRow {
+        padding-top: 3rem;
+        border-radius: 2rem !important;
+        margin-top: 2rem;
+    }
+
+    .userAvatar {
+        position: absolute;
+        top: -60px;
+        height: 110px;
+        width: 100%;
+    }
+
+    .userAvatarImage {
+        border: 5px solid #12406d;
+        height: 100px;
+        width: 100px;
+    }
+
+    .userName {
+        text-align: center;
+    }
+
+    .userContacts {
+        align-items: center;
+    }
+}
