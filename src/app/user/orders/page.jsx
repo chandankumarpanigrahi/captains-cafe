@@ -123,7 +123,7 @@ const Orders = () => {
           <h3 className='text-lg font-semibold text-blue-900 dark:text-blue-200'>All Past Orders</h3>
         </div>
         <hr className='my-2 border-gray-200 dark:border-neutral-700' />
-        <Table>
+        <Table className="whitespace-nowrap">
           <TableHeader>
             <TableRow className="bg-gray-100 dark:bg-neutral-700">
               <TableHead className="w-[80px]">Sl. No.</TableHead>

@@ -87,7 +87,7 @@ const User = () => {
                 showBreadcrumb={false}
             />
             <div className='container mx-auto pt-10'>
-                <div className="flex flex-row items-center px-10 xl:px-40">
+                <div className="flex flex-row items-center px-1 lg:px-10 xl:px-40">
                     <div className="hidden lg:block w-1/2 h-[460px] bg-gray-300 relative border-blue-900 border-l-3 border-y-3 rounded-tl-xl rounded-bl-xl overflow-hidden">
 
                         {/* Carousel - Base Layer */}
@@ -123,7 +123,7 @@ const User = () => {
                         <div className="w-full h-full relative z-2">
 
                             {/* MobileNumber Login */}
-                            <div className={`${changeState === "mobileLogin" ? "block" : "hidden"} flex flex-col h-full p-16`}>
+                            <div className={`${changeState === "mobileLogin" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Welcome Back</h1>
                                     <p className='mb-5 text-gray-700'>Log in to your account</p>
@@ -165,7 +165,7 @@ const User = () => {
 
 
                             {/* Email Login */}
-                            <div className={`${changeState === "emailLogin" ? "block" : "hidden"} flex flex-col h-full p-16`}>
+                            <div className={`${changeState === "emailLogin" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Welcome Back</h1>
                                     <p className='mb-5 text-gray-700'>Log in to your account</p>
@@ -191,7 +191,7 @@ const User = () => {
 
 
                             {/* New Registration */}
-                            <div className={`${changeState === "newReg" ? "block" : "hidden"} flex flex-col h-full p-16`}>
+                            <div className={`${changeState === "newReg" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Registration</h1>
                                     <p className='mb-5 text-gray-700'>Create your own account</p>
@@ -215,27 +215,27 @@ const User = () => {
 
 
                             {/* Password Reset */}
-                            <div className={`${changeState === "resetPassword" ? "block" : "hidden"} flex flex-col h-full p-16`}>
+                            <div className={`${changeState === "resetPassword" ? "block" : "hidden"} flex flex-col h-full p-6 md:p-16`}>
                                 <section className="flex flex-col">
                                     <h1 className='text-[#12406D] dark:text-white text-3xl font-bold mb-0.5'>Reset Password</h1>
                                     <p className='mb-5 text-gray-700'>Recover your lost password</p>
                                     <Input type="text" placeholder="Full Name" className="bg-white mb-4" />
                                     <Input type="email" placeholder="Email Address" className="bg-white mb-4" />
-                                    <div className="flex flex-row justify-between">
+                                    <div className="flex flex-col md:flex-row justify-between">
                                         <InputOTP maxLength={6}>
                                             <InputOTPGroup className="disabled:cursor-not-allowed">
                                                 <InputOTPSlot index={0} className="bg-white" />
                                                 <InputOTPSlot index={1} className="bg-white" />
                                                 <InputOTPSlot index={2} className="bg-white" />
                                             </InputOTPGroup>
-                                            <InputOTPSeparator />
+                                            <InputOTPSeparator className="hidden md:block"/>
                                             <InputOTPGroup>
                                                 <InputOTPSlot index={3} className="bg-white" />
                                                 <InputOTPSlot index={4} className="bg-white" />
                                                 <InputOTPSlot index={5} className="bg-white" />
                                             </InputOTPGroup>
                                         </InputOTP>
-                                        <Button text="SEND OTP" className='w-fit' size='sm' radius='md' />
+                                        <Button text="SEND OTP" className='ml-auto w-fit mt-3 md:mt-0' size='sm' radius='md' />
                                     </div>
                                 </section>
                                 <section className="flex flex-col justify-center items-center mt-auto">

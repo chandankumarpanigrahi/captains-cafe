@@ -248,7 +248,7 @@ const Dashboard = () => {
           <h3 className='text-lg font-semibold text-blue-900 dark:text-blue-200'>Recent Orders</h3>
           <ViewMore link='/user/orders' />
         </div>
-        <Table>
+        <Table className="whitespace-nowrap">
           <TableHeader>
             <TableRow className="bg-gray-100">
               <TableHead className="w-[100px]">Sl. No.</TableHead>

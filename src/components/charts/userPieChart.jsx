@@ -60,8 +60,8 @@ const HalfDonutWithTooltip = () => {
 
                 {/* Center Text */}
                 <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-center">
-                    <div className="text-xl font-bold text-gray-800">{total}</div>
-                    <div className="text-xs text-gray-500">Total</div>
+                    <div className="text-xl font-bold text-gray-800 dark:text-white">{total}</div>
+                    <div className="text-xs text-gray-500 dark:text-white/70">Total</div>
                 </div>
             </div>
 
@@ -76,11 +76,11 @@ const HalfDonutWithTooltip = () => {
                                     className="w-3 h-3 rounded-full"
                                     style={{ backgroundColor: item.color }}
                                 ></div>
-                                <span className="text-sm text-gray-700">{item.name}</span>
+                                <span className="text-sm text-gray-700 dark:text-white">{item.name}</span>
                             </div>
                             <div className="text-right flex items-center gap-1">
-                                <div className="text-sm font-medium text-gray-800">{item.value}</div>
-                                <div className="text-xs text-gray-500 pt-0.5">{percentage}%</div>
+                                <div className="text-sm font-medium text-gray-800 dark:text-white">{item.value}</div>
+                                <div className="text-xs text-gray-500 dark:text-gray-300 pt-0.5">{percentage}%</div>
                             </div>
                         </div>
                     );
