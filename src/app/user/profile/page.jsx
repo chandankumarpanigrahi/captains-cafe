@@ -1,5 +1,6 @@
+"use client"
+import React, { useEffect } from 'react'
 import Button from '@/components/common/button'
-import React from 'react'
 import {
   Sheet,
   SheetContent,
@@ -12,6 +13,10 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import styles from "./style.module.css"
 
+// Lightbox
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
+
 // Images
 import avatar from "../../../assets/images/avatars/user_6.png"
 
@@ -21,11 +26,35 @@ import { IoIosMail } from "react-icons/io";
 import Image from 'next/image'
 
 const Profile = () => {
+  useEffect(() => {
+    Fancybox.bind("[data-fancybox='gallery']", {
+      Thumbs: false,
+      Toolbar: true,
+    });
+
+    return () => {
+      Fancybox.destroy();
+    };
+  }, []);
+
+  // Convert imported image to URL string for Fancybox
+  const avatarSrc = typeof avatar === 'string' ? avatar : avatar.src;
+
+
   return (
     <div className='flex flex-col space-y-3'>
       <div className={`${styles.userRow} w-full flex flex-row items-center gap-3 md:my-8 px-2 md:pl-50 md:pr-12 py-2 md:py-5 rounded-full relative bg-[#12406D] shadow-[inset_-6px_-10px_3px_-3px_rgba(0,0,0,0.25)]`}>
         <div className={`${styles.userAvatar} md:absolute z-2 left-0 md:-top-8 size-20 md:size-42 flex items-center justify-center`}>
-          <Image src={avatar} alt='Avatar' className={`${styles.userAvatarImage} rounded-full w-fit`} />
+          <a
+            href={avatarSrc}
+            data-fancybox="gallery"
+          >
+            <Image
+              src={avatar}
+              alt='Avatar'
+              className={`${styles.userAvatarImage} rounded-full w-fit cursor-pointer`}
+            />
+          </a>
         </div>
         <div className='w-full'>
           <h1 className={`${styles.userName} w-full text-xl md:text-3xl text-white font-semibold mb-2 break-words`}>Mr. Subham Choudhury</h1>
@@ -45,7 +74,7 @@ const Profile = () => {
         <div className="flex justify-between items-center mb-3">
           <h2 className="text-2xl font-semibold text-blue-900 dark:text-white">Personal Information</h2>
           <Sheet>
-            <SheetTrigger>
+            <SheetTrigger asChild>
               <Button text="EDIT" radius="md" size='sm' />
             </SheetTrigger>
             <SheetContent className="p-0 border-0">
@@ -75,7 +104,7 @@ const Profile = () => {
                     <Input type="file" />
                   </div>
                   <div className="mb-3 flex flex-row">
-                    <Button text="Cancel" radius='md' className='mr-3' />
+                    <Button variant='outline' text="Cancel" radius='md' className='mr-3' />
                     <Button text="Update" radius='md' className='w-full' />
                   </div>
                 </form>
