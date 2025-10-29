@@ -51,35 +51,35 @@ const Profile = () => {
             <SheetContent className="p-0 border-0">
               <SheetHeader>
                 <SheetTitle className="bg-blue-950 py-2 px-4 text-white">Edit Details</SheetTitle>
-                <SheetDescription className=" py-2 px-4">
-                  <form>
-                    <div className="mb-3">
-                      <Label className="text-gray-800 dark:text-gray-300">Your Name</Label>
-                      <Input type="text" placeholder="Enter Your Name" value="Subham Choudhury" />
-                    </div>
-                    <div className="mb-3">
-                      <Label className="text-gray-800 dark:text-gray-300">Mobile Number</Label>
-                      <Input type="text" placeholder="Enter Your Mobile Number" value="+91 89599 78588" />
-                    </div>
-                    <div className="mb-3">
-                      <Label className="text-gray-800 dark:text-gray-300">Alternate Mobile Number</Label>
-                      <Input type="text" placeholder="Enter Alternate Mobile Number" value="+91 78554 98665" />
-                    </div>
-                    <div className="mb-3">
-                      <Label className="text-gray-800 dark:text-gray-300">Email Address</Label>
-                      <Input type="email" placeholder="Enter Your Email Address" value="subham787898@gmail.com" />
-                    </div>
-                    <div className="mb-3">
-                      <Label className="text-gray-800 dark:text-gray-300">Upload Your Profile Picture</Label>
-                      <Input />
-                    </div>
-                    <div className="mb-3 flex flex-row">
-                      <Button text="Cancel" radius='md' className='mr-3' />
-                      <Button text="Update" radius='md' className='w-full' />
-                    </div>
-                  </form>
-                </SheetDescription>
               </SheetHeader>
+              <div className="py-2 px-4">
+                <form>
+                  <div className="mb-3">
+                    <Label className="text-gray-800 dark:text-gray-300">Your Name</Label>
+                    <Input type="text" placeholder="Enter Your Name" defaultValue="Subham Choudhury" />
+                  </div>
+                  <div className="mb-3">
+                    <Label className="text-gray-800 dark:text-gray-300">Mobile Number</Label>
+                    <Input type="text" placeholder="Enter Your Mobile Number" defaultValue="+91 89599 78588" />
+                  </div>
+                  <div className="mb-3">
+                    <Label className="text-gray-800 dark:text-gray-300">Alternate Mobile Number</Label>
+                    <Input type="text" placeholder="Enter Alternate Mobile Number" defaultValue="+91 78554 98665" />
+                  </div>
+                  <div className="mb-3">
+                    <Label className="text-gray-800 dark:text-gray-300">Email Address</Label>
+                    <Input type="email" placeholder="Enter Your Email Address" defaultValue="subham787898@gmail.com" />
+                  </div>
+                  <div className="mb-3">
+                    <Label className="text-gray-800 dark:text-gray-300">Upload Your Profile Picture</Label>
+                    <Input type="file" />
+                  </div>
+                  <div className="mb-3 flex flex-row">
+                    <Button text="Cancel" radius='md' className='mr-3' />
+                    <Button text="Update" radius='md' className='w-full' />
+                  </div>
+                </form>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
