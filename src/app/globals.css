@@ -42,8 +42,8 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  
 
+  /* Fonts */
   --font-inter: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --font-quicksand: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }

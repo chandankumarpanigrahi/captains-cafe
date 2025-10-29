@@ -84,7 +84,7 @@ const Profile = () => {
           </Sheet>
         </div>
         <hr className='my-2 border-gray-200' />
-        <div className="flex flex-wrap justify-between gap-3 text-gray-600 text-[15px] mt-4">
+        <div className="flex flex-wrap justify-between gap-3 opacity-90 text-[15px] mt-4">
           <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
             <div className="w-full md:w-[30%] font-semibold">Name</div>
             <div className='hidden md:inline-block'>:</div>
@@ -116,7 +116,7 @@ const Profile = () => {
           <h2 className="text-2xl font-semibold text-blue-900 dark:text-white">User Information</h2>
         </div>
         <hr className='my-2 border-gray-200' />
-        <div className="flex flex-wrap justify-between gap-3 text-gray-600 text-[15px] mt-4">
+        <div className="flex flex-wrap justify-between gap-3 opacity-90 text-[15px] mt-4">
           <div className="w-full lg:w-[49%] flex flex-col md:flex-row md:gap-3">
             <div className="w-[30%] font-semibold">Last Login</div>
             <div className='hidden md:inline-block'>:</div>
