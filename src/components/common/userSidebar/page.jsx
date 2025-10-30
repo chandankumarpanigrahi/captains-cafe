@@ -16,7 +16,6 @@ import {
     FiMenu,
     FiX
 } from 'react-icons/fi';
-import Link from 'next/link';
 
 const UserSidebar = () => {
     const pathname = usePathname();
