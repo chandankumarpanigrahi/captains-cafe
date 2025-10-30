@@ -1,8 +1,7 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import React, { useState, useEffect, useCallback } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
-import { useRouter } from 'next/navigation'
 import {
     FiHome,
     FiUser,
@@ -19,24 +18,9 @@ import {
 
 const UserSidebar = () => {
     const pathname = usePathname();
+    const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-
-    // Check if mobile on mount and resize
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024);
-            if (window.innerWidth >= 1024) {
-                setIsOpen(true);
-            } else {
-                setIsOpen(false);
-            }
-        };
-
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
 
     const menuItems = [
         { icon: FiHome, label: 'Home', href: '/user/dashboard' },
@@ -49,120 +33,168 @@ const UserSidebar = () => {
         { icon: FiBell, label: 'Notifications', href: '/user/notifications' },
     ];
 
-    const isActive = (href) => {
+    // Check if mobile on mount and resize
+    useEffect(() => {
+        const checkMobile = () => {
+            const mobile = window.innerWidth < 1024;
+            setIsMobile(mobile);
+            setIsOpen(!mobile);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Close sidebar on route change (mobile only)
+    useEffect(() => {
+        if (isMobile) {
+            setIsOpen(false);
+        }
+    }, [pathname, isMobile]);
+
+    const isActive = useCallback((href) => {
         return pathname === href || pathname.startsWith(href + '/');
-    };
+    }, [pathname]);
 
-    const toggleSidebar = () => {
-        setIsOpen(!isOpen);
-    };
-    const router = useRouter();
-    const redirect = () => {
-        router.push("/user")
-    }
+    const toggleSidebar = () => setIsOpen(prev => !prev);
 
-    const handleLogout = () => {
-        Swal.fire({
-            title: 'Logout?',
+    const handleLogout = async () => {
+        const result = await Swal.fire({
+            title: 'Logout Confirmation',
             text: 'Are you sure you want to logout?',
             icon: 'question',
             showCancelButton: true,
-            confirmButtonText: 'Yes, Logout!',
+            confirmButtonText: 'Yes, Logout',
             cancelButtonText: 'Cancel',
             confirmButtonColor: '#ef4444',
             cancelButtonColor: '#6b7280',
             customClass: {
-                popup: 'rounded-xl border border-gray-200',
-                confirmButton: 'bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg font-medium',
-                cancelButton: 'bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg font-medium mr-3'
+                popup: 'rounded-2xl shadow-2xl',
+                confirmButton: 'px-6 py-2.5 rounded-lg font-semibold transition-all',
+                cancelButton: 'px-6 py-2.5 rounded-lg font-semibold mr-3 transition-all'
             },
             buttonsStyling: false,
             reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Show success message
-                Swal.fire({
-                    title: 'Logged Out!',
-                    text: 'You have been successfully logged out.',
-                    icon: 'success',
-                    confirmButtonText: 'Close',
-                    confirmButtonColor: '#10b981',
-                    customClass: {
-                        popup: 'rounded-xl border border-gray-200',
-                        confirmButton: 'bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium'
-                    },
-                    buttonsStyling: false,
-                    timer: 3000,
-                    timerProgressBar: true
-                }).then(() => {
-                    redirect();
-                });
-            }
         });
+
+        if (result.isConfirmed) {
+            await Swal.fire({
+                title: 'Logged Out Successfully!',
+                text: 'Redirecting you to the home page...',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#10b981',
+                customClass: {
+                    popup: 'rounded-2xl shadow-2xl',
+                    confirmButton: 'px-6 py-2.5 rounded-lg font-semibold transition-all'
+                },
+                buttonsStyling: false,
+                timer: 2000,
+                timerProgressBar: true
+            });
+            router.push('/user');
+        }
+    };
+
+    const handleNavigation = (href) => {
+        if (isMobile) setIsOpen(false);
+        router.push(href);
     };
 
     return (
         <>
-            {/* Mobile Hamburger Button */}
+            {/* Mobile Toggle Button */}
             {isMobile && (
                 <button
                     onClick={toggleSidebar}
-                    className="relative -top-16 left-0 z-50 p-2 bg-white dark:bg-neutral-800 rounded-md shadow-lg lg:hidden"
+                    aria-label={isOpen ? 'Close menu' : 'Open menu'}
+                    className="fixed bottom-10 right-0 z-500 p-2 bg-[#0c3c6a]  dark:bg-neutral-800 rounded-tr-md rounded-bl-md rounded-tl-[3px] rounded-br-[3px] shadow-lg lg:hidden hover:shadow-xl transition-all duration-200 hover:scale-105"
                 >
-                    {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+                    {isOpen ? (
+                        <FiX size={24} className="text-white dark:text-gray-200" />
+                    ) : (
+                        <FiMenu size={24} className="text-white dark:text-gray-200" />
+                    )}
                 </button>
             )}
 
-            {/* Overlay for mobile */}
+            {/* Overlay */}
             {isMobile && isOpen && (
                 <div
-                    className="relative z-30 lg:hidden"
+                    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden transition-opacity duration-300"
                     onClick={() => setIsOpen(false)}
+                    aria-hidden="true"
                 />
             )}
 
             {/* Sidebar */}
-            <div className={`relative -top-10 lg:top-0 z-2 transition-all duration-300 ${isOpen ? 'translate-x-0 bg-white dark:bg-gray-900 lg:bg-transparent rounded-xl p-1 shadow-2xl lg:shadow-none' : '-translate-x-[120%] lg:translate-x-0'} w-64 lg:w-full `}>
-                <div className="flex flex-col h-full p-1 lg:p-0 lg:bg-none">
-                    {/* Navigation Menu */}
-                    <nav className="flex-1">
-                        <ul className="space-y-1 lg:space-y-4">
-                            {menuItems.map((item) => {
-                                const Icon = item.icon;
-                                const active = isActive(item.href);
+            <aside
+                className={`
+                    fixed lg:relative top-0 left-0 h-screen lg:h-auto z-70
+                    w-72 lg:w-full
+                    transition-transform duration-300 ease-in-out
+                    ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+                `}
+            >
+                <div className="h-full lg:h-auto bg-white dark:bg-gray-900 lg:bg-transparent rounded-none lg:rounded-2xl shadow-2xl lg:shadow-none flex flex-col">
+                    {/* Mobile Header Spacer */}
+                    {isMobile && <div className="flex-shrink-0" />}
 
-                                return (
-                                    <li key={item.href}>
-                                        <a
-                                            href={item.href}
-                                            className={`
-                                                    flex items-center lg:shadow-md space-x-3 px-4 py-3 rounded-lg transition-all duration-200
+                    {/* Scrollable Content Container */}
+                    <div className="flex-1 overflow-y-auto overflow-x-hidden p-6 lg:p-0 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                        {/* Navigation Menu */}
+                        <nav className="flex-1">
+                            <ul className="space-y-2">
+                                {menuItems.map((item) => {
+                                    const Icon = item.icon;
+                                    const active = isActive(item.href);
+
+                                    return (
+                                        <li key={item.href}>
+                                            <button
+                                                onClick={() => handleNavigation(item.href)}
+                                                className={`
+                                                    flex items-center w-full space-x-3 px-4 py-3.5 rounded-xl
+                                                    transition-all duration-200 font-medium
+                                                    lg:shadow-md hover:shadow-lg
                                                     ${active
-                                                    ? 'bg-[#12406D] text-white border-r-2 '
-                                                    : 'text-[#12406D] dark:text-gray-100 bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-700 hover:bg-gray-100 hover:text-gray-900'
-                                                }
-                                            `}
-                                            onClick={() => isMobile && setIsOpen(false)}
-                                        >
-                                            <Icon size={20} />
-                                            <span className="font-medium">{item.label}</span>
-                                        </a>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </nav>
+                                                        ? 'bg-gradient-to-r from-[#12406D] to-[#1a5a9e] text-white shadow-lg scale-[1.02]'
+                                                        : 'text-gray-700 dark:text-gray-100 bg-gray-50 dark:bg-neutral-800 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:scale-[1.02]'
+                                                    }
+                                                `}
+                                            >
+                                                <Icon size={20} className={active ? 'animate-pulse' : ''} />
+                                                <span>{item.label}</span>
+                                                {active && (
+                                                    <div className="ml-auto w-2 h-2 bg-white rounded-full animate-pulse" />
+                                                )}
+                                            </button>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                        </nav>
 
-                    {/* Logout Button */}
-                    <div className="pt-4">
-                        <button
-                            className="flex items-center space-x-3 w-full px-4 py-3 text-red-600 shadow-md bg-red-50 hover:bg-red-700 hover:text-red-50 rounded-lg transition-all duration-200" onClick={handleLogout}>
-                            <FiLogOut size={20} />
-                            <span className="font-medium">LOGOUT</span>
-                        </button>
+                        {/* Logout Button */}
+                        <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700 lg:border-none">
+                            <button
+                                onClick={handleLogout}
+                                className="flex items-center justify-center space-x-3 w-full px-4 py-3.5 
+                                         text-red-600 dark:text-red-400 font-semibold
+                                         bg-red-50 dark:bg-red-950/30 
+                                         hover:bg-red-600 hover:text-white dark:hover:bg-red-600
+                                         rounded-xl shadow-md hover:shadow-lg
+                                         transition-all duration-200 hover:scale-[1.02]
+                                         group"
+                            >
+                                <FiLogOut size={20} className="group-hover:rotate-180 transition-transform duration-300" />
+                                <span>LOGOUT</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </aside>
         </>
     );
 };
