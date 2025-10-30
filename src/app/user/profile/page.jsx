@@ -44,7 +44,7 @@ const Profile = () => {
   return (
     <div className='flex flex-col space-y-3'>
       <div className={`${styles.userRow} w-full flex flex-row items-center gap-3 md:my-8 px-2 md:pl-50 md:pr-12 py-2 md:py-5 rounded-full relative bg-[#12406D] shadow-[inset_-6px_-10px_3px_-3px_rgba(0,0,0,0.25)]`}>
-        <div className={`${styles.userAvatar} md:absolute z-2 left-0 md:-top-8 size-20 md:size-42 flex items-center justify-center`}>
+        <div className={`${styles.userAvatar} md:absolute z-1 left-0 md:-top-8 size-20 md:size-42 flex items-center justify-center`}>
           <a
             href={avatarSrc}
             data-fancybox="gallery"

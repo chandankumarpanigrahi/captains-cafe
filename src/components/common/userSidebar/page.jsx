@@ -123,7 +123,7 @@ const UserSidebar = () => {
             )}
 
             {/* Sidebar */}
-            <div className={`relative -top-10 lg:top-0 z-2 transition-all duration-300 ${isOpen ? 'translate-x-0 bg-white lg:bg-transparent rounded-xl p-1 shadow-2xl lg:shadow-none' : '-translate-x-[120%] lg:translate-x-0'} w-64 lg:w-full `}>
+            <div className={`relative -top-10 lg:top-0 z-2 transition-all duration-300 ${isOpen ? 'translate-x-0 bg-white dark:bg-gray-900 lg:bg-transparent rounded-xl p-1 shadow-2xl lg:shadow-none' : '-translate-x-[120%] lg:translate-x-0'} w-64 lg:w-full `}>
                 <div className="flex flex-col h-full p-1 lg:p-0 lg:bg-none">
                     {/* Navigation Menu */}
                     <nav className="flex-1">
