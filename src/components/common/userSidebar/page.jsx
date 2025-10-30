@@ -109,7 +109,7 @@ const UserSidebar = () => {
                 <button
                     onClick={toggleSidebar}
                     aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                    className="fixed bottom-10 right-0 z-500 p-2 bg-[#0c3c6a]  dark:bg-neutral-800 rounded-tr-md rounded-bl-md rounded-tl-[3px] rounded-br-[3px] shadow-lg lg:hidden hover:shadow-xl transition-all duration-200 hover:scale-105"
+                    className="fixed bottom-10 right-0 z-500 p-2 bg-[#0c3c6a] rounded-tr-md rounded-bl-md rounded-tl-[3px] rounded-br-[3px] shadow-lg lg:hidden hover:shadow-xl transition-all duration-200 hover:scale-105"
                 >
                     {isOpen ? (
                         <FiX size={24} className="text-white dark:text-gray-200" />
@@ -137,12 +137,12 @@ const UserSidebar = () => {
                     ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
                 `}
             >
-                <div className="h-full lg:h-auto bg-white dark:bg-gray-900 lg:bg-transparent rounded-none lg:rounded-2xl shadow-2xl lg:shadow-none flex flex-col">
+                <div className="h-full lg:h-auto bg-white dark:bg-gray-900 lg:bg-transparent dark:lg:bg-transparent rounded-none lg:rounded-2xl shadow-2xl lg:shadow-none flex flex-col">
                     {/* Mobile Header Spacer */}
                     {isMobile && <div className="flex-shrink-0" />}
 
                     {/* Scrollable Content Container */}
-                    <div className="flex-1 overflow-y-auto overflow-x-hidden p-6 lg:p-0 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                    <div className="bg_design_sidebar flex-1 overflow-y-auto overflow-x-hidden md:overflow-x-visible md:overflow-y-visible p-6 lg:p-0 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
                         {/* Navigation Menu */}
                         <nav className="flex-1">
                             <ul className="space-y-2">
@@ -160,7 +160,7 @@ const UserSidebar = () => {
                                                     lg:shadow-md hover:shadow-lg
                                                     ${active
                                                         ? 'bg-gradient-to-r from-[#12406D] to-[#1a5a9e] text-white shadow-lg scale-[1.02]'
-                                                        : 'text-gray-700 dark:text-gray-100 bg-gray-50 dark:bg-neutral-800 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:scale-[1.02]'
+                                                        : 'text-gray-700 dark:text-gray-100 bg-gray-100 dark:bg-neutral-800 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:scale-[1.02]'
                                                     }
                                                 `}
                                             >
@@ -181,12 +181,12 @@ const UserSidebar = () => {
                             <button
                                 onClick={handleLogout}
                                 className="flex items-center justify-center space-x-3 w-full px-4 py-3.5 
-                                         text-red-600 dark:text-red-400 font-semibold
-                                         bg-red-50 dark:bg-red-950/30 
-                                         hover:bg-red-600 hover:text-white dark:hover:bg-red-600
-                                         rounded-xl shadow-md hover:shadow-lg
-                                         transition-all duration-200 hover:scale-[1.02]
-                                         group"
+                                            text-red-600 dark:text-red-200 font-semibold
+                                            bg-red-50 dark:bg-red-800 
+                                            hover:bg-red-600 hover:text-white dark:hover:bg-red-600
+                                            rounded-xl shadow-md hover:shadow-lg
+                                            transition-all duration-200 hover:scale-[1.02]
+                                            group"
                             >
                                 <FiLogOut size={20} className="group-hover:rotate-180 transition-transform duration-300" />
                                 <span>LOGOUT</span>

@@ -26,7 +26,7 @@ export default function DashboardLayout({ children }) {
                 ]}
             />
 
-            <div className='container mx-auto pt-12'>
+            <div className='container mx-auto pt-4 md:pt-12'>
                 <div className="flex flex-row justify-between">
                     <div className='w-0 lg:w-[240px]'>
                         <UserSidebar />
