@@ -40,7 +40,7 @@ import { IoTriangle } from "react-icons/io5";
 import { AiTwotonePushpin } from "react-icons/ai";
 
 // JSON Files
-import menu from "../../data/menu.json"
+import menu from "@/data/menu.js"
 import { Card } from '@/components/ui/card'
 import Button from '@/components/common/button'
 
