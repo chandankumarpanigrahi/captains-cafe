@@ -39,6 +39,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import FullCalendar from '@/components/ui/calendar';
 
 const lunch = [
     {
@@ -100,7 +101,7 @@ const breakfast = [
 ];
 
 const Test = ({ params }) => {
-    const [selected, setSelected] = useState("red   ");
+    const [selected, setSelected] = useState("red");
     const router = useRouter();
     const redirect = (path) => {
         router.push(path)
@@ -180,7 +181,7 @@ const Test = ({ params }) => {
                     <ul className="flex w-full flex-wrap">
                         {lunch.map((item, index) => (
                             <li key={index} className="p-2 w-full lg:w-1/3 h-full">
-                                <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white hover:bg-amber-50 hover:text-amber-900">
+                                <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white dark:bg-neutral-900 hover:bg-amber-50 hover:text-amber-900 dark:hover:text-amber-100">
                                     <div><strong>Meal:</strong> {item.name}</div>
                                     <div><strong>Duration:</strong> {item.days}</div>
                                     <div><strong>Price:</strong> {item.price}</div>
@@ -194,7 +195,7 @@ const Test = ({ params }) => {
                     <ul className="space-y-4 flex w-full">
                         {dinner.map((item, index) => (
                             <li key={index} className="p-2 w-full lg:w-1/3 h-full">
-                                <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white hover:bg-amber-50 hover:text-amber-900">
+                                <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white dark:bg-neutral-900 hover:bg-amber-50 hover:text-amber-900 dark:hover:text-amber-100">
                                     <div><strong>Meal:</strong> {item.name}</div>
                                     <div><strong>Duration:</strong> {item.days}</div>
                                     <div><strong>Price:</strong> {item.price}</div>
@@ -209,7 +210,7 @@ const Test = ({ params }) => {
                     <ul className="space-y-4 flex w-full">
                         {breakfast.map((item, index) => (
                             <li key={index} className="p-2 w-full lg:w-1/3 h-full">
-                                <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white hover:bg-amber-50 hover:text-amber-900">
+                                <div className="border p-4 rounded-lg space-y-2 hover:cursor-pointer bg-white dark:bg-neutral-900 hover:bg-amber-50 hover:text-amber-900 dark:hover:text-amber-100">
                                     <div><strong>Meal:</strong> {item.name}</div>
                                     <div><strong>Duration:</strong> {item.days}</div>
                                     <div><strong>Price:</strong> {item.price}</div>
@@ -417,11 +418,13 @@ const Test = ({ params }) => {
                     <div>
                         <EmblaCarousel />
                     </div>
-                    <TreeStructure />
 
                 </div>
             </div>
-
+            <TreeStructure />
+            
+            {/* Calendar */}
+            <FullCalendar/>
         </div>
     )
 }
