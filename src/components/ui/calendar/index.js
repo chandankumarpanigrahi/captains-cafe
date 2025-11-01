@@ -834,7 +834,7 @@ const FullCalendar = () => {
                     <div className="flex items-center justify-between">
                         <div>
                             <div className="text-3xl font-bold text-gray-900">{todayEvents.length}</div>
-                            <div className="text-sm text-gray-600 mt-1">Today's Events</div>
+                            <div className="text-sm text-gray-600 mt-1">Today&apos;s Events</div>
                         </div>
                         <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                             <Clock className="text-green-600" size={24} />

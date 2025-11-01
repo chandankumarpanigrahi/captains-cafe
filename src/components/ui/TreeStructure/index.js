@@ -344,7 +344,7 @@ export default function Component() {
             <Tree indent={indent} tree={tree} className="relative before:absolute before:inset-0 before:-ms-1 before:bg-[repeating-linear-gradient(to_right,transparent_0,transparent_calc(var(--tree-indent)-1px),var(--border)_calc(var(--tree-indent)-1px),var(--border)_calc(var(--tree-indent)))]">
                 {searchValue && filteredItems.length === 0 ? (
                     <p className="px-3 py-4 text-center text-sm">
-                        No items found for "{searchValue}"
+                        No items found for &quot;{searchValue}&quot;
                     </p>
                 ) : (
                     tree.getItems().map((item) => {
