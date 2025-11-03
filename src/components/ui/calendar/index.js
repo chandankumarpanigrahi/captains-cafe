@@ -75,6 +75,20 @@ const FullCalendar = () => {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
     const [eventToDelete, setEventToDelete] = useState(null);
 
+    // Form refs instead of state for each field
+    const formRefs = {
+        title: React.useRef(null),
+        startDate: React.useRef(null),
+        startTime: React.useRef(null),
+        endDate: React.useRef(null),
+        endTime: React.useRef(null),
+        category: React.useRef(null),
+        location: React.useRef(null),
+        attendees: React.useRef(null),
+        description: React.useRef(null),
+        recurring: React.useRef(null)
+    };
+
     // Sample events
     const [events, setEvents] = useState([
         {
@@ -111,20 +125,6 @@ const FullCalendar = () => {
             recurring: true
         }
     ]);
-
-    // Form state
-    const [formData, setFormData] = useState({
-        title: '',
-        startDate: '',
-        startTime: '',
-        endDate: '',
-        endTime: '',
-        category: 'Work',
-        location: '',
-        attendees: '',
-        description: '',
-        recurring: false
-    });
 
     // Filter events
     const filteredEvents = useMemo(() => {
@@ -165,20 +165,22 @@ const FullCalendar = () => {
 
     const handleEditClick = (event) => {
         setEditingEvent(event);
-        setFormData({
-            title: event.title,
-            startDate: event.start.toISOString().split('T')[0],
-            startTime: event.start.toTimeString().slice(0, 5),
-            endDate: event.end.toISOString().split('T')[0],
-            endTime: event.end.toTimeString().slice(0, 5),
-            category: event.category,
-            location: event.location || '',
-            attendees: event.attendees.join(', '),
-            description: event.description || '',
-            recurring: event.recurring
-        });
         setShowEventForm(true);
         setShowEventModal(false);
+        
+        // Set form values when editing
+        setTimeout(() => {
+            if (formRefs.title.current) formRefs.title.current.value = event.title;
+            if (formRefs.startDate.current) formRefs.startDate.current.value = event.start.toISOString().split('T')[0];
+            if (formRefs.startTime.current) formRefs.startTime.current.value = event.start.toTimeString().slice(0, 5);
+            if (formRefs.endDate.current) formRefs.endDate.current.value = event.end.toISOString().split('T')[0];
+            if (formRefs.endTime.current) formRefs.endTime.current.value = event.end.toTimeString().slice(0, 5);
+            if (formRefs.category.current) formRefs.category.current.value = event.category;
+            if (formRefs.location.current) formRefs.location.current.value = event.location || '';
+            if (formRefs.attendees.current) formRefs.attendees.current.value = event.attendees.join(', ');
+            if (formRefs.description.current) formRefs.description.current.value = event.description || '';
+            if (formRefs.recurring.current) formRefs.recurring.current.checked = event.recurring;
+        }, 0);
     };
 
     const handleDeleteClick = (event) => {
@@ -211,18 +213,41 @@ const FullCalendar = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         
-        const startDateTime = new Date(`${formData.startDate}T${formData.startTime}`);
-        const endDateTime = new Date(`${formData.endDate}T${formData.endTime}`);
+        // Get values from refs
+        const title = formRefs.title.current?.value || '';
+        const startDate = formRefs.startDate.current?.value || '';
+        const startTime = formRefs.startTime.current?.value || '';
+        const endDate = formRefs.endDate.current?.value || '';
+        const endTime = formRefs.endTime.current?.value || '';
+        const category = formRefs.category.current?.value || 'Work';
+        const location = formRefs.location.current?.value || '';
+        const attendees = formRefs.attendees.current?.value || '';
+        const description = formRefs.description.current?.value || '';
+        const recurring = formRefs.recurring.current?.checked || false;
+
+        // Validation
+        if (!title || !startDate || !startTime || !endDate || !endTime) {
+            alert('Please fill in all required fields');
+            return;
+        }
+
+        const startDateTime = new Date(`${startDate}T${startTime}`);
+        const endDateTime = new Date(`${endDate}T${endTime}`);
+
+        if (startDateTime >= endDateTime) {
+            alert('End time must be after start time');
+            return;
+        }
 
         const eventData = {
-            title: formData.title,
+            title,
             start: startDateTime,
             end: endDateTime,
-            category: formData.category,
-            location: formData.location,
-            attendees: formData.attendees.split(',').map(a => a.trim()).filter(a => a),
-            description: formData.description,
-            recurring: formData.recurring
+            category,
+            location,
+            attendees: attendees.split(',').map(a => a.trim()).filter(a => a),
+            description,
+            recurring
         };
 
         if (editingEvent) {
@@ -237,38 +262,26 @@ const FullCalendar = () => {
             setEvents([...events, { ...eventData, id: Date.now() }]);
         }
 
-        // Reset form
-        setFormData({
-            title: '',
-            startDate: '',
-            startTime: '',
-            endDate: '',
-            endTime: '',
-            category: 'Work',
-            location: '',
-            attendees: '',
-            description: '',
-            recurring: false
-        });
-        setShowEventForm(false);
-        setEditingEvent(null);
+        closeEventForm();
     };
 
     const closeEventForm = () => {
         setShowEventForm(false);
         setEditingEvent(null);
-        setFormData({
-            title: '',
-            startDate: '',
-            startTime: '',
-            endDate: '',
-            endTime: '',
-            category: 'Work',
-            location: '',
-            attendees: '',
-            description: '',
-            recurring: false
+        // Clear form fields
+        Object.values(formRefs).forEach(ref => {
+            if (ref.current) {
+                if (ref.current.type === 'checkbox') {
+                    ref.current.checked = false;
+                } else {
+                    ref.current.value = '';
+                }
+            }
         });
+        // Reset category to default
+        if (formRefs.category.current) {
+            formRefs.category.current.value = 'Work';
+        }
     };
 
     // Event Card Component
@@ -302,7 +315,7 @@ const FullCalendar = () => {
         const weeks = Math.ceil((days + firstDay) / 7);
 
         return (
-            <div className="flex-1 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="flex-1 bg-white dark:bg-zinc-900 rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="grid grid-cols-7 border-b border-gray-100">
                     {DAY_NAMES_SHORT.map(day => (
                         <div key={day} className="p-3 text-center text-xs font-semibold text-gray-600 uppercase tracking-wide">
@@ -517,7 +530,7 @@ const FullCalendar = () => {
                             <div className="flex items-start gap-3">
                                 <div className="w-1 h-16 rounded-full" style={{ backgroundColor: CATEGORIES[selectedEvent.category] }}></div>
                                 <div>
-                                    <h2 className="text-2xl font-bold text-gray-900 mb-2">{selectedEvent.title}</h2>
+                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-200 mb-2">{selectedEvent.title}</h2>
                                     <div className="flex gap-2">
                                         <Badge style={{ backgroundColor: CATEGORIES[selectedEvent.category], color: 'white', border: 'none' }}>
                                             {selectedEvent.category}
@@ -537,45 +550,45 @@ const FullCalendar = () => {
                         </div>
 
                         <div className="space-y-3">
-                            <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                            <div className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-neutral-950 rounded-md">
                                 <Clock className="text-gray-500 mt-0.5" size={18} />
                                 <div className="flex-1">
-                                    <div className="font-medium text-gray-900 text-sm">Date & Time</div>
-                                    <div className="text-gray-600 text-sm mt-1">
+                                    <div className="font-medium text-gray-900 dark:text-zinc-100 text-sm">Date & Time</div>
+                                    <div className="text-gray-600 dark:text-zinc-300 text-sm mt-1">
                                         {dateUtils.formatDateShort(selectedEvent.start)}
                                     </div>
-                                    <div className="text-gray-600 text-sm">
+                                    <div className="text-gray-600 dark:text-zinc-300 text-sm">
                                         {dateUtils.formatTime(selectedEvent.start)} - {dateUtils.formatTime(selectedEvent.end)}
                                     </div>
                                 </div>
                             </div>
 
                             {selectedEvent.location && (
-                                <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                                <div className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-neutral-950 rounded-md">
                                     <MapPin className="text-gray-500 mt-0.5" size={18} />
                                     <div className="flex-1">
-                                        <div className="font-medium text-gray-900 text-sm">Location</div>
-                                        <div className="text-gray-600 text-sm mt-1">{selectedEvent.location}</div>
+                                        <div className="font-medium text-gray-900 dark:text-zinc-100 text-sm">Location</div>
+                                        <div className="text-gray-600 dark:text-zinc-300 text-sm mt-1">{selectedEvent.location}</div>
                                     </div>
                                 </div>
                             )}
 
                             {selectedEvent.attendees && selectedEvent.attendees.length > 0 && (
-                                <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                                <div className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-neutral-950 rounded-md">
                                     <User className="text-gray-500 mt-0.5" size={18} />
                                     <div className="flex-1">
-                                        <div className="font-medium text-gray-900 text-sm">Attendees</div>
-                                        <div className="text-gray-600 text-sm mt-1">{selectedEvent.attendees.join(', ')}</div>
+                                        <div className="font-medium text-gray-900 dark:text-zinc-100 text-sm">Attendees</div>
+                                        <div className="text-gray-600 dark:text-zinc-300 text-sm mt-1">{selectedEvent.attendees.join(', ')}</div>
                                     </div>
                                 </div>
                             )}
 
                             {selectedEvent.description && (
-                                <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
+                                <div className="flex items-start gap-3 p-3 bg-gray-50 dark:bg-neutral-950 rounded-md">
                                     <Tag className="text-gray-500 mt-0.5" size={18} />
                                     <div className="flex-1">
-                                        <div className="font-medium text-gray-900 text-sm">Description</div>
-                                        <div className="text-gray-600 text-sm mt-1">{selectedEvent.description}</div>
+                                        <div className="font-medium text-gray-900 dark:text-zinc-100 text-sm">Description</div>
+                                        <div className="text-gray-600 dark:text-zinc-300 text-sm mt-1">{selectedEvent.description}</div>
                                     </div>
                                 </div>
                             )}
@@ -627,12 +640,12 @@ const FullCalendar = () => {
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Event Title *</label>
                                 <Input
+                                    ref={formRefs.title}
                                     type="text"
                                     placeholder="Enter event title"
-                                    value={formData.title}
-                                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                                     required
                                     className="w-full"
+                                    defaultValue={editingEvent ? editingEvent.title : ''}
                                 />
                             </div>
 
@@ -640,21 +653,21 @@ const FullCalendar = () => {
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Start Date *</label>
                                     <Input
+                                        ref={formRefs.startDate}
                                         type="date"
-                                        value={formData.startDate}
-                                        onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
                                         required
                                         className="w-full"
+                                        defaultValue={editingEvent ? editingEvent.start.toISOString().split('T')[0] : ''}
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Start Time *</label>
                                     <Input
+                                        ref={formRefs.startTime}
                                         type="time"
-                                        value={formData.startTime}
-                                        onChange={(e) => setFormData({ ...formData, startTime: e.target.value })}
                                         required
                                         className="w-full"
+                                        defaultValue={editingEvent ? editingEvent.start.toTimeString().slice(0, 5) : ''}
                                     />
                                 </div>
                             </div>
@@ -663,21 +676,21 @@ const FullCalendar = () => {
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">End Date *</label>
                                     <Input
+                                        ref={formRefs.endDate}
                                         type="date"
-                                        value={formData.endDate}
-                                        onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
                                         required
                                         className="w-full"
+                                        defaultValue={editingEvent ? editingEvent.end.toISOString().split('T')[0] : ''}
                                     />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">End Time *</label>
                                     <Input
+                                        ref={formRefs.endTime}
                                         type="time"
-                                        value={formData.endTime}
-                                        onChange={(e) => setFormData({ ...formData, endTime: e.target.value })}
                                         required
                                         className="w-full"
+                                        defaultValue={editingEvent ? editingEvent.end.toTimeString().slice(0, 5) : ''}
                                     />
                                 </div>
                             </div>
@@ -685,10 +698,10 @@ const FullCalendar = () => {
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Category *</label>
                                 <select
-                                    value={formData.category}
-                                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                    ref={formRefs.category}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     required
+                                    defaultValue={editingEvent ? editingEvent.category : 'Work'}
                                 >
                                     {Object.keys(CATEGORIES).map(cat => (
                                         <option key={cat} value={cat}>{cat}</option>
@@ -699,42 +712,42 @@ const FullCalendar = () => {
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
                                 <Input
+                                    ref={formRefs.location}
                                     type="text"
                                     placeholder="Add location"
-                                    value={formData.location}
-                                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                                     className="w-full"
+                                    defaultValue={editingEvent ? editingEvent.location || '' : ''}
                                 />
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Attendees</label>
                                 <Input
+                                    ref={formRefs.attendees}
                                     type="text"
                                     placeholder="Comma-separated names"
-                                    value={formData.attendees}
-                                    onChange={(e) => setFormData({ ...formData, attendees: e.target.value })}
                                     className="w-full"
+                                    defaultValue={editingEvent ? editingEvent.attendees.join(', ') : ''}
                                 />
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
                                 <textarea
+                                    ref={formRefs.description}
                                     placeholder="Add event description"
-                                    value={formData.description}
-                                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[80px]"
+                                    defaultValue={editingEvent ? editingEvent.description || '' : ''}
                                 />
                             </div>
 
                             <div className="flex items-center gap-2">
                                 <input
+                                    ref={formRefs.recurring}
                                     type="checkbox"
                                     id="recurring"
-                                    checked={formData.recurring}
-                                    onChange={(e) => setFormData({ ...formData, recurring: e.target.checked })}
                                     className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                                    defaultChecked={editingEvent ? editingEvent.recurring : false}
                                 />
                                 <label htmlFor="recurring" className="text-sm font-medium text-gray-700 flex items-center gap-1">
                                     <Repeat size={14} /> Recurring Event
@@ -822,33 +835,33 @@ const FullCalendar = () => {
                 <Card className="p-5 border border-gray-100 hover:shadow-md transition-shadow">
                     <div className="flex items-center justify-between">
                         <div>
-                            <div className="text-3xl font-bold text-gray-900">{filteredEvents.length}</div>
-                            <div className="text-sm text-gray-600 mt-1">Total Events</div>
+                            <div className="text-3xl font-bold text-gray-900 dark:text-slate-100">{filteredEvents.length}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-200 mt-1">Total Events</div>
                         </div>
-                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                            <CalendarIcon className="text-blue-600" size={24} />
-                        </div>
-                    </div>
-                </Card>
-                <Card className="p-5 border border-gray-100 hover:shadow-md transition-shadow">
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <div className="text-3xl font-bold text-gray-900">{todayEvents.length}</div>
-                            <div className="text-sm text-gray-600 mt-1">Today&apos;s Events</div>
-                        </div>
-                        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                            <Clock className="text-green-600" size={24} />
+                        <div className="w-12 h-12 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center">
+                            <CalendarIcon className="text-blue-600 dark:text-blue-200" size={24} />
                         </div>
                     </div>
                 </Card>
                 <Card className="p-5 border border-gray-100 hover:shadow-md transition-shadow">
                     <div className="flex items-center justify-between">
                         <div>
-                            <div className="text-3xl font-bold text-gray-900">{upcomingEvents}</div>
-                            <div className="text-sm text-gray-600 mt-1">Upcoming</div>
+                            <div className="text-3xl font-bold text-gray-900 dark:text-slate-100">{todayEvents.length}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-200 mt-1">Today&apos;s Events</div>
                         </div>
-                        <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                            <CalendarIcon className="text-orange-600" size={24} />
+                        <div className="w-12 h-12 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center">
+                            <Clock className="text-green-600 dark:text-green-200" size={24} />
+                        </div>
+                    </div>
+                </Card>
+                <Card className="p-5 border border-gray-100 hover:shadow-md transition-shadow">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <div className="text-3xl font-bold text-gray-900 dark:text-slate-100">{upcomingEvents}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-200 mt-1">Upcoming</div>
+                        </div>
+                        <div className="w-12 h-12 bg-orange-100 dark:bg-orange-800 rounded-full flex items-center justify-center">
+                            <CalendarIcon className="text-orange-600 dark:text-orange-200" size={24} />
                         </div>
                     </div>
                 </Card>
@@ -857,13 +870,13 @@ const FullCalendar = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
+        <div className="min-h-screen p-4 md:p-8">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                     <div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">Calendar</h1>
-                        <p className="text-gray-600">Manage your schedule with ease</p>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-2">Calendar</h1>
+                        <p className="text-gray-600 dark:text-gray-300">Manage your schedule with ease</p>
                     </div>
                     <Button
                         className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg shadow-blue-500/30 px-6"
