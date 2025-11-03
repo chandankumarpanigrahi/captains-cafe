@@ -167,7 +167,7 @@ const FullCalendar = () => {
         setEditingEvent(event);
         setShowEventForm(true);
         setShowEventModal(false);
-        
+
         // Set form values when editing
         setTimeout(() => {
             if (formRefs.title.current) formRefs.title.current.value = event.title;
@@ -212,7 +212,7 @@ const FullCalendar = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        
+
         // Get values from refs
         const title = formRefs.title.current?.value || '';
         const startDate = formRefs.startDate.current?.value || '';
@@ -336,15 +336,13 @@ const FullCalendar = () => {
                                 return (
                                     <div
                                         key={dayIdx}
-                                        className={`border-r border-gray-50 last:border-r-0 p-2 min-h-[120px] transition-colors ${
-                                            !isCurrentMonth ? 'bg-gray-50/30' :
-                                            isToday ? 'bg-blue-50/30' : 'hover:bg-gray-50/50'
-                                        }`}
+                                        className={`border-r border-gray-50 last:border-r-0 p-2 min-h-[120px] transition-colors ${!isCurrentMonth ? 'bg-gray-50/30' :
+                                                isToday ? 'bg-blue-50/30' : 'hover:bg-gray-50/50'
+                                            }`}
                                     >
-                                        <div className={`text-sm font-medium mb-1 ${
-                                            isToday ? 'bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs' :
-                                            !isCurrentMonth ? 'text-gray-300' : 'text-gray-700'
-                                        }`}>
+                                        <div className={`text-sm font-medium mb-1 ${isToday ? 'bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs' :
+                                                !isCurrentMonth ? 'text-gray-300' : 'text-gray-700'
+                                            }`}>
                                             {isCurrentMonth ? dayNum : ''}
                                         </div>
                                         <div className="space-y-1 overflow-y-auto max-h-[80px]">
@@ -383,9 +381,8 @@ const FullCalendar = () => {
                         return (
                             <div key={day.toISOString()} className="p-3 text-center border-l border-gray-50">
                                 <div className="text-xs font-medium text-gray-500 uppercase">{DAY_NAMES_SHORT[day.getDay()]}</div>
-                                <div className={`text-lg font-semibold mt-1 ${
-                                    isToday ? 'bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto' : 'text-gray-800'
-                                }`}>
+                                <div className={`text-lg font-semibold mt-1 ${isToday ? 'bg-blue-500 text-white w-8 h-8 rounded-full flex items-center justify-center mx-auto' : 'text-gray-800'
+                                    }`}>
                                     {day.getDate()}
                                 </div>
                             </div>
@@ -495,11 +492,10 @@ const FullCalendar = () => {
                                         return (
                                             <div
                                                 key={day}
-                                                className={`text-center p-1 rounded text-[11px] ${
-                                                    isToday ? 'bg-blue-500 text-white font-bold' :
-                                                    hasEvent ? 'bg-blue-100 text-blue-700 font-medium' :
-                                                    'text-gray-500'
-                                                }`}
+                                                className={`text-center p-1 rounded text-[11px] ${isToday ? 'bg-blue-500 text-white font-bold' :
+                                                        hasEvent ? 'bg-blue-100 text-blue-700 font-medium' :
+                                                            'text-gray-500'
+                                                    }`}
                                             >
                                                 {day}
                                             </div>
@@ -796,7 +792,7 @@ const FullCalendar = () => {
                                 <p className="text-gray-600 text-sm mt-1">This action cannot be undone.</p>
                             </div>
                         </div>
-                        
+
                         <div className="bg-gray-50 rounded-lg p-4 mb-6">
                             <div className="font-semibold text-gray-900">{eventToDelete.title}</div>
                             <div className="text-sm text-gray-600 mt-1">
@@ -870,8 +866,8 @@ const FullCalendar = () => {
     };
 
     return (
-        <div className="min-h-screen p-4 md:p-8">
-            <div className="max-w-7xl mx-auto">
+        <div className="min-h-screen mt-8">
+            <div className="w-full">
                 {/* Header */}
                 <div className="mb-8 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                     <div>
@@ -933,17 +929,19 @@ const FullCalendar = () => {
                 {/* Calendar Controls */}
                 <Card className="p-4 mb-6 border border-gray-100 shadow-sm">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div className="flex items-center gap-3">
-                            <Button variant="outline" size="sm" onClick={() => navigate(-1)} className="hover:bg-gray-100">
-                                <ChevronLeft size={20} />
-                            </Button>
-                            <Button variant="outline" size="sm" onClick={goToToday} className="hover:bg-gray-100">
-                                Today
-                            </Button>
-                            <Button variant="outline" size="sm" onClick={() => navigate(1)} className="hover:bg-gray-100">
-                                <ChevronRight size={20} />
-                            </Button>
-                            <h2 className="text-xl font-bold text-gray-900 min-w-[200px]">
+                        <div className="flex flex-col justify-center w-full md:w-fit md:flex-row items-center gap-3">
+                            <div className="flex  items-center gap-3">
+                                <Button variant="outline" size="sm" onClick={() => navigate(-1)} className="hover:bg-gray-100">
+                                    <ChevronLeft size={20} />
+                                </Button>
+                                <Button variant="outline" size="sm" onClick={goToToday} className="hover:bg-gray-100">
+                                    Today
+                                </Button>
+                                <Button variant="outline" size="sm" onClick={() => navigate(1)} className="hover:bg-gray-100">
+                                    <ChevronRight size={20} />
+                                </Button>
+                            </div>
+                            <h2 className="text-xl font-bold text-gray-900 w-fit md:min-w-[200px]">
                                 {view === 'year'
                                     ? currentDate.getFullYear()
                                     : `${MONTH_NAMES[currentDate.getMonth()]} ${currentDate.getFullYear()}`
@@ -951,7 +949,7 @@ const FullCalendar = () => {
                             </h2>
                         </div>
 
-                        <div className="flex gap-2 flex-wrap">
+                        <div className="flex justify-center md:justify-end w-full md:w-fit gap-2 flex-wrap">
                             {['month', 'week', 'day', 'year'].map(viewType => (
                                 <Button
                                     key={viewType}
