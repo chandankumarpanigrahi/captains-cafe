@@ -287,9 +287,9 @@ const FullCalendar = () => {
     // Event Card Component
     const EventCard = ({ event, compact = false, showTime = true }) => (
         <div
-            className="group rounded-lg p-2 mb-1 cursor-pointer transition-all hover:shadow-md border border-transparent hover:border-gray-200"
+            className="group rounded-md  p-2 mb-1 cursor-pointer transition-all hover:shadow-md border border-transparent hover:border-gray-200"
             style={{
-                backgroundColor: `${CATEGORIES[event.category]}10`,
+                backgroundColor: `${CATEGORIES[event.category]}20`,
                 borderLeftWidth: '3px',
                 borderLeftColor: CATEGORIES[event.category]
             }}
@@ -318,7 +318,7 @@ const FullCalendar = () => {
             <div className="flex-1 bg-white dark:bg-zinc-900 rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div className="grid grid-cols-7 border-b border-gray-100">
                     {DAY_NAMES_SHORT.map(day => (
-                        <div key={day} className="p-3 text-center text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        <div key={day} className="p-3 text-center text-xs font-semibold text-gray-600 dark:text-gray-100 uppercase tracking-wide">
                             {day}
                         </div>
                     ))}
@@ -336,12 +336,12 @@ const FullCalendar = () => {
                                 return (
                                     <div
                                         key={dayIdx}
-                                        className={`border-r border-gray-50 last:border-r-0 p-2 min-h-[120px] transition-colors ${!isCurrentMonth ? 'bg-gray-50/30' :
-                                                isToday ? 'bg-blue-50/30' : 'hover:bg-gray-50/50'
+                                        className={`border-r border-gray-50 last:border-r-0 p-2 min-h-[120px] transition-colors ${!isCurrentMonth ? 'bg-gray-50/30 dark:text-gray-100' :
+                                                isToday ? 'bg-blue-50/30 dark:text-gray-100' : 'hover:bg-gray-50/10'
                                             }`}
                                     >
                                         <div className={`text-sm font-medium mb-1 ${isToday ? 'bg-blue-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs' :
-                                                !isCurrentMonth ? 'text-gray-300' : 'text-gray-700'
+                                                !isCurrentMonth ? 'text-gray-300' : 'text-gray-700 dark:text-gray-300'
                                             }`}>
                                             {isCurrentMonth ? dayNum : ''}
                                         </div>
