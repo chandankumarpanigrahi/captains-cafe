@@ -204,7 +204,7 @@ const ContactUs = () => {
                     {/* Cafe Tab Start */}
                     <div className={`${tabview === "cafe" ? "block" : "hidden"} w-full`}>
                         <div className="flex justify-center mb-4">
-                            <Select onValueChange={(value) => setSelection(value)}>
+                            <Select onValueChange={(value) => setSelection(value)} defaultValue="saheed">
                                 <SelectTrigger className="w-[280px] bg-white dark:bg-blue-950 dark:text-white">
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
