@@ -1,3 +1,47 @@
 .top_bar{
     box-shadow: rgba(50, 50, 93, 0.158) 0px 6px 12px -2px, rgba(0, 0, 0, 0.219) 0px 3px 7px -3px;
 }
+
+/* Top Bar Styles */
+.top_bar {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Custom animations */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Smooth transitions for dropdowns */
+.dropdown-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.dropdown-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 200ms, transform 200ms;
+}
+
+.dropdown-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-exit-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 200ms, transform 200ms;
+}

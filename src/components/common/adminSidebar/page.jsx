@@ -1,11 +1,15 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from "./style.module.css"
-import logo from "../../../assets/images/logo.png";
-import avatar from "../../../assets/images/avatars/user_0.png";
 import Link from 'next/link';
 import { usePathname } from "next/navigation";
+import styles from "./style.module.css"
+
+import SubMenu from './SubMenu';
+
+// Images
+import logo from "../../../assets/images/logo.png";
+import avatar from "../../../assets/images/avatars/user_0.png";
 
 // Icons
 import { MdDashboard } from "react-icons/md";
@@ -20,6 +24,7 @@ import { MdInventory } from "react-icons/md";
 const AdminSidebar = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isMobile, setIsMobile] = useState(false);
+    const [hoveredItem, setHoveredItem] = useState(null);
     const pathname = usePathname();
 
     // Check screen size and handle responsiveness
@@ -46,14 +51,14 @@ const AdminSidebar = () => {
 
     // Simplified nav items - only parent paths
     const navItems = [
-        { icon: MdDashboard, path: '/admin/dashboard' },
-        { icon: BiSolidBookContent, path: '/admin/content' },
-        { icon: PiShoppingBagFill, path: '/admin/orders' },
-        { icon: TbAlignBoxLeftTopFilled, path: '/admin/products' },
-        { icon: RiUserSettingsFill, path: '/admin/users' },
-        { icon: IoSettingsSharp, path: '/admin/settings' },
-        { icon: FaMicrochip, path: '/admin/system' },
-        { icon: MdInventory, path: '/admin/inventory' }
+        { icon: MdDashboard, path: '/admin/dashboard', label: 'Dashboard' },
+        { icon: BiSolidBookContent, path: '/admin/content', label: 'Content' },
+        { icon: PiShoppingBagFill, path: '/admin/orders', label: 'Orders' },
+        { icon: TbAlignBoxLeftTopFilled, path: '/admin/products', label: 'Products' },
+        { icon: RiUserSettingsFill, path: '/admin/users', label: 'Users' },
+        { icon: IoSettingsSharp, path: '/admin/settings', label: 'Settings' },
+        { icon: FaMicrochip, path: '/admin/system', label: 'System' },
+        { icon: MdInventory, path: '/admin/inventory', label: 'Inventory' }
     ];
 
     // Check if active - simple path matching
@@ -66,8 +71,9 @@ const AdminSidebar = () => {
             {/* Toggle Button */}
             <button
                 onClick={toggleSidebar}
-                className={`fixed top-1 left-3 z-50 p-2 transition-all duration-200 lg:top-1 ${isSidebarOpen ? 'lg:left-68' : 'lg:left-2 rounded-md bg-gradient-to-b from-[#ffe8d5] to-[#f7ece2] shadow-md hover:shadow-lg'
-                    }`}
+                className={`fixed top-1 left-3 z-50 p-2 transition-all duration-200 lg:top-1 cursor-pointer ${
+                    isSidebarOpen ? 'lg:left-68' : 'lg:left-2 rounded-md bg-gradient-to-b from-[#ffe8d5] to-[#f7ece2] shadow-md hover:shadow-lg'
+                }`}
             >
                 {isSidebarOpen ? '☰' : '☰'}
             </button>
@@ -105,29 +111,57 @@ const AdminSidebar = () => {
                         </div>
 
                         {/* Navigation Menu */}
-                        <nav className="flex flex-col my-auto w-fit gap-0">
-                            <div className={styles.side_main_category_before}></div>
-                            <ul className={`${styles.side_main_category} flex flex-col gap-4 pl-2 pr-3 py-8 rounded-tr-4xl rounded-br-4xl`}>
-                                {navItems.map((item, index) => {
-                                    const IconComponent = item.icon;
-                                    const active = isActive(item.path);
-                                    
-                                    return (
-                                        <li key={index}>
-                                            <Link 
-                                                href={item.path} 
-                                                className={`hover:opacity-100 text-white transition-all duration-200 ${
-                                                    active ? 'opacity-100 scale-110' : 'opacity-30'
-                                                }`}
+                        <div className="flex flex-row items-center my-auto flex-1">
+                            <nav className="flex flex-col my-auto w-fit gap-0 relative">
+                                <div className={styles.side_main_category_before}></div>
+                                <ul className={`${styles.side_main_category} flex flex-col gap-4 pl-2 pr-3 py-8 rounded-tr-4xl rounded-br-4xl`}>
+                                    {navItems.map((item, index) => {
+                                        const IconComponent = item.icon;
+                                        const active = isActive(item.path);
+
+                                        return (
+                                            <li 
+                                                key={index}
+                                                className="relative"
+                                                onMouseEnter={() => setHoveredItem(index)}
+                                                onMouseLeave={() => setHoveredItem(null)}
                                             >
-                                                <IconComponent size="30" />
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                            <div className={styles.side_main_category_after}></div>
-                        </nav>
+                                                <Link
+                                                    href={item.path}
+                                                    className={`hover:opacity-100 text-white transition-all duration-200 ${
+                                                        active ? 'opacity-100 scale-110' : 'opacity-30'
+                                                    }`}
+                                                >
+                                                    <IconComponent size="30" />
+                                                </Link>
+
+                                                {/* Tooltip */}
+                                                {hoveredItem === index && (
+                                                    <div className="absolute left-full top-1/2 transform -translate-y-1/2 ml-3 z-50">
+                                                        <div className="relative">
+                                                            {/* Tooltip Content */}
+                                                            <div className="bg-gray-900 text-white text-sm font-medium px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
+                                                                {item.label}
+                                                                {/* Tooltip arrow */}
+                                                                <div className="absolute right-full top-1/2 transform -translate-y-1/2">
+                                                                    <div className="border-4 border-transparent border-r-gray-900"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                                <div className={styles.side_main_category_after}></div>
+                            </nav>
+                            
+                            {/* Sub-Menu */}
+                            <div className="flex-1 min-w-0">
+                                <SubMenu />
+                            </div>
+                        </div>
 
                         {/* User Profile */}
                         <div className="p-4">

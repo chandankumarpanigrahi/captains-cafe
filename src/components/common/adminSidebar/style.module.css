@@ -28,3 +28,49 @@
     background-color: #012142;
     clip-path: polygon(53% 17%, 43% 26%, 31% 38%, 21% 50%, 14% 61%, 7% 74%, 0 90%, 0 0, 87% 0, 67% 8%);
 }
+
+/* SubMenu Styles */
+.submenu {
+    background: transparent;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.submenu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.submenu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.submenu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.submenu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Dropdown animation */
+.dropdown-enter {
+    max-height: 0;
+    opacity: 0;
+}
+
+.dropdown-enter-active {
+    max-height: 500px;
+    opacity: 1;
+    transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+.dropdown-exit {
+    max-height: 500px;
+    opacity: 1;
+}
+
+.dropdown-exit-active {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 300ms ease-in-out, opacity 300ms ease-in-out;
+}
