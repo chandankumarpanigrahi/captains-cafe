@@ -133,7 +133,7 @@ const SubMenu = () => {
     // This will only work for the initially active dropdown
     const isDropdownOpenByDefault = (dropdownItems, itemName) => {
         if (openDropdown !== null) return openDropdown === itemName;
-        
+
         // Only auto-open if no dropdown is manually opened and this has active children
         return dropdownItems.some(child => isSubItemActive(child.path));
     };
@@ -205,9 +205,9 @@ const SubMenu = () => {
                                                 <li key={dropdownIndex}>
                                                     <Link
                                                         href={dropdownItem.path}
-                                                        className={`block px-3 py-2 rounded-lg transition-all duration-200 text-sm ${isSubItemActive(dropdownItem.path)
-                                                            ? 'bg-blue-100 text-blue-900 font-medium'
-                                                            : 'text-blue-700 hover:bg-white hover:text-blue-900'
+                                                        className={`block px-3 py-2 rounded-lg transition-all duration-200 text-sm ${pathname === dropdownItem.path
+                                                                ? 'bg-blue-100 text-blue-900 font-medium'
+                                                                : 'text-blue-700 hover:bg-white hover:text-blue-900'
                                                             }`}
                                                         onClick={() => {
                                                             // Close dropdown when a sub-item is clicked

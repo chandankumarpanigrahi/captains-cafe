@@ -94,8 +94,8 @@ const AdminSidebar = () => {
                 ${isSidebarOpen ? 'w-80 lg:w-66' : 'w-0 lg:w-0'}
             `}>
                 <div className={`
-                    h-full rounded-tr-2xl rounded-br-2xl bg-gradient-to-b from-[#ffe8d5] via-10% via-[#fff6ed] via-30% via-[#f7ece2] to-[#ffe8d5] to-100% shadow-md
-                    transition-all duration-300
+                    h-screen rounded-tr-2xl rounded-br-2xl bg-gradient-to-b from-[#ffe8d5] via-10% via-[#fff6ed] via-30% via-[#f7ece2] to-[#ffe8d5] to-100% shadow-md
+                    transition-all duration-300 overflow-y-auto
                     ${isSidebarOpen ? 'opacity-100' : 'opacity-0 relative -left-66 lg:opacity-0'}
                 `}>
                     <div className="flex flex-col h-full">

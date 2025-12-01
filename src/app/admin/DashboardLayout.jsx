@@ -86,7 +86,7 @@ export default function DashboardLayout({ children }) {
     };
 
     return (
-        <div className="w-full h-screen">
+        <div className="w-full h-screen overflow-hidden">
             <div className='h-full'>
                 <div className="flex">
                     {/* Sidebar */}
