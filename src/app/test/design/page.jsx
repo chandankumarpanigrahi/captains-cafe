@@ -1,8 +1,9 @@
 "use client";
 import React from 'react'
-import DataTable from '@/components/ui/data-table';
+import DataTable, { ActionButton } from '@/components/ui/data-table';
 import { Badge } from '@/components/ui/badge';
 import SubBanner from '@/components/common/sub banner'
+import { Edit, Trash2, Eye, Copy, Archive, Share2, Settings, Bell, Mail, User } from 'lucide-react';
 
 const Design = () => {
     const users = [
@@ -132,32 +133,179 @@ const Design = () => {
         {
             key: 'id',
             header: 'ID',
-            filterable: false
+            filterable: false,
+            width: '80px',
+            className: 'font-mono text-sm',
+            cellClassName: 'text-center font-mono',
         },
         {
             key: 'name',
             header: 'Name',
-            cell: (row) => <span className="font-semibold whitespace-nowrap">{row.name}</span>
+            width: '200px',
+            cell: (row) => (
+                <div className="flex items-center gap-2">
+                    <User className="w-4 h-4 text-gray-500" />
+                    <span className="font-semibold whitespace-nowrap">{row.name}</span>
+                </div>
+            )
         },
         {
             key: 'email',
-            header: 'Email'
+            header: 'Email',
+            cell: (row) => (
+                <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-gray-500" />
+                    <a
+                        href={`mailto:${row.email}`}
+                        className="text-blue-600 hover:underline"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {row.email}
+                    </a>
+                </div>
+            )
         },
         {
             key: 'role',
-            header: 'Role'
+            header: 'Role',
+            cell: (row) => (
+                <Badge
+                    variant={
+                        row.role === 'Admin' ? 'destructive' :
+                            row.role === 'Manager' ? 'default' :
+                                row.role === 'Editor' ? 'secondary' : 'outline'
+                    }
+                >
+                    {row.role}
+                </Badge>
+            )
         },
         {
             key: 'status',
             header: 'Status',
-            cell: (row) => (<Badge variant={row.status === 'active' ? 'default' : 'secondary'}>{row.status}</Badge>)
+            width: '120px',
+            cell: (row) => (
+                <div className="flex items-center gap-2">
+                    <div
+                        className={`w-2 h-2 rounded-full ${row.status === 'active' ? 'bg-green-500' : 'bg-red-500'}`}
+                    />
+                    <Badge variant={row.status === 'active' ? 'default' : 'secondary'}>
+                        {row.status}
+                    </Badge>
+                </div>
+            )
         },
         {
             key: 'joinDate',
             header: 'Join Date',
-            cell: (row) => new Date(row.joinDate).toLocaleDateString()
+            cell: (row) => {
+                const date = new Date(row.joinDate);
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                });
+            }
         },
     ];
+
+    // Action handlers
+    // const handleView = (row) => console.log('Viewing:', row);
+    // const handleEdit = (row) => console.log('Editing:', row);
+    // const handleDelete = (row) => console.log('Deleting:', row);
+    // const handleCopy = (row) => navigator.clipboard.writeText(row.email);
+    // const handleArchive = (row) => console.log('Archiving:', row);
+
+    // CORRECTED ACTIONS CONFIGURATION - SAME ACTIONS IN BOTH PLACES
+    const actionsConfig = {
+        displayMode: 'both', // 'dropdown' | 'inline' | 'both' | 'none'
+        position: 'end',
+
+        // Inline display options
+        inlineDisplay: {
+            showIcons: true,    // Show icons in inline buttons
+            showLabels: false,  // Show labels in inline buttons (false = icon only)
+            maxInlineActions: 2, // Max actions to show inline (rest go to dropdown)
+        },
+
+        // UNIFIED ACTIONS ARRAY - SAME ACTIONS CAN BE IN BOTH PLACES
+        actions: [
+            // Action 1 - View: Inline (icon only) AND Dropdown (icon + text)
+            {
+                id: 'view',
+                label: 'View Details',
+                icon: Eye,
+                // onClick: handleView,
+                inline: true,      // Show in inline buttons
+                dropdown: true,    // Show in dropdown menu
+                className: 'text-blue-600 hover:text-blue-800',
+                variant: 'ghost',
+            },
+
+            // Action 2 - Edit: Inline (icon only) AND Dropdown (icon + text)
+            {
+                id: 'edit',
+                label: 'Edit User',
+                icon: Edit,
+                // onClick: handleEdit,
+                inline: true,      // Show in inline buttons
+                dropdown: true,    // Show in dropdown menu
+                className: 'text-green-600 hover:text-green-800',
+                variant: 'ghost',
+            },
+
+            // Action 3 - Copy: ONLY in dropdown (not inline)
+            {
+                id: 'copy',
+                label: 'Copy Email',
+                icon: Copy,
+                // onClick: handleCopy,
+                inline: true,     // NOT in inline buttons
+                dropdown: true,    // Only in dropdown
+                className: 'text-gray-600',
+            },
+
+            // Action 4 - Archive: ONLY in dropdown (not inline)
+            {
+                id: 'archive',
+                label: 'Archive User',
+                icon: Archive,
+                // onClick: handleArchive,
+                inline: true,     // NOT in inline buttons
+                dropdown: true,    // Only in dropdown
+                className: 'text-orange-600',
+            },
+
+            // Action 5 - Delete: ONLY in dropdown (for safety)
+            {
+                id: 'delete',
+                label: 'Delete User',
+                icon: Trash2,
+                // onClick: handleDelete,
+                inline: true,     // NOT in inline buttons (safety)
+                dropdown: true,    // Only in dropdown
+                className: 'text-red-600',
+                disabled: (row) => row.role === 'Admin', // Can't delete admins
+            },
+
+            // Action 6 - Share: Inline (icon only) AND Dropdown (icon + text)
+            {
+                id: 'share',
+                label: 'Share Profile',
+                icon: Share2,
+                // onClick: (row) => console.log('Sharing:', row),
+                inline: true,      // Show in inline buttons
+                dropdown: true,    // Show in dropdown menu
+                className: 'text-purple-600 hover:text-purple-800',
+                variant: 'ghost',
+            },
+        ],
+
+        // Override default actions
+        showViewAction: false,
+        showEditAction: false,
+        showDeleteAction: false,
+    };
 
     return (
         <>
@@ -171,7 +319,7 @@ const Design = () => {
             <div className='container py-10'>
                 <DataTable
                     columns={columns}
-                    data={users}
+                    data={users.slice(0, 10)} // Show only first 10 for example
                     enableSorting={true}
                     enableFiltering={true}
                     enableColumnFilters={true}
@@ -179,9 +327,14 @@ const Design = () => {
                     enableColumnVisibility={true}
                     enableExport={true}
                     enablePagination={true}
+                    enableActions={true}
+                    actionsConfig={actionsConfig}
                     pageSizeOptions={[5, 10, 25, "all"]}
                     defaultPageSize={10}
+                    onRowClick={(row) => console.log('Row clicked:', row)}
+                    onAction={(actionId, row) => console.log(`${actionId} action for:`, row.name)}
                 />
+
             </div>
         </>
     )
