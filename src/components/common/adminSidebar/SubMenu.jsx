@@ -19,7 +19,7 @@ const SubMenu = () => {
             { name: 'Notification', path: '/admin/dashboard/notification' },
         ],
         '/admin/content': [
-            { name: 'Home', path: '/admin/content' },
+            { name: 'Home', path: '/admin/content/home' },
             { name: 'About Us', path: '/admin/content/about' },
             { name: 'Blogs', path: '/admin/content/blogs' },
             {

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import styles from "./style.module.css";
+import { useRouter } from 'next/navigation';
 import AdminSidebar from '@/components/common/adminSidebar/page';
 import { FaCaretDown } from "react-icons/fa";
 import { FiBell } from "react-icons/fi";
@@ -9,6 +10,7 @@ import { RiFullscreenExitLine } from "react-icons/ri";
 import { IoMdLogOut } from "react-icons/io";
 
 export default function DashboardLayout({ children }) {
+    const router = useRouter();
     const [currentTime, setCurrentTime] = useState('');
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [isOpen, setIsOpen] = useState(true);

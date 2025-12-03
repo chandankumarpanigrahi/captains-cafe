@@ -52,7 +52,7 @@ const AdminSidebar = () => {
     // Simplified nav items - only parent paths
     const navItems = [
         { icon: MdDashboard, path: '/admin/dashboard', label: 'Dashboard' },
-        { icon: BiSolidBookContent, path: '/admin/content', label: 'Content' },
+        { icon: BiSolidBookContent, path: '/admin/content/home', label: 'Content' },
         { icon: PiShoppingBagFill, path: '/admin/orders', label: 'Orders' },
         { icon: TbAlignBoxLeftTopFilled, path: '/admin/products', label: 'Products' },
         { icon: RiUserSettingsFill, path: '/admin/users', label: 'Users' },

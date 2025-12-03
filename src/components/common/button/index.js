@@ -13,7 +13,7 @@ export default function Button({
     link = "#",
     
     // New props
-    variant = "primary",    // "primary" | "secondary" | "outline" | "ghost" | "danger"
+    variant = "primary",    // "primary" | "secondary" | "outline" | "ghost" | "danger" | "none"
     type = "button",        // "button" | "submit" | "reset"
     disabled = false,
     loading = false,
@@ -60,7 +60,8 @@ export default function Button({
         secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-400",
         outline: "border-2 border-primary-dark text-primary-dark bg-transparent hover:bg-primary-dark hover:text-white focus:ring-2 focus:ring-primary-light",
         ghost: "text-primary-dark bg-transparent hover:bg-primary-light hover:text-primary-darker focus:ring-2 focus:ring-primary-light",
-        danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-400"
+        danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-400",
+        none: "bg-transparent text-primary-dark"
     };
 
     // New: Disabled state
