@@ -23,8 +23,6 @@ import { Status } from '@/components/ui/status'
 
 const Page = () => {
 
-
-
     const [activeTab, setActiveTab] = useState("tab1")
     return (
         <>

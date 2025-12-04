@@ -28,77 +28,9 @@ import {
     FileText,
     Sheet,
     Eye,
-    MoreHorizontal,
     Search,
-    Edit,
-    Trash2,
-    Eye as ViewIcon,
-    Copy,
-    Archive,
-    Share2,
-    User,
-    Mail,
-    Settings,
-    Bell,
 } from 'lucide-react';
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa';
-
-// Action Button Component for flexible customization
-export const ActionButton = ({
-    children,
-    variant = "ghost",
-    size = "sm",
-    onClick,
-    className = "",
-    icon: Icon,
-    disabled = false,
-    showIcon = true,
-    showLabel = true,
-    ...props
-}) => {
-    return (
-        <Button
-            variant={variant}
-            size={size}
-            onClick={onClick}
-            className={`flex items-center gap-2 ${className}`}
-            disabled={disabled}
-            title={typeof children === 'string' ? children : ''}
-            {...props}
-        >
-            {showIcon && Icon && <Icon className="w-4 h-4" />}
-            {showLabel && children}
-        </Button>
-    );
-};
-
-// Action Menu Component for dropdown actions
-export const ActionMenu = ({ actions = [], children }) => {
-    if (!actions.length) return null;
-
-    return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm">
-                    <MoreHorizontal className="w-4 h-4" />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                {actions.map((action, index) => (
-                    <DropdownMenuItem
-                        key={index}
-                        onClick={action.onClick}
-                        className={action.className}
-                        disabled={action.disabled}
-                    >
-                        {action.icon && <action.icon className="w-4 h-4 mr-2" />}
-                        {action.label}
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-        </DropdownMenu>
-    );
-};
 
 const DataTable = ({
     columns,
@@ -110,81 +42,16 @@ const DataTable = ({
     enableColumnVisibility = true,
     enableExport = true,
     enableColumnFilters = true,
-    enableActions = true, // Control whether to show actions column
-    actionsConfig = { // Simplified configuration
-        displayMode: 'dropdown', // 'dropdown' | 'inline' | 'both' | 'none'
-        position: 'end', // 'start' | 'end'
-
-        // Display options for inline actions
-        inlineDisplay: {
-            showIcons: true, // Show icons in inline buttons
-            showLabels: false, // Show labels in inline buttons (false = icon only)
-            maxInlineActions: 3, // Maximum number of actions to show inline (rest go to dropdown)
-        },
-
-        // Unified actions array - SAME actions can appear in both inline and dropdown
-        actions: [
-            // Example action structure:
-            // {
-            //     id: 'view',
-            //     label: 'View Details',
-            //     icon: Eye,
-            //     onClick: (row) => console.log('View:', row),
-            //     inline: true, // Show in inline buttons
-            //     dropdown: true, // Show in dropdown menu
-            //     className: 'text-blue-600', // Applied to both inline and dropdown
-            //     variant: 'ghost', // Button variant for inline
-            //     disabled: (row) => false, // Conditional disabled
-            // }
-        ],
-
-        // Default actions
-        defaultActions: {
-            view: {
-                id: 'view',
-                label: 'View Details',
-                icon: ViewIcon,
-                onClick: (row) => console.log('View:', row),
-                inline: true,
-                dropdown: true,
-                className: 'text-blue-600',
-                variant: 'ghost'
-            },
-            edit: {
-                id: 'edit',
-                label: 'Edit',
-                icon: Edit,
-                onClick: (row) => console.log('Edit:', row),
-                inline: true,
-                dropdown: true,
-                className: 'text-green-600',
-                variant: 'ghost'
-            },
-            delete: {
-                id: 'delete',
-                label: 'Delete',
-                icon: Trash2,
-                onClick: (row) => console.log('Delete:', row),
-                inline: false, // Usually not inline for safety
-                dropdown: true,
-                className: 'text-red-600',
-                variant: 'ghost'
-            }
-        },
-
-        // Quick toggles for default actions
-        showViewAction: true,
-        showEditAction: true,
-        showDeleteAction: true,
-
-        // Custom renderer for complete control
-        customRenderer: null,
-    },
+    enableActions = false,
+    renderActions = null,
+    actionsPosition = 'end',
+    actionsColumnWidth = 'auto',
+    actionsColumnHeader = 'Actions',
     pageSizeOptions = [5, 10, 20, 50],
     defaultPageSize = 10,
     onRowClick,
     onExport,
-    onAction, // Callback for actions
+    onAction,
 }) => {
     // State management
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'none' });
@@ -198,27 +65,8 @@ const DataTable = ({
     const [exportRange, setExportRange] = useState('all');
     const [exportColumns, setExportColumns] = useState('visible');
 
-    // Prepare actions based on configuration
-    const preparedActions = useMemo(() => {
-        // Start with custom actions if provided
-        let allActions = [...(actionsConfig.actions || [])];
-
-        // Add default actions if not overridden by custom actions
-        const defaultActions = actionsConfig.defaultActions || {};
-        const existingActionIds = allActions.map(a => a.id);
-
-        if (actionsConfig.showViewAction !== false && !existingActionIds.includes('view')) {
-            allActions.push({ ...defaultActions.view, inline: true, dropdown: true });
-        }
-        if (actionsConfig.showEditAction !== false && !existingActionIds.includes('edit')) {
-            allActions.push({ ...defaultActions.edit, inline: true, dropdown: true });
-        }
-        if (actionsConfig.showDeleteAction !== false && !existingActionIds.includes('delete')) {
-            allActions.push({ ...defaultActions.delete, inline: false, dropdown: true });
-        }
-
-        return allActions;
-    }, [actionsConfig]);
+    // Actions are now completely handled by renderActions prop
+    const hasActions = enableActions && renderActions;
 
     // Memoized data processing
     const processedData = useMemo(() => {
@@ -516,140 +364,6 @@ const DataTable = ({
         return <FaSort className="ml-1 text-gray-400" size={12} />;
     };
 
-    // SIMPLIFIED AND CLEAR RENDER ACTIONS FUNCTION
-    const renderActions = (row) => {
-        if (!enableActions || actionsConfig.displayMode === 'none') return null;
-
-        // Custom renderer takes priority
-        if (actionsConfig.customRenderer) {
-            return actionsConfig.customRenderer(row);
-        }
-
-        const displayMode = actionsConfig.displayMode || 'dropdown';
-        const inlineOptions = actionsConfig.inlineDisplay || {
-            showIcons: true,
-            showLabels: false,
-            maxInlineActions: 3
-        };
-
-        // Filter actions based on row conditions
-        const filteredActions = preparedActions.filter(action => {
-            // Check if action should be visible for this row
-            if (action.visible && typeof action.visible === 'function') {
-                return action.visible(row);
-            }
-            return true;
-        });
-
-        // Helper to check if action is disabled for this row
-        const isActionDisabled = (action, row) => {
-            if (action.disabled && typeof action.disabled === 'function') {
-                return action.disabled(row);
-            }
-            return action.disabled || false;
-        };
-
-        // Get ALL actions that are enabled for dropdown
-        const allDropdownActions = filteredActions.filter(action => action.dropdown);
-
-        if (displayMode === 'both') {
-            // Get actions for inline display (first N that are enabled for inline)
-            const inlineActions = filteredActions
-                .filter(action => action.inline)
-                .slice(0, inlineOptions.maxInlineActions);
-
-            // Get actions for dropdown display (actions that are in dropdown BUT NOT in inline)
-            const dropdownActions = allDropdownActions.filter(dropdownAction =>
-                // Only include if it's NOT in the inlineActions array
-                !inlineActions.some(inlineAction => inlineAction.id === dropdownAction.id)
-            );
-
-            return (
-                <div className="flex items-center gap-1">
-                    {/* Inline buttons */}
-                    {inlineActions.map((action) => (
-                        <ActionButton
-                            key={action.id}
-                            onClick={() => {
-                                action.onClick?.(row);
-                                onAction?.(action.id, row);
-                            }}
-                            icon={action.icon}
-                            variant={action.variant || 'ghost'}
-                            size="sm"
-                            className={action.className}
-                            disabled={isActionDisabled(action, row)}
-                            showIcon={inlineOptions.showIcons}
-                            showLabel={inlineOptions.showLabels}
-                            title={action.label} // Tooltip for icon-only buttons
-                        >
-                            {inlineOptions.showLabels ? action.label : ''}
-                        </ActionButton>
-                    ))}
-
-                    {/* Dropdown for REMAINING actions only (not already shown inline) */}
-                    {dropdownActions.length > 0 && (
-                        <ActionMenu actions={dropdownActions.map(action => ({
-                            ...action,
-                            onClick: () => {
-                                action.onClick?.(row);
-                                onAction?.(action.id, row);
-                            },
-                            disabled: isActionDisabled(action, row),
-                        }))} />
-                    )}
-                </div>
-            );
-        }
-
-        if (displayMode === 'inline') {
-            // For inline-only mode, show all inline actions (limited by maxInlineActions)
-            const inlineActions = filteredActions
-                .filter(action => action.inline)
-                .slice(0, inlineOptions.maxInlineActions);
-
-            return (
-                <div className="flex items-center gap-1">
-                    {inlineActions.map((action) => (
-                        <ActionButton
-                            key={action.id}
-                            onClick={() => {
-                                action.onClick?.(row);
-                                onAction?.(action.id, row);
-                            }}
-                            icon={action.icon}
-                            variant={action.variant || 'ghost'}
-                            size="sm"
-                            className={action.className}
-                            disabled={isActionDisabled(action, row)}
-                            showIcon={inlineOptions.showIcons}
-                            showLabel={inlineOptions.showLabels}
-                            title={action.label}
-                        >
-                            {inlineOptions.showLabels ? action.label : ''}
-                        </ActionButton>
-                    ))}
-                </div>
-            );
-        }
-
-        if (displayMode === 'dropdown') {
-            // For dropdown-only mode, show all dropdown actions
-            return (
-                <ActionMenu actions={allDropdownActions.map(action => ({
-                    ...action,
-                    onClick: () => {
-                        action.onClick?.(row);
-                        onAction?.(action.id, row);
-                    },
-                    disabled: isActionDisabled(action, row),
-                }))} />
-            );
-        }
-
-        return null;
-    };
-
     const visibleColumns = columns.filter(col => isColumnVisible(col.key));
     const paginationNumbers = getPaginationNumbers();
 
@@ -797,8 +511,13 @@ const DataTable = ({
                             )}
 
                             {/* Actions Column at Start if configured */}
-                            {enableActions && actionsConfig.position === 'start' && (
-                                <TableHead className="w-20 text-center">Actions</TableHead>
+                            {hasActions && actionsPosition === 'start' && (
+                                <TableHead 
+                                    className="text-center" 
+                                    style={{ width: actionsColumnWidth }}
+                                >
+                                    {actionsColumnHeader}
+                                </TableHead>
                             )}
 
                             {/* Column Headers */}
@@ -839,8 +558,13 @@ const DataTable = ({
                             })}
 
                             {/* Actions Column at End if configured */}
-                            {enableActions && actionsConfig.position === 'end' && (
-                                <TableHead className="w-20 text-center">Actions</TableHead>
+                            {hasActions && actionsPosition === 'end' && (
+                                <TableHead 
+                                    className="text-center" 
+                                    style={{ width: actionsColumnWidth }}
+                                >
+                                    {actionsColumnHeader}
+                                </TableHead>
                             )}
                         </TableRow>
                     </TableHeader>
@@ -870,8 +594,8 @@ const DataTable = ({
                                         )}
 
                                         {/* Actions Cell at Start */}
-                                        {enableActions && actionsConfig.position === 'start' && (
-                                            <TableCell>
+                                        {hasActions && actionsPosition === 'start' && (
+                                            <TableCell onClick={(e) => e.stopPropagation()}>
                                                 {renderActions(row)}
                                             </TableCell>
                                         )}
@@ -891,8 +615,8 @@ const DataTable = ({
                                         })}
 
                                         {/* Actions Cell at End */}
-                                        {enableActions && actionsConfig.position === 'end' && (
-                                            <TableCell>
+                                        {hasActions && actionsPosition === 'end' && (
+                                            <TableCell onClick={(e) => e.stopPropagation()}>
                                                 {renderActions(row)}
                                             </TableCell>
                                         )}
@@ -905,7 +629,7 @@ const DataTable = ({
                                     colSpan={
                                         visibleColumns.length +
                                         (enableRowSelection ? 1 : 0) +
-                                        (enableActions ? 1 : 0)
+                                        (hasActions ? 1 : 0)
                                     }
                                     className="h-24 text-center"
                                 >

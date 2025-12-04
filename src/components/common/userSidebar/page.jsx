@@ -131,7 +131,7 @@ const UserSidebar = () => {
             {/* Sidebar */}
             <aside
                 className={`
-                    fixed lg:relative top-0 left-0 h-screen lg:h-auto z-70
+                    fixed lg:relative top-0 left-0 h-screen lg:h-auto z-50
                     w-72 lg:w-full
                     transition-transform duration-300 ease-in-out
                     ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
