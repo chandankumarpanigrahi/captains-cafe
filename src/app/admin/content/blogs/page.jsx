@@ -3,8 +3,7 @@ import { Card } from '@/components/ui/card'
 import React from 'react'
 import { useState } from 'react'
 import Button from '@/components/common/button'
-import DataTable from '@/components/ui/data-table';
-import { Badge } from '@/components/ui/badge';
+import AllBlogsTable from './allBlogsTable'
 
 // Iocns
 import { FaPlus } from "react-icons/fa6";
@@ -25,7 +24,7 @@ const Page = () => {
 
     const [activeTab, setActiveTab] = useState("tab1")
     return (
-        <>
+        <div className='w-full'>
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
@@ -45,13 +44,13 @@ const Page = () => {
                     </div>
 
                     {/* Tab 1 Section */}
-                    <div className={`${activeTab === "tab1" ? "block" : "hidden"} flex flex-col gap-2`}>
-                        <div className="flex flex-row items-center">
+                    <div className={`${activeTab === "tab1" ? "block" : "hidden"} w-full flex flex-col gap-2`}>
+                        <div className="flex flex-row items-center w-full">
                             <CardHeading title="View" bottomLine="false" />
                             <Button text="EDIT" className='ml-auto' size='sm' icon={<FaPlus />} radius='sm' iconPosition="left" />
                         </div>
                         <hr className='mb-2' />
-                        Table
+                        <AllBlogsTable/>
                     </div>
 
 
@@ -66,7 +65,7 @@ const Page = () => {
 
                 </Card>
             </div>
-        </>
+        </div>
     )
 }
 

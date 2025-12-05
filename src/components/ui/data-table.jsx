@@ -142,41 +142,123 @@ const DataTable = ({
         return exportColumns === 'visible' ? visibleCols : columns;
     };
 
-    // Helper function to extract text from JSX/cell functions
+    // Helper function to extract text from JSX/cell functions - FIXED VERSION
     const getCellTextValue = (row, column) => {
-        if (column.cell) {
-            const cellContent = column.cell(row);
-
-            // If it's a React element (JSX), we need to extract text content
-            if (React.isValidElement(cellContent)) {
-                // For simple elements with children
-                if (cellContent.props && cellContent.props.children) {
-                    return String(cellContent.props.children);
+        try {
+            // First, try to get the raw data value
+            if (column.key && row[column.key] !== undefined) {
+                const rawValue = row[column.key];
+                if (rawValue == null) return '';
+                if (typeof rawValue === 'string' || typeof rawValue === 'number' || typeof rawValue === 'boolean') {
+                    return String(rawValue);
                 }
-                // For more complex JSX, return a fallback
-                return String(cellContent.type) || '';
             }
 
-            // If it's already a string/number, return it directly
-            return String(cellContent);
-        }
+            // If column has a cell function, use it but extract text differently
+            if (column.cell) {
+                const cellContent = column.cell(row);
+                
+                // Handle basic types
+                if (cellContent == null) return '';
+                if (typeof cellContent === 'string' || typeof cellContent === 'number' || typeof cellContent === 'boolean') {
+                    return String(cellContent);
+                }
 
-        // Default to raw data value
-        return String(row[column.key] || '');
+                // For React elements, extract text content
+                if (React.isValidElement(cellContent)) {
+                    return extractTextFromReactElement(cellContent);
+                }
+
+                // For any other object, try to convert to string
+                return String(cellContent).replace(/\[object Object\]/g, '').trim();
+            }
+
+            // Fallback: try to get value by column key
+            if (column.key && row[column.key] !== undefined) {
+                const value = row[column.key];
+                return value == null ? '' : String(value);
+            }
+
+            return '';
+        } catch (error) {
+            console.warn('Error extracting cell value:', error);
+            return '';
+        }
     };
 
-    // Export functions
+    // Helper to extract text from React elements
+    const extractTextFromReactElement = (element) => {
+        if (!element) return '';
+        
+        // If element has children, extract text from them
+        if (element.props && element.props.children) {
+            const extractText = (children) => {
+                if (children == null) return '';
+                
+                if (typeof children === 'string') {
+                    return children;
+                }
+                
+                if (typeof children === 'number' || typeof children === 'boolean') {
+                    return String(children);
+                }
+                
+                if (Array.isArray(children)) {
+                    return children.map(child => extractText(child)).filter(Boolean).join(' ').trim();
+                }
+                
+                if (React.isValidElement(children)) {
+                    return extractTextFromReactElement(children);
+                }
+                
+                return '';
+            };
+            
+            const text = extractText(element.props.children);
+            if (text) return text;
+        }
+        
+        // Fallback for self-closing elements
+        return element.type?.displayName || element.type?.name || '';
+    };
+
+    // Export functions - FIXED VERSION
     const exportToCSV = () => {
         const exportData = getExportData();
         const exportCols = getExportColumns();
 
-        const headers = exportCols.map(col => col.header).join(',');
-        const rows = exportData.map(row =>
-            exportCols.map(col => {
-                const value = getCellTextValue(row, col);
-                return `"${String(value).replace(/"/g, '""')}"`;
-            }).join(',')
-        ).join('\n');
+        // Create headers
+        const headers = exportCols.map(col => {
+            const headerText = col.header || col.key || '';
+            return `"${String(headerText).replace(/"/g, '""')}"`;
+        }).join(',');
+
+        // Create rows - use raw data values when possible
+        const rows = exportData.map(row => {
+            return exportCols.map(col => {
+                // First try to get raw data value
+                let value = '';
+                if (col.key && row[col.key] !== undefined) {
+                    const rawValue = row[col.key];
+                    if (rawValue != null) {
+                        value = String(rawValue);
+                    }
+                } else if (col.cell) {
+                    // Only use cell function if no raw data available
+                    value = getCellTextValue(row, col);
+                }
+                
+                // Clean the value for CSV
+                const escapedValue = String(value)
+                    .replace(/"/g, '""') // Escape double quotes
+                    .replace(/\[object Object\]/g, '') // Remove [object Object]
+                    .replace(/\n/g, ' ') // Replace newlines with spaces
+                    .replace(/\r/g, ' ') // Replace carriage returns with spaces
+                    .trim();
+                
+                return `"${escapedValue}"`;
+            }).join(',');
+        }).join('\n');
 
         const csv = `${headers}\n${rows}`;
         downloadFile(csv, `data-${exportRange}-${exportColumns === 'visible' ? 'visible' : 'all'}.csv`, 'text/csv');
@@ -187,13 +269,38 @@ const DataTable = ({
         const exportData = getExportData();
         const exportCols = getExportColumns();
 
-        const headers = exportCols.map(col => col.header).join('\t');
-        const rows = exportData.map(row =>
-            exportCols.map(col => {
-                const value = getCellTextValue(row, col);
-                return String(value).replace(/\t/g, ' ');
-            }).join('\t')
-        ).join('\n');
+        // Create headers
+        const headers = exportCols.map(col => {
+            const headerText = col.header || col.key || '';
+            return String(headerText).replace(/\t/g, ' ').replace(/\n/g, ' ');
+        }).join('\t');
+
+        // Create rows - use raw data values when possible
+        const rows = exportData.map(row => {
+            return exportCols.map(col => {
+                // First try to get raw data value
+                let value = '';
+                if (col.key && row[col.key] !== undefined) {
+                    const rawValue = row[col.key];
+                    if (rawValue != null) {
+                        value = String(rawValue);
+                    }
+                } else if (col.cell) {
+                    // Only use cell function if no raw data available
+                    value = getCellTextValue(row, col);
+                }
+                
+                // Clean the value for Excel
+                const cleanedValue = String(value)
+                    .replace(/\[object Object\]/g, '') // Remove [object Object]
+                    .replace(/\t/g, ' ') // Replace tabs with spaces
+                    .replace(/\n/g, ' ') // Replace newlines with spaces
+                    .replace(/\r/g, ' ') // Replace carriage returns with spaces
+                    .trim();
+                
+                return cleanedValue;
+            }).join('\t');
+        }).join('\n');
 
         const excelData = `${headers}\n${rows}`;
         downloadFile(excelData, `data-${exportRange}-${exportColumns === 'visible' ? 'visible' : 'all'}.xls`, 'application/vnd.ms-excel');
@@ -206,14 +313,33 @@ const DataTable = ({
 
         const printWindow = window.open('', '_blank');
 
-        // Create table rows with proper text content
-        const tableRows = exportData.map(row => `
-            <tr>
-                ${exportCols.map(col => `
-                    <td>${getCellTextValue(row, col)}</td>
-                `).join('')}
-            </tr>
-        `).join('');
+        // Create table rows
+        const tableRows = exportData.map(row => {
+            const cells = exportCols.map(col => {
+                // Get cell value using the same logic as CSV/Excel export
+                let value = '';
+                if (col.key && row[col.key] !== undefined) {
+                    const rawValue = row[col.key];
+                    if (rawValue != null) {
+                        value = String(rawValue);
+                    }
+                } else if (col.cell) {
+                    value = getCellTextValue(row, col);
+                }
+                
+                // Escape HTML entities
+                const escapedValue = value
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+                
+                return `<td>${escapedValue}</td>`;
+            }).join('');
+            
+            return `<tr>${cells}</tr>`;
+        }).join('');
 
         printWindow.document.write(`
             <html>
@@ -221,10 +347,12 @@ const DataTable = ({
                     <title>Print Table</title>
                     <style>
                         body { font-family: Arial, sans-serif; margin: 20px; }
-                        table { width: 100%; border-collapse: collapse; }
+                        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
                         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
                         th { background-color: #f5f5f5; font-weight: bold; }
                         .print-info { margin-bottom: 20px; color: #666; }
+                        .print-info h2 { margin: 0 0 10px 0; }
+                        .print-info p { margin: 5px 0; }
                     </style>
                 </head>
                 <body>
@@ -235,18 +363,24 @@ const DataTable = ({
                         <p>Total Records: ${exportData.length}</p>
                         <p>Exported on: ${new Date().toLocaleString()}</p>
                     </div>
-                    <table border="1">
+                    <table>
                         <thead>
-                            <tr>${exportCols.map(col => `<th>${col.header}</th>`).join('')}</tr>
+                            <tr>${exportCols.map(col => `<th>${col.header || col.key}</th>`).join('')}</tr>
                         </thead>
                         <tbody>
                             ${tableRows}
                         </tbody>
                     </table>
-                    <script>window.print(); setTimeout(() => window.close(), 500);</script>
+                    <script>
+                        window.onload = function() {
+                            window.print();
+                            setTimeout(() => window.close(), 500);
+                        };
+                    </script>
                 </body>
             </html>
         `);
+        printWindow.document.close();
         setShowExportOptions(false);
     };
 

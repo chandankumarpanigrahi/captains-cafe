@@ -97,7 +97,7 @@ export default function DashboardLayout({ children }) {
                     </div>
 
                     {/* Main Content */}
-                    <div className="flex-1 h-full">
+                    <div className="flex-1 h-full w-full">
                         <div className={`${styles.top_bar} relative z-20 gap-4 w-full flex flex-row items-center bg-white rounded-br-md rounded-bl-md py-2 pl-14 pr-4 shadow-sm`}>
 
                             {/* Location Dropdown */}
