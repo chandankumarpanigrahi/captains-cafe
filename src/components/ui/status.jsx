@@ -14,7 +14,7 @@ const badgeVariants = cva(
           "text-blue-600",
         archived:
           "text-amber-500",
-        none: "text-foreground",
+        none: "text-purple-500",
       },
     },
     defaultVariants: {

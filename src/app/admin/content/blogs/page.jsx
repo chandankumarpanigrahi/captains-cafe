@@ -6,7 +6,7 @@ import Button from '@/components/common/button'
 import AllBlogsTable from './allBlogsTable'
 
 // Iocns
-import { FaPlus } from "react-icons/fa6";
+import { FiPlusSquare } from "react-icons/fi";
 
 // Breadcrumb
 import {
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import CardHeading from '../../elements/CardHeading'
 import { Status } from '@/components/ui/status'
+import ArchivedBlogsTable from './archivedBlogsTable'
 
 const Page = () => {
 
@@ -47,10 +48,10 @@ const Page = () => {
                     <div className={`${activeTab === "tab1" ? "block" : "hidden"} w-full flex flex-col gap-2`}>
                         <div className="flex flex-row items-center w-full">
                             <CardHeading title="View" bottomLine="false" />
-                            <Button text="EDIT" className='ml-auto' size='sm' icon={<FaPlus />} radius='sm' iconPosition="left" />
+                            <Button text="ADD" className='ml-auto' size='sm' icon={<FiPlusSquare />} radius='sm' iconPosition="left" link="/admin/content/blogs/addBlog" />
                         </div>
                         <hr className='mb-2' />
-                        <AllBlogsTable/>
+                        <AllBlogsTable />
                     </div>
 
 
@@ -60,7 +61,7 @@ const Page = () => {
                             <CardHeading title="View" bottomLine="false" />
                         </div>
                         <hr className='mb-2' />
-                        <p>Block</p>
+                        <ArchivedBlogsTable />
                     </div>
 
                 </Card>
