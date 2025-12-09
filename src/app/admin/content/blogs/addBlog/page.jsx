@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { FiClock, FiCalendar } from "react-icons/fi";
 // Breadcrumb
 import {
     Breadcrumb,
@@ -35,6 +36,9 @@ import {
 } from "@/components/ui/select"
 
 const addBlog = () => {
+    const [date, setDate] = React.useState("");
+    const [time, setTime] = React.useState("");
+
     return (
         <div className='w-full'>
             <Breadcrumb>
@@ -60,15 +64,15 @@ const addBlog = () => {
                             <Button text="Cancel" className='ml-auto' size='sm' radius='sm' link="/admin/content/blogs" />
                         </div>
                         <hr className='mb-2' />
-                        <div className="flex w-full flex-wrap">
-                            <div className="space-y-1 w-full md:w-1/2 lg:w-4/12 xl:w-3/12 2xl:w-2/12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 w-full">
+                            <div className="space-y-1">
                                 <Label className="text-[14px] text-gray-600 block font-medium">Blog Heading</Label>
                                 <Input
                                     placeholder="Enter title"
                                     className="w-full py-2 text-sm"
                                 />
                             </div>
-                            <div className="space-y-1 w-full md:w-1/2 lg:w-4/12 xl:w-3/12 2xl:w-2/12">
+                            <div className="space-y-1">
                                 <Label className="text-[14px] text-gray-600 block font-medium">Upload Banner</Label>
                                 <Input
                                     type="file"
@@ -76,23 +80,46 @@ const addBlog = () => {
                                     className="w-full px-3 py-0.5 text-sm"
                                 />
                             </div>
-                            <div className="space-y-1 w-full md:w-1/2 lg:w-4/12 xl:w-3/12 2xl:w-2/12">
+                            <div className="space-y-1">
                                 <Label className="text-[14px] text-gray-600 block font-medium">Posting Date</Label>
-                                <Input
-                                    type="date"
-                                    placeholder="Enter Date"
-                                    className="w-full py-2 text-sm"
-                                />
+                                <div className="w-full relative">
+                                    <input
+                                        type="date"
+                                        className="absolute inset-0 w-full h-full opacity-0 z-10"
+                                        aria-label="Select date"
+                                        onChange={(e) => setDate(e.target.value)}
+                                    />
+                                    <div
+                                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm flex items-center justify-between bg-white hover:bg-gray-50 cursor-pointer"
+                                    >
+                                        <span className={`${date ? "text-black" : "text-gray-500"}`}>
+                                            {date || "Select Date"}
+                                        </span>
+                                        <FiCalendar className="text-gray-400 cursor-pointer" size={16} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="space-y-1 w-full md:w-1/2 lg:w-4/12 xl:w-3/12 2xl:w-2/12">
+                            <div className="space-y-1">
                                 <Label className="text-[14px] text-gray-600 block font-medium">Posting Time</Label>
-                                <Input
-                                    type="time"
-                                    placeholder="Enter Time"
-                                    className="w-full py-2 text-sm"
-                                />
+                                <div className="w-full relative">
+                                    <input
+                                        type="time"
+                                        className="absolute inset-0 w-full h-full opacity-0 z-10"
+                                        aria-label="Select end time"
+                                        onChange={(e) => setTime(e.target.value)}
+                                    />
+                                    <div
+                                        className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm flex items-center justify-between bg-white hover:bg-gray-50 cursor-pointer"
+                                    >
+                                        <span className={`${time ? "text-black" : "text-gray-500"}`}>
+                                            {time || "00:00"}
+                                        </span>
+                                        <FiClock className="text-gray-400 cursor-pointer" size={16} />
+                                    </div>
+                                </div>
                             </div>
-                            <div className="space-y-1 w-full md:w-1/2 lg:w-4/12 xl:w-3/12 2xl:w-2/12">
+
+                            <div className="space-y-1">
                                 <Label className="text-[14px] text-gray-600 block font-medium">Tags</Label>
                                 <Select>
                                     <SelectTrigger className="w-full py-2 text-sm">
@@ -114,8 +141,8 @@ const addBlog = () => {
                         </div>
                     </div>
                 </Card>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 
