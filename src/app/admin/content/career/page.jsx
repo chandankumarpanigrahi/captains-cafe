@@ -17,6 +17,8 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import CardHeading from '../../elements/CardHeading'
+import ArchivedPostsTable from './archivedPostsTable'
+import AllPostsTable from './allPostsTable'
 
 const Page = () => {
 
@@ -45,10 +47,10 @@ const Page = () => {
                     <div className={`${activeTab === "tab1" ? "block" : "hidden"} w-full flex flex-col gap-2`}>
                         <div className="flex flex-row items-center w-full">
                             <CardHeading title="View" bottomLine="false" />
-                            <Button text="ADD" className='ml-auto' size='sm' icon={<FiPlusSquare />} radius='sm' iconPosition="left" />
+                            <Button text="ADD" className='ml-auto' size='sm' icon={<FiPlusSquare />} radius='sm' iconPosition="left" link="/admin/content/career/addPost" />
                         </div>
                         <hr className='mb-2' />
-                        Hi
+                        <AllPostsTable />
                     </div>
 
 
@@ -58,7 +60,7 @@ const Page = () => {
                             <CardHeading title="View" bottomLine="false" />
                         </div>
                         <hr className='mb-2' />
-                        Ji
+                        <ArchivedPostsTable />
                     </div>
 
                 </Card>
