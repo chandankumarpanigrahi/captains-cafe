@@ -1,60 +1,45 @@
 "use client";
 import React, { useState } from 'react';
 import DataTable from '@/components/ui/data-table';
-import { Button } from '@/components/ui/button';
 import { toast } from "react-hot-toast";
-import { MdOutlineContentCopy, MdCheck } from "react-icons/md";
+import { MdOutlineContentCopy, MdCheck, MdArrowForward } from "react-icons/md";
+import { FaShare } from "react-icons/fa6";
 
-const ArchivedBlogsTable = () => {
+const ArchivedPostsTable = () => {
     const [copiedRowId, setCopiedRowId] = useState(null);
-    const [blogs, setBlogs] = useState([
-        { id: 1, blogName: "Harry Potter's Week", blogDate: "12 Nov 2025", status: "scheduled", isPublished: false },
-        { id: 2, blogName: "Fantasy World", blogDate: "15 Nov 2025", status: "default", isPublished: false },
-        { id: 3, blogName: "Tech Updates", blogDate: "10 Nov 2025", status: "archived", isPublished: false },
-        { id: 4, blogName: "Travel Diary", blogDate: "18 Nov 2025", status: "none", isPublished: false }
+    const [posts, setPosts] = useState([
+        { id: 1, jobTitle: "Executive Chef", experience: "7 Years", jobDate: "12 Aug 2025" },
+        { id: 2, jobTitle: "Culinary Team Member", experience: "1 Year", jobDate: "03 Aug 2025" }
     ]);
 
-    // Function to restore blog
+    // Function to restore post
     const handleRestore = (id) => {
-        setBlogs(blogs.map(blog => {
-            if (blog.id === id) {
-                // Show toast notification
-                toast.success(`Blog restored successfully!`);
-
-                return {
-                    ...blog,
-                    status: 'scheduled',
-                    isPublished: false
-                };
-            }
-            return blog;
-        }));
+        setPosts(posts.filter(post => post.id !== id));
+        toast.success(`Job restored successfully!`);
     };
 
-    // Function to delete blog
+    // Function to delete post
     const handleDelete = (id) => {
-        setBlogs(blogs.filter(blog => blog.id !== id));
-        toast.success("Blog deleted successfully!");
+        setPosts(posts.filter(post => post.id !== id));
+        toast.success("Job deleted successfully!");
     };
 
-    // Function to edit blog
+    // Function to edit post
     const handleEdit = (id) => {
-        const blog = blogs.find(b => b.id === id);
-        toast.info(`Editing blog: "${blog.blogName}"`);
-        // Add your edit logic here
+        const post = posts.find(p => p.id === id);
+        toast.info(`Editing job: "${post.jobTitle}"`);
     };
 
-    // Function to handle share
-    const handleShare = (blogName, id) => {
-        // Simulate copying share link to clipboard
-        navigator.clipboard.writeText(`https://captainscafe.com/blogs/${blogName.toLowerCase().replace(/\s+/g, '-')}`)
+    // Function to handle share copy
+    const handleCopy = (jobTitle, id) => {
+        navigator.clipboard.writeText(`https://captainscafe.com/career/${jobTitle.toLowerCase().replace(/\s+/g, '-')}`)
             .then(() => {
-                toast.success(`Share link for "${blogName}" copied to clipboard!`);
+                toast.success(`Link copied!`);
                 setCopiedRowId(id);
                 setTimeout(() => setCopiedRowId(null), 2000);
             })
             .catch(() => {
-                toast.error("Failed to copy share link");
+                toast.error("Failed to copy link");
             });
     };
 
@@ -63,43 +48,54 @@ const ArchivedBlogsTable = () => {
         {
             key: 'id',
             header: 'Sl. No.',
-            width: '100px',
+            width: '80px',
             filterable: false,
             cellClassName: 'text-center font-mono text-sm whitespace-nowrap',
         },
         {
-            key: 'blogName',
-            header: 'Blog Title',
-            width: '200px',
+            key: 'jobTitle',
+            header: 'Job Title',
+            width: '250px',
             cell: (row) => (
-                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-                    <span className="font-semibold text-gray-600">{row.blogName}</span>
+                <div className="flex items-center justify-start gap-2 whitespace-nowrap px-4">
+                    <span className="font-medium text-gray-700">{row.jobTitle}</span>
                 </div>
             )
         },
         {
-            key: 'blogDate',
-            header: 'Date',
-            width: '200px',
+            key: 'experience',
+            header: 'Experience',
+            width: '150px',
             cell: (row) => (
                 <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-                    <span className="font-semibold text-gray-600">{row.blogDate}</span>
+                    <span className="text-gray-600">{row.experience}</span>
+                </div>
+            )
+        },
+        {
+            key: 'jobDate',
+            header: 'Date',
+            width: '150px',
+            cell: (row) => (
+                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
+                    <span className="text-gray-600">{row.jobDate}</span>
                 </div>
             )
         },
         {
             key: 'share',
             header: 'Share',
-            width: '120px',
+            width: '100px',
             cell: (row) => (
-                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
+                <div className="flex items-center justify-center gap-3 whitespace-nowrap">
+                    {/* Copy Link */}
                     <button
-                        className={`cursor-pointer font-medium text-sm transition-all duration-200 ${copiedRowId === row.id ? 'text-green-600' : 'text-blue-700 hover:text-blue-800'
-                            }`}
+                        className={`cursor-pointer transition-all duration-200 ${copiedRowId === row.id ? 'text-green-600' : 'text-gray-500 hover:text-gray-700'}`}
                         onClick={(e) => {
                             e.stopPropagation();
-                            handleShare(row.blogName, row.id);
+                            handleCopy(row.jobTitle, row.id);
                         }}
+                        title="Copy Link"
                     >
                         {copiedRowId === row.id ? <MdCheck size={18} /> : <MdOutlineContentCopy size={18} />}
                     </button>
@@ -114,7 +110,7 @@ const ArchivedBlogsTable = () => {
             <div className="flex items-center justify-center gap-2">
                 {/* Restore Button */}
                 <button
-                    className="px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap text-white bg-blue-900 hover:bg-blue-800 border-blue-900"
+                    className="px-3 py-1 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap text-yellow-700 bg-white hover:bg-yellow-50 border-yellow-500"
                     title="Restore"
                     onClick={(e) => {
                         e.stopPropagation();
@@ -126,7 +122,7 @@ const ArchivedBlogsTable = () => {
 
                 {/* Delete Button */}
                 <button
-                    className="px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap text-red-700 bg-red-50 hover:bg-red-100 border-red-300"
+                    className="px-3 py-1 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap text-red-600 bg-white hover:bg-red-50 border-red-400"
                     title="Delete"
                     onClick={(e) => {
                         e.stopPropagation();
@@ -138,8 +134,8 @@ const ArchivedBlogsTable = () => {
 
                 {/* Edit Button */}
                 <button
-                    className="px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap text-green-700 bg-green-50 hover:bg-green-100 border-green-300"
-                    title="Edit Blog"
+                    className="px-3 py-1 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap text-green-600 bg-white hover:bg-green-50 border-green-500"
+                    title="Edit Job"
                     onClick={(e) => {
                         e.stopPropagation();
                         handleEdit(row.id);
@@ -153,33 +149,26 @@ const ArchivedBlogsTable = () => {
 
     return (
         <div className='w-full'>
-
-            {/* DataTable with Custom Actions */}
             <DataTable
                 columns={columns}
-                data={blogs}
+                data={posts}
                 enableSorting={true}
                 enableFiltering={true}
                 enableColumnFilters={false}
                 enableRowSelection={false}
                 enableColumnVisibility={true}
-                enableExport={true}
+                enableExport={false}
                 enablePagination={true}
                 enableActions={true}
                 renderActions={renderCustomActions}
                 actionsPosition="end"
-                actionsColumnWidth="150px"
-                actionsColumnHeader="Actions"
+                actionsColumnWidth="280px"
+                actionsColumnHeader="Action"
                 pageSizeOptions={[5, 10, 25, 50]}
                 defaultPageSize={10}
-                onRowClick={(row) => {
-                    // console.log('Row clicked:', row);
-                    // setSelectedAction(`Clicked on ${row.name}`);
-                }}
             />
-
         </div>
     );
 };
 
-export default ArchivedBlogsTable;
+export default ArchivedPostsTable;

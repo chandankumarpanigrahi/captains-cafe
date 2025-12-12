@@ -4,8 +4,10 @@ import DataTable from '@/components/ui/data-table';
 import { Button } from '@/components/ui/button';
 import { Status } from '@/components/ui/status';
 import { toast } from "react-hot-toast";
+import { MdOutlineContentCopy, MdCheck } from "react-icons/md";
 
 const AllPostsTable = () => {
+    const [copiedRowId, setCopiedRowId] = useState(null);
     const [posts, setPosts] = useState([
         { id: 1, jobTitle: "Head Chef", experience: "4 Years", jobDate: "12 Aug 2025", status: "default" },
         { id: 2, jobTitle: "Kitchen Staff", experience: "2 Years", jobDate: "03 Aug 2025", status: "default" },
@@ -51,6 +53,20 @@ const AllPostsTable = () => {
         const post = posts.find(b => b.id === id);
         toast.info(`Editing job: "${post.jobTitle}"`);
         // Add your edit logic here
+    };
+
+    // Function to handle share
+    const handleShare = (jobTitle, id) => {
+        // Simulate copying share link to clipboard
+        navigator.clipboard.writeText(`https://captainscafe.com/career/${jobTitle.toLowerCase().replace(/\s+/g, '-')}`)
+            .then(() => {
+                toast.success(`Share link for "${jobTitle}" copied to clipboard!`);
+                setCopiedRowId(id);
+                setTimeout(() => setCopiedRowId(null), 2000);
+            })
+            .catch(() => {
+                toast.error("Failed to copy share link");
+            });
     };
 
     // Function to get status display text
@@ -113,6 +129,25 @@ const AllPostsTable = () => {
                     <Status variant={row.status}>
                         {getStatusText(row.status)}
                     </Status>
+                </div>
+            )
+        },
+        {
+            key: 'share',
+            header: 'Share',
+            width: '120px',
+            cell: (row) => (
+                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
+                    <button
+                        className={`cursor-pointer font-medium text-sm transition-all duration-200 ${copiedRowId === row.id ? 'text-green-600' : 'text-blue-700 hover:text-blue-800'
+                            }`}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            handleShare(row.jobTitle, row.id);
+                        }}
+                    >
+                        {copiedRowId === row.id ? <MdCheck size={18} /> : <MdOutlineContentCopy size={18} />}
+                    </button>
                 </div>
             )
         },

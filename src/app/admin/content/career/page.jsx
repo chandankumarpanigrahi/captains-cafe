@@ -28,11 +28,11 @@ const Page = () => {
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink href="/admin/content">Career</BreadcrumbLink>
+                        <BreadcrumbLink href="/admin/content">Content</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbPage>All Posts</BreadcrumbPage>
+                        <BreadcrumbPage>Career</BreadcrumbPage>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
