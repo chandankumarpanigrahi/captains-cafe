@@ -20,7 +20,6 @@ import {
     InputOTPSlot,
 } from "@/components/ui/input-otp"
 
-
 // Images
 import logo from "../../assets/images/logo_light.png"
 import image1 from "../../assets/images/cafe/img_1.jpg"
@@ -228,7 +227,7 @@ const User = () => {
                                                 <InputOTPSlot index={1} className="bg-white dark:bg-white/5" />
                                                 <InputOTPSlot index={2} className="bg-white dark:bg-white/5" />
                                             </InputOTPGroup>
-                                            <InputOTPSeparator className="hidden md:block"/>
+                                            <InputOTPSeparator className="hidden md:block" />
                                             <InputOTPGroup>
                                                 <InputOTPSlot index={3} className="bg-white dark:bg-white/5" />
                                                 <InputOTPSlot index={4} className="bg-white dark:bg-white/5" />

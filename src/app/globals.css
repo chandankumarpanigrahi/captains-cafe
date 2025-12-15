@@ -306,3 +306,15 @@ body::before {
       inset -1px -1px 8px 0px rgba(255, 255, 255, 0.5);
   }
 }
+
+.ql-toolbar.ql-snow {
+  border-radius: 10px 10px 0 0;
+  background-color: #efefef;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 10px 10px;
+  min-height: 150px;
+  max-height: 400px;
+  overflow-y: auto;
+}

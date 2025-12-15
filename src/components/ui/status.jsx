@@ -8,13 +8,15 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "text-green-600",
-        scheduled:
-          "text-blue-600",
-        archived:
-          "text-amber-500",
+        default: "text-green-600",
+        scheduled: "text-blue-600",
+        archived: "text-amber-500",
         none: "text-purple-500",
+        applied: "text-blue-700",
+        accepted: "text-green-600",
+        rejected: "text-red-600",
+        shortlisted: "text-amber-600",
+        forwarded: "text-purple-600",
       },
     },
     defaultVariants: {

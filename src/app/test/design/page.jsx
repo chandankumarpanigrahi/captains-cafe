@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import DataTable from '@/components/ui/data-table';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+
+import { Editor } from 'primereact/editor';
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -301,7 +304,7 @@ const UsersPage = () => {
                     // setSelectedAction(`Clicked on ${row.name}`);
                 }}
             />
-
+            <Editor />
         </div>
     );
 };

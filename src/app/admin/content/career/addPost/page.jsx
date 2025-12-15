@@ -1,6 +1,10 @@
 "use client"
 import React from 'react'
-import { FiClock, FiCalendar } from "react-icons/fi";
+import { FaRegCalendarAlt } from "react-icons/fa";
+
+import { Editor } from 'primereact/editor';
+import { toast } from "react-hot-toast";
+
 // Breadcrumb
 import {
     Breadcrumb,
@@ -10,7 +14,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import CardHeading from '../../../elements/CardHeading'
+import CardHeading from '@/app/admin/elements/CardHeading'
 
 // Card
 import {
@@ -35,9 +39,15 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-const addBlog = () => {
+const addNewPost = () => {
     const [date, setDate] = React.useState("");
-    const [time, setTime] = React.useState("");
+
+    const submitText = () => {
+        toast.success("Post Added Successfully");
+    }
+    const reset = () => {
+        toast.success("Form Reset Successfully");
+    }
 
     return (
         <div className='w-full'>
@@ -61,7 +71,7 @@ const addBlog = () => {
                     <div className={`w-full flex flex-col gap-2`}>
                         <div className="flex flex-row items-center w-full">
                             <CardHeading title="Add New Post" bottomLine="false" />
-                            <Button text="Cancel" className='ml-auto' size='sm' radius='sm' link="/admin/content/career" />
+                            <Button text="Cancel" variant='outline' className='ml-auto' size='sm' radius='sm' link="/admin/content/career" />
                         </div>
                         <hr className='mb-2' />
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 w-full">
@@ -82,7 +92,7 @@ const addBlog = () => {
                                 <Label className="text-[14px] text-gray-600 block font-medium">Designation</Label>
                                 <Input
                                     placeholder="Enter Designation"
-                                    className="w-full py-2 text-sm"
+                                    className="w-full py-2 text-sm shadow-sm"
                                 />
                             </div>
                             <div className="space-y-1">
@@ -184,7 +194,7 @@ const addBlog = () => {
                             </div>
                             <div className="space-y-1">
                                 <Label className="text-[14px] text-gray-600 block font-medium">Deadline</Label>
-                                <div className="w-full relative">
+                                <div className="w-full relative shadow-sm rounded-md">
                                     <input
                                         type="date"
                                         className="absolute inset-0 w-full h-full opacity-0 z-10"
@@ -197,7 +207,7 @@ const addBlog = () => {
                                         <span className={`${date ? "text-black" : "text-gray-500"}`}>
                                             {date || "Select Date"}
                                         </span>
-                                        <FiCalendar className="text-gray-400 cursor-pointer" size={16} />
+                                        <FaRegCalendarAlt className="text-gray-400 cursor-pointer" size={16} />
                                     </div>
                                 </div>
                             </div>
@@ -206,10 +216,15 @@ const addBlog = () => {
                     <div className="flex flex-row items-center w-full">
                         <CardHeading title="Description" bottomLine="false" />
                     </div>
+                    <Editor />
+                    <div className="flex flex-row justify-end gap-2 w-full">
+                        <Button text="Reset" className='' size='sm' radius='sm' variant='outline' onClick={() => reset()} />
+                        <Button text="Submit" className='' size='sm' radius='sm' onClick={() => submitText()} />
+                    </div>
                 </Card>
             </div >
         </div >
     )
 }
 
-export default addBlog
+export default addNewPost

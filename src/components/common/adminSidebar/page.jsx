@@ -71,9 +71,8 @@ const AdminSidebar = () => {
             {/* Toggle Button */}
             <button
                 onClick={toggleSidebar}
-                className={`fixed top-1 left-3 z-50 p-2 transition-all duration-200 lg:top-1 cursor-pointer ${
-                    isSidebarOpen ? 'lg:left-68' : 'lg:left-2 rounded-md bg-gradient-to-b from-[#ffe8d5] to-[#f7ece2] shadow-md hover:shadow-lg'
-                }`}
+                className={`fixed top-1 left-3 z-50 p-2 transition-all duration-200 lg:top-1 cursor-pointer ${isSidebarOpen ? 'lg:left-68' : 'lg:left-2 rounded-md bg-gradient-to-b from-[#ffe8d5] to-[#f7ece2] shadow-md hover:shadow-lg'
+                    }`}
             >
                 {isSidebarOpen ? '☰' : '☰'}
             </button>
@@ -101,12 +100,12 @@ const AdminSidebar = () => {
                     <div className="flex flex-col h-full">
                         {/* Logo */}
                         <div className="flex flex-row gap-1 items-center px-4 pt-4 pb-2">
-                            <div className="w-[55px] h-[55px] flex items-center justify-center">
+                            <div className="w-[52px] h-[52px] flex items-center justify-center">
                                 <Image src={logo} alt='Logo' className='w-full h-full object-contain' />
                             </div>
                             <div className="flex flex-col">
-                                <h2 className='text-blue-950 font-bold text-lg'>The Captain&apos;s Cafe</h2>
-                                <p className='text-blue-950 font-light text-sm'>The Captain&apos;s Bridge</p>
+                                <h2 className='text-blue-950 font-bold text-[17px]'>The Captain&apos;s Cafe</h2>
+                                <p className='text-blue-950 font-light text-[13px]'>The Captain&apos;s Bridge</p>
                             </div>
                         </div>
 
@@ -120,7 +119,7 @@ const AdminSidebar = () => {
                                         const active = isActive(item.path);
 
                                         return (
-                                            <li 
+                                            <li
                                                 key={index}
                                                 className="relative"
                                                 onMouseEnter={() => setHoveredItem(index)}
@@ -128,9 +127,8 @@ const AdminSidebar = () => {
                                             >
                                                 <Link
                                                     href={item.path}
-                                                    className={`hover:opacity-100 text-white transition-all duration-200 ${
-                                                        active ? 'opacity-100 scale-110' : 'opacity-30'
-                                                    }`}
+                                                    className={`hover:opacity-100 text-white transition-all duration-200 ${active ? 'opacity-100 scale-110' : 'opacity-30'
+                                                        }`}
                                                 >
                                                     <IconComponent size="30" />
                                                 </Link>
@@ -156,7 +154,7 @@ const AdminSidebar = () => {
                                 </ul>
                                 <div className={styles.side_main_category_after}></div>
                             </nav>
-                            
+
                             {/* Sub-Menu */}
                             <div className="flex-1 min-w-0">
                                 <SubMenu />

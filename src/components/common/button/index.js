@@ -11,7 +11,7 @@ export default function Button({
     textColor = "text-white",
     className = "",
     link = "#",
-    
+
     // New props
     variant = "primary",    // "primary" | "secondary" | "outline" | "ghost" | "danger" | "none"
     type = "button",        // "button" | "submit" | "reset"
@@ -20,10 +20,10 @@ export default function Button({
     loadingText = "Loading...",
     tooltip = "",
     ariaLabel = "",
-    onClick = () => {},
+    onClick = () => { },
     target = "_self",       // "_self" | "_blank"
     rel = "noopener noreferrer",
-    
+
     ...props
 }) {
     // Radius classes (existing)
@@ -56,10 +56,10 @@ export default function Button({
 
     // New: Variant classes (override bgColor and textColor when variant is used)
     const variantMap = {
-        primary: `${bgColor === 'bg-primary-dark' ? 'bg-primary-dark' : bgColor} ${textColor === 'text-white' ? 'text-white' : textColor} hover:opacity-90 focus:ring-2 focus:ring-primary-light`,
+        primary: `${bgColor === 'bg-primary-dark' ? 'bg-primary-dark' : bgColor} ${textColor === 'text-white' ? 'text-white' : textColor} hover:opacity-90`,
         secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-2 focus:ring-gray-400",
-        outline: "border-2 border-primary-dark text-primary-dark bg-transparent hover:bg-primary-dark hover:text-white focus:ring-2 focus:ring-primary-light",
-        ghost: "text-primary-dark bg-transparent hover:bg-primary-light hover:text-primary-darker focus:ring-2 focus:ring-primary-light",
+        outline: "border-2 border-primary-dark text-primary-dark bg-transparent hover:bg-primary-dark",
+        ghost: "text-primary-dark bg-transparent hover:bg-primary-light hover:text-primary-darker",
         danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-2 focus:ring-red-400",
         none: "bg-transparent text-primary-dark"
     };
@@ -114,7 +114,7 @@ export default function Button({
 
     // Choose between button and anchor tag
     const isAnchor = link && link !== "#" && !disabled;
-    
+
     if (isAnchor) {
         return (
             <a

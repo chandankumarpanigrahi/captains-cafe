@@ -16,7 +16,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import CardHeading from '../../elements/CardHeading'
+import CardHeading from '@/app/admin/elements/CardHeading'
 import ArchivedPostsTable from './archivedPostsTable'
 import AllPostsTable from './allPostsTable'
 
