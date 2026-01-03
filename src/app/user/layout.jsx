@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation';
 const Layout = ({ children }) => {
     const pathname = usePathname();
     const isLoginPage = pathname === "/user";
-    
+
     const showNotFound = false;
 
     if (showNotFound && pathname.startsWith('/user')) {
