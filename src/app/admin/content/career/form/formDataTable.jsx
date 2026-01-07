@@ -280,7 +280,7 @@ const FormDataTable = () => {
                 <button
                     onClick={() => handleStatusChange(row.id, 'forwarded')}
                     className={`w-full px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
-                        ${row.status === 'forward'
+                        ${row.status === 'forwarded'
                             ? 'text-white bg-blue-600 border-blue-700 hover:bg-blue-700'
                             : 'text-blue-700 bg-blue-50 hover:bg-blue-100 border-blue-300'
                         }`}
