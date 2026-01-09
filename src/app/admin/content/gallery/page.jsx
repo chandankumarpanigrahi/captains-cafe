@@ -3,9 +3,8 @@ import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Button from '@/components/common/button'
-import React, { useState, useRef } from 'react'
-import { FiClock } from 'react-icons/fi'
-import { FaRegEdit } from "react-icons/fa";
+import React, { useState, useRef, useEffect } from 'react'
+import toast from 'react-hot-toast';
 
 // Breadcrumb
 import {
@@ -17,19 +16,54 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import CardHeading from '../../elements/CardHeading'
+import DragDropSortable from './draggable'
 
-import {
-    Dialog,
-    DialogContent,
-    DialogTrigger,
-} from "@/components/ui/dialog"
+import image1 from '@/assets/images/cafe/img_1.jpg'
+import image2 from '@/assets/images/cafe/img_2.jpg'
+import image3 from '@/assets/images/cafe/img_3.jpg'
+import image4 from '@/assets/images/cafe/img_4.jpg'
+import image5 from '@/assets/images/cafe/img_5.jpg'
+import image6 from '@/assets/images/cafe/img_6.jpg'
+import image7 from '@/assets/images/cafe/img_7.jpg'
+import image8 from '@/assets/images/cafe/img_8.jpg'
+import image9 from '@/assets/images/cafe/img_9.jpg'
 
-// Images
-import Image from 'next/image'
-import aboutUsImage from "@/assets/images/pages/about/aboutUs.png"
-import brandIdentity from "@/assets/images/pages/about/brandIdentity.png"
+const initialItems = [
+    { id: '1', image: image1, alt: 'Image 1', caption: "Caption 1" },
+    { id: '2', image: image2, alt: 'Image 2', caption: "Caption 2" },
+    { id: '3', image: image3, alt: 'Image 3', caption: "Caption 3" },
+    { id: '4', image: image4, alt: 'Image 4', caption: "Caption 4" },
+    { id: '5', image: image5, alt: 'Image 5', caption: "Caption 5" },
+    { id: '6', image: image6, alt: 'Image 6', caption: "Caption 6" },
+    { id: '7', image: image7, alt: 'Image 7', caption: "Caption 7" },
+    { id: '8', image: image8, alt: 'Image 8', caption: "Caption 8" },
+    { id: '9', image: image9, alt: 'Image 9', caption: "Caption 9" },
+];
 
 const AdminGallery = () => {
+    const [items, setItems] = useState(initialItems);
+
+    useEffect(() => {
+        const savedItems = localStorage.getItem('galleryItems');
+        if (savedItems) {
+            const parsedItems = JSON.parse(savedItems);
+            const rehydratedItems = parsedItems.map(item => {
+                const initialItem = initialItems.find(i => i.id === item.id);
+                return {
+                    ...item,
+                    image: initialItem ? initialItem.image : item.image
+                };
+            });
+            setItems(rehydratedItems);
+        }
+    }, []);
+
+    const handleSave = () => {
+        const itemsToSave = items.map(({ id, alt, caption }) => ({ id, alt, caption }));
+        localStorage.setItem('galleryItems', JSON.stringify(itemsToSave));
+        toast.success("Gallery arrangement saved!");
+    };
+
     return (
         <>
             <Breadcrumb>
@@ -39,7 +73,7 @@ const AdminGallery = () => {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbPage>About Us</BreadcrumbPage>
+                        <BreadcrumbPage>Gallery</BreadcrumbPage>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
@@ -87,10 +121,17 @@ const AdminGallery = () => {
                 <Card className="rounded-md gap-1.5 p-4 w-full h-fit ml-0 md:ml-3">
                     <div className="flex">
                         <CardHeading title="View" bottomLine="false" />
+                        <Button
+                            text="Save"
+                            className='ml-auto'
+                            size='sm'
+                            radius='sm'
+                            onClick={handleSave}
+                        />
                     </div>
                     <hr />
                     <div className="flex flex-col flex-wrap gap-y-2 py-2">
-
+                        <DragDropSortable items={items} setItems={setItems} />
                     </div>
 
                 </Card>
