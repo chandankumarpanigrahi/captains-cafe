@@ -326,11 +326,70 @@ const ContactUs = () => {
 
 
 
-                        <div className={`${selection === "crpf" ? "block" : "hidden"} bg-red-100 w-full h-50`}>
-                            <div className="flex justify-center items-center w-full h-full">
-                                Coming Soon
+                        {/* ============== CRPF CAFE MENU START ================== */}
+                        <div className={`${selection === "crpf" ? "block" : "hidden"} w-full h-fit`}>
+                            <div className="flex flex-wrap flex-col lg:flex-row h-fit">
+                                <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
+
+                                    {/* Food */}
+                                    <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-full w-full justify-around`}>
+                                        {menu.crpf.map((value, index) => (
+                                            <div key={index} className='relative aspect-[3/5] w-full rounded-lg border border-blue-900 overflow-hidden'>
+                                                <a
+                                                    key={index}
+                                                    href={value.image}
+                                                    data-fancybox="gallery"
+                                                >
+                                                    <Image
+                                                        src={value.image}
+                                                        alt="Cafe"
+                                                        fill
+                                                    />
+                                                </a>
+                                            </div>
+                                        ))}
+                                    </div>
+
+
+                                </div>
+                                <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
+                                    <div className="flex flex-col w-full gap-4">
+                                        <Card className="p-8 rounded-md gap-0">
+                                            <h1 className='uppercase text-center text-lg text-blue-900 dark:text-white font-semibold mb-3'>Quick Order</h1>
+                                            <QRCode data={menu.saheedNagar.qrLink[0].link} className="mb-5" />
+                                            <a className='flex items-center justify-center gap-2 w-full uppercase transition-colors px-4 py-2 text-base bg-primary-dark text-white rounded' href={menu.saheedNagar.qrLink[0].link} target='_blank'>Order Now</a>
+                                        </Card>
+                                        <Card className="p-3 rounded-md gap-0">
+                                            <p className='text-blue-900 dark:text-white font-semibold text-center mb-2'>or Order from,</p>
+                                            <div className="flex flex-row gap-2 justify-center flex-wrap mb-2">
+                                                {menu.foodPartnerLogo.map((value, index) => (
+                                                    <a key={index} href={value.link} className='grayscale-40 hover:grayscale-0 hover:scale-105 transition ease-in-out duration-200'>
+                                                        <Image
+                                                            src={value.image}
+                                                            alt='Cafe'
+                                                            width={80}
+                                                            height={80}
+                                                            className='rounded-lg'
+                                                        />
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </Card>
+                                        <Card className="p-3 rounded-md gap-0">
+                                            <p className='text-blue-900 dark:text-white font-semibold dark:font-normal flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                            <ShareCard
+                                                title="Amazing Blog Post You Should Read!"
+                                            />
+                                            {/* <PathCopy /> */}
+                                        </Card>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        {/* ============== CRPF CAFE MENU END ================== */}
+
+
+
 
                         <div className={`${selection === "cutm" ? "block" : "hidden"} bg-green-100 w-full h-50`}>
                             <div className="flex justify-center items-center w-full h-full">
