@@ -6,6 +6,7 @@ import Image from 'next/image'
 import styles from "./style.module.css"
 import { useState } from 'react'
 import { useEffect } from "react";
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import {
     Select,
@@ -45,12 +46,53 @@ import { Card } from '@/components/ui/card'
 import Button from '@/components/common/button'
 
 const ContactUs = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
 
-    // Tab Design
-    const [tabview, setTabview] = useState("cafe")
-    const [selection, setSelection] = useState("saheed")
-    const [viewmenu, setViewmenu] = useState("food")
-    const [viewCateringMenu, setViewCateringMenu] = useState("lunch")
+    // Initialize states from URL parameters or defaults
+    const [tabview, setTabview] = useState(searchParams.get('tab') || 'cafe');
+    const [selection, setSelection] = useState(searchParams.get('location') || 'saheed');
+    const [viewmenu, setViewmenu] = useState(searchParams.get('menu') || 'food');
+    const [viewCateringMenu, setViewCateringMenu] = useState(searchParams.get('catering') || 'lunch');
+
+    // Update URL when any tab state changes
+    useEffect(() => {
+        const params = new URLSearchParams(searchParams.toString());
+
+        // Always update the main tab
+        params.set('tab', tabview);
+
+        // Update location if in cafe tab
+        if (tabview === 'cafe') {
+            params.set('location', selection);
+            params.set('menu', viewmenu);
+            params.delete('catering'); // Remove catering param when not in use
+        } else {
+            params.set('catering', viewCateringMenu);
+            params.delete('location'); // Remove location param when not in use
+            params.delete('menu'); // Remove menu param when not in use
+        }
+
+        // Update URL without refreshing the page
+        router.push(`?${params.toString()}`, { scroll: false });
+    }, [tabview, selection, viewmenu, viewCateringMenu, router, searchParams]);
+
+    // Handle tab changes with URL updates
+    const handleTabChange = (tab) => {
+        setTabview(tab);
+    };
+
+    const handleLocationChange = (location) => {
+        setSelection(location);
+    };
+
+    const handleMenuChange = (menu) => {
+        setViewmenu(menu);
+    };
+
+    const handleCateringChange = (catering) => {
+        setViewCateringMenu(catering);
+    };
 
     // Fancybox for Gallery View
     useEffect(() => {
@@ -72,13 +114,16 @@ const ContactUs = () => {
                             <div className='m-0 lg:mt-8 flex flex-col w-full'>
                                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale mb-2 w-fit mx-auto lg:mx-0">
                                     <Avatar className="border-2 border-white">
-                                        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                        <AvatarImage src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_21.png" alt="avatar" />
                                     </Avatar>
                                     <Avatar className="border-2 border-white">
-                                        <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+                                        <AvatarImage src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_10.png" alt="avatar" />
                                     </Avatar>
                                     <Avatar className="border-2 border-white">
-                                        <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+                                        <AvatarImage src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_22.png" alt="avatar" />
+                                    </Avatar>
+                                    <Avatar className="border-2 border-white">
+                                        <AvatarImage src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_25.png" alt="avatar" />
                                     </Avatar>
                                     <Avatar className="flex justify-center items-center bg-blue-100 text-blue-800 font-semibold border-2 border-white">
                                         +5k
@@ -194,8 +239,8 @@ const ContactUs = () => {
                 {/* Tabs Main Start */}
                 <div className='flex justify-center mb-6'>
                     <div className="rounded-xl md:rounded-full flex flex-col md:flex-row p-1 bg-white shadow-[inset_0_2px_4px_3px_rgba(0,0,0,0.19)]">
-                        <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("cafe")}>Cafe Menu</div>
-                        <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => setTabview("catering")}>Catering Menu</div>
+                        <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => handleTabChange("cafe")}>Cafe Menu</div>
+                        <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => handleTabChange("catering")}>Catering Menu</div>
                     </div>
                 </div>
 
@@ -204,7 +249,7 @@ const ContactUs = () => {
                     {/* Cafe Tab Start */}
                     <div className={`${tabview === "cafe" ? "block" : "hidden"} w-full`}>
                         <div className="flex justify-center mb-4">
-                            <Select onValueChange={(value) => setSelection(value)} defaultValue="saheed">
+                            <Select onValueChange={handleLocationChange} value={selection}>
                                 <SelectTrigger className="w-[280px] bg-white dark:bg-blue-950 dark:text-white">
                                     <SelectValue placeholder="Select" />
                                 </SelectTrigger>
@@ -223,9 +268,9 @@ const ContactUs = () => {
                             <div className="flex flex-wrap flex-col lg:flex-row h-fit">
                                 <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
                                     <ul className='px-4 flex flex-row flex-nowrap overflow-x-auto w-full mb-4'>
-                                        <li className={`${viewmenu === "food" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("food")}>Food Menu</li>
-                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("bakery")}>Bakery Menu</li>
-                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewmenu("beverage")}>Beverage Menu</li>
+                                        <li className={`${viewmenu === "food" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => handleMenuChange("food")}> Food Menu </li>
+                                        <li className={`${viewmenu === "bakery" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => handleMenuChange("bakery")}> Bakery Menu </li>
+                                        <li className={`${viewmenu === "beverage" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => handleMenuChange("beverage")}> Beverage Menu </li>
                                     </ul>
 
                                     {/* Food */}
@@ -354,7 +399,7 @@ const ContactUs = () => {
                                 </div>
                                 <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                     <div className="flex flex-col w-full gap-4">
-                                        <Card className="p-8 rounded-md gap-0">
+                                        <Card className="p-8 rounded-md gap-0 hidden">
                                             <h1 className='uppercase text-center text-lg text-blue-900 dark:text-white font-semibold mb-3'>Quick Order</h1>
                                             <QRCode data={menu.saheedNagar.qrLink[0].link} className="mb-5" />
                                             <a className='flex items-center justify-center gap-2 w-full uppercase transition-colors px-4 py-2 text-base bg-primary-dark text-white rounded' href={menu.saheedNagar.qrLink[0].link} target='_blank'>Order Now</a>
@@ -405,9 +450,24 @@ const ContactUs = () => {
                         <div className="flex flex-wrap flex-col lg:flex-row h-fit">
                             <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
                                 <ul className='px-4 flex flex-row flex-nowrap overflow-x-auto w-full mb-4'>
-                                    <li className={`${viewCateringMenu === "lunch" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("lunch")}>Lunch Menu</li>
-                                    <li className={`${viewCateringMenu === "presindent" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("presindent")}>Presindent&apos;s Special</li>
-                                    <li className={`${viewCateringMenu === "captain" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`} onClick={() => setViewCateringMenu("captain")}>Captain&apos;s Special</li>
+                                    <li
+                                        className={`${viewCateringMenu === "lunch" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`}
+                                        onClick={() => handleCateringChange("lunch")}
+                                    >
+                                        Lunch Menu
+                                    </li>
+                                    <li
+                                        className={`${viewCateringMenu === "presindent" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`}
+                                        onClick={() => handleCateringChange("presindent")}
+                                    >
+                                        Presindent&apos;s Special
+                                    </li>
+                                    <li
+                                        className={`${viewCateringMenu === "captain" ? "text-blue-900 dark:text-blue-300 border-b-2 border-[#12406D] dark:border-blue-300" : "text-gray-400 dark:text-gray-300"} w-full lg:w-1/3 text-center uppercase font-semibold cursor-pointer p-3 whitespace-nowrap`}
+                                        onClick={() => handleCateringChange("captain")}
+                                    >
+                                        Captain&apos;s Special
+                                    </li>
                                 </ul>
 
                                 {/* Lunch Menu*/}
@@ -453,7 +513,7 @@ const ContactUs = () => {
                             </div>
                             <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
                                 <div className="flex flex-col w-full gap-4">
-                                    <Card className="p-3 rounded-md gap-0">
+                                    <Card className="p-3 rounded-md gap-0 hidden">
                                         <h1 className='uppercase text-center text-lg text-blue-900 dark:text-white font-semibold mb-3'>Quick Order</h1>
                                         <QRCode data={menu.catering.qrLink[0].link} className="p-5" />
                                     </Card>

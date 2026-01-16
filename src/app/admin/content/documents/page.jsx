@@ -16,7 +16,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import CardHeading from '../../elements/CardHeading'
-
+import AllBlogsTable from './allBlogsTable'
 
 const AdminDocuments = () => {
     const [date, setDate] = React.useState("");
@@ -150,7 +150,7 @@ const AdminDocuments = () => {
                     </div>
                     <hr />
                     <div className="flex flex-col flex-wrap gap-y-2 py-2">
-
+                        <AllBlogsTable />
                     </div>
 
                 </Card>

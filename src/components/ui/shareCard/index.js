@@ -86,11 +86,11 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
 
     return (
         <div>
-            <div className="flex flex-row flex-wrap w-full justify-center">
+            <div className="grid grid-cols-3 gap-0 w-full">
                 {/* WhatsApp */}
                 <button
                     onClick={() => handleShare('whatsapp')}
-                    className="flex flex-col items-center justify-center px-5 py-3 rounded-lg transition-colors duration-200 group"
+                    className="flex flex-col items-center justify-center p-5 rounded-lg transition-colors duration-200 group"
                 >
                     <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
                         <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -169,7 +169,7 @@ const ShareCard = ({ title = "Check this out!", className = "" }) => {
                         )}
                     </div>
                     <span className="text-xs text-gray-600 dark:text-gray-300">
-                        {isCopied ? 'Copied!' : 'Copy Link'}
+                        {isCopied ? 'Copied!' : 'Copy'}
                     </span>
                 </button>
             </div>

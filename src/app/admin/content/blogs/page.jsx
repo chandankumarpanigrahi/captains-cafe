@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import CardHeading from '../../elements/CardHeading'
 import { Status } from '@/components/ui/status'
-import ArchivedBlogsTable from './archivedBlogsTable'
+import TrashBlogsTable from './archivedBlogsTable'
 
 const Page = () => {
 
@@ -61,7 +61,7 @@ const Page = () => {
                             <CardHeading title="View" bottomLine="false" />
                         </div>
                         <hr className='mb-2' />
-                        <ArchivedBlogsTable />
+                        <TrashBlogsTable />
                     </div>
 
                 </Card>

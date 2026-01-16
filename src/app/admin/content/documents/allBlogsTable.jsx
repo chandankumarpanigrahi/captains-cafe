@@ -5,34 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Status } from '@/components/ui/status';
 import { toast } from "react-hot-toast";
 import { MdOutlineContentCopy, MdCheck } from "react-icons/md";
+import { FaFilePdf } from "react-icons/fa";
 
 const AllBlogsTable = () => {
     const [copiedRowId, setCopiedRowId] = useState(null);
     const [blogs, setBlogs] = useState([
-        { id: 1, blogName: "Harry Potter's Week", blogDate: "12 Nov 2025", status: "scheduled", isPublished: false },
-        { id: 2, blogName: "Fantasy World", blogDate: "15 Nov 2025", status: "default", isPublished: false },
-        { id: 3, blogName: "Tech Updates", blogDate: "10 Nov 2025", status: "archived", isPublished: false },
-        { id: 4, blogName: "Travel Diary", blogDate: "18 Nov 2025", status: "none", isPublished: false },
-        { id: 5, blogName: "Coffee Culture", blogDate: "20 Nov 2025", status: "default", isPublished: true },
-        { id: 6, blogName: "Coding 101", blogDate: "22 Nov 2025", status: "scheduled", isPublished: false },
-        { id: 7, blogName: "Morning Brew", blogDate: "25 Nov 2025", status: "archived", isPublished: false },
-        { id: 8, blogName: "Beans Origins", blogDate: "26 Nov 2025", status: "default", isPublished: true },
-        { id: 9, blogName: "Latte Art Tips", blogDate: "28 Nov 2025", status: "none", isPublished: false },
-        { id: 10, blogName: "Roasting Guide", blogDate: "01 Dec 2025", status: "default", isPublished: true },
-        { id: 11, blogName: "Cafe Layouts", blogDate: "03 Dec 2025", status: "scheduled", isPublished: false },
-        { id: 12, blogName: "Barista Life", blogDate: "05 Dec 2025", status: "default", isPublished: true },
-        { id: 13, blogName: "Tea vs Coffee", blogDate: "07 Dec 2025", status: "archived", isPublished: false },
-        { id: 14, blogName: "Espresso Shots", blogDate: "10 Dec 2025", status: "none", isPublished: false },
-        { id: 15, blogName: "Pastry Pairing", blogDate: "12 Dec 2025", status: "default", isPublished: true },
-        { id: 16, blogName: "Customer Stories", blogDate: "14 Dec 2025", status: "scheduled", isPublished: false },
-        { id: 17, blogName: "Winter Menu", blogDate: "16 Dec 2025", status: "default", isPublished: true },
-        { id: 18, blogName: "Staff Picks", blogDate: "18 Dec 2025", status: "none", isPublished: false },
-        { id: 19, blogName: "Sustainable Cups", blogDate: "20 Dec 2025", status: "archived", isPublished: false },
-        { id: 20, blogName: "Music for Carp", blogDate: "22 Dec 2025", status: "default", isPublished: true },
-        { id: 21, blogName: "Holiday Hours", blogDate: "24 Dec 2025", status: "scheduled", isPublished: false },
-        { id: 22, blogName: "New Year Goals", blogDate: "26 Dec 2025", status: "default", isPublished: true },
-        { id: 23, blogName: "Best Beans 2025", blogDate: "28 Dec 2025", status: "archived", isPublished: false },
-        { id: 24, blogName: "Community Event", blogDate: "30 Dec 2025", status: "none", isPublished: false },
+        { id: 1, documentName: "Food Safety", logo: "/images/logos/ofs.png", fromDate: "12 Nov 2025", toDate: "12 Nov 2035", issuer: "FSSAI, Govt. of India", link: "../../file/sample.pdf", status: "scheduled", isPublished: false },
+        { id: 2, documentName: "Business License", logo: "/images/logos/fssai.png", fromDate: "15 Nov 2025", toDate: "15 Nov 2035", issuer: "BMC, Bhubaneswar", link: "../../file/fssai.pdf", status: "default", isPublished: false },
+        { id: 3, documentName: "Fire Safety", logo: "/images/logos/bmc.png", fromDate: "10 Nov 2025", toDate: "10 Nov 2035", issuer: "OFC, Govt. of Odisha", link: "../../file/sample.pdf", status: "scheduled", isPublished: false }
     ]);
 
     // Function to toggle publish state
@@ -57,19 +37,8 @@ const AllBlogsTable = () => {
 
     // Function to delete blog
     const handleDelete = (id) => {
-        setBlogs(blogs.map(blog => {
-            if (blog.id === id) {
-                // Show toast notification
-                toast.success(`Blog deleted successfully!`);
-
-                return {
-                    ...blog,
-                    status: 'archived',
-                    isPublished: false
-                };
-            }
-            return blog;
-        }));
+        setBlogs(blogs.filter(blog => blog.id !== id));
+        toast.success("Blog deleted successfully!");
     };
 
     // Function to edit blog
@@ -100,8 +69,6 @@ const AllBlogsTable = () => {
                 return 'Published';
             case 'scheduled':
                 return 'Scheduled';
-            case 'archived':
-                return 'Archived';
             case 'none':
                 return 'Draft';
             default:
@@ -119,53 +86,48 @@ const AllBlogsTable = () => {
             cellClassName: 'text-center font-mono text-sm whitespace-nowrap',
         },
         {
-            key: 'blogName',
+            key: 'logo',
+            header: 'Logo',
+            width: '100px',
+            cell: (row) => (
+                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
+                    <img src={row.logo} alt={row.blogName} className="h-24 object-contain" />
+                </div>
+            ),
+            filterable: false,
+            cellClassName: 'text-center font-mono text-sm whitespace-nowrap',
+        },
+        {
+            key: 'documentName',
             header: 'Blog Title',
             width: '200px',
             cell: (row) => (
-                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-                    <span className="font-semibold text-gray-600">{row.blogName}</span>
+                <div className="flex flex-col items-start justify-center gap-1 whitespace-nowrap">
+                    <div className="flex flex-row items-end gap-2">
+                        <div className="font-semibold text-[24px] leading-tight text-blue-900">{row.documentName}</div>
+                        <div className=" text-gray-400 text-[16px]">(by {row.issuer})</div>
+                    </div>
+                    <div className="flex text-gray-600 flex-row gap-1 text-[14px]">
+                        <div className="font-light">Valid from</div>
+                        <div className="font-semibold">{row.fromDate}</div>
+                        <div className="font-light">to</div>
+                        <div className="font-semibold">{row.toDate}</div>
+                    </div>
                 </div>
             )
         },
         {
-            key: 'blogDate',
-            header: 'Date',
+            key: 'link',
+            header: 'Link',
             width: '200px',
             cell: (row) => (
-                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-                    <span className="font-semibold text-gray-600">{row.blogDate}</span>
-                </div>
-            )
-        },
-        {
-            key: 'status',
-            header: 'Status',
-            width: '120px',
-            cell: (row) => (
-                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-                    <Status variant={row.status}>
-                        {getStatusText(row.status)}
-                    </Status>
-                </div>
-            )
-        },
-        {
-            key: 'share',
-            header: 'Share',
-            width: '120px',
-            cell: (row) => (
-                <div className="flex items-center justify-center gap-2 whitespace-nowrap">
-                    <button
-                        className={`cursor-pointer font-medium text-sm transition-all duration-200 ${copiedRowId === row.id ? 'text-green-600' : 'text-blue-700 hover:text-blue-800'
-                            }`}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            handleShare(row.blogName, row.id);
-                        }}
-                    >
-                        {copiedRowId === row.id ? <MdCheck size={18} /> : <MdOutlineContentCopy size={18} />}
-                    </button>
+                <div className="flex items-center flex-row justify-center gap-2 whitespace-nowrap border-r border-gray-200">
+                    <div className="flex flex-col items-end">
+                        <span className="text-gray-800 text-[13px]">2 Pages</span>
+                        <span className="text-gray-400 text-[12px] mb-1">2.02mb</span>
+                        <a href={row.link} target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600">View</a>
+                    </div>
+                    <FaFilePdf size={56} className='text-red-500' />
                 </div>
             )
         },

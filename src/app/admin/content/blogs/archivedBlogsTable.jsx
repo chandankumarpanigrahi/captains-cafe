@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from "react-hot-toast";
 import { MdOutlineContentCopy, MdCheck } from "react-icons/md";
 
-const ArchivedBlogsTable = () => {
+const TrashBlogsTable = () => {
     const [copiedRowId, setCopiedRowId] = useState(null);
     const [blogs, setBlogs] = useState([
         { id: 1, blogName: "Harry Potter's Week", blogDate: "12 Nov 2025", status: "scheduled", isPublished: false },
@@ -182,4 +182,4 @@ const ArchivedBlogsTable = () => {
     );
 };
 
-export default ArchivedBlogsTable;
+export default TrashBlogsTable;
