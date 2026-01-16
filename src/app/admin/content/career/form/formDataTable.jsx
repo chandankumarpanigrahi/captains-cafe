@@ -239,11 +239,11 @@ const FormDataTable = () => {
     const renderCustomActions = (row) => {
 
         return (
-            <div className="grid grid-cols-2 items-center justify-center gap-2">
+            <div className="grid min-w-[200px] grid-cols-2 items-center justify-center gap-2">
                 {/* Accepted Button */}
                 <button
                     onClick={() => handleStatusChange(row.id, 'accepted')}
-                    className={`w-full px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
+                    className={` px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
                         ${row.status === 'accepted'
                             ? 'text-white bg-green-600 border-green-700 hover:bg-green-700'
                             : 'text-green-700 bg-green-50 hover:bg-green-100 border-green-300'
@@ -255,7 +255,7 @@ const FormDataTable = () => {
                 {/* Rejected Button */}
                 <button
                     onClick={() => handleStatusChange(row.id, 'rejected')}
-                    className={`w-full px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
+                    className={` px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
                         ${row.status === 'rejected'
                             ? 'text-white bg-red-600 border-red-700 hover:bg-red-700'
                             : 'text-red-700 bg-red-50 hover:bg-red-100 border-red-300'
@@ -267,7 +267,7 @@ const FormDataTable = () => {
                 {/* Shortlisted Button */}
                 <button
                     onClick={() => handleStatusChange(row.id, 'shortlisted')}
-                    className={`w-full px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
+                    className={` px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
                         ${row.status === 'shortlisted'
                             ? 'text-white bg-amber-600 border-amber-700 hover:bg-amber-700'
                             : 'text-amber-700 bg-amber-50 hover:bg-amber-100 border-amber-300'
@@ -279,7 +279,7 @@ const FormDataTable = () => {
                 {/* Forward Button */}
                 <button
                     onClick={() => handleStatusChange(row.id, 'forwarded')}
-                    className={`w-full px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
+                    className={` px-2 py-0.5 rounded-sm cursor-pointer border transition-all text-sm font-medium whitespace-nowrap 
                         ${row.status === 'forwarded'
                             ? 'text-white bg-blue-600 border-blue-700 hover:bg-blue-700'
                             : 'text-blue-700 bg-blue-50 hover:bg-blue-100 border-blue-300'

@@ -31,18 +31,23 @@ const Page = () => {
     const [designation, setDesignation] = useState("")
     const [reviewHeading, setReviewHeading] = useState("")
     const [testimonial, setTestimonial] = useState("")
+    const [selectedFile, setSelectedFile] = useState(null)
 
     // For the Udated Card Design
     const [updatedName, setUpdatedName] = useState("Silan Panigrahi")
     const [updatedDesignation, setUpdatedDesignation] = useState("Product Manager, Purnima & co.")
     const [updatedReviewHeading, setUpdatedReviewHeading] = useState("A Perfect Blend of Taste and Ambiance!")
     const [updatedTestimonial, setUpdatedTestimonial] = useState("Captain's Cafe is a gem in Bhubaneswar! The food is delicious, the coffee is exceptional, and the cozy ambiance makes it a perfect spot to relax. The staff is friendly and attentive, adding to the wonderful experience. Highly recommended for food lovers and coffee enthusiasts!")
+    const [updatedImage, setUpdatedImage] = useState(feauredImage)
 
     const handleSubmit = () => {
         setUpdatedName(username)
         setUpdatedDesignation(designation)
         setUpdatedReviewHeading(reviewHeading)
         setUpdatedTestimonial(testimonial)
+        if (selectedFile) {
+            setUpdatedImage(URL.createObjectURL(selectedFile))
+        }
         toast.success("Testimonial updated successfully!");
     }
 
@@ -51,6 +56,14 @@ const Page = () => {
         setDesignation("")
         setReviewHeading("")
         setTestimonial("")
+        setSelectedFile(null)
+    }
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]
+        if (file) {
+            setSelectedFile(file)
+        }
     }
 
     return (
@@ -90,6 +103,7 @@ const Page = () => {
                                                 type="file"
                                                 placeholder="Upload File"
                                                 className="w-full px-3 py-0.5 text-sm"
+                                                onChange={handleFileChange}
                                             />
                                         </div>
                                         <div className="space-y-1">
@@ -161,7 +175,7 @@ const Page = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="relative w-full h-full rounded-xl overflow-hidden">
-                                        <Image src={feauredImage} alt="Featured Image" className='h-full w-full object-cover' />
+                                        <Image src={updatedImage} alt="Featured Image" width={500} height={500} className='h-full w-full object-cover' />
                                         <div className="flex absolute inset-0 z-1 opacity-90 bg-gradient-to-b from-transparent from-50% via-stone-800 via-90% to-black to-100%">
                                             <div className="text-white w-full h-ful flex flex-col mt-auto px-6 py-4">
                                                 <h5 className='text-[24px] font-semibold'>{updatedName}</h5>
