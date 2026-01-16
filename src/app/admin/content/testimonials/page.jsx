@@ -1,7 +1,7 @@
 "use client"
 import { Card } from '@/components/ui/card'
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Button from '@/components/common/button'
 
 // Breadcrumb
@@ -32,6 +32,7 @@ const Page = () => {
     const [reviewHeading, setReviewHeading] = useState("")
     const [testimonial, setTestimonial] = useState("")
     const [selectedFile, setSelectedFile] = useState(null)
+    const fileInputRef = useRef(null)
 
     // For the Udated Card Design
     const [updatedName, setUpdatedName] = useState("Silan Panigrahi")
@@ -41,10 +42,10 @@ const Page = () => {
     const [updatedImage, setUpdatedImage] = useState(feauredImage)
 
     const handleSubmit = () => {
-        setUpdatedName(username)
-        setUpdatedDesignation(designation)
-        setUpdatedReviewHeading(reviewHeading)
-        setUpdatedTestimonial(testimonial)
+        if (username) setUpdatedName(username)
+        if (designation) setUpdatedDesignation(designation)
+        if (reviewHeading) setUpdatedReviewHeading(reviewHeading)
+        if (testimonial) setUpdatedTestimonial(testimonial)
         if (selectedFile) {
             setUpdatedImage(URL.createObjectURL(selectedFile))
         }
@@ -56,7 +57,11 @@ const Page = () => {
         setDesignation("")
         setReviewHeading("")
         setTestimonial("")
+
         setSelectedFile(null)
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ""
+        }
     }
 
     const handleFileChange = (e) => {
@@ -104,6 +109,7 @@ const Page = () => {
                                                 placeholder="Upload File"
                                                 className="w-full px-3 py-0.5 text-sm"
                                                 onChange={handleFileChange}
+                                                ref={fileInputRef}
                                             />
                                         </div>
                                         <div className="space-y-1">
