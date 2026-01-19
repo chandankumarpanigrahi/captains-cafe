@@ -4,6 +4,7 @@ import { LiaInstagram } from "react-icons/lia";
 import styles from "./style.module.css"
 import EmblaCarouselMultiple from '@/components/design/fade image';
 import MapsView from '@/components/common/mapsView';
+import ContactForm from './form';
 
 const ContactUs = () => {
     return (
@@ -65,7 +66,8 @@ const ContactUs = () => {
                             <h1 className='text-5xl p-4 leading-normal text-center lg:text-left'>Have any Query! <br />Let&apos;s discuss </h1>
                             <p className='p-4'>Thank you for getting in touch! <br /> Kindly Fill the form, have a great day!</p>
                         </div>
-                        <div className="w-full lg:w-1/2 flex flex-wrap gap-y-6 text-white">
+                        <ContactForm />
+                        {/* <div className="w-full lg:w-1/2 flex flex-wrap gap-y-6 text-white">
                             <div className="w-1/2 pr-3">
                                 <input
                                     type="text"
@@ -128,7 +130,7 @@ const ContactUs = () => {
                                     SUBMIT
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                     <div className={`${styles.contact_bg_text} absolute`}>Contact Us</div>
