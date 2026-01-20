@@ -76,20 +76,10 @@ const ContactUs = () => {
         // Update URL without refreshing the page
         const newQuery = params.toString();
         if (newQuery !== searchParams.toString()) {
-            router.replace(`?${newQuery}`, { scroll: false });
+            router.push(`?${newQuery}#all_menu`, { scroll: false });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tabview, selection, viewmenu, viewCateringMenu, router, searchParams]);
-
-    // Scroll to the menu section if there's a hash or query param on load
-    useEffect(() => {
-        if (searchParams.get('tab') || searchParams.get('menu') || searchParams.get('catering') || searchParams.get('location')) {
-            const element = document.getElementById('all_menu');
-            if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-    }, []);
+    }, [tabview, selection, viewmenu, viewCateringMenu, router]);
 
     // Handle tab changes with URL updates
     const handleTabChange = (tab) => {
