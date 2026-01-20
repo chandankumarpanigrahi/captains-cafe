@@ -54,6 +54,10 @@ const menu = {
         { image: "/images/menu/crpf/menu15.jpg" },
         { image: "/images/menu/crpf/menu16.jpg" }
     ],
+    cutm: [
+        { image: "/images/menu/cutm/menu01.jpg" },
+        { image: "/images/menu/cutm/menu02.jpg" },
+    ],
     catering: {
         lunch: [{ image: "/images/menu/catering/lunch.jpg" }],
         president: [{ image: "/images/menu/catering/president.jpg" }],

@@ -124,9 +124,10 @@ export default function ContactForm() {
                 <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder="Phone Number *"
                     value={formData.phone}
                     onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-amber-50 py-2 focus:outline-none"
                 />
             </div>
@@ -164,12 +165,14 @@ export default function ContactForm() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
+                    required
                     className="w-full bg-transparent border-b border-amber-50 py-2 focus:outline-none"
                 >
-                    <option className='text-gray-700' value="">Interested in</option>
+                    <option className='text-gray-700' value="">Interested in *</option>
                     <option className='text-gray-700' value="Cafe">Cafe</option>
                     <option className='text-gray-700' value="Catering">Catering</option>
                     <option className='text-gray-700' value="Bakery">Bakery</option>
+                    <option className='text-gray-700' value="Franchise">Franchise</option>
                     <option className='text-gray-700' value="Other">Other</option>
                 </select>
             </div>

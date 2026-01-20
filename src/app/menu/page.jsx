@@ -74,8 +74,12 @@ const ContactUs = () => {
         }
 
         // Update URL without refreshing the page
-        router.push(`?${params.toString()}`, { scroll: false });
-    }, [tabview, selection, viewmenu, viewCateringMenu, router, searchParams]);
+        const newQuery = params.toString();
+        if (newQuery !== searchParams.toString()) {
+            router.push(`?${newQuery}`, { scroll: false });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [tabview, selection, viewmenu, viewCateringMenu, router]);
 
     // Handle tab changes with URL updates
     const handleTabChange = (tab) => {
@@ -435,12 +439,47 @@ const ContactUs = () => {
 
 
 
+                        {/* ============== CUTM CAFE MENU START ================== */}
+                        <div className={`${selection === "cutm" ? "block" : "hidden"} w-full h-fit`}>
+                            <div className="flex flex-wrap flex-col lg:flex-row h-fit">
+                                <div className="w-full lg:w-3/4 pr-0 lg:pr-8 h-full">
 
-                        <div className={`${selection === "cutm" ? "block" : "hidden"} bg-green-100 w-full h-50`}>
-                            <div className="flex justify-center items-center w-full h-full">
-                                Coming Soon
+                                    {/* Food */}
+                                    <div className={`flex flex-col lg:flex-row flex-wrap h-full w-full justify-around`}>
+                                        {menu.cutm.map((value, index) => (
+                                            <div key={index} className='relative aspect-[2/3] w-full lg:w-5/11 mb-2 rounded-lg drop-shadow-xl overflow-hidden'>
+                                                <a
+                                                    key={index}
+                                                    href={value.image}
+                                                    data-fancybox="gallery"
+                                                >
+                                                    <Image
+                                                        src={value.image}
+                                                        alt="Cafe"
+                                                        fill
+                                                    />
+                                                </a>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <p className='mt-8 bg-blue-50 dark:bg-card border-1 border-blue-900 p-4 text-[#374F67] dark:text-blue-100 rounded-md text-center text-md mb-8'>The Catering Menu featured here is curated by <strong>The Scottish&apos;s Catering</strong>, a distinguished brand known for its culinary excellence. While <strong>The Captain&apos;s Cafe</strong> presents its own unique offerings, the catering services are exclusively provided under the expertise of <strong>The Scottish&apos;s Catering</strong>.</p>
+
+                                </div>
+                                <div className="w-full lg:w-1/4 h-full lg:sticky top-32">
+                                    <div className="flex flex-col w-full gap-4">
+                                        <Card className="p-3 rounded-md gap-0">
+                                            <p className='text-blue-900 dark:text-white font-semibold dark:font-normal flex flex-row justify-between mb-2'>Share the Offer  <AiTwotonePushpin size={20} /></p>
+                                            <ShareCard
+                                                title="Amazing Blog Post You Should Read!"
+                                            />
+                                            {/* <PathCopy /> */}
+                                        </Card>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        {/* ============== CUTM CAFE MENU END ================== */}
+
                     </div>
                     {/* Cafe Tab End */}
 
