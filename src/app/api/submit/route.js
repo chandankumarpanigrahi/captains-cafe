@@ -34,7 +34,7 @@ export async function POST(request) {
 
         // 5. Send to Google Sheets (replace YOUR_SHEET_ID)
         const response = await sheets.spreadsheets.values.append({
-            spreadsheetId: process.env.GOOGLE_SHEET_ID,
+            spreadsheetId: process.env.CONTACT_SHEET_ID,
             range: "Sheet1!A:H",
             valueInputOption: "USER_ENTERED",
             requestBody: {
