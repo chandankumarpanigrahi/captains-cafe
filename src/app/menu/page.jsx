@@ -76,10 +76,20 @@ const ContactUs = () => {
         // Update URL without refreshing the page
         const newQuery = params.toString();
         if (newQuery !== searchParams.toString()) {
-            router.push(`?${newQuery}`, { scroll: false });
+            router.replace(`?${newQuery}`, { scroll: false });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [tabview, selection, viewmenu, viewCateringMenu, router]);
+    }, [tabview, selection, viewmenu, viewCateringMenu, router, searchParams]);
+
+    // Scroll to the menu section if there's a hash or query param on load
+    useEffect(() => {
+        if (searchParams.get('tab') || searchParams.get('menu') || searchParams.get('catering') || searchParams.get('location')) {
+            const element = document.getElementById('all_menu');
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, []);
 
     // Handle tab changes with URL updates
     const handleTabChange = (tab) => {
@@ -241,7 +251,7 @@ const ContactUs = () => {
 
 
                 {/* Tabs Main Start */}
-                <div className='flex justify-center mb-6'>
+                <div className='flex justify-center mb-6' id='all_menu'>
                     <div className="rounded-xl md:rounded-full flex flex-col md:flex-row p-1 bg-white shadow-[inset_0_2px_4px_3px_rgba(0,0,0,0.19)]">
                         <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => handleTabChange("cafe")}>Cafe Menu</div>
                         <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => handleTabChange("catering")}>Catering Menu</div>
