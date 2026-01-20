@@ -230,7 +230,7 @@ const ContactUs = () => {
                     </div>
                     <Image src={middleAbstracts} alt='Spice Abstracts' className='absolute -bottom-20 scale-90 hidden lg:block' />
                 </div>
-                <div className="flex justify-center w-full">
+                <div className="flex justify-center w-full" id='all_menu'>
                     <Image src={noodleMenu} alt="Menu Text" width={220} />
                 </div>
 
@@ -241,7 +241,7 @@ const ContactUs = () => {
 
 
                 {/* Tabs Main Start */}
-                <div className='flex justify-center mb-6' id='all_menu'>
+                <div className='flex justify-center mb-6'>
                     <div className="rounded-xl md:rounded-full flex flex-col md:flex-row p-1 bg-white shadow-[inset_0_2px_4px_3px_rgba(0,0,0,0.19)]">
                         <div className={`${tabview === "cafe" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => handleTabChange("cafe")}>Cafe Menu</div>
                         <div className={`${tabview === "catering" ? "bg-blue-950 text-white" : ""} rounded-lg text-center md:rounded-full w-full md:w-fit cursor-pointer text-lg md:text-2xl text-gray-400 font-semibold px-6 py-1`} onClick={() => handleTabChange("catering")}>Catering Menu</div>
