@@ -180,7 +180,7 @@ const CafeManager = () => {
                                         <IoCalendarOutline size={32} color="#713711" />
                                         <div className="flex flex-col pl-5">
                                             <h6 className="text-sm text-[#374F67] dark:text-gray-400">Date posted</h6>
-                                            <p className="text-[16px] font-medium text-blue-900 dark:text-white">posted 1 month ago</p>
+                                            <p className="text-[16px] font-medium text-blue-900 dark:text-white">posted 1 week ago</p>
                                         </div>
                                     </div>
 
@@ -188,7 +188,7 @@ const CafeManager = () => {
                                         <IoSchoolOutline size={32} color="#713711" />
                                         <div className="flex flex-col pl-5">
                                             <h6 className="text-sm text-[#374F67] dark:text-gray-400">Experience</h6>
-                                            <p className="text-[16px] font-medium text-blue-900 dark:text-white">Experience: 2 year</p>
+                                            <p className="text-[16px] font-medium text-blue-900 dark:text-white">Experience: 2+ years</p>
                                         </div>
                                     </div>
 
@@ -223,110 +223,118 @@ const CafeManager = () => {
                                         <IoHourglassOutline size={32} color="#713711" />
                                         <div className="flex flex-col pl-5">
                                             <h6 className="text-sm text-[#374F67] dark:text-gray-400">Deadline</h6>
-                                            <p className="text-[16px] font-medium text-blue-900 dark:text-white">25-05-2025</p>
+                                            <p className="text-[16px] font-medium text-blue-900 dark:text-white">25-05-2026</p>
                                         </div>
                                     </div>
 
-                                    <Dialog>
-                                        <DialogTrigger asChild>
-                                            <Button className="bg-blue-900 hover:bg-blue-950 dark:text-white">Apply Now</Button>
-                                        </DialogTrigger>
+                                    {/* The Apply now button and Modal Form */}
+                                    <div className='hidden'>
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button className="bg-blue-900 hover:bg-blue-950 dark:text-white">Apply Now</Button>
+                                            </DialogTrigger>
 
-                                        {/* Modal Content */}
-                                        <DialogContent className="sm:max-w-[550px] h-fit">
-                                            <div className='max-h-[500px] md:max-h-none pr-3 overflow-scroll md:overflow-hidden'>
-                                                {/* Modal Header */}
-                                                <DialogHeader>
-                                                    <DialogTitle className="text-gray-600">Apply for <span className="text-blue-900 ">Cafe Manager</span>, The Captain&apos;s Cafe</DialogTitle>
-                                                    <DialogDescription>
-                                                        Please fill your details below and apply.
-                                                    </DialogDescription>
-                                                </DialogHeader>
+                                            {/* Modal Content */}
+                                            <DialogContent className="sm:max-w-[550px] h-fit">
+                                                <div className='max-h-[500px] md:max-h-none pr-3 overflow-scroll md:overflow-hidden'>
+                                                    {/* Modal Header */}
+                                                    <DialogHeader>
+                                                        <DialogTitle className="text-gray-600">Apply for <span className="text-blue-900 ">Cafe Manager</span>, The Captain&apos;s Cafe</DialogTitle>
+                                                        <DialogDescription>
+                                                            Please fill your details below and apply.
+                                                        </DialogDescription>
+                                                    </DialogHeader>
 
-                                                {/* Modal Body */}
-                                                <form>
-                                                    <label htmlFor="name">
-                                                        Your Name
-                                                    </label>
-                                                    <Input
-                                                        id="name"
-                                                        type="name"
-                                                        name="name"
-                                                        placeholder="Enter Your Full Name"
-                                                        className="mb-4 mt-1"
-                                                    />
-                                                    <ValidationError
-                                                        prefix="Name"
-                                                        field="name"
-                                                    />
+                                                    {/* Modal Body */}
+                                                    <form>
+                                                        <label htmlFor="name">
+                                                            Your Name
+                                                        </label>
+                                                        <Input
+                                                            id="name"
+                                                            type="name"
+                                                            name="name"
+                                                            placeholder="Enter Your Full Name"
+                                                            className="mb-4 mt-1"
+                                                        />
+                                                        <ValidationError
+                                                            prefix="Name"
+                                                            field="name"
+                                                        />
 
-                                                    <label htmlFor="phone">
-                                                        Mobile Number
-                                                    </label>
-                                                    <Input
-                                                        id="phone"
-                                                        type="number"
-                                                        name="phone"
-                                                        placeholder="Enter Your Phone Number"
-                                                        className="mb-4 mt-1"
-                                                    />
-                                                    <ValidationError
-                                                        prefix="Phone Number"
-                                                        field="phone"
-                                                    />
+                                                        <label htmlFor="phone">
+                                                            Mobile Number
+                                                        </label>
+                                                        <Input
+                                                            id="phone"
+                                                            type="number"
+                                                            name="phone"
+                                                            placeholder="Enter Your Phone Number"
+                                                            className="mb-4 mt-1"
+                                                        />
+                                                        <ValidationError
+                                                            prefix="Phone Number"
+                                                            field="phone"
+                                                        />
 
-                                                    <label htmlFor="email">
-                                                        Email Address
-                                                    </label>
-                                                    <Input
-                                                        id="email"
-                                                        type="email"
-                                                        name="email"
-                                                        placeholder="Enter Your Email Address"
-                                                        className="mb-4 mt-1"
-                                                    />
-                                                    <ValidationError
-                                                        prefix="Email"
-                                                        field="email"
-                                                    />
+                                                        <label htmlFor="email">
+                                                            Email Address
+                                                        </label>
+                                                        <Input
+                                                            id="email"
+                                                            type="email"
+                                                            name="email"
+                                                            placeholder="Enter Your Email Address"
+                                                            className="mb-4 mt-1"
+                                                        />
+                                                        <ValidationError
+                                                            prefix="Email"
+                                                            field="email"
+                                                        />
 
-                                                    <label htmlFor="message">
-                                                        Describe About Your Experience
-                                                    </label>
-                                                    <Textarea
-                                                        id="message"
-                                                        name="message"
-                                                        placeholder="Describe here"
-                                                        className="mb-4 mt-1"
-                                                    />
-                                                    <ValidationError
-                                                        prefix="Description"
-                                                        field="message"
-                                                    />
+                                                        <label htmlFor="message">
+                                                            Describe About Your Experience
+                                                        </label>
+                                                        <Textarea
+                                                            id="message"
+                                                            name="message"
+                                                            placeholder="Describe here"
+                                                            className="mb-4 mt-1"
+                                                        />
+                                                        <ValidationError
+                                                            prefix="Description"
+                                                            field="message"
+                                                        />
 
-                                                    <label htmlFor="file">
-                                                        Upload Your Resume
-                                                    </label>
-                                                    <div className="mb-4 mt-1">
-                                                        <Dropzone onFiles={handleFiles} />
-                                                    </div>
-                                                    <ValidationError
-                                                        prefix="File"
-                                                        field="file"
-                                                    />
-                                                </form>
+                                                        <label htmlFor="file">
+                                                            Upload Your Resume
+                                                        </label>
+                                                        <div className="mb-4 mt-1">
+                                                            <Dropzone onFiles={handleFiles} />
+                                                        </div>
+                                                        <ValidationError
+                                                            prefix="File"
+                                                            field="file"
+                                                        />
+                                                    </form>
 
-                                                {/* Modal Footer */}
-                                                <DialogFooter>
-                                                    <DialogClose asChild>
-                                                        <Button variant="outline">Cancel</Button>
-                                                    </DialogClose>
-                                                    <Button type="submit">Submit</Button>
-                                                </DialogFooter>
-                                            </div>
+                                                    {/* Modal Footer */}
+                                                    <DialogFooter>
+                                                        <DialogClose asChild>
+                                                            <Button variant="outline">Cancel</Button>
+                                                        </DialogClose>
+                                                        <Button type="submit">Submit</Button>
+                                                    </DialogFooter>
+                                                </div>
 
-                                        </DialogContent>
-                                    </Dialog>
+                                            </DialogContent>
+                                        </Dialog>
+                                    </div>
+
+                                    <div className='flex flex-col gap-6'>
+                                        <hr />
+                                        <p className='text-[15px] text-blue-950 dark:text-white text-center px-4'>Interested candidates are requested to email their updated CV along with relevant details to <a href="mailto:hr@captainscafe.com" className='text-amber-900 dark:text-white font-semibold'>hr@captainscafe.com</a> .</p>
+                                    </div>
 
                                 </div>
                             </Card>
