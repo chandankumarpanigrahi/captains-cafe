@@ -1,0 +1,53 @@
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    top: -10vh;
+    font-size: 20px;
+    color: #ff4d6d;
+    opacity: 0.8;
+    animation-name: fall-hearts, sway-hearts;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+}
+
+@keyframes fall-hearts {
+    0% {
+        top: -10vh;
+    }
+
+    100% {
+        top: 100vh;
+    }
+}
+
+@keyframes sway-hearts {
+    0% {
+        transform: translateX(0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(15px) rotate(15deg);
+    }
+
+    50% {
+        transform: translateX(0px) rotate(0deg);
+    }
+
+    75% {
+        transform: translateX(-15px) rotate(-15deg);
+    }
+
+    100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+}

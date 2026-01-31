@@ -68,8 +68,8 @@ const About = () => {
                 <div className="w-full h-auto px-5 py-10 md:py-8 md:pr-12 md:pl-20 flex justify-center items-center relative">
                     <div className="h-auto w-full relative z-3">
                         <h1 className='text-2xl sm:text-3xl font-bold text-[#0B3F71] dark:text-white mb-3'>About Us</h1>
-                        <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>The Captain&apos;s Café, with multiple locations in Bhubaneswar where every meal is a journey and every visit an opportunity to sail into exciting flavors.</p>
-                        <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>Our catering/bakery division, where we provide healthy and hygienic meals to the students of the School of Maritime Studies (SOMS) at Centurion University, ensuring a nutritious dining experience for maritime professionals in training.</p>
+                        <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>Captain&apos;s Cafe is a nautical-themed café chain with multiple locations across Bhubaneswar, inspired by the spirit of the sea and global journeys. The cafés serve a thoughtfully curated range of café dishes and freshly baked goods, drawing flavours from across the world and presenting them in a warm, maritime setting.</p>
+                        <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>Beyond its dine-in spaces, Captain&apos;s Cafe also operates a cloud bakery and provides catering services, extending the same quality, consistency, and flavour to homes, offices, and events throughout the city.</p>
                     </div>
                     <Image src={CardAnchor} alt='Anchor Card' className={`${styles.aboutAnchor} absolute z-1 opacity-10 dark:invert`} />
                     <Image src={Ellipse3} alt='About Left Ellipse' className={`${styles.about_ellipse_1} absolute z-1`} />

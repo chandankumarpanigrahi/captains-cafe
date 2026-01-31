@@ -10,6 +10,8 @@ import ThemeToggle from "@/components/design/theme toggle";
 import MaintenancePage from "@/components/design/maintenance";
 import { Toaster } from "react-hot-toast";
 import { usePathname } from 'next/navigation';
+import Snowfall from "@/components/design/effects/Snowfall";
+import FallingHearts from "@/components/design/effects/FallingHearts";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,6 +47,8 @@ export default function RootLayout({ children }) {
           ) : (
             // Normal Layout
             <div className="d-flex">
+              <Snowfall />
+              {/* <FallingHearts /> */}
               <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
                 <div className="container fixed z-49">
                   <MainHeader activeTab="Home" />
