@@ -6,10 +6,10 @@ import Autoplay from 'embla-carousel-autoplay'
 import Image from 'next/image'
 import styles from "./style.module.css"
 
-import offer1 from '/public/images/crp.jpg'
-import offer2 from '/public/images/sn.jpg'
-import offer3 from '/public/images/blog1.png'
-import offer4 from '/public/images/blog2.png'
+import offer1 from '../../../../public/images/crp.jpg'
+import offer2 from '../../../../public/images/sn.jpg'
+import offer3 from '../../../../public/images/blog1.png'
+import offer4 from '../../../../public/images/blog2.png'
 
 const CarouselBox = ({ images, interval = 3000, height = 'h-64', width = 'w-full' }) => {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [Fade(), Autoplay({ delay: interval })])
