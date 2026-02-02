@@ -4,8 +4,9 @@ import DataTable from '@/components/ui/data-table';
 import { toast } from "react-hot-toast";
 import { MdOutlineContentCopy, MdCheck, MdArrowForward } from "react-icons/md";
 import { FaShare } from "react-icons/fa6";
+import Swal from 'sweetalert2';
 
-const ArchivedPostsTable = () => {
+const VideoTestimonialsTable = () => {
     const [copiedRowId, setCopiedRowId] = useState(null);
     const [posts, setPosts] = useState([
         { id: 1, userName: "Sameer Dash", video: "https://example.com/video1", published: false },
@@ -32,8 +33,24 @@ const ArchivedPostsTable = () => {
 
     // Function to delete post
     const handleDelete = (id) => {
-        setPosts(posts.filter(post => post.id !== id));
-        toast.success("Video deleted successfully!");
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                setPosts(posts.filter(post => post.id !== id));
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Video has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
     };
 
     // Function to edit post
@@ -156,4 +173,4 @@ const ArchivedPostsTable = () => {
     );
 };
 
-export default ArchivedPostsTable;
+export default VideoTestimonialsTable;
