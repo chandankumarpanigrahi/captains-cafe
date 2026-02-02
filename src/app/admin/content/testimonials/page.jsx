@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card'
 import React from 'react'
 import { useState, useRef } from 'react'
 import Button from '@/components/common/button'
+import VideoTestimonialsTable from './videoTestimonialsTable'
 
 // Breadcrumb
 import {
@@ -20,6 +21,7 @@ import { toast } from "react-hot-toast";
 // Input
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { FaRegCalendarAlt } from "react-icons/fa";
 
 import feauredImage from "@/assets/images/pages/testimonials/featured.png"
 
@@ -32,6 +34,7 @@ const Page = () => {
     const [reviewHeading, setReviewHeading] = useState("")
     const [testimonial, setTestimonial] = useState("")
     const [selectedFile, setSelectedFile] = useState(null)
+    const [date, setDate] = useState("")
     const fileInputRef = useRef(null)
 
     // For the Udated Card Design
@@ -111,15 +114,15 @@ const Page = () => {
                                                 onChange={handleFileChange}
                                                 ref={fileInputRef}
                                             />
-                                        </div>
-                                        <div className="space-y-1">
-                                            <Label className="text-[14px] text-gray-600 block font-medium" mandatory={true}>User Full Name</Label>
-                                            <Input
-                                                placeholder="Enter User Full Name"
-                                                className="w-full py-2 text-sm shadow-sm"
-                                                value={username}
-                                                onChange={(e) => setUsername(e.target.value)}
-                                            />
+                                            <div className="space-y-1">
+                                                <Label className="text-[14px] text-gray-600 block font-medium" mandatory={true}>User Full Name</Label>
+                                                <Input
+                                                    placeholder="Enter User Full Name"
+                                                    className="w-full py-2 text-sm shadow-sm"
+                                                    value={username}
+                                                    onChange={(e) => setUsername(e.target.value)}
+                                                />
+                                            </div>
                                         </div>
                                         <div className="space-y-1">
                                             <Label className="text-[14px] text-gray-600 block font-medium" mandatory={true}>Designation</Label>
@@ -204,6 +207,50 @@ const Page = () => {
                             <CardHeading title="View" bottomLine="false" />
                         </div>
                         <hr className='mb-2' />
+                        <div className="flex flex-col xl:flex-row gap-4">
+                            <div className="w-full xl:w-[350px] shrink-0">
+                                <form className="space-y-2 w-full max-h-[calc(100vh-270px)] overflow-y-auto pr-2">
+                                    <div className="w-full">
+                                        <Label className="text-[14px] text-gray-600 block font-medium">
+                                            User Name
+                                        </Label>
+                                        <Input
+                                            placeholder="Enter Full Name"
+                                            className="w-full px-3 py-0.5 text-sm"
+                                        />
+                                    </div>
+                                    <div className="w-full">
+                                        <Label className="text-[14px] text-gray-600 block font-medium mb-1">Video Testimonial</Label>
+                                        <Input
+                                            type="file"
+                                            placeholder="Upload File"
+                                            className="w-full px-3 py-0.5 text-sm"
+                                        />
+                                    </div>
+                                </form>
+                                {/* Reset and Update Buttons */}
+                                <div className="flex gap-2 mt-4">
+                                    <Button
+                                        variant='outline'
+                                        text="Reset"
+                                        type="button"
+                                        radius='md'
+                                        className="w-fit"
+                                        size='sm'
+                                    />
+                                    <Button
+                                        text="Submit"
+                                        type="submit"
+                                        radius='md'
+                                        className="flex-1"
+                                        size='sm'
+                                    />
+                                </div>
+                            </div>
+                            <div className="flex-1 overflow-hidden border-l pl-5 border-gray-200">
+                                <VideoTestimonialsTable />
+                            </div>
+                        </div>
                     </div>
 
                 </Card>
