@@ -2,6 +2,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 // import MainHeader from "./components/header";
+import PromoModal from "../components/common/PromoModal";
 import SlidingBackground from "../components/common/animatedBackground";
 import Counters from "../components/design/counters";
 import Intro from "../components/design/intro";
@@ -21,7 +22,7 @@ export default function Home() {
         <div className={`${styles.inner_hero_contents} w-full h-full`}>
           <SlidingBackground />
         </div>
-        
+
         {/* Light mode */}
         <div className={`${styles.hero_bg_bottom} block dark:hidden`}></div>
         {/* Dark mode */}
@@ -39,6 +40,7 @@ export default function Home() {
       <Testimonials />
       <Blogs />
       <BottomBG />
+      <PromoModal />
     </main>
   );
 }

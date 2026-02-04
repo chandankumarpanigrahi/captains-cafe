@@ -1,0 +1,9 @@
+{
+    "imageUrl": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop",
+    "text": "Limited period only",
+    "buttonLink": "/offers",
+    "buttonText": "Check it out",
+    "showOnce": false,
+    "isActive": true,
+    "targetDate": "2026-02-14T23:59:59"
+}
