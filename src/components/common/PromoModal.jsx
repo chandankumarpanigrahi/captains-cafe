@@ -19,9 +19,15 @@ const PromoModal = () => {
         setIsMounted(true);
         if (!modalData.isActive) return;
 
+        const today = new Date().toDateString();
+        const lastSeenDate = localStorage.getItem('lastSeenPromoModalDate');
         const hasSeenModal = localStorage.getItem('hasSeenPromoModal');
 
-        if (modalData.showOnce && hasSeenModal) {
+        if (modalData.showDaily) {
+            if (lastSeenDate === today) {
+                return;
+            }
+        } else if (modalData.showOnce && hasSeenModal) {
             return;
         }
 
@@ -64,7 +70,9 @@ const PromoModal = () => {
 
     const handleClose = () => {
         setIsVisible(false);
-        if (modalData.showOnce) {
+        if (modalData.showDaily) {
+            localStorage.setItem('lastSeenPromoModalDate', new Date().toDateString());
+        } else if (modalData.showOnce) {
             localStorage.setItem('hasSeenPromoModal', 'true');
         }
     };
@@ -100,7 +108,7 @@ const PromoModal = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-8 text-center space-y-6">
+                <div className="p-2 md:p-4 text-center space-y-4">
                     <div>
                         <h2 className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-600 mb-2">
                             Special Offer!
@@ -120,12 +128,12 @@ const PromoModal = () => {
                                 { label: 'Secs', value: timeLeft.seconds }
                             ].map((item, index) => (
                                 <div key={index} className="flex flex-col items-center">
-                                    <div className="w-16 h-16 sm:w-18 sm:h-18 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-lg shadow-inner">
-                                        <span className="text-2xl sm:text-3xl font-bold text-amber-600 dark:text-amber-500">
+                                    <div className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-lg shadow-inner">
+                                        <span className="text-lg sm:text-xl font-bold text-amber-600 dark:text-amber-500">
                                             {String(item.value).padStart(2, '0')}
                                         </span>
                                     </div>
-                                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1 font-medium transform uppercase tracking-wider">
+                                    <span className="text-xs sm:text-xs text-gray-500 dark:text-gray-400 mt-1 font-medium transform uppercase tracking-wider">
                                         {item.label}
                                     </span>
                                 </div>

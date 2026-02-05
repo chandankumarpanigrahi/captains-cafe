@@ -4,6 +4,7 @@
     "buttonLink": "/offers",
     "buttonText": "Check it out",
     "showOnce": false,
+    "showDaily": false,
     "isActive": true,
     "targetDate": "2026-02-14T23:59:59"
 }
