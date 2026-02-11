@@ -47,8 +47,8 @@ export default function RootLayout({ children }) {
           ) : (
             // Normal Layout
             <div className="d-flex">
-              <Snowfall />
-              {/* <FallingHearts /> */}
+              {/* <Snowfall /> */}
+              <FallingHearts />
               <div id="content" className="flex-grow-1 w-full flex flex-col items-center">
                 <div className="container fixed z-49">
                   <MainHeader activeTab="Home" />
