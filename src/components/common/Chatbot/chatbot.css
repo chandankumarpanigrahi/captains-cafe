@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════
    Captain's Cafe Chatbot - Premium Design
    Brand: Navy #0E467D | Amber #E58D52 | Quicksand font
+   Designed & Developed by: Chandan Kumar Panigrahi
    ═══════════════════════════════════════════════════════ */
 
 /* ── Floating Toggle Button ─────────────────────────── */
@@ -12,7 +13,7 @@
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: none;
+    border: 1px solid #ffffff70;
     background: linear-gradient(135deg, #0E467D 0%, #072f55 100%);
     color: #fff;
     font-size: 28px;
@@ -311,7 +312,7 @@
     align-items: center;
     gap: 4px;
     padding: 6px 12px;
-    border: 1px solid rgba(14, 70, 125, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     background: transparent;
     color: #4E79A2;

@@ -100,13 +100,46 @@ const MapsView = () => {
                                         click: () => onLocationClick(location),
                                     }}
                                 >
-                                    <Popup>
-                                        <div className="p-2 min-w-[200px]">
-                                            <h3 className="font-semibold text-lg mb-1">{location.name}</h3>
-                                            <p className="text-gray-600 text-sm mb-2">{location.address}</p>
-                                            <p className="text-xs text-gray-500">
-                                                {location.position[0].toFixed(4)}, {location.position[1].toFixed(4)}
-                                            </p>
+                                    <Popup className="rounded-xl overflow-hidden shadow-xl border-none">
+                                        <div className="min-w-[260px] p-0">
+                                            {/* Header */}
+                                            <div className="bg-[#0E467D] text-white p-3 rounded-xl mb-3 flex items-center gap-2">
+                                                <div className="bg-white/20 p-1.5 rounded-full">
+                                                    <GiAnchor className="text-white text-sm" />
+                                                </div>
+                                                <h3 className="font-bold text-sm m-0 tracking-wide text-white">{location.name}</h3>
+                                            </div>
+
+                                            {/* Body */}
+                                            <div className="space-y-3">
+                                                <div className="flex items-start gap-2">
+                                                    <svg className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    </svg>
+                                                    <p className="text-gray-600 text-sm m-0 font-medium leading-relaxed">
+                                                        {location.address}
+                                                    </p>
+                                                </div>
+
+                                                <div className="pt-2 border-t border-gray-100 flex items-center justify-between">
+                                                    <span className="text-[12px] text-gray-600 font-mono bg-gray-100 px-2 py-1 rounded">
+                                                        {location.position[0].toFixed(4)}, {location.position[1].toFixed(4)}
+                                                    </span>
+
+                                                    <a
+                                                        href={`https://www.google.com/maps?q=${location.position[0]},${location.position[1]}`}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-[#532404] hover:bg-[#401b02] text_white text-xs font-bold rounded-md transition-all duration-200 shadow-sm hover:shadow-md transform hover:-translate-y-0.5"
+                                                    >
+                                                        <span>Directions</span>
+                                                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </Popup>
                                 </Marker>
