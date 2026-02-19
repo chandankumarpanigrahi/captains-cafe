@@ -2,8 +2,21 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import chatbotData from '@/data/chatbotData';
 import './chatbot.css';
+import logo from "../../../assets/images/logo.png";
+
+// Parse **bold** markdown in messages
+const formatMessage = (text) => {
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return <strong key={i}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+    });
+};
 
 const Chatbot = () => {
     const router = useRouter();
@@ -180,7 +193,13 @@ const Chatbot = () => {
                 {/* Header */}
                 <div className="chatbot-header">
                     <div className="chatbot-header-left">
-                        <div className="chatbot-avatar">☕</div>
+                        <Image
+                            src={logo}
+                            className='p-1 bg-white rounded-full'
+                            width={36}
+                            height={36}
+                            alt="Logo"
+                        />
                         <div className="chatbot-header-info">
                             <h4>Captain&apos;s Cafe</h4>
                             <span>
@@ -206,7 +225,7 @@ const Chatbot = () => {
                             key={index}
                             className={msg.type === 'bot' ? 'chatbot-bubble' : 'chatbot-user-bubble'}
                         >
-                            {msg.message}
+                            {formatMessage(msg.message)}
                         </div>
                     ))}
 

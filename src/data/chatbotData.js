@@ -91,7 +91,7 @@ const chatbotData = {
     },
     visit_timings: {
         id: "visit_timings",
-        message: "⏰ Our cafe is open:\n\n**Monday to Sunday:** 8:30 AM – 10:00 PM\n\nWe're open every day of the week, ready to serve you!",
+        message: "⏰ Our cafe is open:\n\n**Monday to Sunday:** 8:30 AM - 10:00 PM\n\nWe're open every day of the week, ready to serve you!",
         parent: "visit"
     },
     visit_parking: {
