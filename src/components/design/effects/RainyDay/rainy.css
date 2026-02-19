@@ -1,0 +1,69 @@
+.rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Raindrops */
+.raindrop {
+    position: absolute;
+    top: -5vh;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(174, 194, 224, 0.6));
+    border-radius: 0 0 2px 2px;
+    animation-name: fall-rain;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Splash effect at certain positions */
+.rain-splash {
+    position: absolute;
+    font-size: 10px;
+    opacity: 0;
+    animation-name: splash;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes fall-rain {
+    0% {
+        top: -5vh;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100vh;
+        opacity: 0.3;
+    }
+}
+
+@keyframes splash {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}

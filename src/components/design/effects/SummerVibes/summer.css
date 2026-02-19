@@ -1,0 +1,52 @@
+.summer-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.summer-element {
+    position: absolute;
+    top: -10vh;
+    opacity: 0.8;
+    animation-name: fall-summer, sway-summer;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    filter: drop-shadow(0 0 4px rgba(255, 200, 50, 0.5));
+}
+
+@keyframes fall-summer {
+    0% {
+        top: -10vh;
+    }
+
+    100% {
+        top: 100vh;
+    }
+}
+
+@keyframes sway-summer {
+    0% {
+        transform: translateX(0px) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(20px) rotate(20deg);
+    }
+
+    50% {
+        transform: translateX(0px) rotate(0deg);
+    }
+
+    75% {
+        transform: translateX(-20px) rotate(-20deg);
+    }
+
+    100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+}
