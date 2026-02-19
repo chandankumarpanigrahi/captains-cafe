@@ -14,6 +14,7 @@ import Snowfall from "@/components/design/effects/Snowfall";
 import FallingHearts from "@/components/design/effects/FallingHearts";
 import SummerVibes from "@/components/design/effects/SummerVibes";
 import RainyDay from "@/components/design/effects/RainyDay";
+import Chatbot from "@/components/common/Chatbot";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -66,6 +67,7 @@ export default function RootLayout({ children }) {
               </div>
               <Toaster position="top-right" reverseOrder={false}
                 toastOptions={{ duration: 3000 }} />
+              <Chatbot />
             </div>
           )}
         </ThemeProvider>
