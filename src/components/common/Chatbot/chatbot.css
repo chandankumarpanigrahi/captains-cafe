@@ -6,7 +6,7 @@
 /* ── Floating Toggle Button ─────────────────────────── */
 .chatbot-toggle {
     position: fixed;
-    bottom: 24px;
+    bottom: 16px;
     right: 24px;
     z-index: 1000;
     width: 60px;

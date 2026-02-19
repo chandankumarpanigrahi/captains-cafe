@@ -53,41 +53,41 @@ const Footer = () => {
                     {/* Right Side */}
                     <div className={`${styles.footer_links} rounded-tl-4xl rounded-br-4xl w-full lg:w-2/3 flex flex-row flex-wrap px-10 py-6`}>
                         <div className="w-full md:w-2/9 mb-8 md:mb-0">
-                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Company</h5>
-                                <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className='text-md '><Link href="/about">About</Link></li>
-                                    <li className='text-md '><Link href="/offers">Offers</Link></li>
-                                    <li className='text-md '><Link href="/gallery">Gallery</Link></li>
-                                    <li className='text-md '><Link href="/career">Career</Link></li>
-                                    <li className='text-md '><Link href="/contact">Contact Us</Link></li>
-                                </ul>
+                            <h5 className='text-xl mb-3 footer-text-color font-semibold'>Company</h5>
+                            <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                <li className='text-md '><Link href="/about">About</Link></li>
+                                <li className='text-md '><Link href="/offers">Offers</Link></li>
+                                <li className='text-md '><Link href="/gallery">Gallery</Link></li>
+                                <li className='text-md '><Link href="/career">Career</Link></li>
+                                <li className='text-md '><Link href="/contact">Contact Us</Link></li>
+                            </ul>
                         </div>
                         <div className="w-full md:w-2/9 mb-8 md:mb-0">
-                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Help</h5>
-                                <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className='text-md '><Link href="/menu">Menu</Link></li>
-                                    <li className='text-md '><Link href="/support">Support</Link></li>
-                                    <li className='text-md '><Link href="/terms-and-conditions">T&C</Link></li>
-                                    <li className='text-md '><Link href="/privacy-policy">Privacy Policy</Link></li>
-                                    <li className='text-md '><Link href="/faqs">FAQs</Link></li>
-                                </ul>
+                            <h5 className='text-xl mb-3 footer-text-color font-semibold'>Help</h5>
+                            <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                <li className='text-md '><Link href="/menu">Menu</Link></li>
+                                <li className='text-md '><Link href="/support">Support</Link></li>
+                                <li className='text-md '><Link href="/terms-and-conditions">T&C</Link></li>
+                                <li className='text-md '><Link href="/privacy-policy">Privacy Policy</Link></li>
+                                <li className='text-md '><Link href="/faqs">FAQs</Link></li>
+                            </ul>
                         </div>
                         <div className="w-full md:w-2/9 mb-8 md:mb-0">
-                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
-                                <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className='text-md '><Link href="/blogs">Blogs</Link></li>
-                                    <li className='text-md '><Link href="/testimonials">Testimonials</Link></li>
-                                    <li className='text-md '><Link href="/docs">Documentation</Link></li>
-                                </ul>
+                            <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
+                            <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                <li className='text-md '><Link href="/blogs">Blogs</Link></li>
+                                <li className='text-md '><Link href="/testimonials">Testimonials</Link></li>
+                                <li className='text-md '><Link href="/docs">Documentation</Link></li>
+                            </ul>
                         </div>
                         <div className="w-full md:w-3/9 mb-5 md:mb-0">
-                                <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>
-                                <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                    <li className='text-md flex gap-2 items-center'><MdCall className='text-blue-300'/><a href="#">+91 81447 74349</a></li>
-                                    <li className='text-md flex gap-2 items-center'><HiLocationMarker className='text-blue-300'/><a href="#">IRC Village, Bhubaneswar</a></li>
-                                    <li className='text-md pl-6'><a href="#">Saheed Nagar, Bhubaneswar</a></li>
-                                    <li className='text-md flex gap-2 items-center'><IoGlobeOutline className='text-blue-300'/><a href="#">thecaptainscafe.com</a></li>
-                                </ul>
+                            <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>
+                            <ul className='flex flex-col gap-1.5 text-white font-light '>
+                                <li className='text-md flex gap-2 items-center'><MdCall className='text-blue-300' /><a href="#">+91 81447 74349</a></li>
+                                <li className='text-md flex gap-2 items-center'><HiLocationMarker className='text-blue-300' /><a href="#">IRC Village, Bhubaneswar</a></li>
+                                <li className='text-md pl-6'><a href="#">Saheed Nagar, Bhubaneswar</a></li>
+                                <li className='text-md flex gap-2 items-center'><IoGlobeOutline className='text-blue-300' /><a href="#">thecaptainscafe.com</a></li>
+                            </ul>
                         </div>
                     </div>
 

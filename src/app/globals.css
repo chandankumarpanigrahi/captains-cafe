@@ -253,7 +253,14 @@ body::before {
   padding: 5px !important;
   border-radius: 10% 30% !important;
   box-shadow: none !important;
-  /* bottom: 90px !important; */
+  bottom: 90px !important;
+}
+
+@media (max-width: 600px) {
+  .scroll-to-top {
+    bottom: 80px !important;
+    right: 24px !important;
+  }
 }
 
 .scroll-to-top>svg {
