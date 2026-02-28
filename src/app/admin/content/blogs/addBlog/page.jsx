@@ -10,7 +10,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import CardHeading from '../../../elements/CardHeading'
+import CardHeading from '@/app/admin/elements/CardHeading'
 
 // Card
 import {
@@ -93,7 +93,7 @@ const addBlog = () => {
                                         className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm flex items-center justify-between bg-white hover:bg-gray-50 cursor-pointer"
                                     >
                                         <span className={`${date ? "text-black" : "text-gray-500"}`}>
-                                            {date || "Select Date"}
+                                            {date ? date.split('-').reverse().join('-') : "Select Date"}
                                         </span>
                                         <FiCalendar className="text-gray-400 cursor-pointer" size={16} />
                                     </div>
