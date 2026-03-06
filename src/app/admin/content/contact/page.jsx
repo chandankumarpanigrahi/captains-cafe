@@ -4,8 +4,12 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Button from '@/components/common/button'
 import React, { useState, useRef } from 'react'
-import { FiClock } from 'react-icons/fi'
+import { FaRegEye } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
+import { IoCaretUp, IoCaretDown } from "react-icons/io5";
+import { FaPlusSquare } from "react-icons/fa";
 
 // Breadcrumb
 import {
@@ -18,19 +22,19 @@ import {
 } from "@/components/ui/breadcrumb"
 import CardHeading from '../../elements/CardHeading'
 
-import {
-    Dialog,
-    DialogContent,
-    DialogTrigger,
-} from "@/components/ui/dialog"
 
-// Images
-import Image from 'next/image'
-import aboutUsImage from "@/assets/images/pages/about/aboutUs.png"
-import brandIdentity from "@/assets/images/pages/about/brandIdentity.png"
+const ActionToolbar = () => (
+    <div className='flex bg-gray-50 w-fit pt-0.5 pb-1 px-1 rounded-b-md border border-gray-300 shadow-[0_2px_4.7px_0_rgba(0,0,0,0.19)] mr-2 ms-auto gap-1'>
+        <RiDeleteBin6Line size={18} className='text-red-600 cursor-pointer' />
+        <FaRegEye size={18} className='cursor-pointer text-[#E0AC00]' />
+        <AiFillEdit size={18} className='cursor-pointer text-blue-700' />
+        <IoCaretUp size={18} className='cursor-pointer text-green-600' />
+        <IoCaretDown size={18} className='cursor-pointer text-green-600' />
+    </div>
+);
+
 
 const ManageContact = () => {
-    const [time, setTime] = React.useState("");
 
     return (
         <>
@@ -50,21 +54,41 @@ const ManageContact = () => {
                     <CardHeading title="Update" bottomLine="true" />
                     <form className="space-y-2 w-full max-h-[calc(100vh-240px)] overflow-y-auto">
                         <div className="w-full">
-                            <Label className="text-[14px] text-gray-600 block font-medium mb-1">Contact Us - Image</Label>
-                            <Input
-                                type="file"
-                                placeholder="Upload File"
-                                className="w-full px-3 py-0.5 text-sm"
-                            />
+                            <div className="flex flex-col mb-2">
+                                <div className="flex flex-row justify-between items-center">
+                                    <Label className="text-[14px] text-gray-600 block font-medium mb-1">Location - <span className='italic font-light'>&#40;In Text&#41;</span></Label>
+                                    <FaPlusSquare size={18} className='cursor-pointer text-blue-800' />
+                                </div>
+                                <div className='flex flex-col'>
+                                    <textarea
+                                        placeholder="Enter address"
+                                        className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm  resize-none placeholder-gray-400"
+                                    />
+                                </div>
+                            </div>
+                            <Label className="text-[14px] text-gray-600 block font-medium mb-1">Location - <span className='italic font-light'>&#40;Map URL&#41;</span></Label>
+                            <div className='flex flex-col'>
+                                <Input
+                                    type="text"
+                                    placeholder="Paste URL"
+                                    className="w-full px-3 py-0.5 text-sm"
+                                />
+                                <ActionToolbar />
+                            </div>
                         </div>
+
                         <div className="w-full">
-                            <Label className="text-[14px] text-gray-600 block font-medium">
-                                Contact Us - Text
-                            </Label>
-                            <textarea
-                                placeholder="Enter description or content"
-                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent resize-none placeholder-gray-400"
-                            />
+                            <div className="flex flex-row justify-between items-center">
+                                <Label className="text-[14px] text-gray-600 block font-medium mb-1">Café Hours</Label>
+                                <FaPlusSquare size={18} className='cursor-pointer text-blue-800' />
+                            </div>
+                            <div className='flex flex-col'>
+                                <textarea
+                                    placeholder="Enter description or content"
+                                    className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm  resize-none placeholder-gray-400"
+                                />
+                                <ActionToolbar />
+                            </div>
                         </div>
                         <div className="w-full">
                             <Label className="text-[14px] text-gray-600 block font-medium mb-1">Brand Identity - Image</Label>
@@ -80,7 +104,7 @@ const ManageContact = () => {
                             </Label>
                             <textarea
                                 placeholder="Enter brand identity description"
-                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent resize-none placeholder-gray-400"
+                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm  resize-none placeholder-gray-400"
                             />
                         </div>
                         <div className="w-full">
@@ -89,7 +113,7 @@ const ManageContact = () => {
                             </Label>
                             <textarea
                                 placeholder="Enter description or content"
-                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent resize-none placeholder-gray-400"
+                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm  resize-none placeholder-gray-400"
                             />
                         </div>
                         <div className="w-full">
@@ -98,7 +122,7 @@ const ManageContact = () => {
                             </Label>
                             <textarea
                                 placeholder="Enter description or content"
-                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-transparent resize-none placeholder-gray-400"
+                                className="w-full min-h-[80px] p-2 border border-gray-300 rounded text-sm  resize-none placeholder-gray-400"
                             />
                         </div>
                         <div className="w-full">
@@ -145,92 +169,72 @@ const ManageContact = () => {
                 </Card>
                 <Card className="rounded-md gap-1.5 p-4 w-full h-fit ml-0 md:ml-3">
                     <div className="flex">
-                        <CardHeading title="Edit" bottomLine="false" />
+                        <CardHeading title="View" bottomLine="false" />
                         <Button text="EDIT" className='ml-auto' size='sm' icon={<FaRegEdit />} radius='sm' iconPosition="left" />
                     </div>
                     <hr />
-                    <div className="flex flex-col flex-wrap gap-y-2 py-2">
+                    <div className="flex flex-col flex-wrap gap-y-3 py-2">
                         <div className="flex flex-col sm:flex-row">
-                            <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>About Us</h2>
+                            <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Location</h2>
                             <div className="flex flex-col w-full sm:w-[calc(100%-220px)] gap-2">
-                                <Dialog>
-                                    <DialogTrigger className='w-fit before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold before:text-gray-500'>
-                                        <div className='inline p-0 text-blue-600 underline underline-offset-2 decoration-2 cursor-pointer decoration-blue-500 font-semibold'>Image</div>
-                                    </DialogTrigger>
-                                    <DialogContent className="sm:max-w-[1225px]">
-                                        <Image src={aboutUsImage} alt="About Image" className='w-full' />
-                                    </DialogContent>
-                                </Dialog>
-                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>The Captain&apos;s Café, with multiple locations in Bhubaneswar where every meal is a journey and every visit an opportunity to sail into exciting flavors.
-                                    Our catering/bakery division, where we provide healthy and hygienic meals to the students of the School of Maritime Studies (SOMS) at Centurion University, ensuring a nutritious dining experience for maritime professionals in training.</p>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>Ekamra Kanan Road, near Chilika Fresh,
+                                    Rental Colony, IRC Village, Nayapalli,
+                                    Bhubaneswar Odisha 751011</p>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>768, Beside Government Veterinary Hospital,
+                                    Maharishi College Rd, Saheed Nagar,
+                                    Bhubaneswar, Odisha 751007</p>
                             </div>
                         </div>
-                        <hr />
 
-                        <div className="flex flex-col sm:flex-row">
-                            <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Brand Identity</h2>
-                            <div className="flex flex-col w-full sm:w-[calc(100%-220px)] gap-2">
-                                <Dialog>
-                                    <DialogTrigger className='w-fit before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold before:text-gray-500'>
-                                        <div className='inline p-0 text-blue-600 underline underline-offset-2 decoration-2 cursor-pointer decoration-blue-500 font-semibold'>Image</div>
-                                    </DialogTrigger>
-                                    <DialogContent className="sm:max-w-[1225px]">
-                                        <Image src={brandIdentity} alt="About Image" className='w-full' />
-                                    </DialogContent>
-                                </Dialog>
-                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>The Captain&apos;s Cafe is inspired by a maritime and sea-sailing theme, where every visit is a journey into a world of flavors. Drawing on the captain&apso;s spirit of exploration, we invite our guests to embark on a culinary voyage guided by the adventurous spirit of the sea. It symbolizes leadership, guidance, and discovery, which reflects our commitment to providing a bold and exciting dining experience.</p>
+                        <div className="flex flex-col sm:flex-row sm:h-[54px]">
+                            <div className="flex flex-col sm:flex-row w-full md:w-1/2 h-fit">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0 h-fit'>Working Hours</h2>
+                                <div className="flex flex-col h-fit gap-2">
+                                    <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>Monday - Saturday</p>
+                                    <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>09:00 am - 10:00 pm</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col sm:flex-row w-full md:w-1/2 h-fit">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0 h-fit'>Mobile Number</h2>
+                                <div className="flex flex-col h-fit gap-2">
+                                    <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>+91 81447 74349</p>
+                                </div>
                             </div>
                         </div>
+
                         <hr />
 
-                        <div className="flex flex-col sm:flex-row">
-                            <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Mission</h2>
-                            <div className="flex flex-col w-full sm:w-[calc(100%-220px)] gap-2">
-                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>At The Captain&apos;s Café, our mission is to take you on a culinary voyage around the globe, offering diverse and delectable dishes all under one roof. With a unique nautical flair and a passion for delivering exceptional flavors, we aim to create an immersive dining experience that celebrates the rich and diverse culinary heritage of the world.</p>
-                            </div>
-                        </div>
-                        <hr />
-
-                        <div className="flex flex-col sm:flex-row">
-                            <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Vision</h2>
-                            <div className="flex flex-col w-full sm:w-[calc(100%-220px)] gap-2">
-                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>Our vision is to be the premier destination for food enthusiasts seeking a maritime adventure through international cuisine. We strive to create a café where every meal is a journey, and every visit is an opportunity to explore exciting, bold flavors. At The Captain&apso;s Café, we invite you to embark on a flavorful voyage of discovery with us.</p>
-                            </div>
-                        </div>
-                        <hr />
-
-                        <div className="flex flex-row flex-wrap gap-y-2 py-2">
+                        <div className="flex flex-row flex-wrap gap-y-3 py-2">
                             <div className="flex flex-col sm:flex-row w-full">
-                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Mobile App - Image</h2>
-                                <Dialog>
-                                    <DialogTrigger className='w-fit before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold before:text-gray-500'>
-                                        <div className='inline p-0 text-blue-600 underline underline-offset-2 decoration-2 cursor-pointer decoration-blue-500 font-semibold'>Image</div>
-                                    </DialogTrigger>
-                                    <DialogContent className="sm:max-w-[1225px]">
-                                        <Image src={brandIdentity} alt="About Image" className='w-full' />
-                                    </DialogContent>
-                                </Dialog>
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Website</h2>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'>https://scottishcafe.co.uk</p>
                             </div>
-                            <div className="flex flex-col sm:flex-row w-full lg:w-1/2">
-                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Android App Link</h2>
-                                <div className='w-fit before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold before:text-gray-500'>
-                                    <a href="https://play.google.com/store/apps/details?id=com.captainscafeedinburgh&pcampaignid=web_share" target='_blank' className='text-blue-600 underline underline-offset-2 decoration-2 cursor-pointer decoration-blue-500 font-semibold'>Link</a>
-                                </div>
+                            <div className="flex flex-col sm:flex-row w-full">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Instagram</h2>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'><span className="cursor-pointer text-gray-300">https://instagram.com/</span>thecaptainscafe.india</p>
                             </div>
-                            <div className="flex flex-col sm:flex-row w-full lg:w-1/2">
-                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>iOS App Link</h2>
-                                <div className='w-fit before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold before:text-gray-500'>
-                                    <a href="https://play.google.com/store/apps/details?id=com.captainscafeedinburgh&pcampaignid=web_share" target='_blank' className='text-blue-600 underline underline-offset-2 decoration-2 cursor-pointer decoration-blue-500 font-semibold'>Link</a>
-                                </div>
+                            <div className="flex flex-col sm:flex-row w-full">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Facebook</h2>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'><span className="cursor-pointer text-gray-300">https://facebook.com/</span>thecaptainscafe.india</p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row w-full">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Twitter</h2>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'><span className="cursor-pointer text-gray-300">https://twitter.com/</span>thecaptainscafe.india</p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row w-full">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>LinkedIn</h2>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'><span className="cursor-pointer text-gray-300">https://linkedin.com/</span>thecaptainscafe.india</p>
+                            </div>
+                            <div className="flex flex-col sm:flex-row w-full">
+                                <h2 className='text-gray-600 block font-medium text-md w-[220px] pb-0.5 sm:pb-0'>Youtube</h2>
+                                <p className='text-gray-500 before:content-["-"] sm:before:content-[":"] before:pr-3 sm:before:pr-2 before:font-bold text-justify'><span className="cursor-pointer text-gray-300">https://youtube.com/</span>thecaptainscafe.india</p>
                             </div>
                         </div>
-
                     </div>
-
                 </Card>
             </div>
         </>
     )
 }
 
-export default ManageContact
+export default ManageContact;
