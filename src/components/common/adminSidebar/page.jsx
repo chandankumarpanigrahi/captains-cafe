@@ -168,7 +168,7 @@ const AdminSidebar = () => {
                                 <p className=' leading-tight text-[12px] text-blue-950 mb-1'>sushant.co@gmail.com</p>
                                 <div className="bg-blue-900 text-[11px] rounded-full text-white px-2 w-fit">Admin</div>
                                 <div className="absolute size-[80px] left-0 bottom-0 rounded-xl overflow-hidden">
-                                    <Image src={avatar} alt='Avatar' className='w-full h-full object-cover' />
+                                    <Image src={avatar} alt='Avatar' className='w-full h-full object-cover' priority />
                                 </div>
                             </div>
                         </div>

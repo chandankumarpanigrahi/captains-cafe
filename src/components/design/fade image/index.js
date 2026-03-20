@@ -24,6 +24,7 @@ const CarouselBox = ({ images, interval = 3000, height = 'h-64', width = 'w-full
                 src={img}
                 alt={`Slide ${idx}`}
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 style={{ objectFit: 'cover' }}
                 priority
               />

@@ -16,7 +16,7 @@ const Featured = () => {
                     <div className="absolute left-0 top-0">
                         <div className={`${styles.bg_design}`}>
                             {/* <div className={`${styles.bg_texture}`}></div> */}
-                            <Image src={featured_bg} alt='featured bg' className='w-full h-full' fill/>
+                            <Image src={featured_bg} alt='featured bg' className='w-full h-full' fill sizes="(max-width: 1024px) 100vw, 50vw"/>
                         </div>
                     </div>
                     <div className={`${styles.featured_content} flex px-4`}>

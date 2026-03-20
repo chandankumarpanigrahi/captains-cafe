@@ -49,6 +49,7 @@ const DataTable = ({
     actionsColumnHeader = 'Actions',
     pageSizeOptions = [5, 10, 20, 50],
     defaultPageSize = 10,
+    rowClassName,
     onRowClick,
     onExport,
     onAction,
@@ -711,7 +712,7 @@ const DataTable = ({
                                 return (
                                     <TableRow
                                         key={actualIndex}
-                                        className={onRowClick ? 'cursor-pointer hover:bg-gray-50' : ''}
+                                        className={`${onRowClick ? 'cursor-pointer hover:bg-gray-50' : ''} ${rowClassName ? rowClassName(row) : ''}`}
                                         onClick={() => onRowClick && onRowClick(row)}
                                     >
                                         {/* Selection Checkbox */}
