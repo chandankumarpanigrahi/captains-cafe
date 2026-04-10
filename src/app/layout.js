@@ -14,7 +14,8 @@ import Snowfall from "@/components/design/effects/Snowfall";
 import FallingHearts from "@/components/design/effects/FallingHearts";
 import SummerVibes from "@/components/design/effects/SummerVibes";
 import RainyDay from "@/components/design/effects/RainyDay";
-import Chatbot from "@/components/common/Chatbot";
+// import Chatbot from "@/components/common/Chatbot";
+import AiChatBot from "@/components/common/AiChatBot";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        {/* <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}> */}
           {MAINTENANCE_MODE ? (
             <MaintenancePage />
           ) : isAdminPath ? (
@@ -67,10 +68,11 @@ export default function RootLayout({ children }) {
               </div>
               <Toaster position="top-right" reverseOrder={false}
                 toastOptions={{ duration: 3000 }} />
-              <Chatbot />
+              {/* <Chatbot /> */}
+              <AiChatBot/>
             </div>
           )}
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
