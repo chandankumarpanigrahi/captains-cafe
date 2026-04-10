@@ -21,7 +21,7 @@ const AiChatBot = () => {
                 <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-4 py-3 dark:border-slate-700">
                     <div>
                         <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
-                            Hi, I'm Ema
+                            The Captain's Cafe Chat
                         </p>
                         <p className="text-xs text-slate-500 dark:text-slate-400">
                             Ask us anything
