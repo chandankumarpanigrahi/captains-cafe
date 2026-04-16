@@ -1,53 +1,3 @@
-.plate_design {
-    height: 420px;
-    width: 420px;
-    position: relative;
-    margin: 0 auto;
-}
-
-.plate_design img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.plate_design img:nth-child(1) {
-    animation: circle2 40s linear infinite;
-    z-index: 10;
-}
-
-.plate_design img:nth-child(2) {
-    z-index: 9;
-    transform: scale(1.5);
-}
-
-.plate_design img:nth-child(3) {
-    animation: circle1 50s linear infinite;
-    z-index: 11;
-}
-
-@keyframes circle1 {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes circle2 {
-    0% {
-        transform: rotate(360deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
 .icon {
     width: 200px;
     height: fit-content;
@@ -57,12 +7,5 @@
     .icon {
         max-width: 40px;
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 460px) {
-    .plate_design {
-        height: 320px;
-        width: 320px;
     }
 }

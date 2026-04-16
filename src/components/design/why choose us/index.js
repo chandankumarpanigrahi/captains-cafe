@@ -1,8 +1,10 @@
 "use client"
-
 import React from 'react'
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import styles from "./style.module.css"
 import Image from 'next/image'
+
 import plateImage from "../../../assets/images/plate_1.png"
 import plateImageShadow from "../../../assets/images/plate_1_shadow.png"
 import plateImageLeaves from "../../../assets/images/plate_1_leaves.png"
@@ -12,14 +14,37 @@ import { MdFastfood } from "react-icons/md";
 import { MdRoomService } from "react-icons/md";
 
 const WhyChooseUs = () => {
+
+    const plateImage1 = useRef(null);
+    const plateLeaves1 = useRef(null);
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.to(plateImage1.current, {
+                rotation: 360,
+                duration: 30,
+                repeat: -1,
+                ease: "none",
+            });
+
+            gsap.to(plateLeaves1.current, {
+                rotation: -360,
+                duration: 30,
+                repeat: -1,
+                ease: "none",
+            });
+
+        });
+        return () => ctx.revert();
+    }, []);
+
     return (
         <div className='container mb-8 md:mb-16 animate__animated animate__slideInUp'>
             <div className="flex flex-col lg:flex-row items-center h-full">
                 <div className="w-full lg:w-1/3 py-8 overflow-hidden lg:overflow-visible lg:p-0 h-full">
-                    <div className={`${styles.plate_design}`}>
-                        <Image src={plateImage} alt='Plate Image'></Image>
-                        <Image src={plateImageShadow} alt='Plate Image Shadow'></Image>
-                        <Image src={plateImageLeaves} alt='Plate Image Leaves'></Image>
+                    <div className={`${styles.plate_design} relative h-[320px] sm:h-[320px] md:h-[420px] w-[320px] sm:w-[320px] md:w-[420px] mx-auto`}>
+                        <Image src={plateImage} ref={plateImage1} alt='Plate Image' className='absolute inset-0 w-full h-full object-cover z-10'></Image>
+                        <Image src={plateImageShadow} alt='Plate Image Shadow' className='absolute inset-0 w-full h-full object-cover z-9 scale-150'></Image>
+                        <Image src={plateImageLeaves} ref={plateLeaves1} alt='Plate Image Leaves' className='absolute inset-0 w-full h-full object-cover z-20'></Image>
                     </div>
                 </div>
                 <div className="w-full lg:w-2/3 h-full pl-0 lg:pl-20">

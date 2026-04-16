@@ -1,4 +1,7 @@
+"use client"
 import React from 'react'
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import styles from "./style.module.css"
 import Image from 'next/image'
 import plateImage from "../../../assets/images/plate_2.png"
@@ -7,6 +10,27 @@ import plateImageOuterCircle from "../../../assets/images/plate_2_outer_circle.p
 import plateImageInnerCircle from "../../../assets/images/plate_2_inner_circle.png"
 
 const HomeCta = () => {
+    const plateImage2 = useRef(null);
+    const plateLeaves2 = useRef(null);
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.to(plateImage2.current, {
+                rotation: 360,
+                duration: 30,
+                repeat: -1,
+                ease: "none",
+            });
+
+            gsap.to(plateLeaves2.current, {
+                rotation: -360,
+                duration: 30,
+                repeat: -1,
+                ease: "none",
+            });
+
+        });
+        return () => ctx.revert();
+    }, []);
     return (
         <div className='container animate__animated animate__fadeInUp mb-6 md:mb-18'>
             <div className={`${styles.background_design} py-4 px-6 md:py-6 md:px-10 rounded-xl md:rounded-3xl relative flex flex-col justify-center items-start`}>
@@ -15,8 +39,8 @@ const HomeCta = () => {
                     <button className='w-min whitespace-nowrap border-0 bg-white rounded-full py-2 px-4 text-blue-900 font-bold'>Contact Us Now</button>
                 </div>
                 <div className={`${styles.plate_design} absolute overflow-hidden`}>
-                    <Image className='absolute inset-0 w-full h-full object-cover z-7' src={plateImage} alt='Plate Image'></Image>
-                    <Image className='absolute inset-0 w-full h-full object-cover z-8' src={plateImageLeaves} alt='Plate Image Leaves'></Image>
+                    <Image className='absolute inset-0 w-full h-full object-cover z-7' src={plateImage} ref={plateLeaves2} alt='Plate Image'></Image>
+                    <Image className='absolute inset-0 w-full h-full object-cover z-8' src={plateImageLeaves} ref={plateImage2} alt='Plate Image Leaves'></Image>
                     <Image className='absolute inset-0 w-full h-full object-cover z-6' src={plateImageOuterCircle} alt='Plate Image Outer Circle'></Image>
                     <Image className='absolute inset-0 w-full h-full object-cover z-5' src={plateImageInnerCircle} alt='Plate Image Inner Circle'></Image>
                 </div>
