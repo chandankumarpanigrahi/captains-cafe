@@ -1,11 +1,12 @@
 "use client"
-
 import React from 'react'
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import CountUp from '@/components/ui/CountUp/page'
 import Image from 'next/image'
 import styles from "./style.module.css"
-import { useState } from 'react'
-import { useEffect } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -46,6 +47,84 @@ import { Card } from '@/components/ui/card'
 import Button from '@/components/common/button'
 
 const ContactUs = () => {
+    const spices = useRef(null);
+    const menuLeftSide = useRef(null);
+    const menuMiddleSide = useRef(null);
+    const menuRightSide = useRef(null);
+    const offerStrike = useRef(null);
+    const bestSeller = useRef(null);
+    const cupText = useRef(null);
+    const sailCircle = useRef(null);
+    const noodleMenuText = useRef(null);
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(spices.current, {
+                y: 200,
+                opacity: 0,
+                scale: 0.8,
+                scrollTrigger: {
+                    trigger: spices.current,
+                    scroller: "body",
+                    start: "top 100%",
+                    end: "top 90%",
+                    scrub: 2
+                },
+            });
+            gsap.from(noodleMenuText.current, {
+                y: 200,
+                opacity: 0,
+                scale: 0.8,
+                duration: 3,
+                scrollTrigger: {
+                    trigger: noodleMenuText.current,
+                    scroller: "body",
+                    start: "top 100%",
+                    end: "top 100%",
+                    scrub: 1
+                },
+            });
+            gsap.from(menuLeftSide.current, {
+                y: 200,
+                opactity: 0,
+                duration: 1
+            });
+            gsap.from(menuRightSide.current, {
+                y: 200,
+                opactity: 0,
+                duration: 1
+            });
+            gsap.from(menuMiddleSide.current, {
+                y: 400,
+                opactity: 0,
+                duration: 0.8
+            });
+            gsap.from(sailCircle.current, {
+                scale: 0.8,
+                duration: 0.5,
+                delay: 1.2
+            });
+            gsap.from(offerStrike.current, {
+                x: 400,
+                opactity: 0,
+                duration: 0.8,
+                delay: 1.2
+            });
+            gsap.from(bestSeller.current, {
+                y: -120,
+                opactity: 0,
+                duration: 0.8,
+                delay: 0.8
+            });
+            gsap.from(cupText.current, {
+                x: -140,
+                opactity: 0,
+                duration: 0.8,
+                delay: 0.8
+            });
+        });
+        return () => ctx.revert();
+    }, []);
+
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -113,7 +192,7 @@ const ContactUs = () => {
                 <div className="flex flex-col lg:flex-row relative pb-16">
 
                     {/* Left */}
-                    <div className="w-full lg:w-2/7 mb-8 lg:mb-0 pr-0 lg:pr-3">
+                    <div className="w-full lg:w-2/7 mb-8 lg:mb-0 pr-0 lg:pr-3 overflow-hidden" ref={menuLeftSide}>
                         <div className="flex flex-col gap-4 w-full items-center">
                             <div className='m-0 lg:mt-8 flex flex-col w-full'>
                                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale mb-2 w-fit mx-auto lg:mx-0">
@@ -139,14 +218,14 @@ const ContactUs = () => {
                                         to={5000}
                                         separator=","
                                         direction="up"
-                                        duration={2}
+                                        duration={0.5}
                                         className='text-3xl ml-2 text-blue-900 font-semibold dark:text-white'
                                     />
                                 </p>
                                 <p className='text-center text-sm font-semibold text-blue-950 dark:text-white dark:font-normal'>Positive and Impressive Reviews</p>
                             </div>
                             <hr className='w-full' />
-                            <div className='relative h-full w-full'>
+                            <div className='relative h-full w-full' ref={cupText}>
                                 <Image src={cupImage} alt='cup Image' className='w-[120px]  absolute bottom-0 left-0' />
                                 <p className='text-right text-[15px] text-blue-900 dark:text-blue-300 w-3/5 float-end'>Indulge your senses with our diverse menu, offering a unique blend of classic favorites and innovative creations. Discover the perfect cup of coffee or the ideal dish to complement your day at The Captain&apos;s Cafe.</p>
                             </div>
@@ -157,10 +236,10 @@ const ContactUs = () => {
 
 
                     {/* Middle */}
-                    <div className="w-full lg:w-3/7 mb-4">
-                        <div className="w-full flex justify-center items-center pt-16 pb-12 relative overflow-hidden">
+                    <div className="w-full lg:w-3/7 mb-4" ref={menuMiddleSide}>
+                        <div className="w-full flex justify-center items-center pt-16 pb-12 relative">
                             <Image src={cafe} alt='Cafe Image' className='w-[280px] lg:w-[360px] h-[400px] lg:h-[500px] object-cover rounded-full p-4 lg:p-8 border-4 border-[#0B3F71] lg:border-b-transparent' />
-                            <div className='bg-[#12406D] size-48 absolute top-0 rounded-full p-4 cursor-default group'>
+                            <div className='bg-[#12406D] size-48 absolute top-0 rounded-full p-4 cursor-default group md:scale-105' ref={sailCircle}>
                                 <div className='w-full h-full bg-[#102E4B] rounded-full border-2 border-white flex justify-center items-center relative'>
                                     <p className='text-white text-left text-3xl scale-85 w-2/3 group-hover:scale-90 transition-all duration-400 ease-in-out'>Sail Into Flavors</p>
                                     <MdArrowOutward size={44} className='text-white absolute right-5 top-10 opacity-20 group-hover:scale-110 transition-all duration-100 ease-in-out' />
@@ -180,8 +259,8 @@ const ContactUs = () => {
 
 
                     {/* Right */}
-                    <div className="w-full lg:w-2/7 pl-3">
-                        <div className="w-full flex mb-8">
+                    <div className="w-full lg:w-2/7 pl-3 overflow-hidden" ref={menuRightSide}>
+                        <div className="w-full flex mb-8" ref={offerStrike}>
                             <div className='bg-gradient-to-r from-orange-900 to-orange-950 h-fit w-full pl-8 py-2 ml-auto rounded-tl-full rounded-bl-full relative cursor-default'>
                                 <Image src={noodleFork} alt='cup Image' className='w-[80px]  absolute -top-3 right-0' />
                                 <div className="flex flex-row items-end">
@@ -196,42 +275,44 @@ const ContactUs = () => {
                         </div>
 
                         {/* Best  Seller Items */}
-                        <div className="flex w-full flex-col gap-3 my-4">
-                            <div className="flex flex-row">
-                                <Image src={trending1} alt='Trending Item 1' width={80} />
-                                <div className="flex-flex-col pl-3 w-full">
-                                    <small className='text-gray-600 dark:text-gray-400'>Bestseller Dish</small>
-                                    <div className="flex items-center gap-2 w-full">
-                                        <h1 className='text-xl font-semibold text-blue-900 dark:text-blue-300'>Khopra Patties</h1>
-                                        <div className="border-2 border-green-600 text-green-600 size-4 flex justify-center items-center"><FaCircle size={10} /></div>
+                        <div className="flex flex-col overflow-hidden" ref={bestSeller}>
+                            <div className="flex w-full flex-col gap-3 my-4">
+                                <div className="flex flex-row">
+                                    <Image src={trending1} alt='Trending Item 1' width={80} />
+                                    <div className="flex-flex-col pl-3 w-full">
+                                        <small className='text-gray-600 dark:text-gray-400'>Bestseller Dish</small>
+                                        <div className="flex items-center gap-2 w-full">
+                                            <h1 className='text-xl font-semibold text-blue-900 dark:text-blue-300'>Khopra Patties</h1>
+                                            <div className="border-2 border-green-600 text-green-600 size-4 flex justify-center items-center"><FaCircle size={10} /></div>
+                                        </div>
+                                        <h6 className='text-amber-600 font-semibold'>₹ 129.00</h6>
                                     </div>
-                                    <h6 className='text-amber-600 font-semibold'>₹ 129.00</h6>
+                                </div>
+                                <div className="flex flex-row">
+                                    <Image src={trending2} alt='Trending Item 1' width={80} />
+                                    <div className="flex-flex-col pl-3 w-full">
+                                        <small className='text-gray-600 dark:text-gray-400'>Bestseller Dish</small>
+                                        <div className="flex items-center gap-2 w-full">
+                                            <h1 className='text-xl font-semibold text-blue-900 dark:text-blue-300'>Cheese Noodle</h1>
+                                            <div className="border-2 border-red-600 text-red-600 size-4 flex justify-center items-center"><IoTriangle size={10} /></div>
+                                        </div>
+                                        <h6 className='text-amber-600 font-semibold'>₹ 199.00</h6>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="flex flex-row">
-                                <Image src={trending2} alt='Trending Item 1' width={80} />
-                                <div className="flex-flex-col pl-3 w-full">
-                                    <small className='text-gray-600 dark:text-gray-400'>Bestseller Dish</small>
-                                    <div className="flex items-center gap-2 w-full">
-                                        <h1 className='text-xl font-semibold text-blue-900 dark:text-blue-300'>Cheese Noodle</h1>
-                                        <div className="border-2 border-red-600 text-red-600 size-4 flex justify-center items-center"><IoTriangle size={10} /></div>
-                                    </div>
-                                    <h6 className='text-amber-600 font-semibold'>₹ 199.00</h6>
-                                </div>
-                            </div>
-                        </div>
 
-                        <hr />
-                        <div className="flex justify-center gap-2 my-3 ">
-                            <p className="uppercase text-blue-900 dark:text-blue-300 font-medium">VIEW FULL MENU</p>
-                            <MdArrowOutward size={23} className='text-blue-900 dark:text-blue-300' />
+                            <hr />
+                            <div className="flex justify-center gap-2 my-3 ">
+                                <p className="uppercase text-blue-900 dark:text-blue-300 font-medium">VIEW FULL MENU</p>
+                                <MdArrowOutward size={23} className='text-blue-900 dark:text-blue-300' />
+                            </div>
+                            <hr />
                         </div>
-                        <hr />
                     </div>
-                    <Image src={middleAbstracts} alt='Spice Abstracts' className='absolute -bottom-20 scale-90 hidden lg:block' />
+                    <Image src={middleAbstracts} alt='Spice Abstracts' className='absolute -bottom-20 scale-90 hidden lg:block' ref={spices} />
                 </div>
-                <div className="flex justify-center w-full" id='all_menu'>
-                    <Image src={noodleMenu} alt="Menu Text" width={220} />
+                <div className="flex justify-center w-full h-[170px] overflow-hidden" id='all_menu'>
+                    <Image src={noodleMenu} alt="Menu Text" width={220} ref={noodleMenuText} />
                 </div>
 
 
