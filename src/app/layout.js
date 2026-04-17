@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body suppressHydrationWarning className={inter.className}>
-        {/* <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}> */}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {MAINTENANCE_MODE ? (
             <MaintenancePage />
           ) : isAdminPath ? (
@@ -69,10 +69,10 @@ export default function RootLayout({ children }) {
               <Toaster position="top-right" reverseOrder={false}
                 toastOptions={{ duration: 3000 }} />
               {/* <Chatbot /> */}
-              <AiChatBot/>
+              <AiChatBot />
             </div>
           )}
-        {/* </ThemeProvider> */}
+        </ThemeProvider>
       </body>
     </html>
   );

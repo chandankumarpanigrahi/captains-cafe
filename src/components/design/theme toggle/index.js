@@ -2,7 +2,7 @@
 'use client'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { SunIcon, MoonIcon } from 'lucide-react' // or any icon library you like
+import { SunIcon, MoonIcon } from 'lucide-react'
 
 export default function ThemeToggle() {
     const { theme, setTheme } = useTheme()

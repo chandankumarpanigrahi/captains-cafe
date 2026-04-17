@@ -85,17 +85,17 @@ const ContactUs = () => {
             });
             gsap.from(menuLeftSide.current, {
                 y: 200,
-                opactity: 0,
+                opacity: 0,
                 duration: 1
             });
             gsap.from(menuRightSide.current, {
                 y: 200,
-                opactity: 0,
+                opacity: 0,
                 duration: 1
             });
             gsap.from(menuMiddleSide.current, {
                 y: 400,
-                opactity: 0,
+                opacity: 0,
                 duration: 0.8
             });
             gsap.from(sailCircle.current, {
@@ -105,19 +105,19 @@ const ContactUs = () => {
             });
             gsap.from(offerStrike.current, {
                 x: 400,
-                opactity: 0,
+                opacity: 0,
                 duration: 0.8,
                 delay: 1.2
             });
             gsap.from(bestSeller.current, {
                 y: -120,
-                opactity: 0,
+                opacity: 0,
                 duration: 0.8,
                 delay: 0.8
             });
             gsap.from(cupText.current, {
                 x: -140,
-                opactity: 0,
+                opacity: 0,
                 duration: 0.8,
                 delay: 0.8
             });
@@ -312,7 +312,7 @@ const ContactUs = () => {
                     <Image src={middleAbstracts} alt='Spice Abstracts' className='absolute -bottom-20 scale-90 hidden lg:block' ref={spices} />
                 </div>
                 <div className="flex justify-center w-full h-[170px] overflow-hidden" id='all_menu'>
-                    <Image src={noodleMenu} alt="Menu Text" width={220} ref={noodleMenuText} />
+                    <Image src={noodleMenu} alt="Menu Text" width={220} height={170} ref={noodleMenuText} />
                 </div>
 
 
@@ -371,6 +371,7 @@ const ContactUs = () => {
                                                         src={value.image}
                                                         alt="Cafe"
                                                         fill
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                                                     />
                                                 </a>
                                             </div>
@@ -391,6 +392,7 @@ const ContactUs = () => {
                                                         src={value.image}
                                                         alt="Cafe"
                                                         fill
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                                                     />
                                                 </a>
                                             </div>
@@ -410,6 +412,7 @@ const ContactUs = () => {
                                                         src={value.image}
                                                         alt="Cafe"
                                                         fill
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                                                     />
                                                 </a>
                                             </div>
@@ -474,6 +477,7 @@ const ContactUs = () => {
                                                         src={value.image}
                                                         alt="Cafe"
                                                         fill
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw"
                                                     />
                                                 </a>
                                             </div>
@@ -538,6 +542,7 @@ const ContactUs = () => {
                                                         src={value.image}
                                                         alt="Cafe"
                                                         fill
+                                                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
                                                     />
                                                 </a>
                                             </div>
@@ -598,6 +603,7 @@ const ContactUs = () => {
                                                 src={value.image}
                                                 alt='Cafe'
                                                 fill
+                                                sizes="100vw"
                                             />
                                         </div>
                                     ))}
@@ -612,6 +618,7 @@ const ContactUs = () => {
                                                 src={value.image}
                                                 alt='Cafe'
                                                 fill
+                                                sizes="100vw"
                                             />
                                         </div>
                                     ))}
@@ -625,6 +632,7 @@ const ContactUs = () => {
                                                 src={value.image}
                                                 alt='Cafe'
                                                 fill
+                                                sizes="100vw"
                                             />
                                         </div>
                                     ))}

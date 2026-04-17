@@ -17,24 +17,48 @@ const PromoModal = () => {
 
     useEffect(() => {
         setIsMounted(true);
+
+        // ─── MASTER SWITCH ────────────────────────────────────────────────────────
+        // modalData.isActive (promoModal.json → "isActive")
+        //   true  → modal is enabled, continue checking rules below
+        //   false → modal never shows, regardless of any other setting
+        // ─────────────────────────────────────────────────────────────────────────
         if (!modalData.isActive) return;
 
         const today = new Date().toDateString();
         const lastSeenDate = localStorage.getItem('lastSeenPromoModalDate');
-        const hasSeenModal = localStorage.getItem('hasSeenPromoModal');
+        const hasSeenModal  = localStorage.getItem('hasSeenPromoModal');
 
+        // ─── VISIBILITY MODE ─────────────────────────────────────────────────────
+        //
+        //  MODE 1 — SHOW ONCE PER DAY  (promoModal.json → "showDaily": true)
+        //    The modal appears at most once per calendar day per browser.
+        //    On close, today's date is saved in localStorage ('lastSeenPromoModalDate').
+        //    To change: set "showDaily": true  (also set "showOnce": false)
+        //
+        //  MODE 2 — SHOW ONCE PER USER  (promoModal.json → "showOnce": true)
+        //    The modal appears only the very first time a user visits.
+        //    On close, a flag is saved in localStorage ('hasSeenPromoModal').
+        //    To change: set "showOnce": true  (also set "showDaily": false)
+        //
+        //  MODE 3 — SHOW EVERY PAGE LOAD  (both "showDaily" and "showOnce" = false)
+        //    No localStorage checks — modal appears on every visit/refresh.
+        //
+        //  Priority order: showDaily takes precedence over showOnce.
+        // ─────────────────────────────────────────────────────────────────────────
         if (modalData.showDaily) {
-            if (lastSeenDate === today) {
-                return;
-            }
+            // Already seen today → skip
+            if (lastSeenDate === today) return;
         } else if (modalData.showOnce && hasSeenModal) {
+            // Already seen once ever → skip
             return;
         }
 
-        // Add a small delay for better UX
+        // Show modal after a short delay for better UX
+        // To change the delay, modify the number below (milliseconds)
         const timer = setTimeout(() => {
             setIsVisible(true);
-        }, 1000);
+        }, 1000); // ← change delay here (e.g. 0 = instant, 3000 = 3 seconds)
 
         return () => clearTimeout(timer);
     }, []);
