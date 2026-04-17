@@ -13,67 +13,13 @@ import anchor from "../../../assets/images/anchor.png"
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
-    const leftCard = useRef(null);
-    const middleCard = useRef(null);
-    const rightCard = useRef(null);
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(leftCard.current, {
-                x: -200,
-                y: 100,
-                opacity: 0,
-                scale: 0.9,
-                scrollTrigger: {
-                    trigger: leftCard.current,
-                    scroller: "body",
-                    start: "top 80%",
-                    end: "top 50%",
-                    scrub: 2,
-                    // markers: true,
-                },
-            });
-
-            gsap.from(middleCard.current, {
-                y: 100,
-                opacity: 0,
-                scale: 0.9,
-                scrollTrigger: {
-                    trigger: middleCard.current,
-                    scroller: "body",
-                    start: "top 80%",
-                    end: "top 50%",
-                    scrub: 2,
-                    // markers: true,
-                },
-            });
-
-            gsap.from(rightCard.current, {
-                x: 200,
-                y: 100,
-                opacity: 0,
-                scale: 0.9,
-                scrollTrigger: {
-                    trigger: rightCard.current,
-                    scroller: "body",
-                    start: "top 80%",
-                    end: "top 50%",
-                    scrub: 2,
-                    // markers: true,
-                },
-            });
-
-        });
-        return () => ctx.revert();
-    }, []);
-
-
     return (
         <div className='container animate__animated animate__fadeInUp mb-8 md:mb-22'>
             <div className="flex flex-col lg:flex-row items-center">
                 <div className={`${styles.delight_text} flex flex-col pl-0 pr-0 md:pl-16 md:pr-12`}>
                     <h1 className='text-[#0e467d] dark:text-white text-4xl font-bold mb-10 text-center'>Our Services</h1>
                     <div className='flex flex-col lg:flex-row flex-wrap mb-4 overflow-hidden md:overflow-visible'>
-                        <div className="w-full lg:w-1/3 mb-8 p-0 lg:pr-4" ref={leftCard}>
+                        <div className="w-full lg:w-1/3 mb-8 p-0 lg:pr-4">
                             <div className={`flex flex-col rounded-tl-xl rounded-br-xl border-2 border-color-primary`}>
                                 <Image src={BakeryImage} alt='Bakery Image' className={`${styles.card_image} rounded-tl-lg`} />
                                 <div className={`${styles.inner_card} relative rounded-br-lg bg-blue-950`}>
@@ -89,7 +35,7 @@ const Services = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full lg:w-1/3 mb-8 p-0 lg:px-4 mt-12" ref={middleCard}>
+                        <div className="w-full lg:w-1/3 mb-8 p-0 lg:px-4 mt-12">
                             <div className={`flex flex-col rounded-tl-xl rounded-br-xl border-2 border-orange-950`}>
                                 <Image src={CateringImage} alt='Catering Image' className={`${styles.card_image} rounded-tl-lg`} />
                                 <div className={`${styles.inner_card} relative rounded-br-lg bg-orange-100`}>
@@ -105,7 +51,7 @@ const Services = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full lg:w-1/3 mb-8 p-0 lg:pl-4" ref={rightCard}>
+                        <div className="w-full lg:w-1/3 mb-8 p-0 lg:pl-4">
                             <div className={`flex flex-col rounded-tl-xl rounded-br-xl border-2 border-color-primary`}>
                                 <Image src={CafeImage} alt='Cafe Image' className={`${styles.card_image} rounded-tl-lg`} />
                                 <div className={`${styles.inner_card} relative rounded-br-lg bg-blue-950`}>

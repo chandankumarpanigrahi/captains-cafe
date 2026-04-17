@@ -193,7 +193,7 @@ const ContactUs = () => {
 
                     {/* Left */}
                     <div className="w-full lg:w-2/7 mb-8 lg:mb-0 pr-0 lg:pr-3 overflow-hidden" ref={menuLeftSide}>
-                        <div className="flex flex-col gap-4 w-full items-center">
+                        <div className="flex flex-col gap-4 w-full items-center pt-4">
                             <div className='m-0 lg:mt-8 flex flex-col w-full'>
                                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale mb-2 w-fit mx-auto lg:mx-0">
                                     <Avatar className="border-2 border-white">
@@ -234,7 +234,6 @@ const ContactUs = () => {
                     </div>
 
 
-
                     {/* Middle */}
                     <div className="w-full lg:w-3/7 mb-4" ref={menuMiddleSide}>
                         <div className="w-full flex justify-center items-center pt-16 pb-12 relative">
@@ -257,11 +256,10 @@ const ContactUs = () => {
                     </div>
 
 
-
                     {/* Right */}
                     <div className="w-full lg:w-2/7 pl-3 overflow-hidden" ref={menuRightSide}>
-                        <div className="w-full flex mb-8" ref={offerStrike}>
-                            <div className='bg-gradient-to-r from-orange-900 to-orange-950 h-fit w-full pl-8 py-2 ml-auto rounded-tl-full rounded-bl-full relative cursor-default'>
+                        <div className="w-full flex mb-8 pt-4">
+                            <div className='bg-gradient-to-r from-orange-900 to-orange-950 h-fit w-full pl-8 py-2 ml-auto rounded-tl-full rounded-bl-full relative cursor-default' ref={offerStrike}>
                                 <Image src={noodleFork} alt='cup Image' className='w-[80px]  absolute -top-3 right-0' />
                                 <div className="flex flex-row items-end">
                                     <div className='flex flex-col'>
