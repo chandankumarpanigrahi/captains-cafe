@@ -29,6 +29,11 @@ import CustomerDetails from './customerDetails'
 const Support = () => {
     const [mobileNumbers, setMobileNumbers] = useState([Array(10).fill("")]);
     const [activeTab, setActiveTab] = useState("all");
+    const [checked, setChecked] = useState(false);
+
+    const handleChange = (checkedState) => {
+        setChecked(checkedState)
+    }
 
     const handleUpdate = (e) => {
         e?.preventDefault();
@@ -66,7 +71,7 @@ const Support = () => {
                                 <div className="flex flex-row justify-between items-center mb-1">
                                     <Label className="text-[14px] text-gray-600 block font-medium mb-1">Order Support</Label>
                                     <Field orientation="horizontal" className="flex w-fit">
-                                        <Checkbox id="terms-checkbox-1" name="terms-checkbox-1" />
+                                        <Checkbox id="terms-checkbox-1" name="terms-checkbox-1" checked={checked} onCheckedChange={handleChange} />
                                         <Label htmlFor="terms-checkbox-1" className="mb-0 text-sm">Show CC</Label>
                                     </Field>
                                 </div>
@@ -174,7 +179,7 @@ const Support = () => {
                             <h3 className='text-center text-xl w-full p-4 bg-white/80 text-blue-900'><span className="font-bold">Website</span> Related Support </h3>
                             <div className="flex items-center gap-3 text-white text-xl p-3 justify-center">
                                 <MdOutlineCall size={26} className='opacity-60' />
-                                <p className='text-2xl font-bold'>+91 89596 89623</p>
+                                <p className='text-2xl font-bold'><span className={`${checked === true ? "inline-block" : "hidden"} `}>+91</span> 89596 89623</p>
                             </div>
                         </div>
 
