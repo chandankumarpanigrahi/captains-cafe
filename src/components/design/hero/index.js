@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from "./style.module.css"
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Lobster_Two } from "next/font/google";
 const lobsterTwo = Lobster_Two({
@@ -19,7 +20,7 @@ const HeroSection = () => {
                     <h6 className="text-gray-300 font-bold text-lg md:text-2xl mb-4">MORE FLAVOR FOR LESS</h6>
                     <h1 className={`${lobsterTwo.className} ${styles.banner_main_text} mb-2 text-6xl md:text-7xl font-semibold`}>Taste The<br />Differance</h1>
                     <p className='text-white font-light tracking-wide text-lg mb-5'>Savor the best food, crafted with care and passion, for the moments that matter most. Scottish Cafe, where every bite is unforgettable.</p>
-                    <button className={`${styles.cta_button} w-min whitespace-nowrap border-0 text-white rounded-full py-1 px-4`}>Order Online</button>
+                    <Link className={`${styles.cta_button} w-min whitespace-nowrap border-0 text-white rounded-full py-1 px-4`} href="/menu">Order Online</Link>
                 </div>
             </div>
             <div className="w-full h-full hidden md:w-1/2 md:block animate__animated animate__slideInRight">

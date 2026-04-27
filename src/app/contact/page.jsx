@@ -29,8 +29,8 @@ const ContactUs = () => {
                         <section className='mb-12'>
                             <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Visit Us</h3>
                             <ol className='list-decimal pl-5 flex flex-col gap-2 text-gray-700 dark:text-blue-200 text-lg'>
-                                <li><a href="#" target='_blank' aria-label="CRPF Cafe">Ekamra Kanan Road, near Chilika Fresh, Rental Colony, IRC Village, Nayapalli, Bhubaneswar, Odisha 751011</a></li>
-                                <li><a href="#" target='_blank' aria-label="Saheed Nagar Cafe">Beside Government Veterinary Hospital, Maharishi College Rd, Saheed Nagar, Bhubaneswar, Odisha 751007</a></li>
+                                <li className='group'><a className='text-gray-700 dark:text-blue-200 group-hover:text-blue-800' href="https://maps.app.goo.gl/KUtSK3NEc3Qye86KA" target='_blank' aria-label="CRPF Cafe">Ekamra Kanan Road, near Chilika Fresh, Rental Colony, IRC Village, Nayapalli, Bhubaneswar, Odisha 751011</a></li>
+                                <li className='group'><a className='text-gray-700 dark:text-blue-200 group-hover:text-blue-800' href="https://maps.app.goo.gl/f1TYW4mgCycw8yP76" target='_blank' aria-label="Saheed Nagar Cafe">Beside Government Veterinary Hospital, Maharishi College Rd, Saheed Nagar, Bhubaneswar, Odisha 751007</a></li>
                             </ol>
                         </section>
                         <section className='mb-12'>
