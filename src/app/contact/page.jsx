@@ -52,7 +52,7 @@ const ContactUs = () => {
                             </ol>
                         </section>
                         <section className='flex flex-row gap-2'>
-                            <a href='#' target='_blank' aria-label="Facebok" className={`${styles.fb_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaFacebook size={60} /></a>
+                            <a href='https://www.facebook.com/thecaptainscafe.india' target='_blank' aria-label="Facebook" className={`${styles.fb_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaFacebook size={60} /></a>
                             <a href='https://www.instagram.com/thecaptainscafe.india' target='_blank' aria-label="Instagram" className={`${styles.insta_icon}  p-1 text-white cursor-pointer rounded-full`}><LiaInstagram size={60} className={styles.icon} /></a>
                         </section>
                     </div>

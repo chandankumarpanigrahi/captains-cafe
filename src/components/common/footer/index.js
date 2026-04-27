@@ -7,7 +7,7 @@ import lightHouse from "../../../assets/images/footer_lighthouse.png"
 import miniBoat from "../../../assets/images/footer_boat.png"
 import { FaFacebookF } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io5";
-import { MdCall } from "react-icons/md";
+import { MdCall, MdEmail } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
 import { IoGlobeOutline } from "react-icons/io5";
 import Link from 'next/link'
@@ -52,7 +52,7 @@ const Footer = () => {
 
                     {/* Right Side */}
                     <div className={`${styles.footer_links} rounded-tl-4xl rounded-br-4xl w-full lg:w-2/3 flex flex-row flex-wrap px-10 py-6`}>
-                        <div className="w-full md:w-2/9 mb-8 md:mb-0">
+                        <div className="w-full md:w-2/10 mb-8 md:mb-0">
                             <h5 className='text-xl mb-3 footer-text-color font-semibold'>Company</h5>
                             <ul className='flex flex-col gap-1.5 text-white font-light '>
                                 <li className='text-md '><Link href="/about">About</Link></li>
@@ -62,7 +62,7 @@ const Footer = () => {
                                 <li className='text-md '><Link href="/contact">Contact Us</Link></li>
                             </ul>
                         </div>
-                        <div className="w-full md:w-2/9 mb-8 md:mb-0">
+                        <div className="w-full md:w-2/10 mb-8 md:mb-0">
                             <h5 className='text-xl mb-3 footer-text-color font-semibold'>Help</h5>
                             <ul className='flex flex-col gap-1.5 text-white font-light '>
                                 <li className='text-md '><Link href="/menu">Menu</Link></li>
@@ -72,7 +72,7 @@ const Footer = () => {
                                 <li className='text-md '><Link href="/faqs">FAQs</Link></li>
                             </ul>
                         </div>
-                        <div className="w-full md:w-2/9 mb-8 md:mb-0">
+                        <div className="w-full md:w-2/10 mb-8 md:mb-0">
                             <h5 className='text-xl mb-3 footer-text-color font-semibold'>Resources</h5>
                             <ul className='flex flex-col gap-1.5 text-white font-light '>
                                 <li className='text-md '><Link href="/blogs">Blogs</Link></li>
@@ -80,13 +80,14 @@ const Footer = () => {
                                 <li className='text-md '><Link href="/docs">Documentation</Link></li>
                             </ul>
                         </div>
-                        <div className="w-full md:w-3/9 mb-5 md:mb-0">
+                        <div className="w-full md:w-4/10 mb-5 md:mb-0">
                             <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>
                             <ul className='flex flex-col gap-1.5 text-white font-light '>
-                                <li className='text-md flex gap-2 items-center'><MdCall className='text-blue-300' /><a href="#">+91 81447 74349</a></li>
-                                <li className='text-md flex gap-2 items-center'><HiLocationMarker className='text-blue-300' /><a href="#">IRC Village, Bhubaneswar</a></li>
-                                <li className='text-md pl-6'><a href="#">Saheed Nagar, Bhubaneswar</a></li>
-                                <li className='text-md flex gap-2 items-center'><IoGlobeOutline className='text-blue-300' /><a href="#">thecaptainscafe.com</a></li>
+                                <li className='text-md flex gap-2 items-center'><MdCall className='text-blue-300' /><a href="tel:8144774349">+91 81447 74349</a></li>
+                                <li className='text-md flex gap-2 items-center'><MdEmail className='text-blue-300' /><a href="mailto:contact@thecaptainscafe.co.uk">contact@thecaptainscafe.co.uk</a></li>
+                                <li className='text-md flex gap-2 items-center'><HiLocationMarker className='text-blue-300' /><a href="https://maps.app.goo.gl/KUtSK3NEc3Qye86KA" target='_blank'>IRC Village, Bhubaneswar</a></li>
+                                <li className='text-md pl-6'><a href="https://maps.app.goo.gl/f1TYW4mgCycw8yP76" target='_blank'>Saheed Nagar, Bhubaneswar</a></li>
+                                <li className='text-md flex gap-2 items-center'><IoGlobeOutline className='text-blue-300' /><a href="https://thecaptainscafe.co.uk/" target='_blank'>thecaptainscafe.co.uk</a></li>
                             </ul>
                         </div>
                     </div>
