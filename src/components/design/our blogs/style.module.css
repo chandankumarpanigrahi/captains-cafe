@@ -1,0 +1,29 @@
+.arrow_hover {
+    position: relative;
+}
+
+.arrow1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: top 0.3s ease, right 0.3s ease;
+}
+
+.arrow2 {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    transition: top 0.3s ease, right 0.3s ease;
+}
+
+.blog_card:hover .arrow_hover .arrow1 {
+    top: -30px;
+    right: -30px;
+    transition: top 0.3s ease, right 0.3s ease;
+}
+
+.blog_card:hover .arrow_hover .arrow2 {
+    top: 0px;
+    right: 0px;
+    transition: top 0.3s ease, right 0.3s ease;
+}

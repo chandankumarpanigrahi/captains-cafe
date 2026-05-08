@@ -1,5 +1,10 @@
 "use client"
 import React from 'react'
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import { useRouter } from 'next/navigation'
 import styles from "./style.module.css"
 
@@ -31,7 +36,68 @@ import {
 import Link from 'next/link'
 
 const About = () => {
-    const router = useRouter();
+    const section1 = useRef(null);
+    const section1Content = useRef(null);
+    const section2 = useRef(null);
+    const section2Content = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from(section1.current, {
+                x: 200,
+                opacity: 0,
+                duration: 0.4
+            });
+
+            gsap.from(section1Content.current, {
+                y: 200,
+                opacity: 0,
+                duration: 0.5,
+                delay: 0.4
+            });
+
+            gsap.from(section2.current, {
+                x: -200,
+                opacity: 0,
+                duration: 0.4,
+            });
+
+            gsap.from(section2Content.current, {
+                y: 200,
+                opacity: 0,
+                duration: 0.5,
+                delay: 0.4
+            });
+        });
+        return () => ctx.revert();
+    }, []);
+
+    const videoTestimonials = [
+        {
+            videoUrl: "/videos/video_1.mp4",
+            thumbnail: "/videos/video_1_thumbnail.png",
+            name: "Sameer Dash",
+            date: "3rd Jan 2025"
+        },
+        {
+            videoUrl: "/videos/video_2.mp4",
+            thumbnail: "/videos/video_2_thumbnail.png",
+            name: "Sameer Dash",
+            date: "3rd Jan 2025"
+        },
+        {
+            videoUrl: "/videos/video_3.mp4",
+            thumbnail: "/videos/video_3_thumbnail.png",
+            name: "Sameer Dash",
+            date: "3rd Jan 2025"
+        },
+        {
+            videoUrl: "/videos/video_1.mp4",
+            thumbnail: "/videos/video_1_thumbnail.png",
+            name: "Sameer Dash",
+            date: "3rd Jan 2025"
+        },
+    ]
 
     const valuePoints = [
         {
@@ -57,16 +123,17 @@ const About = () => {
     ]
 
     return (
+
         <div className='container py-10'>
             {/* <button className='bg-blue-700 text-lg w-full flex flex-col text-white px-8 py-3 rounded-full hover:bg-blue-900 cursor-pointer' onClick={() => router.push("/")}>Click Here</button> */}
 
             {/* About Us Cards */}
-            <div className={`${styles.aboutUsCard} w-full flex flex-col lg:flex-row rounded-br-3xl rounded-tl-3xl overflow-hidden h-full bg-white dark:bg-amber-950 mb-12`}>
+            <div className={`${styles.aboutUsCard} w-full flex flex-col lg:flex-row rounded-br-3xl rounded-tl-3xl overflow-hidden h-full bg-white dark:bg-amber-950 mb-12`} ref={section1}>
                 <div className='w-full lg:w-4/7 relative z-3'>
                     <Image src={aboutUsImage} alt='About Us Cafe Image' className='w-full h-full object-cover rounded-br-3xl rounded-tl-3xl' />
                 </div>
                 <div className="w-full h-auto px-5 py-10 md:py-8 md:pr-12 md:pl-20 flex justify-center items-center relative">
-                    <div className="h-auto w-full relative z-3">
+                    <div className="h-auto w-full relative z-3" ref={section1Content}>
                         <h1 className='text-2xl sm:text-3xl font-bold text-[#0B3F71] dark:text-white mb-3'>About Us</h1>
                         <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>Captain&apos;s Cafe is a nautical-themed café chain with multiple locations across Bhubaneswar, inspired by the spirit of the sea and global journeys. The cafés serve a thoughtfully curated range of café dishes and freshly baked goods, drawing flavours from across the world and presenting them in a warm, maritime setting.</p>
                         <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>Beyond its dine-in spaces, Captain&apos;s Cafe also operates a cloud bakery and provides catering services, extending the same quality, consistency, and flavour to homes, offices, and events throughout the city.</p>
@@ -76,9 +143,9 @@ const About = () => {
                     <Image src={Ellipse2} alt='Ellipse' className={`${styles.about_ellipse_2} absolute z-1`} />
                 </div>
             </div>
-            <div className={`${styles.brandCard} w-full flex flex-col-reverse lg:flex-row rounded-br-3xl rounded-tl-3xl overflow-hidden h-full bg-white dark:bg-amber-950 mb-12`}>
+            <div className={`${styles.brandCard} w-full flex flex-col-reverse lg:flex-row rounded-br-3xl rounded-tl-3xl overflow-hidden h-full bg-white dark:bg-amber-950 mb-12`} ref={section2}>
                 <div className="w-full h-auto px-5 py-10 md:py-8 md:pr-20 md:pl-12 flex justify-center items-center relative">
-                    <div className="h-auto w-full relative z-2">
+                    <div className="h-auto w-full relative z-2" ref={section2Content}>
                         <h1 className='text-2xl sm:text-3xl font-bold text-[#0B3F71] dark:text-white mb-3'>Brand Identity</h1>
                         <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>The Captain&apos;s Cafe is inspired by a maritime and sea-sailing theme, where every visit is a journey into a world of flavors. Drawing on the captain&apos;s spirit of exploration, we invite our guests to embark on a culinary voyage guided by  the adventurous spirit of the sea.</p>
                         <p className='text-slate-600 dark:text-orange-100 text-md lg:text-lg mb-3'>It symbolizes leadership, guidance, and discovery, which reflects our commitment to providing a bold and exciting dining experience.</p>
@@ -115,8 +182,8 @@ const About = () => {
                     <p className='text-[#5D3820] dark:text-orange-200 text-md: md:text-lg text-center'>At <strong>The Captain&apos;s Café,</strong>we are guided by a commitment to quality, innovation, and sustainability. We strive to craft exceptional dishes using the finest ingredients while embracing creativity to deliver unique global flavors. Our warm hospitality ensures every guest feels welcome, and our passion for food drives us to create meaningful dining experiences that leave a lasting impression.</p>
                 </div>
                 <div className="flex gap-4 flex-row justify-center flex-wrap mx-auto w-fit">
-                    {valuePoints.map((items, index) => (
-                        <div key={index.id} className="flex flex-col items-center px-6">
+                    {valuePoints.map((items, key) => (
+                        <div key={key} className="flex flex-col items-center px-6">
                             <Image src={items.image} height={80} width={80} alt='Quality Image Icon' />
                             <h2 className='text-xl sm:text-2xl font-bold text-[#713711] dark:text-blue-100 mt-2 -center'>{items.name}</h2>
                         </div>
@@ -132,14 +199,35 @@ const About = () => {
                         to={1000}
                         separator=","
                         direction="up"
-                        duration={1}
+                        duration={0.4}
                     />+ People Trust Us</h1>
                     <p className='text-gray-700 dark:text-gray-300 text-md lg:text-lg text-center w-full px-0 md:px-16 lg:px-36'>Clarity gives you the blocks & components you need to create a truly professional website, landing page or admin panel for your SaaS.</p>
                 </div>
                 <div className="w-full">
                     <Carousel opts={{ align: "start", }} className="w-full h-full">
                         <CarouselContent>
-                            <CarouselItem className="basis-1/1 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 p-4">
+                            {videoTestimonials.map((items, key) => (
+                                <CarouselItem key={key} className="basis-1/1 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 py-4">
+                                    <div className={`${styles.videoCard_design} mx-auto relative rounded-lg overflow-hidden w-[260px]`}>
+                                        <video
+                                            controls
+                                            preload="none"
+                                            className="h-full w-full"
+                                            poster={items.thumbnail}>
+                                            <source src={items.videoUrl} type="video/mp4" />
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div className={styles.hoverArea}>
+                                            <div className="absolute z-2 bottom-0 p-4">
+                                                <h4 className="text-left text-white text-xl font-semibold">{items.name}</h4>
+                                                <p className="text-left text-gray-200 text-md font-light">{items.date}</p>
+                                            </div>
+                                            <div className={`${styles.videoCard_overlay} absolute z-1 inset-0 rounded-md`}></div>
+                                        </div>
+                                    </div>
+                                </CarouselItem>
+                            ))}
+                            {/* <CarouselItem className="basis-1/1 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 p-4">
                                 <div className={`${styles.videoCard_design} mx-auto relative rounded-lg overflow-hidden w-[260px]`}>
                                     <video
                                         controls
@@ -214,10 +302,10 @@ const About = () => {
                                         <div className={`${styles.videoCard_overlay} absolute z-1 inset-0 rounded-md`}></div>
                                     </div>
                                 </div>
-                            </CarouselItem>
+                            </CarouselItem> */}
                         </CarouselContent>
-                        {/* <CarouselPrevious className={`${styles.left_arrow} border-0 bg-transparent`} />
-                        <CarouselNext className={`${styles.right_arrow} border-0 bg-transparent`} /> */}
+                        <CarouselPrevious className={`${styles.left_arrow} border-0 bg-transparent`} />
+                        <CarouselNext className={`${styles.right_arrow} border-0 bg-transparent`} />
                     </Carousel>
                 </div>
                 <Link className="mt-5 text-center flex justify-center text-amber-900 dark:text-gray-200 w-full" href="# ">See all reviews by our customers<MdArrowOutward className='ps-2' size={26} /></Link>

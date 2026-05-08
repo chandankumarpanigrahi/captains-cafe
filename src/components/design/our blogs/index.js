@@ -15,15 +15,16 @@ const Blogs = () => {
                 <div className={`${styles.delight_text} w-full flex flex-col pl-0 pr-0 md:pl-16 md:pr-12`}>
                     <h1 className='text-[#0e467d] dark:text-white text-4xl font-bold mb-10 text-center'>Our Blogs</h1>
                     <div className="flex flex-col lg:flex-row w-full h-fit mb-4">
-                        <div className="w-full lg:w-1/2 h-full mb-4 lg:mb-0 p-0 lg:pr-2">
+                        <div className={`${styles.blog_card} w-full lg:w-1/2 h-full mb-4 lg:mb-0 p-0 lg:pr-2`}>
                             <div className="rounded-md bg-white dark:bg-blue-950 h-full drop-shadow-md overflow-hidden flex flex-col md:flex-row group lg:flex-col">
                                 <Image src={CafeImage} alt="blog 1 Image" className='object-cover h-40 md:h-auto lg:h-60 w-full md:w-2/5 lg:w-full' />
                                 <div className="flex flex-col px-6 py-4">
                                     <p className='text-sm font-semibold text-[#316AA1] dark:text-blue-200 mb-2'>16 May 2025</p>
                                     <div className="flex flex-row mb-2">
                                         <h1 className='text-xl font-semibold text-[#0B3F71] dark:text-white'>Celebrating Harry Potters Week</h1>
-                                        <Link href="#" aria-label="Blog 1" className='ms-auto group-hover:scale-150 transition-transform'>
-                                            <FiArrowUpRight className='text-[#0B3F71] dark:text-gray-100 text-2xl' />
+                                        <Link href="#" aria-label="Blog 1" className={`${styles.arrow_hover} ms-auto w-[30px] h-[30px] overflow-hidden`}>
+                                            <FiArrowUpRight className={`${styles.arrow1} text-[#a3a3a3] text-2xl dark:text-gray-100`} />
+                                            <FiArrowUpRight className={`${styles.arrow2} text-[#0B3F71] text-2xl dark:text-gray-100`} />
                                         </Link>
                                     </div>
                                     <p className='text-gray-500 dark:text-gray-300 text-sm font-normal mb-5 md:line-clamp-2'>How do you create compelling presentations that wow your colleagues and impress your managers?</p>
@@ -35,15 +36,16 @@ const Blogs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full lg:w-1/2 p-0 lg:pl-2 h-auto flex flex-col gap-3">
-                            <div className="rounded-md bg-white dark:bg-blue-950 h-1/2 drop-shadow-md overflow-hidden flex flex-col md:flex-row group">
+                        <div className={`w-full lg:w-1/2 p-0 lg:pl-2 h-auto flex flex-col gap-3`}>
+                            <div className={`${styles.blog_card} rounded-md bg-white dark:bg-blue-950 h-1/2 drop-shadow-md overflow-hidden flex flex-col md:flex-row group`}>
                                 <Image src={CafeImage} alt="blog 1 Image" className='h-auto object-cover w-full md:w-2/5' />
                                 <div className="flex flex-col px-6 py-4 w-full md:w-3/5">
                                     <p className='text-sm font-semibold text-[#316AA1] dark:text-blue-200 mb-2'>19 Jun 2024</p>
                                     <div className="flex flex-row mb-2">
                                         <h1 className='text-xl font-semibold text-[#0B3F71] dark:text-white md:line-clamp-1'>Migrating to Linear 101</h1>
-                                        <Link href="#" aria-label="Blog 2" className='ms-auto group-hover:scale-150 transition-transform'>
-                                            <FiArrowUpRight className='text-[#0B3F71] dark:text-gray-100 text-2xl' />
+                                        <Link href="#" aria-label="Blog 2" className={`${styles.arrow_hover} ms-auto w-[30px] h-[30px] overflow-hidden`}>
+                                            <FiArrowUpRight className={`${styles.arrow1} text-[#a3a3a3] text-2xl dark:text-gray-100`} />
+                                            <FiArrowUpRight className={`${styles.arrow2} text-[#0B3F71] text-2xl dark:text-gray-100`} />
                                         </Link>
                                     </div>
                                     <p className='text-gray-500 dark:text-gray-300 text-sm font-normal mb-5 md:line-clamp-3'>Linear helps streamline software projects, sprints, tasks, and bug tracking. Here&apos;s how to get</p>
@@ -53,14 +55,15 @@ const Blogs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="rounded-md bg-white dark:bg-blue-950 h-1/2 drop-shadow-md overflow-hidden flex flex-col md:flex-row group">
+                            <div className={`${styles.blog_card} rounded-md bg-white dark:bg-blue-950 h-1/2 drop-shadow-md overflow-hidden flex flex-col md:flex-row group`}>
                                 <Image src={CafeImage} alt="blog 1 Image" className='h-auto object-cover w-full md:w-2/5' />
                                 <div className="flex flex-col px-6 py-4 w-full md:w-3/5">
                                     <p className='text-sm font-semibold text-[#316AA1] dark:text-blue-200 mb-2'>18 May 2024</p>
                                     <div className="flex flex-row mb-2">
                                         <h1 className='text-xl font-semibold text-[#0B3F71] dark:text-white md:line-clamp-1'>Building your API Stack</h1>
-                                        <Link href="#" aria-label="Blog 3" className='ms-auto group-hover:scale-150 transition-transform'>
-                                            <FiArrowUpRight className='text-[#0B3F71] dark:text-gray-100 text-2xl' />
+                                        <Link href="#" aria-label="Blog 3" className={`${styles.arrow_hover} ms-auto w-[30px] h-[30px] overflow-hidden`}>
+                                            <FiArrowUpRight className={`${styles.arrow1} text-[#a3a3a3] text-2xl dark:text-gray-100`} />
+                                            <FiArrowUpRight className={`${styles.arrow2} text-[#0B3F71] text-2xl dark:text-gray-100`} />
                                         </Link>
                                     </div>
                                     <p className='text-gray-500 dark:text-gray-300 text-sm font-normal mb-5 md:line-clamp-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. A sint eum nostrum praesentium dignissimos libero eos laborum deserunt explicabo voluptatem! Dolorum porro ipsam amet earum voluptates iusto? Est alias, ipsum accusamus repellat quos, maiores, similique laboriosam placeat nisi nobis atque odit culpa rem.</p>
@@ -105,7 +108,7 @@ const Blogs = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

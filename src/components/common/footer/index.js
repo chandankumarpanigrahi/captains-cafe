@@ -81,7 +81,7 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div className="w-full md:w-4/10 mb-5 md:mb-0">
-                            <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>
+                            <h5 className='text-xl mb-3 footer-text-color font-semibold'>Contact Us</h5>    
                             <ul className='flex flex-col gap-1.5 text-white font-light '>
                                 <li className='text-md flex gap-2 items-center'><MdCall className='text-blue-300' /><a href="tel:8144774349">+91 81447 74349</a></li>
                                 <li className='text-md flex gap-2 items-center'><MdEmail className='text-blue-300' /><a href="mailto:contact@thecaptainscafe.co.uk">contact@thecaptainscafe.co.uk</a></li>
