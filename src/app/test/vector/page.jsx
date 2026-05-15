@@ -24,9 +24,9 @@ const VectorCafe = () => {
                 {
                     x: -250,
                 }, {
-                x: "50vw",
+                x: "55vw",
                 repeat: -1,
-                duration: 26,
+                duration: 20,
                 yoyo: false,
                 ease: "linear",
             });
@@ -52,7 +52,7 @@ const VectorCafe = () => {
                 {
                     x: "-55vw",
                     repeat: -1,
-                    duration: 20,
+                    duration: 18,
                     yoyo: false,
                     ease: "linear",
                 });
@@ -77,7 +77,7 @@ const VectorCafe = () => {
     }, []);
 
     return (
-        <div className='container mt-40 overflow-hidden'>
+        <div className='!px-0 container mt-40 overflow-hidden'>
             <div className='hidden md:block relative w-full'>
                 <div>
                     <Image src={tcc} alt="tcc" />
