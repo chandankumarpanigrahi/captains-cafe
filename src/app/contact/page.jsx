@@ -20,7 +20,7 @@ const ContactUs = () => {
 
                 <div className='flex flex-col-reverse lg:flex-row items-center'>
 
-                    <div className='w-full lg:w-3/5 p-0 lg:px-12'>
+                    <div className='hidden md:block relative z-20 w-full lg:w-3/5 p-0 lg:px-12'>
                         <div className="w-full scale-75 -mt-44">
                             <EmblaCarouselMultiple />
                         </div>
@@ -60,7 +60,7 @@ const ContactUs = () => {
 
                 </div>
             </div>
-            <div className='container mx-auto h-[200px] items-end flex'>
+            <div className='container mx-auto !px-0 h-[200px] items-end flex'>
                 <VectorCafe />
             </div>
             <div className="w-full flex bg-[#220F02] py-12 relative">
