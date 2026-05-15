@@ -53,5 +53,8 @@
     .contact_bg_text {
         font-size: 3rem;
         line-height: 3rem;
+        left: 0;
+        text-align: center;
+        width: 100%;
     }
 }

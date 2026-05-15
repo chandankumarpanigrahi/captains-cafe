@@ -20,35 +20,35 @@ const ContactUs = () => {
 
                 <div className='flex flex-col-reverse lg:flex-row items-center'>
 
-                    <div className='hidden md:block relative z-20 w-full lg:w-3/5 p-0 lg:px-12'>
+                    <div className='hidden md:block relative z-20 w-full lg:w-3/5 p-0'>
                         <div className="w-full scale-75 -mt-44">
                             <EmblaCarouselMultiple />
                         </div>
                     </div>
 
-                    <div className='w-full lg:w-2/5 mb-12 lg:mb-0 relative z-20'>
-                        <section className='mb-12'>
-                            <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Visit Us</h3>
-                            <ol className='list-decimal pl-5 flex flex-col gap-2 text-gray-700 dark:text-blue-200 text-lg'>
+                    <div className='w-full lg:w-2/5 mb-12 lg:mb-0 relative left-0 md:-left-10 z-20'>
+                        <section className='mb-8 md:mb-12'>
+                            <h3 className='text-2xl md:text-3xl text-[#0E467D] dark:text-white font-semibold mb-1 md:mb-3'>Visit Us</h3>
+                            <ol className='list-decimal pl-5 flex flex-col gap-2 text-gray-700 dark:text-blue-200 text-md md:text-lg'>
                                 <li className='group'><a className='text-gray-700 dark:text-blue-200 group-hover:text-blue-800' href="https://maps.app.goo.gl/KUtSK3NEc3Qye86KA" target='_blank' aria-label="CRPF Cafe">Ekamra Kanan Road, near Chilika Fresh, Rental Colony, IRC Village, Nayapalli, Bhubaneswar, Odisha 751011</a></li>
                                 <li className='group'><a className='text-gray-700 dark:text-blue-200 group-hover:text-blue-800' href="https://maps.app.goo.gl/f1TYW4mgCycw8yP76" target='_blank' aria-label="Saheed Nagar Cafe">Beside Government Veterinary Hospital, Maharishi College Rd, Saheed Nagar, Bhubaneswar, Odisha 751007</a></li>
                             </ol>
                         </section>
-                        <section className='mb-12'>
-                            <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Call Us</h3>
-                            <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-lg'>
+                        <section className='mb-8 md:mb-12'>
+                            <h3 className='text-2xl md:text-3xl text-[#0E467D] dark:text-white font-semibold mb-1 md:mb-3'>Call Us</h3>
+                            <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-md md:text-lg'>
                                 <li><a href="tel:+918144774349" target='_blank' aria-label="Calling Number">+91 81447 74349</a></li>
                             </ol>
                         </section>
-                        <section className='mb-12'>
-                            <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Mail Us</h3>
-                            <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-lg'>
+                        <section className='mb-8 md:mb-12'>
+                            <h3 className='text-2xl md:text-3xl text-[#0E467D] dark:text-white font-semibold mb-1 md:mb-3'>Mail Us</h3>
+                            <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-md md:text-lg'>
                                 <li><a href="mailto:contact@thecaptainscafe.co.uk" target='_blank'>contact@thecaptainscafe.co.uk</a></li>
                             </ol>
                         </section>
                         <section className='mb-10'>
-                            <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Café Hours</h3>
-                            <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-lg'>
+                            <h3 className='text-2xl md:text-3xl text-[#0E467D] dark:text-white font-semibold mb-1 md:mb-3'>Café Hours</h3>
+                            <ol className='flex flex-col gap-1 text-gray-700 dark:text-blue-200 text-md md:text-lg'>
                                 <li>Monday to Sunday: 8:30 am - 10 pm</li>
                             </ol>
                         </section>
@@ -60,15 +60,15 @@ const ContactUs = () => {
 
                 </div>
             </div>
-            <div className='container mx-auto !px-0 h-[200px] items-end flex'>
+            <div className='container mx-auto !px-0 h-[160px] md:h-[200px] items-end flex'>
                 <VectorCafe />
             </div>
             <div className="w-full flex bg-[#220F02] py-12 relative">
                 <div className='container mx-auto relative'>
                     <div className="flex py-10 flex-col lg:flex-row relative z-2">
                         <div className="w-full lg:w-1/2 flex flex-col gap-10 text-white">
-                            <h1 className='text-5xl p-4 leading-normal text-center lg:text-left'>Have any Query! <br />Let&apos;s discuss </h1>
-                            <p className='p-4'>Thank you for getting in touch! <br /> Kindly Fill the form, have a great day!</p>
+                            <h1 className='text-3xl md:text-5xl p-4 leading-normal text-center lg:text-left'>Have any Query! <br />Let&apos;s discuss </h1>
+                            <p className='text-center md:text-left p-4'>Thank you for getting in touch! <br /> Kindly Fill the form, have a great day!</p>
                         </div>
                         <ContactForm />
                         {/* <div className="w-full lg:w-1/2 flex flex-wrap gap-y-6 text-white">
