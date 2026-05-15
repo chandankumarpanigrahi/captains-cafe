@@ -60,7 +60,7 @@ const ContactUs = () => {
 
                 </div>
             </div>
-            <div className='container mx-auto h-[200px] items-end hidden'>
+            <div className='container mx-auto h-[200px] items-end flex'>
                 <VectorCafe />
             </div>
             <div className="w-full flex bg-[#220F02] py-12 relative">
