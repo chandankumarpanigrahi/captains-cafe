@@ -388,7 +388,7 @@ const Test = ({ params }) => {
 
             {/* Select */}
             <div className="flex justify-center mb-4">
-                <Select onValueChange={(value) => setSelected(value)}  defaultValue="red">
+                <Select onValueChange={(value) => setSelected(value)} defaultValue="red">
                     <SelectTrigger className="w-[260px] bg-white">
                         <SelectValue placeholder="Select" />
                     </SelectTrigger>
@@ -422,9 +422,9 @@ const Test = ({ params }) => {
                 </div>
             </div>
             <TreeStructure />
-            
+
             {/* Calendar */}
-            <FullCalendar/>
+            <FullCalendar />
         </div>
     )
 }

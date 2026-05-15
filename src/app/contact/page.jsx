@@ -5,6 +5,7 @@ import styles from "./style.module.css"
 import EmblaCarouselMultiple from '@/components/design/fade image';
 import MapsView from '@/components/common/mapsView';
 import ContactForm from './form';
+import VectorCafe from '../test/vector/page';
 
 const ContactUs = () => {
     return (
@@ -20,12 +21,12 @@ const ContactUs = () => {
                 <div className='flex flex-col-reverse lg:flex-row items-center'>
 
                     <div className='w-full lg:w-3/5 p-0 lg:px-12'>
-                        <div className="w-full">
+                        <div className="w-full scale-75 -mt-44">
                             <EmblaCarouselMultiple />
                         </div>
                     </div>
 
-                    <div className='w-full lg:w-2/5 mb-12 lg:mb-0'>
+                    <div className='w-full lg:w-2/5 mb-12 lg:mb-0 relative z-20'>
                         <section className='mb-12'>
                             <h3 className='text-3xl text-[#0E467D] dark:text-white font-semibold mb-3'>Visit Us</h3>
                             <ol className='list-decimal pl-5 flex flex-col gap-2 text-gray-700 dark:text-blue-200 text-lg'>
@@ -59,8 +60,11 @@ const ContactUs = () => {
 
                 </div>
             </div>
+            <div className='container mx-auto h-[200px] items-end hidden'>
+                <VectorCafe />
+            </div>
             <div className="w-full flex bg-[#220F02] py-12 relative">
-                <div className='container  mx-auto relative'>
+                <div className='container mx-auto relative'>
                     <div className="flex py-10 flex-col lg:flex-row relative z-2">
                         <div className="w-full lg:w-1/2 flex flex-col gap-10 text-white">
                             <h1 className='text-5xl p-4 leading-normal text-center lg:text-left'>Have any Query! <br />Let&apos;s discuss </h1>
