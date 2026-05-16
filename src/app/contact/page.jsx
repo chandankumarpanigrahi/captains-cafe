@@ -60,7 +60,7 @@ const ContactUs = () => {
 
                 </div>
             </div>
-            <div className='container mx-auto !px-0 h-[160px] md:h-[200px] items-end flex'>
+            <div className='container mx-auto !px-0 h-[160px] md:h-[200px] items-end hidden'>
                 <VectorCafe />
             </div>
             <div className="w-full flex bg-[#220F02] py-12 relative">
