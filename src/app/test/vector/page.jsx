@@ -10,7 +10,6 @@ import tcc from "../../../assets/svg/TCC.svg"
 import tccMobile from "../../../assets/svg/TCC Mobile.svg"
 import Image from 'next/image'
 const VectorCafe = () => {
-
     const Car1Body = useRef(null);
     const Car2Body = useRef(null);
     const Car1Wheel1 = useRef(null);
@@ -20,56 +19,43 @@ const VectorCafe = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            gsap.fromTo(Car1Body.current,
-                {
-                    x: -250,
-                }, {
-                x: "55vw",
-                repeat: -1,
-                duration: 20,
-                yoyo: false,
-                ease: "linear",
-            });
+            const tl = gsap.timeline({ repeat: -1 });
 
-            gsap.to(Car1Wheel1.current, {
-                duration: 3,
-                repeat: -1,
-                rotate: 360,
-                ease: "linear",
-            });
+            // Car body movement
+            tl.fromTo(Car1Body.current,
+                { x: -250 },
+                { x: "8vw", duration: 5, ease: "power1.out" }
+            )
+                .to(Car1Body.current, { duration: 2 })                        // break
+                .to(Car1Body.current, { x: "55vw", duration: 10, ease: "power1.in" })
+                .to(Car1Body.current, { duration: 2 })                        // break
+                .set(Car1Body.current, { x: -250 });
 
-            gsap.to(Car1Wheel2.current, {
-                duration: 3,
-                repeat: -1,
-                rotate: 360,
-                ease: "linear",
-            });
+            // Wheel timeline - matches car exactly
+            const wheelTl = gsap.timeline({ repeat: -1 });
+
+            wheelTl
+                .to([Car1Wheel1.current, Car1Wheel2.current],
+                    { rotation: "+=360", duration: 5, ease: "power1.out" }   // Phase 1: 5s move
+                )
+                .to([Car1Wheel1.current, Car1Wheel2.current],
+                    { duration: 2 }                                            // Phase 2: 2s pause
+                )
+                .to([Car1Wheel1.current, Car1Wheel2.current],
+                    { rotation: "+=1080", duration: 10, ease: "power1.in" }   // Phase 3: 10s move (+=720 = 2 full rotations in 10s)
+                )
+                .to([Car1Wheel1.current, Car1Wheel2.current],
+                    { duration: 2 }                                            // Phase 4: 2s pause
+                );
+
 
             gsap.fromTo(Car2Body.current,
-                {
-                    x: 260,
-                },
-                {
-                    x: "-55vw",
-                    repeat: -1,
-                    duration: 18,
-                    yoyo: false,
-                    ease: "linear",
-                });
+                { x: 260 }, { x: "-55vw", repeat: -1, duration: 18, yoyo: false, ease: "linear" }
+            );
 
-            gsap.to(Car2Wheel1.current, {
-                duration: 2,
-                repeat: -1,
-                rotate: -360,
-                ease: "linear",
-            });
+            gsap.to(Car2Wheel1.current, { duration: 2, repeat: -1, rotate: -360, ease: "linear" });
 
-            gsap.to(Car2Wheel2.current, {
-                duration: 2,
-                repeat: -1,
-                rotate: -360,
-                ease: "linear",
-            });
+            gsap.to(Car2Wheel2.current, { duration: 2, repeat: -1, rotate: -360, ease: "linear" });
 
         });
         return () => ctx.revert();
