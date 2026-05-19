@@ -1216,14 +1216,14 @@ const VectorCafe = () => {
                     </svg>
                 </div>
                 <div className='absolute bottom-8 left-0 w-[15%]' ref={Car1Body}>
-                    <div className="relative">
+                    <div className="relative w-full">
                         <Image src={car1} className="w-full h-auto" alt="car1" />
                         <Image src={car1wheel} className="w-1/8 h-auto absolute bottom-1.5 left-7" alt="car1wheel" ref={Car1Wheel1} />
                         <Image src={car1wheel} className="w-1/8 h-auto absolute bottom-1.5 right-5" alt="car1wheel" ref={Car1Wheel2} />
                     </div>
                 </div>
                 <div className='absolute bottom-1 right-0 w-[15%]' ref={Car2Body}>
-                    <div className="relative">
+                    <div className="relative w-full">
                         <Image src={car2} className="w-full h-auto" alt="car2" />
                         <Image src={car2wheel} className="w-1/9 h-auto absolute bottom-[3px] left-[29px]" alt="car1wheel" ref={Car2Wheel1} />
                         <Image src={car2wheel} className="w-1/9 h-auto absolute bottom-[3px] right-[26px]" alt="car1wheel" ref={Car2Wheel2} />

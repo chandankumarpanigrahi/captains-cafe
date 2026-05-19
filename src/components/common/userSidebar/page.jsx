@@ -109,7 +109,7 @@ const UserSidebar = () => {
                 <button
                     onClick={toggleSidebar}
                     aria-label={isOpen ? 'Close menu' : 'Open menu'}
-                    className="fixed bottom-10 right-0 z-500 p-2 bg-[#0c3c6a] rounded-tr-md rounded-bl-md rounded-tl-[3px] rounded-br-[3px] shadow-lg lg:hidden hover:shadow-xl transition-all duration-200 hover:scale-105"
+                    className="fixed bottom-34 right-6 z-500 p-2 bg-[#0c3c6a] rounded-tr-md rounded-bl-md rounded-tl-[3px] rounded-br-[3px] shadow-lg lg:hidden hover:shadow-xl transition-all duration-200 hover:scale-105"
                 >
                     {isOpen ? (
                         <FiX size={24} className="text-white dark:text-gray-200" />
